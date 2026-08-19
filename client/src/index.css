@@ -67,6 +67,8 @@
 * { border-color: var(--border); }
 
 html { scroll-behavior: smooth; }
+html.theme-transitioning::before { content: ""; position: fixed; inset: 0; z-index: 9999; pointer-events: none; background: linear-gradient(120deg, rgba(11,23,53,.22), rgba(36,107,253,.12), rgba(250,249,245,.2)); animation: theme-wash 720ms var(--motion-snap) both; }
+.theme-root { transition: background-color 520ms var(--motion-curve), color 520ms var(--motion-curve); }
 
 body {
   margin: 0;
@@ -149,7 +151,9 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 .dark .theme-root .project-orbit .signal-orbit-node { border-color: #101d3b; }
 .dark .theme-root .project-orbit .signal-orbit-core { background: rgba(16,29,59,.72); }
 .dark .theme-root .project-orbit .signal-orbit-ring { border-color: rgba(186,211,255,.18); }
-.dark .theme-root .theme-toggle:hover { background-color: rgba(255,255,255,.12); }
+.dark .theme-root .theme-toggle:hover { color: #93c5fd; }
+.theme-toggle:hover { color: #246bfd; transform: translateY(-1px); }
+.network-dialog { animation: network-dialog-in 360ms var(--motion-snap) both; }
 .portrait-dossier::before { content: ""; position: absolute; inset: 12% 8% auto auto; z-index: 2; height: 9rem; width: 9rem; border-top: 1px solid rgba(36,107,253,.28); border-right: 1px solid rgba(36,107,253,.28); opacity: .75; pointer-events: none; }
 .portrait-dossier::after { content: ""; position: absolute; inset: auto auto 13% 7%; z-index: 2; height: 6rem; width: 6rem; border-left: 1px solid rgba(24,38,80,.22); border-bottom: 1px solid rgba(24,38,80,.22); pointer-events: none; }
 .portrait-dossier-rule { animation: portrait-rule-trace 5.8s var(--motion-curve) infinite alternate; }
@@ -325,6 +329,8 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 @keyframes evidence-scan { 0%, 20% { opacity: .1; transform: scaleX(.24); } 48% { opacity: .76; transform: scaleX(1); } 74%, 100% { opacity: .12; transform: scaleX(.42); } }
 @keyframes evidence-beacon { 0%, 55% { transform: scale(.72); opacity: .38; box-shadow: 0 0 0 0 rgba(36,107,253,.12); } 76% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 7px rgba(36,107,253,0); } 100% { transform: scale(.74); opacity: .42; box-shadow: 0 0 0 0 rgba(36,107,253,0); } }
 @keyframes portrait-rule-trace { from { opacity: .24; transform: translateY(12px) scaleY(.7); transform-origin: bottom; } to { opacity: .92; transform: translateY(0) scaleY(1); transform-origin: bottom; } }
+@keyframes theme-wash { 0% { opacity: 0; transform: scale(1.04); } 18% { opacity: .82; } 100% { opacity: 0; transform: scale(1); } }
+@keyframes network-dialog-in { from { opacity: 0; transform: translate3d(-50%, -47%, 0) scale(.96); } to { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1); } }
 
 .portrait-placeholder {
   background:

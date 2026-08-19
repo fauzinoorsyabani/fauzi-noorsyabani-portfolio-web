@@ -35,3 +35,8 @@ Following GitHub merge resolution, the managed logo, portrait, and project-art U
 ## Intentional Editable Items
 
 The real professional profile photo, resume PDF, GitHub URL, project case-study/demo/source URLs, credential URLs, and a production contact-form provider remain deliberately configurable in `client/src/data/portfolio.ts`. The site handles these missing values without rendering broken links. The Global Game Jam timeline preserves the source-date ambiguity with a visible editorial note for confirmation.
+
+
+## Floating Contact Removal — 2026-08-19
+
+The bottom-right floating Contact button has been removed. The header Contact action remains in place, the footer still exposes Email and LinkedIn, and the accessible networking dialog remains available through the existing contact section flow. Desktop and mobile screenshots confirm the hero composition, navigation proportions, and responsive spacing remain intact. TypeScript and production builds pass.

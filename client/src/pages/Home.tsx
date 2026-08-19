@@ -45,6 +45,7 @@ import {
   skillGroups,
 } from "@/data/portfolio";
 import { useTheme } from "@/contexts/ThemeContext";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const navItems = [
   ["About", "about"],
@@ -151,6 +152,7 @@ function ProjectEvidence({ index, category }: { index: number; category: string 
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
@@ -214,6 +216,18 @@ export default function Home() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+  const handleThemeToggle = () => {
+    if (!toggleTheme) return;
+    if (prefersReducedMotion) {
+      toggleTheme();
+      return;
+    }
+    document.documentElement.classList.remove("theme-transitioning");
+    void document.documentElement.offsetWidth;
+    document.documentElement.classList.add("theme-transitioning");
+    window.setTimeout(() => document.documentElement.classList.remove("theme-transitioning"), 720);
+    toggleTheme();
+  };
   const notifyPending = (message: string) => {
     setAnnouncement(message);
     window.setTimeout(() => setAnnouncement(""), 5200);
@@ -262,11 +276,11 @@ export default function Home() {
             ))}
           </nav>
 
-          <button onClick={toggleTheme} type="button" aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} className={`theme-toggle group relative hidden h-10 w-10 items-center justify-center overflow-hidden rounded-md border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:flex ${scrolled && theme !== "dark" ? "border-slate-200 bg-white text-[#101c3d]" : "border-white/15 bg-white/5 text-white"}`}>
-            <Sun className={`absolute h-4 w-4 transition duration-300 ${theme === "dark" ? "translate-y-5 rotate-90 opacity-0" : "translate-y-0 rotate-0 opacity-100"}`} />
-            <Moon className={`absolute h-4 w-4 transition duration-300 ${theme === "dark" ? "translate-y-0 rotate-0 opacity-100" : "-translate-y-5 -rotate-90 opacity-0"}`} />
+          <button onClick={handleThemeToggle} type="button" aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} className={`theme-toggle group relative ml-3 hidden h-9 w-7 items-center justify-center transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 lg:flex ${scrolled && theme !== "dark" ? "text-[#101c3d]" : "text-white"}`}>
+            <Sun className={`absolute h-4 w-4 transition duration-300 ${theme === "dark" ? "translate-y-2 rotate-90 opacity-0" : "translate-y-0 rotate-0 opacity-100"}`} />
+            <Moon className={`absolute h-4 w-4 transition duration-300 ${theme === "dark" ? "translate-y-0 rotate-0 opacity-100" : "-translate-y-2 -rotate-90 opacity-0"}`} />
           </button>
-          <button onClick={() => scrollTo("contact")} type="button" className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-[0_8px_20px_-10px_rgba(36,107,253,0.85)] transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:flex">
+          <button onClick={() => setContactOpen(true)} type="button" className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-[0_8px_20px_-10px_rgba(36,107,253,0.85)] transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:flex">
             Contact <ArrowUpRight className="h-3.5 w-3.5" />
           </button>
           <button onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="mobile-navigation" type="button" className={`rounded-md p-2.5 lg:hidden ${scrolled && theme !== "dark" ? "text-[#101c3d]" : "text-white"} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}>
@@ -276,7 +290,7 @@ export default function Home() {
         </div>
         <div id="mobile-navigation" className={`overflow-hidden border-t border-white/10 bg-[#0b1735] transition-[max-height,opacity] duration-300 lg:hidden ${menuOpen ? "motion-menu-open max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
           <nav aria-label="Mobile" className="mx-auto max-w-[1440px] px-5 py-4 sm:px-8">
-            <button onClick={toggleTheme} type="button" className="mb-3 flex w-full items-center justify-between rounded-md border border-white/10 bg-white/[0.04] px-3 py-3 text-left text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200"><span className="flex items-center gap-2">{theme === "dark" ? <Moon className="h-4 w-4 text-blue-300" /> : <Sun className="h-4 w-4 text-blue-300" />} {theme === "dark" ? "Dark mode" : "Light mode"}</span><span className="mono-type text-[0.6rem] uppercase tracking-[0.1em] text-blue-200">Switch</span></button>
+            <button onClick={handleThemeToggle} type="button" aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} className="mb-3 flex w-full items-center justify-end px-3 py-3 text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200"><span className="sr-only">{theme === "dark" ? "Dark mode" : "Light mode"}. Switch to {theme === "dark" ? "light" : "dark"} mode.</span>{theme === "dark" ? <Moon className="h-5 w-5 text-blue-200" /> : <Sun className="h-5 w-5 text-blue-200" />}</button>
             <div className="grid gap-1">
               {navItems.map(([label, id]) => (
                 <button key={id} onClick={() => scrollTo(id)} type="button" className={`mobile-nav-link flex items-center justify-between rounded-md px-3 py-3 text-left text-sm font-semibold ${activeSection === id ? "bg-white/10 text-blue-200" : "text-white"}`}>
@@ -468,6 +482,25 @@ export default function Home() {
       </main>
 
       <footer className="bg-[#08132d] px-5 py-10 text-slate-300 sm:px-8 lg:px-12"><div className="mx-auto grid max-w-[1320px] gap-9 border-t border-white/10 pt-9 md:grid-cols-[1.2fr_.7fr_.7fr] md:gap-12"><div><div className="flex items-center gap-4"><span className="relative flex h-14 w-14 items-center justify-center border border-blue-200/35 bg-white/5"><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-12 w-12" /><i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-[#08132d] bg-primary" /></span><span className="mono-type grid text-left text-[0.66rem] font-semibold leading-[1.1] tracking-[0.18em] text-white"><span>FAUZI</span><span className="mt-1 text-blue-300">NOORSYABANI</span></span></div><p className="mt-4 max-w-sm text-sm leading-7 text-slate-400">Building digital experiences with passion and purpose.</p></div><div><p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-blue-200">Quick links</p><div className="mt-4 grid gap-2">{[["About", "about"], ["Projects", "projects"], ["Experience", "experience"], ["Contact", "contact"]].map(([label, id]) => <button key={id} onClick={() => scrollTo(id)} className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">{label}</button>)}</div></div><div><p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-blue-200">Connect</p><div className="mt-4 grid gap-2"><a href={links.email} className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">Email</a>{links.linkedin ? <a href={links.linkedin} target="_blank" rel="noreferrer" className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">LinkedIn</a> : null}{links.github ? <a href={links.github} target="_blank" rel="noreferrer" className="w-fit text-sm text-slate-300 transition hover:text-white">GitHub</a> : <PendingAction label="GitHub" onPending={notifyPending} className="w-fit text-left text-sm text-slate-300 transition hover:text-white" />}</div></div></div><div className="mx-auto mt-8 flex max-w-[1320px] flex-col gap-2 border-t border-white/10 pt-5 text-[0.68rem] text-slate-500 sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} Fauzi Noorsyabani. Made in Indonesia.</p><p className="mono-type text-[0.58rem] uppercase tracking-[0.1em]">Signal Ledger / portfolio v1.0</p></div></footer>
+
+      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
+        <DialogContent className="network-dialog border-white/10 bg-[#0b1735] p-0 text-white shadow-2xl shadow-blue-950/40 sm:max-w-md">
+          <div className="relative overflow-hidden p-7 sm:p-9">
+            <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full border border-blue-300/15" aria-hidden="true" />
+            <div className="relative z-10">
+              <DialogHeader>
+                <p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-blue-200">FN / Networking channel</p>
+                <DialogTitle className="display-type mt-4 text-3xl font-semibold tracking-[-0.06em] text-white">Open a conversation.</DialogTitle>
+                <DialogDescription className="mt-3 max-w-sm text-sm leading-7 text-slate-300">For collaboration, product work, or applied-AI conversations, use the channel that fits your context.</DialogDescription>
+              </DialogHeader>
+              <div className="mt-7 grid gap-3">
+                <a href={links.email} className="group flex items-center justify-between border border-white/10 bg-white/[0.04] px-4 py-4 transition hover:border-blue-300/50 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200"><span className="flex items-center gap-3"><Mail className="h-4 w-4 text-blue-300" /><span><span className="block mono-type text-[0.55rem] uppercase tracking-[0.12em] text-blue-200">Email</span><span className="mt-1 block text-sm font-semibold text-white">{person.email}</span></span></span><ArrowUpRight className="h-4 w-4 text-blue-200 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></a>
+                <a href={links.linkedin} target="_blank" rel="noreferrer" className="group flex items-center justify-between border border-white/10 bg-white/[0.04] px-4 py-4 transition hover:border-blue-300/50 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200"><span className="flex items-center gap-3"><Linkedin className="h-4 w-4 text-blue-300" /><span><span className="block mono-type text-[0.55rem] uppercase tracking-[0.12em] text-blue-200">LinkedIn</span><span className="mt-1 block text-sm font-semibold text-white">linkedin.com/in/fauzinoorsyabani</span></span></span><ExternalLink className="h-4 w-4 text-blue-200 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></a>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <button onClick={() => scrollTo("top")} type="button" aria-label="Scroll back to top" className={`fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-blue-900/30 transition duration-200 hover:bg-[#175bdd] active:scale-[0.95] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${showTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"}`}><ArrowUp className="h-5 w-5" /></button>
     </div>
