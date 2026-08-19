@@ -59,11 +59,13 @@ function SectionHeading({ index, kicker, title, copy, dark = false }: { index: s
   return (
     <div className="grid gap-6 border-t border-current/15 pt-5 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-10">
       <div className={dark ? "mono-type text-xs font-medium tracking-[0.15em] text-blue-200" : "mono-type text-xs font-medium tracking-[0.15em] text-primary"}>
-        {index}
+        <div className="flex items-center gap-2"><span>{index}</span><span className={`h-px w-5 ${dark ? "bg-blue-200/70" : "bg-primary"}`} /></div>
+        <div className={`mt-5 flex h-9 w-9 items-center justify-center border ${dark ? "border-blue-200/30 bg-white/5" : "border-blue-200 bg-white"}`}><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-7 w-7" /></div>
+        <span className="mt-2 block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
       </div>
       <div>
         <p className={dark ? "section-kicker text-blue-200" : "section-kicker"}>{kicker}</p>
-        <h2 className={dark ? "display-type mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.055em] text-white sm:text-5xl" : "display-type mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.055em] text-[#101c3d] sm:text-5xl"}>
+        <h2 className={dark ? "display-type mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.065em] text-white sm:text-5xl lg:text-6xl" : "display-type mt-4 max-w-3xl text-4xl font-semibold tracking-[-0.065em] text-[#101c3d] sm:text-5xl lg:text-6xl"}>
           {title}
         </h2>
         {copy ? <p className={dark ? "mt-5 max-w-2xl text-base leading-8 text-slate-300" : "mt-5 max-w-2xl text-base leading-8 text-slate-600"}>{copy}</p> : null}
@@ -77,6 +79,20 @@ function PendingAction({ label, onPending, className = "" }: { label: string; on
     <button type="button" onClick={() => onPending(`${label} is ready to link when the URL is added in client/src/data/portfolio.ts.`)} className={className}>
       {label}<span className="ml-1.5 text-[0.58rem] font-semibold uppercase tracking-[0.12em] opacity-60">pending</span>
     </button>
+  );
+}
+
+function ProjectEvidence({ index, category }: { index: number; category: string }) {
+  const signalHeights = [36, 54, 30, 65, 48, 76, 60, 92];
+  return (
+    <figure className="relative h-48 overflow-hidden border-b border-slate-200 bg-[#f5f7fb] data-grid" aria-label={`Analytical evidence panel for ${category}`}>
+      <div className="absolute left-5 top-4 flex items-center gap-2 mono-type text-[0.57rem] font-semibold uppercase tracking-[0.12em] text-slate-500"><span className="h-1.5 w-1.5 rounded-full bg-primary" />{category} / evidence 0{index + 1}</div>
+      <div className="absolute bottom-5 left-6 right-6 flex h-24 items-end gap-2 border-b border-slate-300/80" aria-hidden="true">
+        {signalHeights.map((height, barIndex) => <span key={barIndex} style={{ height: `${height}%` }} className={`w-full ${barIndex === 5 ? "bg-primary" : "bg-[#182650]/70"}`} />)}
+      </div>
+      <span className="absolute bottom-[2.6rem] left-7 right-7 h-px origin-left rotate-[-18deg] bg-primary/80" aria-hidden="true" />
+      <span className="absolute bottom-[5.2rem] right-[24%] h-2.5 w-2.5 rounded-full border-2 border-[#f5f7fb] bg-primary" aria-hidden="true" />
+    </figure>
   );
 }
 
@@ -221,6 +237,9 @@ export default function Home() {
                 )}
                 <button onClick={() => scrollTo("projects")} type="button" className="inline-flex items-center gap-2 rounded-md border border-slate-500/70 px-5 py-3.5 text-sm font-bold text-white transition hover:border-blue-300 hover:bg-white/5 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">Explore My Work <ArrowDown className="h-4 w-4" /></button>
               </div>
+              <div className="mt-10 grid max-w-xl grid-cols-3 border-y border-white/15 py-4">
+                {[['900+', 'capstone hours'], ['97', 'programs analyzed'], ['1,000+', 'students reached']].map(([value, label], index) => <div key={label} className={`px-3 first:pl-0 ${index !== 2 ? "border-r border-white/15" : ""}`}><p className="display-type text-xl font-semibold tracking-[-0.05em] text-white">{value}</p><p className="mt-1 mono-type text-[0.55rem] leading-4 uppercase tracking-[0.09em] text-slate-400">{label}</p></div>)}
+              </div>
               <div className="mt-9 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
                 {links.linkedin ? <a href={links.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200"><Linkedin className="h-4 w-4 text-blue-300" /> LinkedIn</a> : null}
                 {links.github ? <a href={links.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-slate-300 transition hover:text-white"><Github className="h-4 w-4 text-blue-300" /> GitHub</a> : <PendingAction label="GitHub" onPending={notifyPending} className="inline-flex items-center gap-1.5 text-slate-300 transition hover:text-white" />}
@@ -231,7 +250,7 @@ export default function Home() {
 
             <div className="relative flex items-center justify-center pb-5 lg:pb-0">
               <div className="absolute right-0 top-8 h-[88%] w-[92%] rounded-[2rem] border border-white/10 bg-white/[0.035]" aria-hidden="true" />
-              <img src={assetUrls.heroData} alt="Abstract illustration of connected data signals and analytics" className="relative z-10 h-[440px] w-full max-w-[570px] border border-white/10 object-cover shadow-2xl shadow-black/30 sm:h-[530px]" />
+              <img src={assetUrls.profilePhoto} alt="Portrait of Fauzi Noorsyabani" className="relative z-10 h-[440px] w-full max-w-[570px] border border-white/10 object-cover object-[50%_28%] shadow-2xl shadow-black/30 sm:h-[530px]" />
               <div className="absolute bottom-0 left-0 z-20 w-[244px] border border-white/10 bg-[#10224b]/95 p-4 shadow-2xl backdrop-blur-sm sm:-left-4 sm:bottom-5">
                 <div className="flex items-center gap-2"><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-8 w-8" /><p className="mono-type text-[0.58rem] uppercase tracking-[0.14em] text-blue-200">FN / Evidence field</p></div>
                 <div className="mt-4 space-y-2 border-t border-white/10 pt-3 mono-type text-[0.58rem] leading-5 tracking-[0.08em] text-slate-300"><p><span className="mr-2 text-blue-300">F-01</span>DATA PRODUCTS</p><p><span className="mr-2 text-blue-300">F-02</span>AI SYSTEMS</p><p><span className="mr-2 text-blue-300">F-03</span>DELIVERY</p></div>
@@ -251,13 +270,7 @@ export default function Home() {
             <div className="mt-14 grid gap-10 lg:grid-cols-[.88fr_1.12fr] lg:gap-20">
               <div className="relative rounded-[1.4rem] border border-blue-100 bg-[#f1f5ff] p-7 signal-shadow sm:p-9">
                 <div className="absolute right-5 top-5 mono-type text-[0.58rem] font-medium tracking-[0.13em] text-blue-400">PORTRAIT / 01</div>
-                <div className="portrait-placeholder flex aspect-[4/5] items-center justify-center overflow-hidden rounded-xl border border-blue-200/80">
-                  <div className="text-center">
-                    <img src={assetUrls.logo} alt="" aria-hidden="true" className="mx-auto h-20 w-20 object-contain" />
-                    <p className="mt-5 display-type text-lg font-semibold tracking-[-0.04em] text-[#101c3d]">Portrait pending</p>
-                    <p className="mt-2 max-w-[210px] text-xs leading-5 text-slate-500">Replace <code className="rounded bg-white/70 px-1 py-0.5 text-[0.65rem]">profilePhoto</code> in the portfolio data file with Fauzi’s professional image.</p>
-                  </div>
-                </div>
+                <img src={assetUrls.profilePhoto} alt="Portrait of Fauzi Noorsyabani" loading="lazy" className="aspect-[4/5] w-full rounded-xl border border-blue-200/80 object-cover object-[50%_20%]" />
               </div>
               <div className="flex flex-col justify-center">
                 <p className="display-type max-w-2xl text-2xl font-medium leading-[1.23] tracking-[-0.045em] text-[#182650] sm:text-3xl">{person.about}</p>
@@ -314,8 +327,8 @@ export default function Home() {
             </article>)}
 
             <div className="mt-8 grid gap-5 lg:grid-cols-2">
-              {featuredProjects.filter((project) => !project.featured).map((project) => <article key={project.title} className="group overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5">
-                {project.art ? <img src={project.art} alt="Abstract editorial project illustration" loading="lazy" className="h-44 w-full object-cover transition duration-500 group-hover:scale-[1.025]" /> : null}
+              {featuredProjects.filter((project) => !project.featured).map((project, index) => <article key={project.title} className="group overflow-hidden border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-900/5">
+                <ProjectEvidence index={index} category={project.category} />
                 <div className="p-6 sm:p-7"><p className="mono-type text-[0.61rem] font-semibold uppercase tracking-[0.12em] text-primary">{project.category}</p><h3 className="display-type mt-3 text-2xl font-semibold tracking-[-0.05em] text-[#101c3d]">{project.title}</h3><p className="mt-2 mono-type text-[0.61rem] uppercase tracking-[0.1em] text-slate-500">{project.date}</p><p className="mt-5 text-sm leading-7 text-slate-600">{project.description}</p>{project.result ? <p className="mt-4 text-sm font-semibold leading-6 text-[#254493]">{project.result}</p> : null}<div className="mt-6 flex flex-wrap gap-2">{project.technologies.map((tech) => <span key={tech} className="rounded-full bg-slate-100 px-2.5 py-1 mono-type text-[0.58rem] text-slate-600">{tech}</span>)}</div></div>
               </article>)}
             </div>

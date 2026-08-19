@@ -71,3 +71,5 @@ The wordmark is a letterspaced **FAUZI / NOORSYABANI** lock-up paired with the F
 - The FN signal mark is a recurring structural device: navy stepped uprights and a single cobalt node paired with a letterspaced **FAUZI / NOORSYABANI** lock-up. It appears in the navigation, hero evidence field, section rails, and footer rather than functioning as a small generic logo.
 - Cobalt Signal is reserved for primary actions, active navigation, section indices, decisive proof points, and key data nodes. Passive UI uses graphite rules, midnight navy, and warm paper instead.
 - Project imagery should behave as analytical evidence: annotated charts, report fragments, maps, and data artifacts rather than generic glowing technology imagery.
+- Each major section is organized as a visible dossier spread: a narrow metadata rail, numeric index, fine data rule, and a small FN/cobalt-node signal. This structure is functional rather than decorative.
+- Rounded cards are reserved for genuine evidence artifacts. Editorial spreads, rules, report rows, indexes, and timeline blocks are the default composition.

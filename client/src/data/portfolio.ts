@@ -8,8 +8,7 @@ export const assetUrls = {
   heroData: "/manus-storage/signal-ledger-hero-data_ba32ee71.png",
   tuitionArt: "/manus-storage/tuition-data-art_160010b3.png",
   productSystemsArt: "/manus-storage/product-systems-art_7360520e.png",
-  // TODO: replace with the supplied professional portrait when available.
-  profilePhoto: "",
+  profilePhoto: "/manus-storage/fauzi-noorsyabani-portrait_5eb3cca1.jpg",
 } as const;
 
 export const links = {
