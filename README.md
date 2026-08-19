@@ -122,6 +122,14 @@ If a future version requires submissions to be stored, delivered automatically, 
 
 The portfolio includes semantic landmarks, a skip link, keyboard-accessible controls, visible focus states, native labels for every form field, live feedback for pending links and form submission, descriptive image alt text, and a `prefers-reduced-motion` fallback. When adding sections or interactions, maintain those patterns rather than replacing them with mouse-only controls or non-semantic clickable containers.
 
+### Motion System
+
+The Signal Ledger motion system is intentionally evidence-led. The hero is choreographed in a short sequence, proof figures resolve once, the active navigation item receives a cobalt data-rule signal, section rails enter before their editorial copy, project evidence visualizations resolve in place, and timeline nodes illuminate as readers reach each career moment. The system favors `transform` and `opacity` to avoid layout-heavy animation.
+
+Motion is controlled by the shared rules in [`client/src/index.css`](client/src/index.css) and the stateful hero/count-up behavior in [`client/src/pages/Home.tsx`](client/src/pages/Home.tsx). Use the existing classes—such as `hero-sequence`, `motion-card`, `motion-row`, `motion-index-row`, `motion-timeline`, `motion-award`, and `motion-contact`—when adding new content. Do not add continuous decoration or long delayed entrances; motion should clarify narrative order, proof, and feedback.
+
+For users who request reduced motion, the page exposes the entire experience without animation. This behavior is handled both in CSS and in React, including the hero counters and smooth-scroll behavior. Any new motion behavior must preserve that static, fully readable fallback.
+
 Use the following release checklist for every content or design revision.
 
 | Check | Expected result |

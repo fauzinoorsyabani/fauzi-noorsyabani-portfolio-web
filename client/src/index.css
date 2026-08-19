@@ -57,6 +57,11 @@
   --border: oklch(0.86 0.015 260);
   --input: oklch(0.87 0.014 260);
   --ring: oklch(0.552 0.235 262);
+  --motion-snap: cubic-bezier(0.23, 1, 0.32, 1);
+  --motion-curve: cubic-bezier(0.77, 0, 0.175, 1);
+  --motion-fast: 160ms;
+  --motion-ui: 280ms;
+  --motion-editorial: 640ms;
 }
 
 * { border-color: var(--border); }
@@ -127,6 +132,140 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
+/* Signal Ledger motion grammar: evidence resolves into view with a controlled editorial rhythm. */
+.hero-stage.motion-ready .hero-sequence,
+.hero-stage.motion-ready .hero-portrait,
+.hero-stage.motion-ready .hero-evidence,
+.hero-stage.motion-ready .hero-artifact,
+.hero-stage.motion-ready .hero-signal-tag,
+.hero-stage.motion-ready .hero-frame {
+  animation-fill-mode: both;
+  animation-timing-function: var(--motion-snap);
+}
+
+.hero-stage.motion-ready .hero-sequence {
+  animation-name: dossier-rise;
+  animation-duration: 720ms;
+}
+.hero-stage.motion-ready .hero-sequence--1 { animation-delay: 60ms; }
+.hero-stage.motion-ready .hero-sequence--2 { animation-delay: 130ms; }
+.hero-stage.motion-ready .hero-sequence--3 { animation-delay: 190ms; }
+.hero-stage.motion-ready .hero-sequence--4 { animation-delay: 280ms; }
+.hero-stage.motion-ready .hero-sequence--5 { animation-delay: 340ms; }
+.hero-stage.motion-ready .hero-sequence--6 { animation-delay: 410ms; }
+.hero-stage.motion-ready .hero-sequence--7 { animation-delay: 485ms; }
+.hero-stage.motion-ready .hero-sequence--8 { animation-delay: 550ms; }
+
+.hero-stage.motion-ready .hero-frame { animation: frame-arrive 900ms 120ms var(--motion-snap) both; }
+.hero-stage.motion-ready .hero-portrait { animation: portrait-arrive 900ms 180ms var(--motion-snap) both; }
+.hero-stage.motion-ready .hero-evidence { animation: evidence-slide 760ms 610ms var(--motion-snap) both; }
+.hero-stage.motion-ready .hero-artifact { animation: dossier-rise 560ms 700ms var(--motion-snap) both; }
+.hero-stage.motion-ready .hero-signal-tag { animation: signal-tag-arrive 620ms 760ms var(--motion-snap) both; }
+.hero-stage.motion-ready .hero-identity-stamp { animation: identity-fade 1200ms 230ms var(--motion-snap) both; }
+
+.availability-node { box-shadow: 0 0 0 0 rgba(147, 197, 253, 0.55); }
+.hero-stage.motion-ready .availability-node { animation: node-ping 1.65s 800ms var(--motion-curve) both; }
+
+.nav-active-signal { transform-origin: left center; animation: nav-signal 360ms var(--motion-snap) both; }
+.nav-surface button { transition: color var(--motion-fast) var(--motion-snap), transform var(--motion-fast) var(--motion-snap), background-color var(--motion-fast) var(--motion-snap); }
+.nav-surface button:active { transform: scale(0.97); }
+
+.motion-menu-open .mobile-nav-link { animation: menu-link-arrive 360ms var(--motion-snap) both; }
+.motion-menu-open .mobile-nav-link:nth-child(1) { animation-delay: 30ms; }
+.motion-menu-open .mobile-nav-link:nth-child(2) { animation-delay: 65ms; }
+.motion-menu-open .mobile-nav-link:nth-child(3) { animation-delay: 100ms; }
+.motion-menu-open .mobile-nav-link:nth-child(4) { animation-delay: 135ms; }
+.motion-menu-open .mobile-nav-link:nth-child(5) { animation-delay: 170ms; }
+.motion-menu-open .mobile-nav-link:nth-child(6) { animation-delay: 205ms; }
+
+.reveal.is-visible .dossier-rail { animation: rail-resolve 520ms var(--motion-snap) both; }
+.reveal.is-visible .section-heading-copy { animation: dossier-rise 650ms 80ms var(--motion-snap) both; }
+.reveal.is-visible .motion-card,
+.reveal.is-visible .motion-row,
+.reveal.is-visible .motion-feature,
+.reveal.is-visible .motion-index-row,
+.reveal.is-visible .motion-timeline,
+.reveal.is-visible .motion-award,
+.reveal.is-visible .motion-cert,
+.reveal.is-visible .motion-contact {
+  animation: dossier-rise 620ms var(--motion-snap) both;
+}
+.reveal.is-visible .motion-card:nth-child(1),
+.reveal.is-visible .motion-row:nth-child(1),
+.reveal.is-visible .motion-index-row:nth-child(1),
+.reveal.is-visible .motion-timeline:nth-child(1) { animation-delay: 120ms; }
+.reveal.is-visible .motion-card:nth-child(2),
+.reveal.is-visible .motion-row:nth-child(2),
+.reveal.is-visible .motion-index-row:nth-child(2),
+.reveal.is-visible .motion-timeline:nth-child(2) { animation-delay: 180ms; }
+.reveal.is-visible .motion-card:nth-child(3),
+.reveal.is-visible .motion-row:nth-child(3),
+.reveal.is-visible .motion-index-row:nth-child(3),
+.reveal.is-visible .motion-timeline:nth-child(3) { animation-delay: 240ms; }
+.reveal.is-visible .motion-card:nth-child(4),
+.reveal.is-visible .motion-index-row:nth-child(4),
+.reveal.is-visible .motion-timeline:nth-child(4) { animation-delay: 300ms; }
+.reveal.is-visible .motion-index-row:nth-child(5),
+.reveal.is-visible .motion-timeline:nth-child(5) { animation-delay: 360ms; }
+.reveal.is-visible .motion-timeline:nth-child(6) { animation-delay: 420ms; }
+.reveal.is-visible .motion-timeline:nth-child(7) { animation-delay: 480ms; }
+.reveal.is-visible .motion-award:nth-child(1), .reveal.is-visible .motion-cert:nth-child(1) { animation-delay: 120ms; }
+.reveal.is-visible .motion-award:nth-child(2), .reveal.is-visible .motion-cert:nth-child(2) { animation-delay: 180ms; }
+.reveal.is-visible .motion-award:nth-child(3), .reveal.is-visible .motion-cert:nth-child(3) { animation-delay: 240ms; }
+.reveal.is-visible .motion-award:nth-child(4) { animation-delay: 300ms; }
+.reveal.is-visible .motion-award:nth-child(5) { animation-delay: 360ms; }
+.reveal.is-visible .motion-award:nth-child(6) { animation-delay: 420ms; }
+.reveal.is-visible .motion-award:nth-child(7) { animation-delay: 480ms; }
+.reveal.is-visible .motion-contact:first-child { animation-delay: 130ms; }
+.reveal.is-visible .motion-contact:last-child { animation-delay: 230ms; }
+
+.reveal.is-visible .motion-feature { animation-delay: 150ms; }
+.reveal.is-visible .project-evidence .evidence-bar { transform: scaleY(0.08); transform-origin: bottom; animation: bar-resolve 700ms var(--motion-snap) both; }
+.reveal.is-visible .project-evidence .evidence-bar:nth-child(1) { animation-delay: 180ms; }
+.reveal.is-visible .project-evidence .evidence-bar:nth-child(2) { animation-delay: 225ms; }
+.reveal.is-visible .project-evidence .evidence-bar:nth-child(3) { animation-delay: 270ms; }
+.reveal.is-visible .project-evidence .evidence-bar:nth-child(4) { animation-delay: 315ms; }
+.reveal.is-visible .project-evidence .evidence-bar:nth-child(5) { animation-delay: 360ms; }
+.reveal.is-visible .project-evidence .evidence-bar:nth-child(6) { animation-delay: 405ms; }
+.reveal.is-visible .project-evidence .evidence-bar:nth-child(7) { animation-delay: 450ms; }
+.reveal.is-visible .project-evidence .evidence-bar:nth-child(8) { animation-delay: 495ms; }
+.reveal.is-visible .project-evidence .evidence-line { animation: line-draw 760ms 430ms var(--motion-snap) both; }
+.reveal.is-visible .project-evidence .evidence-node { animation: node-arrive 430ms 900ms var(--motion-snap) both; }
+.reveal.is-visible .timeline-node { animation: timeline-node-arrive 460ms var(--motion-snap) both; }
+.reveal.is-visible .motion-timeline:nth-child(2) .timeline-node { animation-delay: 160ms; }
+.reveal.is-visible .motion-timeline:nth-child(3) .timeline-node { animation-delay: 230ms; }
+.reveal.is-visible .motion-timeline:nth-child(4) .timeline-node { animation-delay: 300ms; }
+.reveal.is-visible .motion-timeline:nth-child(5) .timeline-node { animation-delay: 370ms; }
+.reveal.is-visible .motion-timeline:nth-child(6) .timeline-node { animation-delay: 440ms; }
+.reveal.is-visible .motion-timeline:nth-child(7) .timeline-node { animation-delay: 510ms; }
+
+.motion-card, .motion-feature, .motion-index-row { will-change: transform, opacity; }
+.project-evidence { isolation: isolate; }
+.project-evidence::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.72) 46%, transparent 56%); transform: translateX(-120%); }
+.motion-card:hover .project-evidence::after { animation: evidence-sheen 760ms var(--motion-snap); }
+
+.project-evidence[data-evidence="clinical"]::after,
+.project-evidence[data-evidence="route"]::after,
+.project-evidence[data-evidence="field"]::after { background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.62) 48%, transparent 56%); }
+.project-evidence[data-evidence="route"] circle:last-child { filter: drop-shadow(0 0 4px rgba(36, 107, 253, .55)); }
+.project-evidence[data-evidence="field"] circle { filter: drop-shadow(0 0 4px rgba(36, 107, 253, .55)); }
+
+@keyframes dossier-rise { from { opacity: 0; transform: translate3d(0, 24px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes portrait-arrive { from { opacity: 0; transform: translate3d(22px, 16px, 0) scale(.985); filter: saturate(.78) contrast(.93); } to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: saturate(1) contrast(1); } }
+@keyframes frame-arrive { from { opacity: 0; transform: translate3d(20px, -16px, 0) scale(.96); } to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); } }
+@keyframes evidence-slide { from { opacity: 0; transform: translate3d(-28px, 14px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes signal-tag-arrive { from { opacity: 0; transform: translate3d(14px, 0, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes rail-resolve { from { opacity: 0; transform: translate3d(-14px, 0, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes nav-signal { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
+@keyframes menu-link-arrive { from { opacity: 0; transform: translate3d(-12px, 0, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+@keyframes bar-resolve { from { transform: scaleY(.08); } to { transform: scaleY(1); } }
+@keyframes line-draw { from { transform: rotate(-18deg) scaleX(0); opacity: 0; } to { transform: rotate(-18deg) scaleX(1); opacity: 1; } }
+@keyframes node-arrive { from { transform: scale(.2); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes timeline-node-arrive { from { transform: scale(.3); box-shadow: 0 0 0 0 rgba(147, 197, 253, .55); } 55% { box-shadow: 0 0 0 9px rgba(147, 197, 253, 0); } to { transform: scale(1); box-shadow: 0 0 0 0 rgba(147, 197, 253, 0); } }
+@keyframes node-ping { 0% { box-shadow: 0 0 0 0 rgba(147, 197, 253, .55); } 65% { box-shadow: 0 0 0 9px rgba(147, 197, 253, 0); } 100% { box-shadow: 0 0 0 0 rgba(147, 197, 253, 0); } }
+@keyframes evidence-sheen { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+@keyframes identity-fade { from { opacity: 0; transform: translate3d(22px, 12px, 0) scale(.94) rotate(-5deg); } to { opacity: .09; transform: translate3d(0, 0, 0) scale(1) rotate(0); } }
+
 .portrait-placeholder {
   background:
     radial-gradient(circle at 50% 35%, rgba(36,107,253,0.25) 0 12%, transparent 12.7%),
@@ -138,4 +277,5 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
+  .hero-stage.motion-ready .hero-sequence, .hero-stage.motion-ready .hero-portrait, .hero-stage.motion-ready .hero-evidence, .hero-stage.motion-ready .hero-artifact, .hero-stage.motion-ready .hero-signal-tag, .hero-stage.motion-ready .hero-frame { opacity: 1; transform: none; filter: none; }
 }

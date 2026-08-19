@@ -12,6 +12,12 @@ The supplied professional portrait is stored as a managed project asset and now 
 
 The new `README.md` documents the project scope, visual system, folder structure, local development commands, data configuration model, managed-asset workflow, portrait replacement procedure, contact form fallback, verification checklist, metadata, and publication workflow. `pnpm check` and `pnpm build` completed successfully after the portrait and README update.
 
+## Motion System Update — 2026-08-19
+
+The portfolio now uses a senior product-design motion grammar: sequenced hero introduction, count-up proof points, an active navigation signal, reveal-on-scroll editorial pacing, evidence-panel graph resolution, timeline-node emphasis, mobile-menu link sequencing, and calm contact-surface entrances. All interaction feedback uses controlled opacity and transform transitions, with the one-time animations concentrated around narrative and proof moments rather than applied indiscriminately.
+
+The final motion-ready experience was reviewed at 1440px and 390px widths. The desktop presentation retains its evidence-led hierarchy and the mobile presentation preserves readable rails, portrait framing, project panels, and contact flow without horizontal overflow. The stylesheet includes an explicit `prefers-reduced-motion` fallback that resolves all animated elements into immediately readable static content.
+
 ## Intentional Editable Items
 
 The real professional profile photo, resume PDF, GitHub URL, project case-study/demo/source URLs, credential URLs, and a production contact-form provider remain deliberately configurable in `client/src/data/portfolio.ts`. The site handles these missing values without rendering broken links. The Global Game Jam timeline preserves the source-date ambiguity with a visible editorial note for confirmation.

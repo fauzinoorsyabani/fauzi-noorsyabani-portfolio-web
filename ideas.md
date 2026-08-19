@@ -73,3 +73,5 @@ The wordmark is a letterspaced **FAUZI / NOORSYABANI** lock-up paired with the F
 - Project imagery should behave as analytical evidence: annotated charts, report fragments, maps, and data artifacts rather than generic glowing technology imagery.
 - Each major section is organized as a visible dossier spread: a narrow metadata rail, numeric index, fine data rule, and a small FN/cobalt-node signal. This structure is functional rather than decorative.
 - Rounded cards are reserved for genuine evidence artifacts. Editorial spreads, rules, report rows, indexes, and timeline blocks are the default composition.
+- The FN signal mark is visually legible at first glance in the hero, dossier rails, and footer; it must read as a brand signature, not as a decorative miniature.
+- Every project evidence panel uses a distinct applied-product artifact language. Repeated generic bar charts are avoided in favor of unique forecasting, workflow, routing, and field-projection forms.
