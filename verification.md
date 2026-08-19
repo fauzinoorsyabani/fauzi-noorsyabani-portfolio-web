@@ -30,6 +30,8 @@ The hero download action now links directly to the managed PDF generated from th
 
 The navigation includes an accessible light/dark mode control with persistent browser preference, a compact desktop icon treatment, and a clearly labeled mobile-menu control. The continuous Signal Ledger stream now moves at a slower 46-second pace with larger mono-spaced text, while the expanded motion system adds a controlled hero aura, vertical scan pass, breathing dossier nodes, project evidence scans, and portrait-rule tracing. Final desktop and mobile screenshots confirm no horizontal overflow or content collisions; the CSS and React logic preserve a no-motion fallback for users who prefer reduced motion.
 
+Following GitHub merge resolution, the managed logo, portrait, and project-art URLs were explicitly restored after an incoming branch temporarily replaced them with local public-file and placeholder paths. This keeps the deployment asset-safe and prevents broken visual references.
+
 ## Intentional Editable Items
 
 The real professional profile photo, resume PDF, GitHub URL, project case-study/demo/source URLs, credential URLs, and a production contact-form provider remain deliberately configurable in `client/src/data/portfolio.ts`. The site handles these missing values without rendering broken links. The Global Game Jam timeline preserves the source-date ambiguity with a visible editorial note for confirmation.
