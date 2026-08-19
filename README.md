@@ -132,6 +132,14 @@ The primary positioning is **Full Stack AI Engineer**. It is maintained in `pers
 
 Two continuous primitives are available for controlled background movement: `SignalStream` provides a seamless right-to-left technical data track, while `SignalOrbit` creates a slow orbital signal around a visual anchor. These primitives are used selectively in the hero, projects, and contact areas. They are intentionally low contrast, use transform-only animation, do not sit over interactive content, and are omitted at runtime for users who prefer reduced motion. Do not place them in every section; the authored restraint is part of the Signal Ledger system.
 
+The continuous stream is intentionally paced at 46 seconds per loop and uses a larger mono-spaced data label for a calmer premium reading rhythm. Supporting motion includes the hero scan pass, portrait-rule tracing, breathing dossier nodes, and project evidence scans. Preserve their low contrast and background placement; their purpose is to give the dossier a live systems feel without competing with content.
+
+### Professional Links and Theme Control
+
+`links.resume` points to the managed PDF generated from the supplied resume source, and `links.github` points to Fauzi’s verified public GitHub profile. The resume CTA uses the native `download` attribute. Replace either destination only in `client/src/data/portfolio.ts` after the new URL is verified.
+
+The application’s `ThemeProvider` is switchable and persists the selected light or dark mode in browser storage. `Home.tsx` contains the navigation controls, including a compact desktop icon toggle and a clearly labeled mobile-menu action. Dark mode is styled through the `.dark .theme-root` system in `index.css`; maintain high contrast in evidence panels, form surfaces, and text if extending the theme.
+
 For users who request reduced motion, the page exposes the entire experience without animation. This behavior is handled both in CSS and in React, including the hero counters and smooth-scroll behavior. Any new motion behavior must preserve that static, fully readable fallback.
 
 Use the following release checklist for every content or design revision.

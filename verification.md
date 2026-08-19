@@ -24,6 +24,12 @@ The primary positioning is now **Full Stack AI Engineer**, supported by applied-
 
 The portfolio now includes a professional continuous right-to-left Signal Ledger stream in the hero and contact areas, plus slow orbiting signal systems around the hero, projects, and contact visual fields. These motions use only transform and opacity, remain behind interactive content, and are omitted completely when reduced motion is preferred. Final desktop and mobile checks confirm the stream and orbit layers remain contained with no horizontal overflow.
 
+## Resume, Theme, and Premium Motion Update — 2026-08-19
+
+The hero download action now links directly to the managed PDF generated from the supplied resume source. The public GitHub destination is set to `https://github.com/fauzinoorsyabani`, and the same verified profile is surfaced consistently in the social links and footer.
+
+The navigation includes an accessible light/dark mode control with persistent browser preference, a compact desktop icon treatment, and a clearly labeled mobile-menu control. The continuous Signal Ledger stream now moves at a slower 46-second pace with larger mono-spaced text, while the expanded motion system adds a controlled hero aura, vertical scan pass, breathing dossier nodes, project evidence scans, and portrait-rule tracing. Final desktop and mobile screenshots confirm no horizontal overflow or content collisions; the CSS and React logic preserve a no-motion fallback for users who prefer reduced motion.
+
 ## Intentional Editable Items
 
 The real professional profile photo, resume PDF, GitHub URL, project case-study/demo/source URLs, credential URLs, and a production contact-form provider remain deliberately configurable in `client/src/data/portfolio.ts`. The site handles these missing values without rendering broken links. The Global Game Jam timeline preserves the source-date ambiguity with a visible editorial note for confirmation.

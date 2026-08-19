@@ -81,3 +81,6 @@ The wordmark is a letterspaced **FAUZI / NOORSYABANI** lock-up paired with the F
 - The FN mark is a medium-confidence structural signature in the navigation, hero, dossier rails, and footer; its stepped forms and cobalt node remain instantly legible without becoming a decorative logo field.
 - Recognition and credential content inherits the dossier offset so the lower page continues the research-report rhythm rather than flattening into generic rows and cards.
 - Cobalt remains limited to primary actions, active states, indices, proof points, and data nodes; passive structure remains navy, graphite, paper, and rule based.
+- Portrait photography is framed as a dossier identity plate with field metadata, instrument rules, and FN annotations rather than as a standalone professional headshot.
+- Project evidence headers carry the FN signal mark and a domain-specific evidence mode so the gallery reads as applied product proof, not a repeating dashboard grid.
+- Calls to action use measured applied-product language: outcome, evidence, context, and project review rather than generic portfolio phrasing.

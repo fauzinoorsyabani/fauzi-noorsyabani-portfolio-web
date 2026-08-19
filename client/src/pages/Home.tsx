@@ -25,6 +25,8 @@ import {
   Phone,
   Send,
   Sparkles,
+  Sun,
+  Moon,
   UsersRound,
   X,
 } from "lucide-react";
@@ -42,6 +44,7 @@ import {
   person,
   skillGroups,
 } from "@/data/portfolio";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const navItems = [
   ["About", "about"],
@@ -82,10 +85,10 @@ function useCountUp(end: number, enabled: boolean, reducedMotion: boolean) {
 function SectionHeading({ index, kicker, title, copy, dark = false }: { index: string; kicker: string; title: string; copy?: string; dark?: boolean }) {
   return (
     <div className="section-heading grid gap-6 border-t border-current/15 pt-5 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-10">
-      <div className={`dossier-rail ${dark ? "mono-type text-xs font-medium tracking-[0.15em] text-blue-200" : "mono-type text-xs font-medium tracking-[0.15em] text-primary"}`}>
-        <div className="flex items-center gap-2"><span>{index}</span><span className={`h-px w-5 ${dark ? "bg-blue-200/70" : "bg-primary"}`} /></div>
-        <div className={`relative mt-5 flex h-12 w-12 items-center justify-center border ${dark ? "border-blue-200/30 bg-white/5" : "border-blue-200 bg-white"}`}><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10" /><i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-current bg-primary" /></div>
-        <span className="mt-2 block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+        <div className={`dossier-rail ${dark ? "mono-type text-xs font-medium tracking-[0.15em] text-blue-200" : "mono-type text-xs font-medium tracking-[0.15em] text-primary"}`}>
+          <div className="flex items-center gap-2"><span>{index}</span><span className={`h-px w-5 ${dark ? "bg-blue-200/70" : "bg-primary"}`} /></div>
+          <div className={`relative mt-5 flex h-12 w-12 items-center justify-center border ${dark ? "border-blue-200/30 bg-white/5" : "border-blue-200 bg-white"}`}><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10" /><i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-current bg-primary" /></div>
+        <span className="dossier-node mt-2 block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
       </div>
       <div className="section-heading-copy">
         <p className={dark ? "section-kicker text-blue-200" : "section-kicker"}>{kicker}</p>
@@ -130,11 +133,13 @@ function SignalOrbit({ className = "", reverse = false }: { className?: string; 
 }
 
 function ProjectEvidence({ index, category }: { index: number; category: string }) {
-  const evidenceMode = ["forecast", "clinical", "route", "field"][index] ?? "forecast";
+  const evidenceMode = (["forecast", "clinical", "route", "field"] as const)[index] ?? "forecast";
+  const evidenceLabels = { forecast: "cost / trend trace", clinical: "transcription workflow", route: "route / interaction map", field: "field / projection grid" } as const;
   const signalHeights = [36, 54, 30, 65, 48, 76, 60, 92];
   return (
     <figure className="project-evidence relative h-48 overflow-hidden border-b border-slate-200 bg-[#f5f7fb] data-grid" data-evidence={evidenceMode} aria-label={`Analytical evidence panel for ${category}`}>
-      <div className="absolute left-5 top-4 flex items-center gap-2 mono-type text-[0.57rem] font-semibold uppercase tracking-[0.12em] text-slate-500"><span className="h-1.5 w-1.5 rounded-full bg-primary" />{category} / evidence 0{index + 1}</div>
+      <div className="absolute left-5 top-4 flex items-center gap-2 mono-type text-[0.57rem] font-semibold uppercase tracking-[0.12em] text-slate-500"><span className="project-evidence-mark flex h-5 w-5 items-center justify-center border border-primary/20 bg-white/70"><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-4 w-4" /></span>{category} / {evidenceLabels[evidenceMode]} / 0{index + 1}</div>
+      <span className="evidence-scan" aria-hidden="true" />
       {evidenceMode === "forecast" ? <><div className="absolute bottom-5 left-6 right-6 flex h-24 items-end gap-2 border-b border-slate-300/80" aria-hidden="true">{signalHeights.map((height, barIndex) => <span key={barIndex} style={{ height: `${height}%` }} className={`evidence-bar w-full ${barIndex === 5 ? "bg-primary" : "bg-[#182650]/70"}`} />)}</div><span className="evidence-line absolute bottom-[2.6rem] left-7 right-7 h-px origin-left rotate-[-18deg] bg-primary/80" aria-hidden="true" /><span className="evidence-node absolute bottom-[5.2rem] right-[24%] h-2.5 w-2.5 rounded-full border-2 border-[#f5f7fb] bg-primary" aria-hidden="true" /></> : null}
       {evidenceMode === "clinical" ? <div className="absolute inset-x-7 bottom-7 top-12 border border-slate-300 bg-white/55 p-4" aria-hidden="true"><div className="h-2 w-20 bg-[#182650]/75" /><div className="mt-3 grid grid-cols-[1fr_3rem_1fr] items-center gap-2"><div className="border border-slate-300 p-2"><span className="block h-1.5 w-3/4 bg-slate-300" /><span className="mt-2 block h-1.5 w-full bg-slate-200" /><span className="mt-1 block h-1.5 w-2/3 bg-slate-200" /></div><div className="relative h-px bg-[#182650]/60"><i className="absolute -right-1.5 -top-1.5 h-3 w-3 rounded-full border-2 border-white bg-primary" /></div><div className="border border-[#182650]/40 p-2"><span className="block h-1.5 w-full bg-[#182650]/65" /><span className="mt-2 block h-1.5 w-4/5 bg-slate-300" /><span className="mt-1 block h-1.5 w-2/5 bg-slate-200" /></div></div><p className="mt-3 mono-type text-[0.52rem] tracking-[0.09em] text-slate-500">INPUT → AI SKILL → CLINICAL NOTE</p></div> : null}
       {evidenceMode === "route" ? <div className="absolute inset-x-7 bottom-7 top-12 overflow-hidden border border-slate-300 bg-[#edf4f2]" aria-hidden="true"><span className="absolute left-[7%] top-[66%] h-20 w-36 -rotate-12 border border-[#183a45]/25" /><span className="absolute right-[4%] top-[7%] h-28 w-40 rotate-[19deg] border border-[#183a45]/25" /><svg viewBox="0 0 320 120" className="absolute inset-0 h-full w-full" fill="none"><path d="M18 93 C77 99 88 27 145 55 S206 100 294 20" stroke="#182650" strokeWidth="2" strokeDasharray="5 5" /><circle cx="18" cy="93" r="5" fill="#182650" /><circle cx="294" cy="20" r="7" fill="#246BFD" stroke="white" strokeWidth="3" /></svg><p className="absolute bottom-3 left-4 mono-type text-[0.52rem] tracking-[0.09em] text-[#183a45]">INTERACTION PATH / BOOKING FLOW</p></div> : null}
@@ -144,6 +149,7 @@ function ProjectEvidence({ index, category }: { index: number; category: string 
 }
 
 export default function Home() {
+  const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [scrolled, setScrolled] = useState(false);
@@ -235,37 +241,42 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#faf9f5] text-[#101c3d]">
+    <div className="theme-root min-h-screen overflow-x-hidden bg-[#faf9f5] text-[#101c3d]">
       <a href="#main-content" className="sr-only z-[100] rounded-md bg-primary px-4 py-2 font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
       <p aria-live="polite" className="sr-only">{announcement}</p>
 
-      <header className={`nav-surface fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "border-b border-slate-200/80 bg-[#faf9f5]/94 shadow-[0_12px_36px_-25px_rgba(12,27,62,0.42)] backdrop-blur-lg" : "bg-[#0b1735]/92 backdrop-blur-md"}`}>
+      <header className={`nav-surface fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? theme === "dark" ? "border-b border-white/10 bg-[#0b1735]/94 shadow-[0_12px_36px_-25px_rgba(0,0,0,0.75)] backdrop-blur-lg" : "border-b border-slate-200/80 bg-[#faf9f5]/94 shadow-[0_12px_36px_-25px_rgba(12,27,62,0.42)] backdrop-blur-lg" : "bg-[#0b1735]/92 backdrop-blur-md"}`}>
         <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
           <button onClick={() => scrollTo("top")} type="button" aria-label="Go to the top of Fauzi Noorsyabani’s portfolio" className="group flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-            <span className={`relative flex h-11 w-11 items-center justify-center overflow-hidden border ${scrolled ? "border-[#101c3d]/20 bg-white" : "border-white/20 bg-white/5"}`}><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10 object-contain transition-transform duration-200 group-hover:-translate-y-0.5" /><i className="absolute bottom-1 right-1 h-2 w-2 rounded-full border-2 border-[#0b1735] bg-primary" /></span>
-            <span className={`mono-type grid text-left text-[0.58rem] font-semibold leading-[1.1] tracking-[0.16em] ${scrolled ? "text-[#101c3d]" : "text-white"}`}>
+            <span className={`relative flex h-11 w-11 items-center justify-center overflow-hidden border ${scrolled && theme !== "dark" ? "border-[#101c3d]/20 bg-white" : "border-white/20 bg-white/5"}`}><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10 object-contain transition-transform duration-200 group-hover:-translate-y-0.5" /><i className="absolute bottom-1 right-1 h-2 w-2 rounded-full border-2 border-[#0b1735] bg-primary" /></span>
+            <span className={`mono-type grid text-left text-[0.58rem] font-semibold leading-[1.1] tracking-[0.16em] ${scrolled && theme !== "dark" ? "text-[#101c3d]" : "text-white"}`}>
               <span>FAUZI</span><span className="mt-1 text-primary">NOORSYABANI</span>
             </span>
           </button>
 
           <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
             {navItems.map(([label, id]) => (
-              <button key={id} onClick={() => scrollTo(id)} type="button" aria-current={activeSection === id ? "page" : undefined} className={`relative rounded-md px-3 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.11em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeSection === id ? "text-primary" : scrolled ? "text-slate-500 hover:text-[#101c3d]" : "text-slate-300 hover:text-white"}`}>
+              <button key={id} onClick={() => scrollTo(id)} type="button" aria-current={activeSection === id ? "page" : undefined} className={`relative rounded-md px-3 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.11em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeSection === id ? "text-primary" : scrolled && theme !== "dark" ? "text-slate-500 hover:text-[#101c3d]" : "text-slate-300 hover:text-white"}`}>
                 {label}{activeSection === id ? <span aria-hidden="true" className="nav-active-signal absolute bottom-0 left-3 right-3 h-px bg-primary" /> : null}
               </button>
             ))}
           </nav>
 
+          <button onClick={toggleTheme} type="button" aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} className={`theme-toggle group relative hidden h-10 w-10 items-center justify-center overflow-hidden rounded-md border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:flex ${scrolled && theme !== "dark" ? "border-slate-200 bg-white text-[#101c3d]" : "border-white/15 bg-white/5 text-white"}`}>
+            <Sun className={`absolute h-4 w-4 transition duration-300 ${theme === "dark" ? "translate-y-5 rotate-90 opacity-0" : "translate-y-0 rotate-0 opacity-100"}`} />
+            <Moon className={`absolute h-4 w-4 transition duration-300 ${theme === "dark" ? "translate-y-0 rotate-0 opacity-100" : "-translate-y-5 -rotate-90 opacity-0"}`} />
+          </button>
           <button onClick={() => scrollTo("contact")} type="button" className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-xs font-bold text-white shadow-[0_8px_20px_-10px_rgba(36,107,253,0.85)] transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:flex">
             Contact <ArrowUpRight className="h-3.5 w-3.5" />
           </button>
-          <button onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="mobile-navigation" type="button" className={`rounded-md p-2.5 lg:hidden ${scrolled ? "text-[#101c3d]" : "text-white"} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}>
+          <button onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-controls="mobile-navigation" type="button" className={`rounded-md p-2.5 lg:hidden ${scrolled && theme !== "dark" ? "text-[#101c3d]" : "text-white"} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}>
             <span className="sr-only">{menuOpen ? "Close" : "Open"} navigation menu</span>
             {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
         <div id="mobile-navigation" className={`overflow-hidden border-t border-white/10 bg-[#0b1735] transition-[max-height,opacity] duration-300 lg:hidden ${menuOpen ? "motion-menu-open max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
           <nav aria-label="Mobile" className="mx-auto max-w-[1440px] px-5 py-4 sm:px-8">
+            <button onClick={toggleTheme} type="button" className="mb-3 flex w-full items-center justify-between rounded-md border border-white/10 bg-white/[0.04] px-3 py-3 text-left text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200"><span className="flex items-center gap-2">{theme === "dark" ? <Moon className="h-4 w-4 text-blue-300" /> : <Sun className="h-4 w-4 text-blue-300" />} {theme === "dark" ? "Dark mode" : "Light mode"}</span><span className="mono-type text-[0.6rem] uppercase tracking-[0.1em] text-blue-200">Switch</span></button>
             <div className="grid gap-1">
               {navItems.map(([label, id]) => (
                 <button key={id} onClick={() => scrollTo(id)} type="button" className={`mobile-nav-link flex items-center justify-between rounded-md px-3 py-3 text-left text-sm font-semibold ${activeSection === id ? "bg-white/10 text-blue-200" : "text-white"}`}>
@@ -297,11 +308,11 @@ export default function Home() {
               <p className="hero-sequence hero-sequence--5 mt-5 flex items-center gap-2 text-sm font-medium text-slate-300"><Sparkles className="h-4 w-4 text-blue-300" /> {person.education}</p>
               <div className="hero-sequence hero-sequence--6 mt-9 flex flex-wrap gap-3">
                 {links.resume ? (
-                  <a href={links.resume} className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">View Resume <Download className="h-4 w-4" /></a>
+                  <a href={links.resume} download className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">Download Resume <Download className="h-4 w-4" /></a>
                 ) : (
                   <PendingAction label="View Resume" onPending={notifyPending} className="rounded-md bg-primary px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]" />
                 )}
-                <button onClick={() => scrollTo("projects")} type="button" className="inline-flex items-center gap-2 rounded-md border border-slate-500/70 px-5 py-3.5 text-sm font-bold text-white transition hover:border-blue-300 hover:bg-white/5 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">Explore My Work <ArrowDown className="h-4 w-4" /></button>
+                <button onClick={() => scrollTo("projects")} type="button" className="inline-flex items-center gap-2 rounded-md border border-slate-500/70 px-5 py-3.5 text-sm font-bold text-white transition hover:border-blue-300 hover:bg-white/5 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">Review Project Evidence <ArrowDown className="h-4 w-4" /></button>
               </div>
               <div className="hero-sequence hero-sequence--7 hero-metrics mt-10 grid max-w-xl grid-cols-3 border-y border-white/15 py-4">
                 {[{ value: capstoneHours, suffix: "+", label: "capstone hours" }, { value: programsAnalyzed, suffix: "", label: "programs analyzed" }, { value: studentsReached, suffix: "+", label: "students reached" }].map(({ value, suffix, label }, index) => <div key={label} className={`px-3 first:pl-0 ${index !== 2 ? "border-r border-white/15" : ""}`}><p className="display-type text-xl font-semibold tracking-[-0.05em] text-white">{value.toLocaleString()}{suffix}</p><p className="mt-1 mono-type text-[0.55rem] leading-4 uppercase tracking-[0.09em] text-slate-400">{label}</p></div>)}
@@ -316,8 +327,10 @@ export default function Home() {
 
             <div className="relative flex items-center justify-center pb-5 lg:pb-0">
               {!prefersReducedMotion ? <SignalOrbit className="hero-orbit absolute -right-12 top-1/2 z-0 hidden h-[35rem] w-[35rem] -translate-y-1/2 lg:block" /> : null}
+              {!prefersReducedMotion ? <span className="hero-aura absolute right-[4%] top-[14%] z-0 hidden h-[74%] w-[80%] rounded-[2.6rem] border border-blue-200/15 lg:block" aria-hidden="true" /> : null}
               <div className="hero-frame absolute right-0 top-8 h-[88%] w-[92%] rounded-[2rem] border border-white/10 bg-white/[0.035]" aria-hidden="true" />
               <img src={assetUrls.profilePhoto} alt="Portrait of Fauzi Noorsyabani" className="hero-portrait relative z-10 h-[440px] w-full max-w-[570px] border border-white/10 object-cover object-[50%_28%] shadow-2xl shadow-black/30 sm:h-[530px]" />
+              {!prefersReducedMotion ? <span className="hero-scanline absolute left-[10%] right-[5%] top-[16%] z-20 hidden h-px bg-gradient-to-r from-transparent via-blue-200/80 to-transparent lg:block" aria-hidden="true" /> : null}
               <div className="hero-evidence absolute bottom-0 left-0 z-20 w-[244px] border border-white/10 bg-[#10224b]/95 p-4 shadow-2xl backdrop-blur-sm sm:-left-4 sm:bottom-5">
                 <div className="flex items-center gap-2"><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-8 w-8" /><p className="mono-type text-[0.58rem] uppercase tracking-[0.14em] text-blue-200">FN / Evidence field</p></div>
                 <div className="mt-4 space-y-2 border-t border-white/10 pt-3 mono-type text-[0.58rem] leading-5 tracking-[0.08em] text-slate-300"><p><span className="mr-2 text-blue-300">F-01</span>DATA PRODUCTS</p><p><span className="mr-2 text-blue-300">F-02</span>AI SYSTEMS</p><p><span className="mr-2 text-blue-300">F-03</span>DELIVERY</p></div>
@@ -336,9 +349,12 @@ export default function Home() {
           <div className="mx-auto max-w-[1320px] reveal">
             <SectionHeading index="01" kicker="Professional position" title="Building useful systems from complex signals." />
             <div className="mt-14 grid gap-10 lg:grid-cols-[.88fr_1.12fr] lg:gap-20">
-              <div className="relative rounded-[1.4rem] border border-blue-100 bg-[#f1f5ff] p-7 signal-shadow sm:p-9">
-                <div className="absolute right-5 top-5 mono-type text-[0.58rem] font-medium tracking-[0.13em] text-blue-400">PORTRAIT / 01</div>
-                <img src={assetUrls.profilePhoto} alt="Portrait of Fauzi Noorsyabani" loading="lazy" className="aspect-[4/5] w-full rounded-xl border border-blue-200/80 object-cover object-[50%_20%]" />
+              <div className="portrait-dossier relative overflow-hidden rounded-[1.4rem] border border-blue-100 bg-[#f1f5ff] p-7 signal-shadow sm:p-9">
+                <div className="absolute right-5 top-5 z-10 mono-type text-[0.58rem] font-medium tracking-[0.13em] text-blue-400">FIELD PORTRAIT / 01</div>
+                <div className="absolute left-5 top-5 z-10 flex items-center gap-2 mono-type text-[0.54rem] font-semibold tracking-[0.12em] text-[#182650]"><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-6 w-6" /> FN / IDENTITY PLATE</div>
+                <img src={assetUrls.profilePhoto} alt="Portrait of Fauzi Noorsyabani" loading="lazy" className="relative z-[1] aspect-[4/5] w-full rounded-xl border border-blue-200/80 object-cover object-[50%_20%]" />
+                <div className="absolute bottom-10 left-10 z-10 flex items-center gap-3 border border-[#182650]/15 bg-[#f1f5ff]/92 px-3 py-2 mono-type text-[0.54rem] font-semibold uppercase tracking-[0.11em] text-[#182650] backdrop-blur-sm"><span className="h-1.5 w-1.5 rounded-full bg-primary" />FN-26 / FULL STACK AI</div>
+                <span className="portrait-dossier-rule absolute bottom-0 left-[17%] h-20 w-px bg-primary/50" aria-hidden="true" />
               </div>
               <div className="flex flex-col justify-center">
                 <p className="display-type max-w-2xl text-2xl font-medium leading-[1.23] tracking-[-0.045em] text-[#182650] sm:text-3xl">{person.about}</p>
@@ -439,7 +455,7 @@ export default function Home() {
           <div className="absolute inset-0 data-grid opacity-25" aria-hidden="true" /><div className="absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
           {!prefersReducedMotion ? <SignalOrbit reverse className="contact-orbit absolute -right-20 top-10 z-0 hidden h-[25rem] w-[25rem] opacity-50 lg:block" /> : null}
           <div className="relative mx-auto max-w-[1320px] reveal">
-            <SectionHeading index="07" kicker="Contact & collaboration" title="Let’s Work Together" copy="Have a project in mind or just want to chat? I’m always open to new opportunities and collaborations. Feel free to reach out!" dark />
+            <SectionHeading index="07" kicker="Contact & collaboration" title="Start with the outcome." copy="Share the product context, the decision it needs to support, and the delivery constraints. I’ll respond with a focused next step." dark />
             <div className="mt-14 grid gap-12 lg:grid-cols-[.86fr_1.14fr] lg:gap-20">
               <aside className="motion-contact space-y-8"><div><p className="mono-type text-[0.61rem] font-semibold uppercase tracking-[0.13em] text-blue-200">Direct channels</p><div className="mt-5 space-y-4"><a href={links.email} className="group flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4 transition hover:border-blue-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200"><Mail className="mt-0.5 h-5 w-5 text-blue-300" /><span><span className="block mono-type text-[0.6rem] uppercase tracking-[0.1em] text-slate-400">Email</span><span className="mt-1 block text-sm font-semibold text-white group-hover:text-blue-100">{person.email}</span></span></a><a href={links.phone} className="group flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4 transition hover:border-blue-300/40 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200"><Phone className="mt-0.5 h-5 w-5 text-blue-300" /><span><span className="block mono-type text-[0.6rem] uppercase tracking-[0.1em] text-slate-400">Phone</span><span className="mt-1 block text-sm font-semibold text-white group-hover:text-blue-100">{person.phone}</span></span></a><div className="flex items-start gap-3 rounded-lg border border-white/10 bg-white/[0.03] p-4"><MapPin className="mt-0.5 h-5 w-5 text-blue-300" /><span><span className="block mono-type text-[0.6rem] uppercase tracking-[0.1em] text-slate-400">Location</span><span className="mt-1 block text-sm font-semibold text-white">{person.location}</span></span></div></div></div>
                 <div className="rounded-lg border border-blue-200/15 bg-blue-400/10 p-5"><p className="mono-type text-[0.61rem] font-semibold uppercase tracking-[0.12em] text-blue-200">Preferred starting point</p><p className="mt-3 text-sm leading-7 text-slate-200">Share your context, the outcome you are working toward, and the constraints that matter. A useful first conversation starts with a real problem.</p></div>

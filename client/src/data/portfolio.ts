@@ -12,8 +12,8 @@ export const assetUrls = {
 } as const;
 
 export const links = {
-  resume: "", // TODO: add resume PDF URL
-  github: "", // TODO: add GitHub profile URL
+  resume: "/manus-storage/Fauzi_Noorsyabani_Full_Stack_AI_Engineer_Resume_5cf543f4.pdf",
+  github: "https://github.com/fauzinoorsyabani",
   linkedin: "https://linkedin.com/in/fauzinoorsyabani",
   email: "mailto:fauzinoorsyabani05@gmail.com",
   phone: "tel:+6281310641534",
