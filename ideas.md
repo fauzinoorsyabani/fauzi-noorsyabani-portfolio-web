@@ -75,3 +75,9 @@ The wordmark is a letterspaced **FAUZI / NOORSYABANI** lock-up paired with the F
 - Rounded cards are reserved for genuine evidence artifacts. Editorial spreads, rules, report rows, indexes, and timeline blocks are the default composition.
 - The FN signal mark is visually legible at first glance in the hero, dossier rails, and footer; it must read as a brand signature, not as a decorative miniature.
 - Every project evidence panel uses a distinct applied-product artifact language. Repeated generic bar charts are avoided in favor of unique forecasting, workflow, routing, and field-projection forms.
+
+## Style Decisions
+
+- The FN mark is a medium-confidence structural signature in the navigation, hero, dossier rails, and footer; its stepped forms and cobalt node remain instantly legible without becoming a decorative logo field.
+- Recognition and credential content inherits the dossier offset so the lower page continues the research-report rhythm rather than flattening into generic rows and cards.
+- Cobalt remains limited to primary actions, active states, indices, proof points, and data nodes; passive structure remains navy, graphite, paper, and rule based.

@@ -21,16 +21,16 @@ export const links = {
 
 export const person = {
   name: "Fauzi Noorsyabani",
-  role: "Data Scientist & Software Engineer",
+  role: "Full Stack AI Engineer",
   headline:
-    "I build data-informed digital products, full-stack experiences, and practical AI solutions that turn complex ideas into measurable impact.",
+    "I build end-to-end AI-powered products, from data and models through backend systems, full-stack experiences, and measurable delivery.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",
   phone: "+62 813-1064-1534",
   availability: "Open to Work",
   about:
-    "Fauzi is an innovation-driven AI Engineer, Software Engineer, and Data Scientist with a strong foundation in applied AI, data science, and full-stack development. He builds end-to-end digital systems with Python, React, Laravel, and modern LLM tooling—then pairs the technical work with clear communication, product thinking, and community leadership.",
+    "Fauzi is an innovation-driven Full Stack AI Engineer with a strong foundation in applied AI, data science, backend development, and product delivery. He builds end-to-end digital systems with Python, React, Laravel, and modern LLM tooling—then pairs the technical work with clear communication, product thinking, and community leadership.",
   shortBio:
     "From analysis and forecasting to deployed AI products, Fauzi connects the technical work to decisions people can actually use.",
 } as const;
@@ -56,7 +56,7 @@ export const focusAreas = [
 export const facts = [
   ["Based in", "Tasikmalaya, Indonesia"],
   ["Education", "Information Systems, Universitas Siliwangi"],
-  ["Current focus", "Applied AI, data products, full-stack development"],
+  ["Current focus", "End-to-end AI systems, data products, full-stack delivery"],
   ["Availability", "Open to work"],
 ] as const;
 

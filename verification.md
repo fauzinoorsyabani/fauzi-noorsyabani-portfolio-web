@@ -18,6 +18,12 @@ The portfolio now uses a senior product-design motion grammar: sequenced hero in
 
 The final motion-ready experience was reviewed at 1440px and 390px widths. The desktop presentation retains its evidence-led hierarchy and the mobile presentation preserves readable rails, portrait framing, project panels, and contact flow without horizontal overflow. The stylesheet includes an explicit `prefers-reduced-motion` fallback that resolves all animated elements into immediately readable static content.
 
+## Full Stack AI Engineer and Continuous Motion Update — 2026-08-19
+
+The primary positioning is now **Full Stack AI Engineer**, supported by applied-AI and data-product language in the hero, content configuration, and page metadata. The introductory narrative continues to reflect end-to-end work across data, models, backend systems, full-stack experiences, and delivery without removing Fauzi’s data-science evidence.
+
+The portfolio now includes a professional continuous right-to-left Signal Ledger stream in the hero and contact areas, plus slow orbiting signal systems around the hero, projects, and contact visual fields. These motions use only transform and opacity, remain behind interactive content, and are omitted completely when reduced motion is preferred. Final desktop and mobile checks confirm the stream and orbit layers remain contained with no horizontal overflow.
+
 ## Intentional Editable Items
 
 The real professional profile photo, resume PDF, GitHub URL, project case-study/demo/source URLs, credential URLs, and a production contact-form provider remain deliberately configurable in `client/src/data/portfolio.ts`. The site handles these missing values without rendering broken links. The Global Game Jam timeline preserves the source-date ambiguity with a visible editorial note for confirmation.

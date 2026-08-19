@@ -106,6 +106,29 @@ function PendingAction({ label, onPending, className = "" }: { label: string; on
   );
 }
 
+function SignalStream({ className = "", tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
+  const signals = ["FULL STACK AI ENGINEER", "DATA → MODEL → PRODUCT → DEPLOY", "FN / SIGNAL LEDGER", "SYSTEMS / 001", "APPLIED AI / DELIVERY"];
+  const track = [...signals, ...signals];
+  return (
+    <div aria-hidden="true" className={`signal-stream signal-stream--${tone} ${className}`}>
+      <div className="signal-stream-track">
+        {track.map((signal, index) => <span key={`${signal}-${index}`} className="signal-stream-token"><i className="signal-stream-node" />{signal}<b>✦</b></span>)}
+      </div>
+    </div>
+  );
+}
+
+function SignalOrbit({ className = "", reverse = false }: { className?: string; reverse?: boolean }) {
+  return (
+    <div aria-hidden="true" className={`signal-orbit ${reverse ? "signal-orbit--reverse" : ""} ${className}`}>
+      <span className="signal-orbit-ring signal-orbit-ring--outer" />
+      <span className="signal-orbit-ring signal-orbit-ring--inner" />
+      <span className="signal-orbit-rotation"><i className="signal-orbit-node" /><i className="signal-orbit-marker" /></span>
+      <span className="signal-orbit-core"><img src={assetUrls.logo} alt="" className="h-8 w-8 opacity-70" /></span>
+    </div>
+  );
+}
+
 function ProjectEvidence({ index, category }: { index: number; category: string }) {
   const evidenceMode = ["forecast", "clinical", "route", "field"][index] ?? "forecast";
   const signalHeights = [36, 54, 30, 65, 48, 76, 60, 92];
@@ -219,8 +242,8 @@ export default function Home() {
       <header className={`nav-surface fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "border-b border-slate-200/80 bg-[#faf9f5]/94 shadow-[0_12px_36px_-25px_rgba(12,27,62,0.42)] backdrop-blur-lg" : "bg-[#0b1735]/92 backdrop-blur-md"}`}>
         <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
           <button onClick={() => scrollTo("top")} type="button" aria-label="Go to the top of Fauzi Noorsyabani’s portfolio" className="group flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-            <span className={`relative flex h-10 w-10 items-center justify-center overflow-hidden border ${scrolled ? "border-[#101c3d]/20 bg-white" : "border-white/20 bg-white/5"}`}><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-9 w-9 object-contain transition-transform duration-200 group-hover:-translate-y-0.5" /><i className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-primary" /></span>
-            <span className={`mono-type grid text-left text-[0.55rem] font-semibold leading-[1.1] tracking-[0.14em] ${scrolled ? "text-[#101c3d]" : "text-white"}`}>
+            <span className={`relative flex h-11 w-11 items-center justify-center overflow-hidden border ${scrolled ? "border-[#101c3d]/20 bg-white" : "border-white/20 bg-white/5"}`}><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10 object-contain transition-transform duration-200 group-hover:-translate-y-0.5" /><i className="absolute bottom-1 right-1 h-2 w-2 rounded-full border-2 border-[#0b1735] bg-primary" /></span>
+            <span className={`mono-type grid text-left text-[0.58rem] font-semibold leading-[1.1] tracking-[0.16em] ${scrolled ? "text-[#101c3d]" : "text-white"}`}>
               <span>FAUZI</span><span className="mt-1 text-primary">NOORSYABANI</span>
             </span>
           </button>
@@ -258,7 +281,7 @@ export default function Home() {
         <section id="top" className={`hero-stage relative isolate overflow-hidden bg-[#0b1735] pt-[72px] text-white ${heroReady && !prefersReducedMotion ? "motion-ready" : ""}`}>
           <div className="absolute inset-0 data-grid opacity-30" aria-hidden="true" />
           <div className="absolute -right-36 top-28 h-[34rem] w-[34rem] rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
-          <img src={assetUrls.logo} alt="" aria-hidden="true" className="hero-identity-stamp pointer-events-none absolute right-[8%] top-[14%] z-0 hidden h-56 w-56 object-contain opacity-[0.09] lg:block" />
+          <img src={assetUrls.logo} alt="" aria-hidden="true" className="hero-identity-stamp pointer-events-none absolute right-[8%] top-[12%] z-0 hidden h-72 w-72 object-contain opacity-[0.14] lg:block" />
           <div className="relative mx-auto grid min-h-[790px] max-w-[1440px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.06fr_.94fr] lg:gap-20 lg:px-12 lg:py-24 xl:min-h-[820px]">
             <div className="flex flex-col justify-center pt-8 lg:pt-0">
               <div className="hero-sequence hero-sequence--1 flex w-fit items-center gap-2 border border-blue-300/25 bg-blue-400/10 px-3 py-1.5 mono-type text-[0.62rem] font-medium tracking-[0.14em] text-blue-100">
@@ -268,7 +291,7 @@ export default function Home() {
               <h1 className="hero-sequence hero-sequence--3 display-type mt-1 max-w-3xl text-[3.8rem] font-semibold leading-[0.88] tracking-[-0.085em] sm:text-8xl xl:text-[6.1rem]">Fauzi<br /><span className="text-blue-300">Noorsyabani.</span></h1>
               <div className="hero-sequence hero-sequence--4 mt-8 flex items-center gap-3 text-blue-100">
                 <span className="h-px w-10 bg-blue-300" />
-                <p className="mono-type text-[0.66rem] font-medium uppercase tracking-[0.16em]">Data Scientist &amp; Software Engineer</p>
+                <p className="mono-type text-[0.66rem] font-medium uppercase tracking-[0.16em]">{person.role} <span className="mx-1 text-blue-300">/</span> Applied AI &amp; Data Products</p>
               </div>
               <p className="hero-sequence hero-sequence--5 mt-7 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">{person.headline}</p>
               <p className="hero-sequence hero-sequence--5 mt-5 flex items-center gap-2 text-sm font-medium text-slate-300"><Sparkles className="h-4 w-4 text-blue-300" /> {person.education}</p>
@@ -292,6 +315,7 @@ export default function Home() {
             </div>
 
             <div className="relative flex items-center justify-center pb-5 lg:pb-0">
+              {!prefersReducedMotion ? <SignalOrbit className="hero-orbit absolute -right-12 top-1/2 z-0 hidden h-[35rem] w-[35rem] -translate-y-1/2 lg:block" /> : null}
               <div className="hero-frame absolute right-0 top-8 h-[88%] w-[92%] rounded-[2rem] border border-white/10 bg-white/[0.035]" aria-hidden="true" />
               <img src={assetUrls.profilePhoto} alt="Portrait of Fauzi Noorsyabani" className="hero-portrait relative z-10 h-[440px] w-full max-w-[570px] border border-white/10 object-cover object-[50%_28%] shadow-2xl shadow-black/30 sm:h-[530px]" />
               <div className="hero-evidence absolute bottom-0 left-0 z-20 w-[244px] border border-white/10 bg-[#10224b]/95 p-4 shadow-2xl backdrop-blur-sm sm:-left-4 sm:bottom-5">
@@ -304,6 +328,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+          {!prefersReducedMotion ? <SignalStream tone="light" className="absolute inset-x-0 bottom-4 z-10 hidden lg:block" /> : null}
           <div className="technical-rule relative z-10 h-px opacity-70" />
         </section>
 
@@ -351,8 +376,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="projects" className="scroll-mt-20 bg-[#f1f4fb] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-          <div className="mx-auto max-w-[1320px] reveal">
+        <section id="projects" className="relative scroll-mt-20 overflow-hidden bg-[#f1f4fb] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
+          {!prefersReducedMotion ? <SignalOrbit reverse className="project-orbit absolute -right-24 top-24 z-0 hidden h-80 w-80 opacity-70 lg:block" /> : null}
+          <div className="relative z-10 mx-auto max-w-[1320px] reveal">
             <SectionHeading index="03" kicker="Selected work" title="Projects built to clarify, predict, and improve." copy="A selected index of data work, applied AI, and product engineering. Project links are deliberately surfaced only where a final URL has been provided." />
             {heroProjects.map((project) => <article key={project.title} className="motion-feature mt-14 overflow-hidden border-y border-slate-300 bg-white lg:grid lg:grid-cols-[1.02fr_.98fr]">
               <img src={project.art} alt="Abstract visualization of forecasting trends and connected data points" className="h-64 w-full object-cover lg:order-2 lg:h-full" />
@@ -394,8 +420,8 @@ export default function Home() {
         <section id="awards" className="scroll-mt-20 px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
           <div className="mx-auto max-w-[1320px] reveal">
             <SectionHeading index="05" kicker="Recognition" title="Evidence of analytical excellence and initiative." />
-            <div className="mt-14 border-y border-slate-300">
-              {awards.map(([placement, title, organization, date], index) => <article key={`${title}-${organization}`} className={`motion-award grid gap-5 py-7 sm:grid-cols-[5rem_minmax(0,1fr)_8rem] sm:items-start ${index !== awards.length - 1 ? "border-b border-slate-200" : ""}`}><div className="flex items-center gap-2 sm:block"><span className={`flex h-9 w-9 items-center justify-center border ${index === 0 ? "border-primary bg-primary text-white" : "border-slate-300 text-slate-400"}`}><Award className="h-4 w-4" /></span><p className="mono-type mt-0 text-[0.61rem] font-semibold uppercase tracking-[0.13em] text-primary sm:mt-4">{placement}</p></div><div><h3 className="display-type text-2xl font-semibold leading-tight tracking-[-0.05em] text-[#101c3d]">{title}</h3><p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">{organization}</p></div><p className="mono-type text-[0.62rem] font-medium uppercase tracking-[0.1em] text-slate-500 sm:pt-1">{date}</p></article>)}
+            <div className="mt-14 border-y border-slate-300 lg:ml-[7.5rem]">
+              {awards.map(([placement, title, organization, date], index) => <article key={`${title}-${organization}`} className={`motion-award grid gap-5 py-7 sm:grid-cols-[5rem_minmax(0,1fr)_8rem] sm:items-start lg:grid-cols-[6.25rem_minmax(0,1fr)_8rem] ${index !== awards.length - 1 ? "border-b border-slate-200" : ""}`}><div className="flex items-center gap-2 sm:block"><span className={`flex h-9 w-9 items-center justify-center border ${index === 0 ? "border-primary bg-primary text-white" : "border-slate-300 text-slate-400"}`}><Award className="h-4 w-4" /></span><p className="mono-type mt-0 text-[0.61rem] font-semibold uppercase tracking-[0.13em] text-primary sm:mt-4">{placement}</p></div><div><h3 className="display-type text-2xl font-semibold leading-tight tracking-[-0.05em] text-[#101c3d]">{title}</h3><p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">{organization}</p></div><p className="mono-type text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-[#38539d] sm:pt-1">{date}</p></article>)}
             </div>
           </div>
         </section>
@@ -403,7 +429,7 @@ export default function Home() {
         <section className="bg-[#eff3fb] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
           <div className="mx-auto max-w-[1320px] reveal">
             <SectionHeading index="06" kicker="Credentials" title="Certifications that support delivery." copy="Credential destinations are intentionally kept as editable placeholders until verified public URLs are supplied." />
-            <div className="mt-14 grid gap-px border-y border-slate-300 bg-slate-300 lg:grid-cols-3">
+            <div className="mt-14 grid gap-px border-y border-slate-300 bg-slate-300 lg:ml-[7.5rem] lg:grid-cols-3">
               {certifications.map((cert, index) => <article key={cert.name} className="motion-cert flex min-h-[290px] flex-col bg-[#eff3fb] p-7"><div className="flex items-center justify-between"><span className="mono-type text-[0.62rem] font-semibold tracking-[0.13em] text-primary">0{index + 1}</span><BriefcaseBusiness className="h-5 w-5 text-slate-400" /></div><h3 className="display-type mt-7 text-2xl font-semibold leading-tight tracking-[-0.05em] text-[#101c3d]">{cert.name}</h3><p className="mt-2 text-sm font-semibold text-[#182650]">{cert.issuer}</p><p className="mt-4 text-sm leading-7 text-slate-600">{cert.description}</p><div className="mt-auto border-t border-slate-300 pt-5"><p className="mono-type text-[0.6rem] uppercase tracking-[0.1em] text-slate-500">{cert.date}</p>{cert.credential ? <a href={cert.credential} className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-primary hover:underline">View Credential <ExternalLink className="h-3.5 w-3.5" /></a> : <PendingAction label="View Credential" onPending={notifyPending} className="mt-4 text-sm font-bold text-primary hover:underline" />}</div></article>)}
             </div>
           </div>
@@ -411,6 +437,7 @@ export default function Home() {
 
         <section id="contact" className="scroll-mt-20 relative overflow-hidden bg-[#0b1735] px-5 py-24 text-white sm:px-8 lg:px-12 lg:py-32">
           <div className="absolute inset-0 data-grid opacity-25" aria-hidden="true" /><div className="absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+          {!prefersReducedMotion ? <SignalOrbit reverse className="contact-orbit absolute -right-20 top-10 z-0 hidden h-[25rem] w-[25rem] opacity-50 lg:block" /> : null}
           <div className="relative mx-auto max-w-[1320px] reveal">
             <SectionHeading index="07" kicker="Contact & collaboration" title="Let’s Work Together" copy="Have a project in mind or just want to chat? I’m always open to new opportunities and collaborations. Feel free to reach out!" dark />
             <div className="mt-14 grid gap-12 lg:grid-cols-[.86fr_1.14fr] lg:gap-20">
@@ -420,10 +447,11 @@ export default function Home() {
               <form onSubmit={handleForm} noValidate className="motion-contact rounded-2xl border border-white/10 bg-white/[0.045] p-6 backdrop-blur-sm sm:p-8"><div className="grid gap-5 sm:grid-cols-2"><label className="block text-sm font-semibold text-white">Name<input value={form.name} onChange={(event) => setForm((value) => ({ ...value, name: event.target.value }))} aria-invalid={Boolean(formErrors.name)} aria-describedby={formErrors.name ? "name-error" : undefined} className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300/40" placeholder="Your name" />{formErrors.name ? <span id="name-error" className="mt-1.5 block text-xs text-amber-200">{formErrors.name}</span> : null}</label><label className="block text-sm font-semibold text-white">Email<input type="email" value={form.email} onChange={(event) => setForm((value) => ({ ...value, email: event.target.value }))} aria-invalid={Boolean(formErrors.email)} aria-describedby={formErrors.email ? "email-error" : undefined} className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300/40" placeholder="you@example.com" />{formErrors.email ? <span id="email-error" className="mt-1.5 block text-xs text-amber-200">{formErrors.email}</span> : null}</label></div><label className="mt-5 block text-sm font-semibold text-white">Subject<input value={form.subject} onChange={(event) => setForm((value) => ({ ...value, subject: event.target.value }))} aria-invalid={Boolean(formErrors.subject)} aria-describedby={formErrors.subject ? "subject-error" : undefined} className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300/40" placeholder="What would you like to discuss?" />{formErrors.subject ? <span id="subject-error" className="mt-1.5 block text-xs text-amber-200">{formErrors.subject}</span> : null}</label><label className="mt-5 block text-sm font-semibold text-white">Message<textarea value={form.message} onChange={(event) => setForm((value) => ({ ...value, message: event.target.value }))} aria-invalid={Boolean(formErrors.message)} aria-describedby={formErrors.message ? "message-error" : undefined} rows={5} className="mt-2 w-full resize-y rounded-md border border-white/15 bg-white/[0.06] px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-300/40" placeholder="A little context goes a long way." />{formErrors.message ? <span id="message-error" className="mt-1.5 block text-xs text-amber-200">{formErrors.message}</span> : null}</label><div className="mt-6 flex flex-wrap items-center justify-between gap-4"><p className="max-w-xs text-xs leading-5 text-slate-400">This static portfolio uses a safe mailto fallback. No information is stored on the website.</p><button type="submit" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">Start a Conversation <Send className="h-4 w-4" /></button></div>{formState === "success" ? <p className="mt-5 flex items-center gap-2 text-sm text-blue-100"><Check className="h-4 w-4 text-blue-300" />Your message has been prepared in your email client.</p> : null}</form>
             </div>
           </div>
+          {!prefersReducedMotion ? <SignalStream tone="light" className="absolute inset-x-0 bottom-5 z-10 hidden opacity-70 lg:block" /> : null}
         </section>
       </main>
 
-      <footer className="bg-[#08132d] px-5 py-10 text-slate-300 sm:px-8 lg:px-12"><div className="mx-auto grid max-w-[1320px] gap-9 border-t border-white/10 pt-9 md:grid-cols-[1.2fr_.7fr_.7fr] md:gap-12"><div><div className="flex items-center gap-3"><span className="relative flex h-11 w-11 items-center justify-center border border-white/20 bg-white/5"><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-9 w-9" /><i className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-primary" /></span><span className="mono-type grid text-left text-[0.6rem] font-semibold leading-[1.1] tracking-[0.16em] text-white"><span>FAUZI</span><span className="mt-1 text-blue-300">NOORSYABANI</span></span></div><p className="mt-4 max-w-sm text-sm leading-7 text-slate-400">Building digital experiences with passion and purpose.</p></div><div><p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-blue-200">Quick links</p><div className="mt-4 grid gap-2">{[["About", "about"], ["Projects", "projects"], ["Experience", "experience"], ["Contact", "contact"]].map(([label, id]) => <button key={id} onClick={() => scrollTo(id)} className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">{label}</button>)}</div></div><div><p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-blue-200">Connect</p><div className="mt-4 grid gap-2"><a href={links.email} className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">Email</a>{links.linkedin ? <a href={links.linkedin} target="_blank" rel="noreferrer" className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">LinkedIn</a> : null}{links.github ? <a href={links.github} target="_blank" rel="noreferrer" className="w-fit text-sm text-slate-300 transition hover:text-white">GitHub</a> : <PendingAction label="GitHub" onPending={notifyPending} className="w-fit text-left text-sm text-slate-300 transition hover:text-white" />}</div></div></div><div className="mx-auto mt-8 flex max-w-[1320px] flex-col gap-2 border-t border-white/10 pt-5 text-[0.68rem] text-slate-500 sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} Fauzi Noorsyabani. Made in Indonesia.</p><p className="mono-type text-[0.58rem] uppercase tracking-[0.1em]">Signal Ledger / portfolio v1.0</p></div></footer>
+      <footer className="bg-[#08132d] px-5 py-10 text-slate-300 sm:px-8 lg:px-12"><div className="mx-auto grid max-w-[1320px] gap-9 border-t border-white/10 pt-9 md:grid-cols-[1.2fr_.7fr_.7fr] md:gap-12"><div><div className="flex items-center gap-4"><span className="relative flex h-14 w-14 items-center justify-center border border-blue-200/35 bg-white/5"><img src={assetUrls.logo} alt="" aria-hidden="true" className="h-12 w-12" /><i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-[#08132d] bg-primary" /></span><span className="mono-type grid text-left text-[0.66rem] font-semibold leading-[1.1] tracking-[0.18em] text-white"><span>FAUZI</span><span className="mt-1 text-blue-300">NOORSYABANI</span></span></div><p className="mt-4 max-w-sm text-sm leading-7 text-slate-400">Building digital experiences with passion and purpose.</p></div><div><p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-blue-200">Quick links</p><div className="mt-4 grid gap-2">{[["About", "about"], ["Projects", "projects"], ["Experience", "experience"], ["Contact", "contact"]].map(([label, id]) => <button key={id} onClick={() => scrollTo(id)} className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">{label}</button>)}</div></div><div><p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-blue-200">Connect</p><div className="mt-4 grid gap-2"><a href={links.email} className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">Email</a>{links.linkedin ? <a href={links.linkedin} target="_blank" rel="noreferrer" className="w-fit text-sm text-slate-300 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200">LinkedIn</a> : null}{links.github ? <a href={links.github} target="_blank" rel="noreferrer" className="w-fit text-sm text-slate-300 transition hover:text-white">GitHub</a> : <PendingAction label="GitHub" onPending={notifyPending} className="w-fit text-left text-sm text-slate-300 transition hover:text-white" />}</div></div></div><div className="mx-auto mt-8 flex max-w-[1320px] flex-col gap-2 border-t border-white/10 pt-5 text-[0.68rem] text-slate-500 sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} Fauzi Noorsyabani. Made in Indonesia.</p><p className="mono-type text-[0.58rem] uppercase tracking-[0.1em]">Signal Ledger / portfolio v1.0</p></div></footer>
 
       <button onClick={() => scrollTo("top")} type="button" aria-label="Scroll back to top" className={`fixed bottom-5 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-blue-900/30 transition duration-200 hover:bg-[#175bdd] active:scale-[0.95] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${showTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"}`}><ArrowUp className="h-5 w-5" /></button>
     </div>

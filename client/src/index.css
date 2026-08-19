@@ -103,6 +103,31 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 
 .signal-shadow { box-shadow: 0 18px 48px -25px rgba(14, 36, 91, 0.42); }
 
+/* Continuous Signal Ledger instrumentation: low-contrast, transform-only, and non-interactive. */
+.signal-stream { overflow: hidden; width: 100%; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.signal-stream-track { display: flex; width: max-content; animation: signal-flow 34s linear infinite; }
+.signal-stream-token { display: inline-flex; align-items: center; gap: .7rem; flex: none; padding-right: 2.25rem; font-family: "IBM Plex Mono", monospace; font-size: .57rem; font-weight: 600; letter-spacing: .12em; white-space: nowrap; }
+.signal-stream-token b { font-size: .62rem; font-weight: 400; opacity: .7; }
+.signal-stream-node { display: block; height: .34rem; width: .34rem; border-radius: 999px; background: #246bfd; box-shadow: 0 0 0 3px rgba(36,107,253,.12); }
+.signal-stream--light .signal-stream-token { color: rgba(219,234,254,.62); }
+.signal-stream--dark .signal-stream-token { color: rgba(24,38,80,.48); }
+.signal-stream--dark { mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+
+.signal-orbit { pointer-events: none; }
+.signal-orbit-ring { position: absolute; border: 1px solid rgba(36,107,253,.28); border-radius: 999px; }
+.signal-orbit-ring--outer { inset: 0; border-color: rgba(147,197,253,.23); }
+.signal-orbit-ring--inner { inset: 13%; border-color: rgba(36,107,253,.24); border-style: dashed; }
+.signal-orbit-rotation { position: absolute; inset: 0; display: block; animation: orbit-clockwise 22s linear infinite; }
+.signal-orbit--reverse .signal-orbit-rotation { animation-direction: reverse; animation-duration: 29s; }
+.signal-orbit-node, .signal-orbit-marker { position: absolute; display: block; border-radius: 999px; }
+.signal-orbit-node { top: -4px; left: 50%; height: .7rem; width: .7rem; transform: translateX(-50%); border: 3px solid rgba(11,23,53,.88); background: #246bfd; box-shadow: 0 0 0 5px rgba(36,107,253,.12); }
+.signal-orbit-marker { bottom: 12%; right: 10%; height: .42rem; width: .42rem; background: rgba(226,232,240,.78); }
+.signal-orbit-core { position: absolute; inset: 42%; display: grid; place-items: center; border: 1px solid rgba(147,197,253,.2); border-radius: 999px; background: rgba(11,23,53,.23); backdrop-filter: blur(4px); }
+.project-orbit .signal-orbit-node { border-color: #f1f4fb; }
+.project-orbit .signal-orbit-core { background: rgba(255,255,255,.44); }
+.project-orbit .signal-orbit-ring { border-color: rgba(24,38,80,.16); }
+.contact-orbit .signal-orbit-node { border-color: #0b1735; }
+
 .display-type { font-family: "Space Grotesk", sans-serif; }
 .mono-type { font-family: "IBM Plex Mono", monospace; }
 
@@ -179,6 +204,7 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 .motion-menu-open .mobile-nav-link:nth-child(6) { animation-delay: 205ms; }
 
 .reveal.is-visible .dossier-rail { animation: rail-resolve 520ms var(--motion-snap) both; }
+.dossier-rail::after { content: ""; display: block; height: 3.5rem; width: 1px; margin: .8rem 0 0 1.45rem; background: currentColor; opacity: .2; }
 .reveal.is-visible .section-heading-copy { animation: dossier-rise 650ms 80ms var(--motion-snap) both; }
 .reveal.is-visible .motion-card,
 .reveal.is-visible .motion-row,
@@ -265,6 +291,8 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 @keyframes node-ping { 0% { box-shadow: 0 0 0 0 rgba(147, 197, 253, .55); } 65% { box-shadow: 0 0 0 9px rgba(147, 197, 253, 0); } 100% { box-shadow: 0 0 0 0 rgba(147, 197, 253, 0); } }
 @keyframes evidence-sheen { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
 @keyframes identity-fade { from { opacity: 0; transform: translate3d(22px, 12px, 0) scale(.94) rotate(-5deg); } to { opacity: .09; transform: translate3d(0, 0, 0) scale(1) rotate(0); } }
+@keyframes signal-flow { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+@keyframes orbit-clockwise { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 .portrait-placeholder {
   background:
@@ -278,4 +306,5 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
   .hero-stage.motion-ready .hero-sequence, .hero-stage.motion-ready .hero-portrait, .hero-stage.motion-ready .hero-evidence, .hero-stage.motion-ready .hero-artifact, .hero-stage.motion-ready .hero-signal-tag, .hero-stage.motion-ready .hero-frame { opacity: 1; transform: none; filter: none; }
+  .signal-stream, .signal-orbit { display: none !important; }
 }
