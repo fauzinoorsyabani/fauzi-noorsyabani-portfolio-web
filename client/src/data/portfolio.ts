@@ -4,15 +4,15 @@
  */
 
 export const assetUrls = {
-  logo: "/manus-storage/fn-signal-mark_3ea06f78.png",
-  heroData: "/manus-storage/signal-ledger-hero-data_ba32ee71.png",
-  tuitionArt: "/manus-storage/tuition-data-art_160010b3.png",
-  productSystemsArt: "/manus-storage/product-systems-art_7360520e.png",
-  profilePhoto: "/manus-storage/fauzi-noorsyabani-portrait_5eb3cca1.jpg",
+  logo: "/logo.webp",
+  heroData: "https://placehold.co/800x600?text=Project+1",
+  tuitionArt: "https://placehold.co/800x600?text=Project+2",
+  productSystemsArt: "https://placehold.co/800x600?text=Project+3",
+  profilePhoto: "/fauzinoorsyabani-foto.jpeg",
 } as const;
 
 export const links = {
-  resume: "/manus-storage/Fauzi_Noorsyabani_Full_Stack_AI_Engineer_Resume_5cf543f4.pdf",
+  resume: "/Fauzi_Noorsyabani_CV.pdf",
   github: "https://github.com/fauzinoorsyabani",
   linkedin: "https://linkedin.com/in/fauzinoorsyabani",
   email: "mailto:fauzinoorsyabani05@gmail.com",
