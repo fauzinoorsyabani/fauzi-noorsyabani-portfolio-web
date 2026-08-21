@@ -15,7 +15,7 @@ import {
   Check,
   ChevronRight,
   Code2,
-  Download,
+  FileText,
   ExternalLink,
   Github,
   Linkedin,
@@ -322,9 +322,9 @@ export default function Home() {
               <p className="hero-sequence hero-sequence--5 mt-5 flex items-center gap-2 text-sm font-medium text-slate-300"><Sparkles className="h-4 w-4 text-blue-300" /> {person.education}</p>
               <div className="hero-sequence hero-sequence--6 mt-9 flex flex-wrap gap-3">
                 {links.resume ? (
-                  <a href={links.resume} download className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">Download Resume <Download className="h-4 w-4" /></a>
+                  <a href={links.resume} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">View CV <FileText className="h-4 w-4" /></a>
                 ) : (
-                  <PendingAction label="View Resume" onPending={notifyPending} className="rounded-md bg-primary px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]" />
+                  <PendingAction label="View CV" onPending={notifyPending} className="rounded-md bg-primary px-5 py-3.5 text-sm font-bold text-white transition hover:bg-[#175bdd] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]" />
                 )}
                 <button onClick={() => scrollTo("projects")} type="button" className="inline-flex items-center gap-2 rounded-md border border-slate-500/70 px-5 py-3.5 text-sm font-bold text-white transition hover:border-blue-300 hover:bg-white/5 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1735]">Review Project Evidence <ArrowDown className="h-4 w-4" /></button>
               </div>
