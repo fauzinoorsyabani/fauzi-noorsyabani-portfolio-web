@@ -6,7 +6,10 @@
 export const assetUrls = {
   logo: "/logo.webp",
   heroData: "https://placehold.co/800x600?text=Project+1",
-  tuitionArt: "https://placehold.co/800x600?text=Project+2",
+  tuitionArt: "/dashboard-kapasitas-akademik.png",
+  dashboardExecutive: "/dashboard-kapasitas-akademik.png",
+  dashboardDetail: "/dashboard-detail-prodi.png",
+  dashboardTrend: "/dashboard-tren-longitudinal.png",
   productSystemsArt: "https://placehold.co/800x600?text=Project+3",
   profilePhoto: "/fauzinoorsyabani-foto.jpeg",
 } as const;
@@ -133,13 +136,13 @@ export type Project = {
 
 export const featuredProjects: readonly Project[] = [
   {
-    title: "Tuition Cost Dashboard & Trend Analysis",
+    title: "Tuition Cost & Academic Capacity Dashboard",
     date: "Feb 2025 — Jun 2025",
     description:
-      "Analyzed 97 academic programs across 11 Indonesian universities and built interactive decision-support dashboards alongside tuition forecasting models.",
-    result: "Improved policy insight accuracy by 35%.",
-    technologies: ["Python", "Streamlit", "Power BI", "Google Looker", "Pandas", "Scikit-learn"],
-    category: "Data Science · MSIB",
+      "Interactive Decision Support System (DSS) and Business Intelligence data warehouse analyzing higher education capacity, tuition trends, and student-to-lecturer ratios across academic programs. Developed using ETL pipelines and interactive Google Looker Studio dashboards for institutional policy and trend monitoring.",
+    result: "Automated institutional capacity monitoring across 35 academic programs with longitudinal multi-period forecasting.",
+    technologies: ["Google Looker Studio", "Business Intelligence", "Data Warehouse", "ETL", "Python", "SQL"],
+    category: "Business Intelligence · Decision Support",
     art: assetUrls.tuitionArt,
     featured: true,
     links: {}, // TODO: add case study, live demo, and source URLs.
