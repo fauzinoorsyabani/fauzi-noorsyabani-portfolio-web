@@ -1,4 +1,4 @@
-# Fauzi Noorsyabani — Signal Ledger Portfolio
+ # Fauzi Noorsyabani — Signal Ledger Portfolio
 
 This repository contains Fauzi Noorsyabani’s single-page professional portfolio. It presents applied AI, data science, full-stack engineering, leadership, awards, certifications, and contact information in the **Signal Ledger** visual system: a warm editorial paper canvas, midnight-navy research fields, and cobalt-blue data signals.
 
