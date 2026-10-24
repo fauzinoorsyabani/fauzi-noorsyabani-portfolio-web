@@ -1025,11 +1025,11 @@ export default function Home() {
                 aria-hidden="true"
               />
               <img
-                src={assetUrls.profilePhoto}
+                src={assetUrls.heroPhoto}
                 alt="Portrait of Fauzi Noorsyabani"
                 fetchPriority="high"
                 decoding="async"
-                className="hero-portrait relative z-10 h-[360px] w-full max-w-[570px] rounded-2xl border border-neutral-300 object-cover object-[50%_28%] shadow-xl shadow-neutral-900/10 sm:h-[480px] lg:h-[530px]"
+                className="hero-portrait relative z-10 h-[360px] w-full max-w-[570px] rounded-2xl border border-neutral-300 object-cover object-center shadow-xl shadow-neutral-900/10 sm:h-[480px] lg:h-[530px]"
               />
               <div className="hero-evidence absolute bottom-0 left-0 z-20 w-[210px] rounded-xl border border-neutral-300 bg-white/95 p-3.5 shadow-xl backdrop-blur-md sm:w-[244px] sm:-left-4 sm:bottom-5 sm:p-4">
                 <div className="flex items-center gap-2">
@@ -1091,7 +1091,7 @@ export default function Home() {
                   <img src={assetUrls.logo} alt="" aria-hidden="true" className="h-6 w-6" /> FN / IDENTITY PLATE
                 </div>
                 <img
-                  src={assetUrls.profilePhoto}
+                  src={assetUrls.aboutPhoto}
                   alt="Portrait of Fauzi Noorsyabani"
                   loading="lazy"
                   decoding="async"
