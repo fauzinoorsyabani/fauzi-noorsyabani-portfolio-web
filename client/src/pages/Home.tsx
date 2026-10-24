@@ -82,6 +82,25 @@ function useCountUp(end: number, enabled: boolean, reducedMotion: boolean) {
   return value;
 }
 
+function FormattedText({ text, className = "" }: { text?: string; className?: string }) {
+  if (!text) return null;
+  const parts = text.split(/(\*[^*]+\*)/g);
+  return (
+    <span className={className}>
+      {parts.map((part, index) => {
+        if (part.startsWith("*") && part.endsWith("*")) {
+          return (
+            <em key={index} className="not-italic italic font-medium text-neutral-950 dark:text-white">
+              {part.slice(1, -1)}
+            </em>
+          );
+        }
+        return part;
+      })}
+    </span>
+  );
+}
+
 function SectionHeading({
   index,
   kicker,
@@ -939,11 +958,11 @@ export default function Home() {
               <div className="hero-sequence hero-sequence--4 mt-8 flex items-center gap-3 text-neutral-900">
                 <span className="h-px w-10 bg-neutral-900" />
                 <p className="mono-type text-[0.66rem] font-bold uppercase tracking-[0.16em] text-neutral-900">
-                  {person.role} <span className="mx-1 text-neutral-400">/</span> {t.hero.roleSub}
+                  {person.role} <span className="mx-1 text-neutral-400">/</span> <span className="italic font-medium">{t.hero.roleSub}</span>
                 </p>
               </div>
               <p className="hero-sequence hero-sequence--5 mt-7 max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
-                {t.hero.headline}
+                <FormattedText text={t.hero.headline} />
               </p>
               <p className="hero-sequence hero-sequence--5 mt-5 flex items-center gap-2 text-sm font-semibold text-neutral-900">
                 <Sparkles className="h-4 w-4 text-neutral-950" /> {person.education}
@@ -1105,7 +1124,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col justify-center">
                 <p className="max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
-                  {t.about.shortBio}
+                  <FormattedText text={t.about.shortBio} />
                 </p>
                 <div className="mt-8 grid gap-3 sm:grid-cols-3">
                   {[
@@ -1128,7 +1147,9 @@ export default function Home() {
                         <h3 className="display-type mt-6 text-xl font-bold tracking-[-0.04em] text-neutral-950">
                           {focus.label}
                         </h3>
-                        <p className="mt-2 text-sm leading-6 text-neutral-700">{focus.detail}</p>
+                        <p className="mt-2 text-sm leading-6 text-neutral-700">
+                          <FormattedText text={focus.detail} />
+                        </p>
                       </div>
                     );
                   })}
@@ -1141,7 +1162,9 @@ export default function Home() {
                   <dt className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.13em] text-neutral-500">
                     {term}
                   </dt>
-                  <dd className="mt-3 text-sm font-semibold leading-6 text-neutral-950">{detail}</dd>
+                  <dd className="mt-3 text-sm font-semibold leading-6 text-neutral-950">
+                    <FormattedText text={detail} />
+                  </dd>
                 </div>
               ))}
             </dl>

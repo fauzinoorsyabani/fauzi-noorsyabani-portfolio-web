@@ -18,7 +18,7 @@ export const translations = {
       role: "Full Stack AI Engineer",
       roleSub: "Applied AI & Data Products",
       headline:
-        "I engineer production-grade AI systems and full-stack software—connecting model integration, data pipelines, and responsive web architecture into reliable tools that solve real problems.",
+        "I engineer production-grade *AI systems* and *full-stack software*—connecting model integration, data pipelines, and responsive web architecture into reliable tools that solve real problems.",
       exploreBtn: "Explore Projects",
       contactBtn: "Direct Contact",
     },
@@ -30,25 +30,25 @@ export const translations = {
       aboutText:
         "Fauzi is a Full Stack AI Engineer and Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specializing in AI/LLM engineering and data systems. He led a 5-member engineering team through a 900+ hour AI product capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
       shortBio:
-        "Connecting machine learning, LLM orchestration, and modern web architecture into practical software that drives informed decisions.",
+        "Connecting *machine learning*, *LLM orchestration*, and modern *full-stack* architecture into practical software that drives informed decisions.",
       focus: {
         build: {
           label: "Full-Stack Web Engineering",
-          detail: "Building fast, modular, and responsive web applications with React, TypeScript, Laravel, and FastAPI that scale smoothly under load.",
+          detail: "Building fast, modular, and responsive web applications with *React*, *TypeScript*, *Laravel*, and *FastAPI* that scale smoothly under load.",
         },
         analyze: {
           label: "Data Warehousing & BI",
-          detail: "Architecting dimensional star-schema warehouses, automated ETL pipelines, and Looker Studio dashboards for institutional decision-making.",
+          detail: "Architecting dimensional *star-schema* warehouses, automated *ETL* pipelines, and *Looker Studio* dashboards for institutional decision-making.",
         },
         lead: {
           label: "Technical Leadership & Outreach",
-          detail: "Advancing responsible AI adoption as Campus Lead for the Google Student Ambassador Program and mentoring student developer communities.",
+          detail: "Advancing responsible AI adoption as Campus Lead for the *Google Student Ambassador Program* and mentoring student developer communities.",
         },
       },
       facts: [
         ["Location", "Tasikmalaya, Indonesia"],
         ["Education", "Information Systems, Universitas Siliwangi (GPA 3.89, Cum Laude)"],
-        ["Core Specialization", "Applied AI, LLM Integration, Data Warehousing, Full-Stack Web"],
+        ["Core Specialization", "*Applied AI*, *LLM Integration*, *Data Warehousing*, *Full-Stack Web*"],
         ["Status", "Open to full-time roles & high-impact projects"],
       ] as const,
     },
@@ -197,7 +197,7 @@ export const translations = {
       role: "Full Stack AI Engineer",
       roleSub: "Rekayasa AI & Pengembangan Sistem",
       headline:
-        "Saya merancang dan mengembangkan solusi AI terapan serta sistem web full-stack yang tangguh—mengintegrasikan rekayasa data, orkestrasi LLM, arsitektur backend, dan antarmuka responsif menjadi produk nyata yang bernilai guna tinggi.",
+        "Saya merancang dan mengembangkan solusi *AI terapan* serta sistem web *full-stack* yang tangguh—mengintegrasikan rekayasa data, orkestrasi *LLM*, arsitektur backend, dan antarmuka responsif menjadi produk nyata yang bernilai guna tinggi.",
       exploreBtn: "Jelajahi Proyek",
       contactBtn: "Hubungi Langsung",
     },
@@ -209,25 +209,25 @@ export const translations = {
       aboutText:
         "Fauzi adalah seorang Full Stack AI Engineer dan lulusan Sistem Informasi Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan spesialisasi pada rekayasa AI/LLM dan arsitektur data. Berpengalaman memimpin tim pengembang beranggotakan 5 orang dalam program capstone produk AI intensif 900+ jam bersama Pijak × IBM SkillsBuild merilis PolaStok, serta terpilih sebagai Google Student Ambassador Campus Lead dari 12.000+ pendaftar nasional. Portofolio teknisnya mencakup pipeline RAG tingkat produksi (FastAPI, LangChain), pemodelan data warehouse skema bintang (star-schema) dengan visualisasi Looker Studio, serta aplikasi web modern yang terukur (React, TypeScript, Laravel).",
       shortBio:
-        "Fokus menjembatani rekayasa machine learning dan ekosistem AI dengan arsitektur web modern yang efisien, aman, dan mudah digunakan.",
+        "Fokus menjembatani rekayasa *machine learning* dan ekosistem *AI* dengan arsitektur web modern yang efisien, aman, dan mudah digunakan.",
       focus: {
         build: {
           label: "Rekayasa Web Full-Stack",
-          detail: "Membangun aplikasi web modular, cepat, dan responsif menggunakan React, TypeScript, Laravel, dan FastAPI yang siap menangani beban produksi.",
+          detail: "Membangun aplikasi web modular, cepat, dan responsif menggunakan *React*, *TypeScript*, *Laravel*, dan *FastAPI* yang siap menangani beban produksi.",
         },
         analyze: {
           label: "Data Warehouse & Kecerdasan Bisnis",
-          detail: "Merancang skema bintang (star-schema), pipeline ETL otomatis, dan dashboard analitik Google Looker Studio untuk pemantauan kapasitas dan pengambilan keputusan strategis.",
+          detail: "Merancang *star-schema*, pipeline *ETL* otomatis, dan dashboard analitik *Google Looker Studio* untuk pemantauan kapasitas dan pengambilan keputusan strategis.",
         },
         lead: {
           label: "Kepemimpinan Teknis & Edukasi",
-          detail: "Mendorong pemanfaatan AI yang bertanggung jawab sebagai Campus Lead Google Student Ambassador serta menginisiasi bootcamp dan kompetisi teknologi bagi mahasiswa.",
+          detail: "Mendorong pemanfaatan AI yang bertanggung jawab sebagai Campus Lead *Google Student Ambassador* serta menginisiasi bootcamp dan kompetisi teknologi bagi mahasiswa.",
         },
       },
       facts: [
         ["Domisili", "Tasikmalaya, Indonesia"],
         ["Pendidikan", "S1 Sistem Informasi, Universitas Siliwangi (IPK 3.89, Cum Laude)"],
-        ["Spesialisasi", "Applied AI, Machine Learning, Data Warehouse, Full-Stack Web"],
+        ["Spesialisasi", "*Applied AI*, *Machine Learning*, *Data Warehouse*, *Full-Stack Web*"],
         ["Ketersediaan", "Terbuka untuk posisi Full-Time & Proyek Kolaborasi"],
       ] as const,
     },
