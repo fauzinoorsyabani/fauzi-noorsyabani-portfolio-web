@@ -112,5 +112,6 @@ temp/
 client/public/__manus__/version.json
 .project-config.json
 
-# Local raw image backups
-doc-fauzi/originals-backup/
+# Local raw image and document sources
+doc-fauzi/
+!doc-fauzi/project/business intelligence/

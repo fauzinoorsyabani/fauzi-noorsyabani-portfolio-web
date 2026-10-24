@@ -1082,11 +1082,10 @@ export default function Home() {
                 <span className="portrait-dossier-rule absolute bottom-0 left-[17%] h-20 w-px bg-neutral-400" aria-hidden="true" />
               </div>
               <div className="flex flex-col justify-center">
-                <p className="display-type max-w-2xl text-2xl font-bold leading-[1.23] tracking-[-0.045em] text-neutral-950 sm:text-3xl">
-                  {t.about.aboutText}
+                <p className="max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
+                  {t.about.shortBio}
                 </p>
-                <p className="mt-5 max-w-xl text-base leading-8 text-neutral-700">{t.about.shortBio}</p>
-                <div className="mt-10 grid gap-3 sm:grid-cols-3">
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
                   {[
                     { ...t.about.focus.build, index: "01", icon: Code2 },
                     { ...t.about.focus.analyze, index: "02", icon: BarChart3 },
