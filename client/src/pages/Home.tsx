@@ -53,6 +53,7 @@ import { translations } from "@/data/translations";
 import { TechIcon } from "@/components/TechIcon";
 import { CertificateCoverflow } from "@/components/CertificateCoverflow";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { motion } from "framer-motion";
 
 type FormFields = { name: string; email: string; subject: string; message: string };
 type FormErrors = Partial<Record<keyof FormFields, string>>;
@@ -600,23 +601,6 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const sections = navItems
-      .map(([, id]) => document.getElementById(id))
-      .filter((section): section is HTMLElement => Boolean(section));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActiveSection(visible[0].target.id);
-      },
-      { rootMargin: "-24% 0px -64% 0px", threshold: [0.08, 0.2, 0.4] },
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -633,22 +617,47 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const sectionIds = navItems.map(([, id]) => id);
     let ticking = false;
+
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const sy = window.scrollY;
           setScrolled(sy > 24);
           setShowTop(sy > 700);
+
+          // Detect active section on scroll
+          const isBottom =
+            window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
+
+          if (isBottom) {
+            setActiveSection(sectionIds[sectionIds.length - 1] || "contact");
+          } else {
+            const threshold = Math.min(window.innerHeight * 0.35, 260);
+            let current = sectionIds[0] || "about";
+            for (const id of sectionIds) {
+              const el = document.getElementById(id);
+              if (el) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= threshold) {
+                  current = id;
+                }
+              }
+            }
+            setActiveSection(current);
+          }
+
           ticking = false;
         });
         ticking = true;
       }
     };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [navItems]);
 
   const closeMenu = () => setMenuOpen(false);
   const handleThemeToggle = () => {
@@ -668,6 +677,8 @@ export default function Home() {
     window.setTimeout(() => setAnnouncement(""), 5200);
   };
   const scrollTo = (id: string) => {
+    setActiveSection(id);
+    setHoveredNav(null);
     document.getElementById(id)?.scrollIntoView({
       behavior: prefersReducedMotion ? "auto" : "smooth",
       block: "start",
@@ -739,7 +750,7 @@ export default function Home() {
             </span>
           </button>
 
-          {/* Desktop Nav Links in pill container with dynamic hover background animation */}
+          {/* Desktop Nav Links in pill container with dynamic gliding active background pill */}
           <nav
             aria-label="Primary"
             onMouseLeave={() => setHoveredNav(null)}
@@ -754,13 +765,24 @@ export default function Home() {
                   onMouseEnter={() => setHoveredNav(id)}
                   type="button"
                   aria-current={activeSection === id ? "page" : undefined}
-                  className={`relative rounded-full px-3.5 py-1.5 text-[0.7rem] font-bold tracking-[0.08em] uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
+                  className={`relative rounded-full px-3.5 py-1.5 text-[0.7rem] font-bold tracking-[0.08em] uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
                     isHighlighted
-                      ? "bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950 scale-[1.02]"
-                      : "text-neutral-600 hover:text-neutral-950 hover:bg-neutral-200/50 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-700/50"
+                      ? "text-white dark:text-neutral-950"
+                      : "text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white"
                   }`}
                 >
-                  {label}
+                  {isHighlighted && (
+                    <motion.span
+                      layoutId="activeNavPill"
+                      className="absolute inset-0 z-0 rounded-full bg-neutral-950 shadow-xs dark:bg-white"
+                      transition={
+                        prefersReducedMotion
+                          ? { duration: 0 }
+                          : { type: "spring", stiffness: 380, damping: 30 }
+                      }
+                    />
+                  )}
+                  <span className="relative z-10">{label}</span>
                 </button>
               );
             })}
