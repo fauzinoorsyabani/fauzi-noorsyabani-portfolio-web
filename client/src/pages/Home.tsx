@@ -1339,13 +1339,6 @@ export default function Home() {
                         {project.description}
                       </p>
 
-                      {project.result ? (
-                        <div className="mt-4 rounded-lg border border-neutral-200 bg-neutral-50/90 p-3.5 text-xs sm:text-sm font-semibold leading-relaxed text-neutral-900 flex items-start gap-2.5 shadow-2xs">
-                          <Sparkles className="h-4 w-4 text-neutral-950 shrink-0 mt-0.5" />
-                          <span>{project.result}</span>
-                        </div>
-                      ) : null}
-
                       <div className="mt-5 flex flex-wrap gap-1.5">
                         {project.technologies.map((tech) => (
                           <span
