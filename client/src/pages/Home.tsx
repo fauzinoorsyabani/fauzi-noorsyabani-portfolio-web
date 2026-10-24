@@ -2,7 +2,7 @@
  * Signal Ledger home page — Clean, minimalist, and professional design.
  * Neutral white & black palette, crisp typography, and uncropped high-fidelity project evidence.
  */
-import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   ArrowDown,
   ArrowUp,
@@ -11,6 +11,7 @@ import {
   BarChart3,
   BriefcaseBusiness,
   Check,
+  ChevronLeft,
   ChevronRight,
   Code2,
   FileText,
@@ -20,7 +21,9 @@ import {
   Mail,
   MapPin,
   Menu,
+  Pause,
   Phone,
+  Play,
   Send,
   Sparkles,
   Sun,
@@ -43,10 +46,12 @@ import {
   skillGroups,
   techStackCategories,
 } from "@/data/portfolio";
+import { documentationItems, type DocumentationItem } from "@/data/documentation";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/data/translations";
 import { TechIcon } from "@/components/TechIcon";
+import { CertificateCoverflow } from "@/components/CertificateCoverflow";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 type FormFields = { name: string; email: string; subject: string; message: string };
@@ -135,11 +140,14 @@ function PendingAction({
 
 function SignalStream({ className = "", tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
   const signals = [
-    "FULL STACK AI ENGINEER",
-    "DATA → MODEL → PRODUCT → DEPLOY",
-    "FN / SIGNAL LEDGER",
-    "SYSTEMS / 001",
-    "APPLIED AI / DELIVERY",
+    "DATA WAREHOUSE & STAR SCHEMA ARCHITECTURE",
+    "BNSP CERTIFIED DATA SCIENTIST",
+    "MACHINE LEARNING & SEISMIC RISK PREDICTION",
+    "LLM INTEGRATION & RAG PIPELINE ORCHESTRATION",
+    "BUSINESS INTELLIGENCE & LOOKER STUDIO",
+    "BNSP CERTIFIED ICT PROJECT MANAGER",
+    "FULL STACK AI & DATA ENGINEERING",
+    "ETL / ELT PIPELINES & DECISION SUPPORT SYSTEMS",
   ];
   const track = [...signals, ...signals];
   return (
@@ -174,7 +182,7 @@ function SignalOrbit({ className = "", reverse = false }: { className?: string; 
 }
 
 function ProjectEvidence({ index, category }: { index: number; category: string }) {
-  const evidenceMode = (["forecast", "clinical", "route", "field"] as const)[index] ?? "forecast";
+  const evidenceMode = (["forecast", "clinical", "route", "field"] as const)[index % 4] ?? "forecast";
   const evidenceLabels = {
     forecast: "cost / trend trace",
     clinical: "transcription workflow",
@@ -304,6 +312,238 @@ function IndonesiaFlagIcon({ className = "h-5 w-5" }: { className?: string }) {
   );
 }
 
+function DocumentationShowcase({
+  language,
+  prefersReducedMotion,
+}: {
+  language: "en" | "id";
+  prefersReducedMotion: boolean;
+}) {
+  const [selectedItem, setSelectedItem] = useState<DocumentationItem | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const t = translations[language];
+
+  // Duplicate items for infinite seamless scroll
+  const streamItems = useMemo(() => [...documentationItems, ...documentationItems], []);
+
+  // Drag-to-scroll handlers
+  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    isDragging.current = true;
+    startX.current = e.pageX - (trackRef.current?.offsetLeft ?? 0);
+    scrollLeft.current = trackRef.current?.scrollLeft ?? 0;
+    if (trackRef.current) {
+      trackRef.current.style.animationPlayState = "paused";
+      trackRef.current.style.cursor = "grabbing";
+    }
+  };
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isDragging.current || !trackRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - (trackRef.current.offsetLeft ?? 0);
+    const walk = (x - startX.current) * 1.5;
+    trackRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const onMouseUp = () => {
+    isDragging.current = false;
+    if (trackRef.current) {
+      trackRef.current.style.animationPlayState = "";
+      trackRef.current.style.cursor = "grab";
+    }
+  };
+
+  // Touch drag support
+  const touchStartX = useRef(0);
+  const touchScrollLeft = useRef(0);
+
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].pageX;
+    touchScrollLeft.current = trackRef.current?.scrollLeft ?? 0;
+    if (trackRef.current) trackRef.current.style.animationPlayState = "paused";
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!trackRef.current) return;
+    const dx = touchStartX.current - e.touches[0].pageX;
+    trackRef.current.scrollLeft = touchScrollLeft.current + dx;
+  };
+
+  const onTouchEnd = () => {
+    if (trackRef.current) trackRef.current.style.animationPlayState = "";
+  };
+
+  return (
+    <section
+      id="documentation"
+      className="scroll-mt-28 bg-neutral-50/60 border-b border-neutral-300 py-16 sm:py-20 text-neutral-950 overflow-hidden"
+    >
+      <div className="mx-auto max-w-4xl lg:max-w-[1200px] px-4 sm:px-6 lg:px-8 mb-8 reveal">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-300 pb-6">
+          <div>
+            <SectionHeading
+              index="03.5"
+              kicker={t.documentation.kicker}
+              title={t.documentation.title}
+              copy={t.documentation.copy}
+            />
+          </div>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button
+              type="button"
+              onClick={() => {
+                if (trackRef.current) {
+                  trackRef.current.scrollBy({ left: -300, behavior: "smooth" });
+                }
+              }}
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 bg-white text-neutral-800 shadow-xs hover:bg-neutral-100 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (trackRef.current) {
+                  trackRef.current.scrollBy({ left: 300, behavior: "smooth" });
+                }
+              }}
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 bg-white text-neutral-800 shadow-xs hover:bg-neutral-100 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+        <p className="mt-2.5 mono-type text-[0.6rem] text-neutral-500 flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 animate-pulse" />
+          {t.documentation.autoSlideHint}
+        </p>
+      </div>
+
+      {/* Auto-sliding track — drag to scroll, no pause on hover */}
+      <div
+        ref={trackRef}
+        className={`doc-stream-container doc-stream-track py-3 cursor-grab select-none overflow-x-auto scrollbar-none ${prefersReducedMotion ? "is-paused" : ""}`}
+        tabIndex={0}
+        aria-label="Auto-sliding documentation cards carousel"
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseUp}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {streamItems.map((item, idx) => (
+          <article
+            key={`${item.id}-${idx}`}
+            onClick={() => !isDragging.current && setSelectedItem(item)}
+            className="group relative flex w-[240px] sm:w-[290px] flex-col overflow-hidden rounded-xl border border-neutral-300 bg-white shadow-xs hover:shadow-xl hover:border-neutral-950 transition-all duration-300 shrink-0 cursor-pointer text-left"
+          >
+            {/* Image Preview Box */}
+            <div className="relative h-36 sm:h-40 w-full overflow-hidden border-b border-neutral-300 bg-neutral-100 flex items-center justify-center p-2">
+              <img
+                src={item.image}
+                alt={item.title[language]}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+                className="max-h-full max-w-full object-contain rounded transition duration-500 group-hover:scale-[1.03]"
+              />
+              <div className="absolute top-2 left-2">
+                <span className="mono-type rounded border border-neutral-300 bg-white/95 px-1.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-[0.1em] text-neutral-900 shadow-2xs backdrop-blur-xs">
+                  {item.tag}
+                </span>
+              </div>
+              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition duration-200">
+                <span className="flex h-6 w-6 items-center justify-center rounded-md border border-neutral-300 bg-white/95 text-neutral-950 shadow-xs">
+                  <Maximize2 className="h-3 w-3" />
+                </span>
+              </div>
+            </div>
+
+            {/* Card Body */}
+            <div className="p-3.5 flex flex-col flex-1">
+              <div className="flex items-center justify-between gap-2">
+                <span className="mono-type text-[0.55rem] font-bold uppercase tracking-[0.12em] text-neutral-500">
+                  {item.category[language]}
+                </span>
+                <span className="mono-type text-[0.55rem] font-medium text-neutral-400">
+                  {item.date}
+                </span>
+              </div>
+              <h4 className="display-type mt-1.5 text-sm font-bold text-neutral-950 leading-snug line-clamp-2 group-hover:text-black">
+                {item.title[language]}
+              </h4>
+              <p className="mt-1.5 text-[0.72rem] leading-relaxed text-neutral-600 line-clamp-2 flex-1">
+                {item.description[language]}
+              </p>
+              <div className="mt-3 pt-2.5 border-t border-neutral-200 flex items-center justify-between">
+                <span className="mono-type text-[0.57rem] font-bold text-neutral-900 group-hover:underline inline-flex items-center gap-1">
+                  {t.documentation.inspectBtn} <ExternalLink className="h-2.5 w-2.5" />
+                </span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* Lightbox Dialog Modal */}
+      {selectedItem ? (
+        <Dialog open={Boolean(selectedItem)} onOpenChange={(open) => !open && setSelectedItem(null)}>
+          <DialogContent className="max-w-4xl border border-neutral-400 bg-white p-6 shadow-2xl dark:border-neutral-700 dark:bg-neutral-900">
+            <DialogHeader>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="mono-type rounded border border-neutral-300 bg-neutral-100 px-2.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200">
+                  {selectedItem.tag}
+                </span>
+                <span className="mono-type text-[0.62rem] font-semibold text-neutral-500">
+                  {selectedItem.category[language]} · {selectedItem.date}
+                </span>
+              </div>
+              <DialogTitle className="display-type text-2xl font-bold text-neutral-950 dark:text-white leading-tight">
+                {selectedItem.title[language]}
+              </DialogTitle>
+              <DialogDescription className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed mt-2">
+                {selectedItem.description[language]}
+              </DialogDescription>
+            </DialogHeader>
+            <div className="mt-4 flex max-h-[65vh] w-full items-center justify-center overflow-hidden rounded-xl border border-neutral-300 bg-neutral-50 p-3 dark:border-neutral-700 dark:bg-neutral-950">
+              <img
+                src={selectedItem.image}
+                alt={selectedItem.title[language]}
+                className="max-h-[60vh] w-auto max-w-full rounded object-contain"
+              />
+            </div>
+            <div className="mt-4 flex items-center justify-between border-t border-neutral-200 pt-3 dark:border-neutral-800">
+              <a
+                href={selectedItem.image}
+                target="_blank"
+                rel="noreferrer"
+                className="mono-type inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 hover:underline dark:text-neutral-100"
+              >
+                {language === "en" ? "Open Full File" : "Buka Berkas Asli"} <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+              <button
+                type="button"
+                onClick={() => setSelectedItem(null)}
+                className="rounded-lg border border-neutral-300 bg-white px-4 py-1.5 text-xs font-bold text-neutral-900 shadow-xs hover:bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+              >
+                {language === "en" ? "Close" : "Tutup"}
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
+      ) : null}
+    </section>
+  );
+}
+
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
@@ -345,11 +585,6 @@ export default function Home() {
       desc: t.projects.views.trend.desc,
     },
   } as const;
-
-  const heroProjects = useMemo(() => featuredProjects.filter((project) => project.featured), []);
-  const capstoneHours = useCountUp(900, heroReady, prefersReducedMotion);
-  const programsAnalyzed = useCountUp(97, heroReady, prefersReducedMotion);
-  const studentsReached = useCountUp(1000, heroReady, prefersReducedMotion);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setHeroReady(true), 60);
@@ -716,30 +951,14 @@ export default function Home() {
                   {t.hero.exploreBtn} <ArrowDown className="h-4 w-4" />
                 </button>
               </div>
-              <div className="hero-sequence hero-sequence--7 hero-metrics mt-10 grid max-w-xl grid-cols-3 rounded-xl border border-neutral-300 bg-neutral-50/70 p-3 sm:p-5 shadow-xs">
-                {[
-                  { value: capstoneHours, suffix: "+", label: t.hero.hoursLabel },
-                  { value: programsAnalyzed, suffix: "", label: t.hero.programsLabel },
-                  { value: studentsReached, suffix: "+", label: t.hero.studentsLabel },
-                ].map(({ value, suffix, label }, index) => (
-                  <div key={label} className={`px-2 sm:px-4 ${index !== 2 ? "border-r border-neutral-300" : ""}`}>
-                    <p className="display-type text-lg font-bold tracking-[-0.04em] text-neutral-950 sm:text-2xl">
-                      {value.toLocaleString()}
-                      {suffix}
-                    </p>
-                    <p className="mt-1 mono-type text-[0.55rem] font-semibold leading-tight uppercase tracking-[0.08em] text-neutral-600">
-                      {label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              <div className="hero-sequence hero-sequence--8 mt-9 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
+              {/* Social Channels — Placed in close proximity to CTA buttons */}
+              <div className="hero-sequence hero-sequence--7 mt-6 flex flex-wrap items-center gap-x-5 gap-y-2.5 text-xs sm:text-sm font-medium text-neutral-700">
                 {links.linkedin ? (
                   <a
                     href={links.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-neutral-700 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                    className="inline-flex items-center gap-1.5 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                   >
                     <Linkedin className="h-4 w-4 text-neutral-900" /> LinkedIn
                   </a>
@@ -749,7 +968,7 @@ export default function Home() {
                     href={links.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-neutral-700 transition hover:text-black"
+                    className="inline-flex items-center gap-1.5 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                   >
                     <Github className="h-4 w-4 text-neutral-900" /> GitHub
                   </a>
@@ -762,13 +981,13 @@ export default function Home() {
                 )}
                 <a
                   href={links.email}
-                  className="inline-flex items-center gap-2 text-neutral-700 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="inline-flex items-center gap-1.5 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
                   <Mail className="h-4 w-4 text-neutral-900" /> Email
                 </a>
                 <a
                   href={links.phone}
-                  className="inline-flex items-center gap-2 text-neutral-700 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="inline-flex items-center gap-1.5 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
                   <Phone className="h-4 w-4 text-neutral-900" /> {language === "en" ? "Phone" : "Telepon"}
                 </a>
@@ -810,21 +1029,28 @@ export default function Home() {
                 </div>
               </div>
               <div className="hero-artifact absolute right-2 top-2 z-20 rounded-md border border-neutral-300 bg-white/95 px-3 py-1.5 mono-type text-[0.6rem] font-bold uppercase tracking-[0.13em] text-neutral-900 shadow-sm backdrop-blur-md sm:top-0">
-                Research artifact / 001
+                Data & AI · 2026
               </div>
               <div className="hero-signal-tag absolute -right-3 bottom-20 z-20 hidden rounded-md border border-neutral-300 bg-white/95 p-3 text-center shadow-sm sm:block">
                 <span className="mono-type text-[0.58rem] font-bold leading-4 tracking-[0.1em] text-neutral-900">
-                  FROM<br />
-                  SIGNAL<br />
-                  TO USE
+                  DATA<br />
+                  MODEL<br />
+                  DEPLOY
                 </span>
               </div>
             </div>
           </div>
-          {!prefersReducedMotion ? (
-            <SignalStream tone="dark" className="absolute inset-x-0 bottom-4 z-10 hidden lg:block" />
-          ) : null}
         </section>
+
+        {/* Core Capabilities Marquee Strip — Enclosed Box with Crisp Top & Bottom Borders */}
+        {!prefersReducedMotion ? (
+          <aside
+            aria-label="Core Data & AI Capabilities Ticker"
+            className="w-full border-y border-neutral-400 bg-neutral-100/90 py-3.5 shadow-2xs backdrop-blur-md dark:border-neutral-700 dark:bg-neutral-900/90"
+          >
+            <SignalStream tone="dark" className="w-full" />
+          </aside>
+        ) : null}
 
         {/* Section 01: About */}
         <section id="about" className="scroll-mt-28 bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
@@ -1008,176 +1234,119 @@ export default function Home() {
               copy={t.projects.copy}
             />
 
-            {/* Featured Project Showcase: 100% UN-CROPPED, FITTED DASHBOARD SHOWCASE */}
-            {heroProjects.map((project) => {
-              const isDashboardProject = project.art === assetUrls.tuitionArt;
-              const currentArt = isDashboardProject ? dashboardViews[dashboardView].src : project.art;
+            {/* Unified 2-Column Projects Showcase */}
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {featuredProjects.map((project, index) => {
+                const isAcademicDW = project.title.includes("Academic Capacity");
+                const currentArt = isAcademicDW ? dashboardViews[dashboardView].src : project.art;
 
-              return (
-                <article
-                  key={project.title}
-                  className="motion-feature mt-14 overflow-hidden rounded-2xl border border-neutral-300 bg-white shadow-md"
-                >
-                  {/* Top Header: Project Context and Narrative */}
-                  <div className="border-b border-neutral-300 p-6 sm:p-10 lg:p-12">
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span className="mono-type rounded-md border border-neutral-300 bg-neutral-100 px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.13em] text-neutral-900 shadow-2xs">
+                return (
+                  <article
+                    key={project.title}
+                    className="motion-card group flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-300 bg-white shadow-xs transition duration-300 hover:-translate-y-1 hover:border-neutral-900 hover:shadow-xl hover:shadow-neutral-900/5"
+                  >
+                    {/* Visual Media Header — Compact & Fitted */}
+                    <div className="relative border-b border-neutral-200 bg-neutral-100 overflow-hidden">
+                      {isAcademicDW ? (
+                        <div className="flex flex-col">
+                          {/* Mini Titlebar with View Switcher */}
+                          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 bg-neutral-100/90 px-3.5 py-2">
+                            <div className="flex items-center gap-1.5">
+                              <span className="h-2 w-2 rounded-full bg-red-400" />
+                              <span className="h-2 w-2 rounded-full bg-amber-400" />
+                              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                              <span className="mono-type ml-1 text-[0.58rem] font-bold text-neutral-700">
+                                Looker Studio
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              {(["executive", "detail", "trend"] as const).map((key) => (
+                                <button
+                                  key={key}
+                                  type="button"
+                                  onClick={() => setDashboardView(key)}
+                                  className={`rounded px-2 py-0.5 mono-type text-[0.55rem] font-bold transition ${
+                                    dashboardView === key
+                                      ? "bg-neutral-950 text-white shadow-xs"
+                                      : "bg-white text-neutral-600 hover:bg-neutral-200/80 border border-neutral-300"
+                                  }`}
+                                >
+                                  {key === "executive" ? "Executive" : key === "detail" ? "Detail" : "Trend"}
+                                </button>
+                              ))}
+                              <a
+                                href={currentArt}
+                                target="_blank"
+                                rel="noreferrer"
+                                title={t.projects.viewOriginal}
+                                className="ml-1 inline-flex p-1 rounded hover:bg-neutral-200 text-neutral-600 hover:text-black transition"
+                              >
+                                <Maximize2 className="h-3 w-3" />
+                              </a>
+                            </div>
+                          </div>
+                          {/* Screenshot Container */}
+                          <div className="flex h-44 sm:h-48 items-center justify-center p-2.5 bg-neutral-50/50">
+                            <img
+                              src={currentArt}
+                              alt={dashboardViews[dashboardView].desc}
+                              className="block h-full w-auto max-w-full rounded border border-neutral-200/90 object-contain shadow-xs bg-white"
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        </div>
+                      ) : project.art ? (
+                        <div className="relative flex h-44 sm:h-48 w-full items-center justify-center bg-neutral-50/50 p-2.5">
+                          <img
+                            src={project.art}
+                            alt={project.title}
+                            className="block h-full w-auto max-w-full rounded border border-neutral-200/90 object-contain shadow-xs bg-white"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <a
+                            href={project.art}
+                            target="_blank"
+                            rel="noreferrer"
+                            title={t.projects.viewOriginal}
+                            className="absolute right-2.5 top-2.5 rounded-md border border-neutral-200 bg-white/90 p-1 text-neutral-600 shadow-xs hover:bg-white hover:text-neutral-950 transition backdrop-blur-xs"
+                          >
+                            <Maximize2 className="h-3 w-3" />
+                          </a>
+                        </div>
+                      ) : (
+                        <ProjectEvidence index={index} category={project.category} />
+                      )}
+                    </div>
+
+                    {/* Card Content & Narrative */}
+                    <div className="p-6 sm:p-7 flex flex-col flex-1">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="mono-type rounded-md border border-neutral-300 bg-neutral-100/90 px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-900 shadow-2xs">
                           {project.category}
                         </span>
-                        <span className="h-1 w-1 rounded-full bg-neutral-400" />
-                        <span className="mono-type text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-neutral-500">
+                        <span className="mono-type text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
                           {project.date}
                         </span>
                       </div>
-                      <div className="flex flex-wrap gap-2">
-                        {project.links?.caseStudy ? (
-                          <a
-                            href={project.links.caseStudy}
-                            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3.5 py-1.5 text-xs font-bold text-neutral-900 shadow-xs transition hover:border-neutral-900 hover:bg-neutral-50"
-                          >
-                            {t.projects.caseStudy} <ArrowUpRight className="h-3.5 w-3.5" />
-                          </a>
-                        ) : (
-                          <PendingAction
-                            label={t.projects.caseStudy}
-                            onPending={notifyPending}
-                            className="rounded-md border border-neutral-200 bg-neutral-50 px-3.5 py-1.5 text-xs font-bold text-neutral-700"
-                          />
-                        )}
-                        {currentArt && (
-                          <a
-                            href={currentArt}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded-md bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800"
-                          >
-                            {t.projects.viewOriginal} <Maximize2 className="h-3.5 w-3.5" />
-                          </a>
-                        )}
-                      </div>
-                    </div>
 
-                    <h3 className="display-type mt-5 text-3xl font-bold leading-[1.05] tracking-[-0.05em] text-neutral-950 sm:text-4xl lg:text-5xl">
-                      {project.title}
-                    </h3>
-                    <p className="mt-4 max-w-3xl text-base leading-8 text-neutral-700 sm:text-lg">
-                      {project.description}
-                    </p>
-
-                    {project.result ? (
-                      <div className="mt-5 border-l-2 border-neutral-950 bg-neutral-50/80 p-4 text-sm font-semibold leading-6 text-neutral-900 rounded-r-md border border-neutral-200">
-                        {project.result}
-                      </div>
-                    ) : null}
-
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-neutral-50 px-3 py-1.5 mono-type text-[0.62rem] font-bold tracking-wide text-neutral-800 shadow-2xs"
-                        >
-                          <TechIcon name={tech} className="h-3.5 w-3.5 shrink-0" />
-                          <span>{tech}</span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Bottom: 100% UN-CROPPED FITTED DASHBOARD WINDOW */}
-                  <div className="bg-neutral-100 p-4 sm:p-6 lg:p-8">
-                    {/* Browser Mockup Window Frame */}
-                    <div className="overflow-hidden rounded-xl border border-neutral-300 bg-white shadow-xl">
-                      {/* Window Titlebar with Responsive Switcher */}
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-neutral-300 bg-neutral-100/90 px-4 py-3">
-                        <div className="flex items-center gap-2">
-                          <span className="h-3 w-3 rounded-full bg-red-400" />
-                          <span className="h-3 w-3 rounded-full bg-amber-400" />
-                          <span className="h-3 w-3 rounded-full bg-emerald-400" />
-                          <span className="mono-type ml-3 text-[0.62rem] font-bold text-neutral-700">
-                            Google Looker Studio — {isDashboardProject ? dashboardViews[dashboardView].title : project.title}
-                          </span>
-                        </div>
-
-                        {/* Interactive View Switcher Tabs - Responsive scroll on mobile */}
-                        {isDashboardProject && (
-                          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full sm:w-auto pb-1 sm:pb-0">
-                            {(["executive", "detail", "trend"] as const).map((key) => (
-                              <button
-                                key={key}
-                                type="button"
-                                onClick={() => setDashboardView(key)}
-                                className={`whitespace-nowrap rounded-md px-3 py-1.5 mono-type text-[0.62rem] font-bold transition ${
-                                  dashboardView === key
-                                    ? "bg-neutral-950 text-white shadow-xs"
-                                    : "bg-white text-neutral-700 hover:text-black hover:bg-neutral-200/80 border border-neutral-300"
-                                }`}
-                              >
-                                {dashboardViews[key].title}
-                              </button>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Image Canvas — STRICTLY UN-CROPPED, FULLY FITTED */}
-                      <div className="flex items-center justify-center bg-white p-2 sm:p-4 md:p-6">
-                        <img
-                          src={currentArt}
-                          alt={isDashboardProject ? dashboardViews[dashboardView].desc : project.title}
-                          className="block h-auto w-full max-w-full rounded border border-neutral-300 object-contain shadow-xs"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </div>
-
-                      {/* Caption & Explanatory Footer */}
-                      {isDashboardProject && (
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-t border-neutral-300 bg-neutral-50 px-5 py-3 text-xs">
-                          <span className="mono-type text-[0.64rem] font-semibold text-neutral-700">
-                            <strong>{language === "en" ? "Note:" : "Keterangan:"}</strong> {dashboardViews[dashboardView].desc}
-                          </span>
-                          <a
-                            href={currentArt}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mono-type inline-flex items-center gap-1 text-[0.64rem] font-bold text-neutral-950 hover:underline"
-                          >
-                            {language === "en" ? "Open Full Resolution Image" : "Buka Gambar Resolusi Penuh"} <ExternalLink className="h-3 w-3" />
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-
-            {/* Other Featured Cards */}
-            <div className="mt-8 grid gap-5 lg:grid-cols-2">
-              {featuredProjects
-                .filter((project) => !project.featured)
-                .map((project, index) => (
-                  <article
-                    key={project.title}
-                    className="motion-card group overflow-hidden rounded-xl border border-neutral-300 bg-white transition duration-300 hover:-translate-y-1 hover:border-neutral-900 hover:shadow-xl hover:shadow-neutral-900/5 shadow-xs"
-                  >
-                    <ProjectEvidence index={index} category={project.category} />
-                    <div className="p-6 sm:p-7">
-                      <p className="mono-type text-[0.61rem] font-bold uppercase tracking-[0.12em] text-neutral-500">
-                        {project.category}
-                      </p>
-                      <h3 className="display-type mt-3 text-2xl font-bold tracking-[-0.05em] text-neutral-950">
+                      <h3 className="display-type mt-3.5 text-xl sm:text-2xl font-bold tracking-[-0.045em] text-neutral-950 leading-tight group-hover:text-black transition">
                         {project.title}
                       </h3>
-                      <p className="mt-2 mono-type text-[0.61rem] uppercase tracking-[0.1em] text-neutral-500">
-                        {project.date}
+
+                      <p className="mt-3 text-sm leading-7 text-neutral-700 flex-1">
+                        {project.description}
                       </p>
-                      <p className="mt-5 text-sm leading-7 text-neutral-700">{project.description}</p>
+
                       {project.result ? (
-                        <p className="mt-4 rounded border border-neutral-200 bg-neutral-50 p-3 text-sm font-semibold leading-6 text-neutral-900">{project.result}</p>
+                        <div className="mt-4 rounded-lg border border-neutral-200 bg-neutral-50/90 p-3.5 text-xs sm:text-sm font-semibold leading-relaxed text-neutral-900 flex items-start gap-2.5 shadow-2xs">
+                          <Sparkles className="h-4 w-4 text-neutral-950 shrink-0 mt-0.5" />
+                          <span>{project.result}</span>
+                        </div>
                       ) : null}
-                      <div className="mt-6 flex flex-wrap gap-2">
+
+                      <div className="mt-5 flex flex-wrap gap-1.5">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
@@ -1188,62 +1357,97 @@ export default function Home() {
                           </span>
                         ))}
                       </div>
-                    </div>
-                  </article>
-                ))}
-            </div>
 
-            {/* Other Projects Index Table */}
-            <div className="mt-16 border-t border-neutral-300 pt-7">
-              <div className="flex items-end justify-between gap-5">
-                <div>
-                  <p className="section-kicker">{t.projects.otherKicker}</p>
-                  <h3 className="display-type mt-3 text-2xl font-bold tracking-[-0.05em] text-neutral-950">
-                    {t.projects.otherTitle}
-                  </h3>
-                </div>
-                <span className="mono-type hidden text-[0.62rem] uppercase tracking-[0.12em] text-neutral-500 sm:block">
-                  {t.projects.otherCount}
-                </span>
-              </div>
-              <div className="mt-7 border-y border-neutral-300">
-                {otherProjects.map((project, index) => (
-                  <article
-                    key={project.title}
-                    className={`motion-index-row grid gap-4 py-6 transition hover:bg-neutral-100/70 md:grid-cols-[3.4rem_minmax(0,1fr)_minmax(0,1.15fr)] md:gap-7 ${
-                      index !== otherProjects.length - 1 ? "border-b border-neutral-300" : ""
-                    }`}
-                  >
-                    <p className="mono-type text-[0.58rem] font-bold tracking-[0.12em] text-neutral-950">
-                      {String(index + 1).padStart(2, "0")}
-                    </p>
-                    <div>
-                      <p className="mono-type text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-neutral-500">
-                        {project.date}
-                      </p>
-                      <h4 className="display-type mt-2 text-xl font-bold tracking-[-0.045em] text-neutral-950">
-                        {project.title}
-                      </h4>
-                      <p className="mt-2 mono-type text-[0.57rem] uppercase tracking-[0.08em] text-neutral-500">
-                        {project.category}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm leading-6 text-neutral-700">{project.description}</p>
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {project.technologies.map((tech) => (
-                          <span key={tech} className="rounded border border-neutral-300 bg-white px-2 py-0.5 text-[0.65rem] font-medium text-neutral-800 shadow-2xs">
-                            {tech}
-                          </span>
-                        ))}
+                      <div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4">
+                        <div className="flex flex-wrap gap-2">
+                          {project.links?.caseStudy ? (
+                            <a
+                              href={project.links.caseStudy}
+                              className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3.5 py-1.5 text-xs font-bold text-neutral-900 shadow-xs transition hover:border-neutral-900 hover:bg-neutral-50"
+                            >
+                              {t.projects.caseStudy} <ArrowUpRight className="h-3.5 w-3.5" />
+                            </a>
+                          ) : (
+                            <PendingAction
+                              label={t.projects.caseStudy}
+                              onPending={notifyPending}
+                              className="rounded-md border border-neutral-200 bg-neutral-50 px-3.5 py-1.5 text-xs font-bold text-neutral-600"
+                            />
+                          )}
+                        </div>
+                        {currentArt && (
+                          <a
+                            href={currentArt}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mono-type inline-flex items-center gap-1.5 text-[0.62rem] font-bold text-neutral-900 hover:text-black hover:underline"
+                          >
+                            {t.projects.viewOriginal} <ExternalLink className="h-3 w-3" />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </article>
-                ))}
-              </div>
+                );
+              })}
             </div>
+
+            {/* Other Projects Index Table (when otherProjects has entries) */}
+            {otherProjects.length > 0 ? (
+              <div className="mt-16 border-t border-neutral-300 pt-7">
+                <div className="flex items-end justify-between gap-5">
+                  <div>
+                    <p className="section-kicker">{t.projects.otherKicker}</p>
+                    <h3 className="display-type mt-3 text-2xl font-bold tracking-[-0.05em] text-neutral-950">
+                      {t.projects.otherTitle}
+                    </h3>
+                  </div>
+                  <span className="mono-type hidden text-[0.62rem] uppercase tracking-[0.12em] text-neutral-500 sm:block">
+                    {t.projects.otherCount}
+                  </span>
+                </div>
+                <div className="mt-7 border-y border-neutral-300">
+                  {otherProjects.map((project, index) => (
+                    <article
+                      key={project.title}
+                      className={`motion-index-row grid gap-4 py-6 transition hover:bg-neutral-100/70 md:grid-cols-[3.4rem_minmax(0,1fr)_minmax(0,1.15fr)] md:gap-7 ${
+                        index !== otherProjects.length - 1 ? "border-b border-neutral-300" : ""
+                      }`}
+                    >
+                      <p className="mono-type text-[0.58rem] font-bold tracking-[0.12em] text-neutral-950">
+                        {String(index + 1).padStart(2, "0")}
+                      </p>
+                      <div>
+                        <p className="mono-type text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-neutral-500">
+                          {project.date}
+                        </p>
+                        <h4 className="display-type mt-2 text-xl font-bold tracking-[-0.045em] text-neutral-950">
+                          {project.title}
+                        </h4>
+                        <p className="mt-2 mono-type text-[0.57rem] uppercase tracking-[0.08em] text-neutral-500">
+                          {project.category}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-sm leading-6 text-neutral-700">{project.description}</p>
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {project.technologies.map((tech) => (
+                            <span key={tech} className="rounded border border-neutral-300 bg-white px-2 py-0.5 text-[0.65rem] font-medium text-neutral-800 shadow-2xs">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
         </section>
+
+        {/* Section 03.5: Field Evidence, Documentation & Collaboration Stream */}
+        <DocumentationShowcase language={language} prefersReducedMotion={prefersReducedMotion} />
 
         {/* Section 04: Experience & Leadership */}
         <section
@@ -1307,7 +1511,7 @@ export default function Home() {
               title={t.awards.title}
             />
             <div className="mt-14 border-y border-neutral-300 lg:ml-[7.5rem]">
-              {awards.map(([placement, title, organization, date], index) => (
+              {awards.map(([placement, title, organization, date, description], index) => (
                 <article
                   key={`${title}-${organization}`}
                   className={`motion-award grid gap-5 py-7 sm:grid-cols-[5rem_minmax(0,1fr)_8rem] sm:items-start lg:grid-cols-[6.25rem_minmax(0,1fr)_8rem] ${
@@ -1333,6 +1537,9 @@ export default function Home() {
                       {title}
                     </h3>
                     <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-700 font-medium">{organization}</p>
+                    {description ? (
+                      <p className="mt-3 max-w-xl text-sm leading-7 text-neutral-600">{description}</p>
+                    ) : null}
                   </div>
                   <p className="mono-type text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-neutral-500 sm:pt-1">
                     {date}
@@ -1344,7 +1551,7 @@ export default function Home() {
         </section>
 
         {/* Section 06: Credentials */}
-        <section className="bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+        <section id="credentials" className="scroll-mt-28 overflow-hidden bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="06"
@@ -1352,43 +1559,9 @@ export default function Home() {
               title={t.credentials.title}
               copy={t.credentials.copy}
             />
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:ml-[7.5rem] lg:grid-cols-3">
-              {certifications.map((cert, index) => (
-                <article
-                  key={cert.name}
-                  className="motion-cert flex min-h-[290px] flex-col rounded-xl border border-neutral-300 bg-white p-7 shadow-xs hover:border-neutral-950 hover:shadow-lg transition"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="mono-type rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 text-[0.62rem] font-bold tracking-[0.13em] text-neutral-950">
-                      0{index + 1}
-                    </span>
-                    <BriefcaseBusiness className="h-5 w-5 text-neutral-400" />
-                  </div>
-                  <h3 className="display-type mt-7 text-2xl font-bold leading-tight tracking-[-0.05em] text-neutral-950">
-                    {cert.name}
-                  </h3>
-                  <p className="mt-2 text-sm font-semibold text-neutral-800">{cert.issuer}</p>
-                  <p className="mt-4 text-sm leading-7 text-neutral-700">{cert.description}</p>
-                  <div className="mt-auto border-t border-neutral-300 pt-5">
-                    <p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">{cert.date}</p>
-                    {cert.credential ? (
-                      <a
-                        href={cert.credential}
-                        className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-neutral-950 hover:underline"
-                      >
-                        {t.credentials.viewBtn} <ExternalLink className="h-3.5 w-3.5" />
-                      </a>
-                    ) : (
-                      <PendingAction
-                        label={t.credentials.viewBtn}
-                        onPending={notifyPending}
-                        className="mt-4 text-sm font-bold text-neutral-950 hover:underline"
-                      />
-                    )}
-                  </div>
-                </article>
-              ))}
-            </div>
+          </div>
+          <div className="mt-12 reveal">
+            <CertificateCoverflow items={certifications} viewLabel={t.credentials.viewBtn} />
           </div>
         </section>
 

@@ -855,6 +855,74 @@ export function TechIcon({ name, className = "h-11 w-11 shrink-0" }: TechIconPro
     );
   }
 
+  // SQLite
+  if (n === "sqlite") {
+    return (
+      <svg className={className} viewBox="0 0 128 128" fill="none">
+        <path d="M30 14h50c8 0 14 6 14 14v72c0 8-6 14-14 14H30c-8 0-14-6-14-14V28c0-8 6-14 14-14z" fill="#0F80CC" />
+        <path d="M30 14h50c8 0 14 6 14 14v8H16v-8c0-8 6-14 14-14z" fill="#0B6BAA" />
+        <path d="M94 36c0 40-18 70-42 78h28c8 0 14-6 14-14V36z" fill="#003B57" opacity="0.55" />
+        <path d="M40 58h30M40 74h24M40 90h30" stroke="#fff" strokeWidth="6" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  // ChromaDB
+  if (n.includes("chroma")) {
+    return (
+      <svg className={className} viewBox="0 0 128 128" fill="none">
+        <circle cx="46" cy="50" r="30" fill="#FFDE2D" />
+        <circle cx="82" cy="50" r="30" fill="#FF6446" opacity="0.92" />
+        <circle cx="64" cy="82" r="30" fill="#327EFF" opacity="0.92" />
+      </svg>
+    );
+  }
+
+  // GitHub Actions
+  if (n.includes("github actions")) {
+    return (
+      <svg className={className} viewBox="0 0 128 128" fill="none">
+        <rect x="8" y="30" width="112" height="68" rx="34" fill="#2088FF" />
+        <circle cx="38" cy="64" r="9" fill="#fff" />
+        <circle cx="90" cy="64" r="9" fill="#fff" opacity="0.55" />
+        <path d="M47 64h34" stroke="#fff" strokeWidth="5" />
+        <path d="M60 52l16 12-16 12z" fill="#fff" />
+      </svg>
+    );
+  }
+
+  // IBM Granite
+  if (n.includes("granite") || n === "ibm") {
+    return (
+      <svg className={className} viewBox="0 0 128 128" fill="none">
+        <rect width="128" height="128" rx="16" fill="#0F62FE" />
+        <path d="M24 40h80M24 52h80M24 76h80M24 88h80" stroke="#fff" strokeWidth="6" />
+        <path d="M40 40v48M60 40v48M80 40v48M96 40v48" stroke="#fff" strokeWidth="6" opacity="0.35" />
+      </svg>
+    );
+  }
+
+  // Flask
+  if (n === "flask") {
+    return (
+      <svg className={className} viewBox="0 0 128 128" fill="none">
+        <path d="M50 14h28M56 14v36L26 100c-5 9 1 16 10 16h56c9 0 15-7 10-16L72 50V14" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M40 84h48l12 20c3 6 0 8-6 8H34c-6 0-9-2-6-8l12-20z" fill="currentColor" opacity="0.8" />
+      </svg>
+    );
+  }
+
+  // REST API
+  if (n === "rest api" || n === "rest") {
+    return (
+      <svg className={className} viewBox="0 0 128 128" fill="none">
+        <rect width="128" height="128" rx="20" fill="#0EA5E9" />
+        <path d="M46 34c-10 0-12 6-12 14v6c0 6-4 10-10 10 6 0 10 4 10 10v6c0 8 2 14 12 14M82 34c10 0 12 6 12 14v6c0 6 4 10 10 10-6 0-10 4-10 10v6c0 8-2 14-12 14" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="64" cy="64" r="5" fill="#fff" />
+      </svg>
+    );
+  }
+
   // Default fallback smart icon
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

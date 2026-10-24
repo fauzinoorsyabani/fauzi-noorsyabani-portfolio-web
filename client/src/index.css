@@ -54,8 +54,8 @@
   --accent-foreground: #18181b;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #d4d4d8;
-  --input: #d4d4d8;
+  --border: #a1a1aa;
+  --input: #a1a1aa;
   --ring: #0a0a0a;
   --motion-snap: cubic-bezier(0.23, 1, 0.32, 1);
   --motion-curve: cubic-bezier(0.77, 0, 0.175, 1);
@@ -110,8 +110,35 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 .signal-stream-token b { font-size: .62rem; font-weight: 400; opacity: .7; }
 .signal-stream-node { display: block; height: .34rem; width: .34rem; border-radius: 999px; background: #0a0a0a; box-shadow: 0 0 0 3px rgba(0,0,0,.08); }
 .signal-stream--light .signal-stream-token { color: rgba(100,116,139,.7); }
-.signal-stream--dark .signal-stream-token { color: rgba(15,23,42,.7); }
 .signal-stream--dark { mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+
+/* Continuous Auto-Sliding Field Evidence & Documentation Stream */
+.doc-stream-container {
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
+  overflow: hidden;
+}
+/* When container and track are the same element, we use padding-x to space items */
+.doc-stream-container.doc-stream-track {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.doc-stream-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  will-change: transform;
+  animation: doc-stream-flow 65s linear infinite;
+}
+.doc-stream-track.is-paused {
+  animation-play-state: paused;
+}
+@keyframes doc-stream-flow {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
 
 .signal-orbit { pointer-events: none; will-change: transform; }
 .signal-orbit-ring { position: absolute; border: 1px solid rgba(0,0,0,.08); border-radius: 999px; }
@@ -202,13 +229,17 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 .dark .theme-root :is(.text-neutral-600, .text-neutral-500, .text-slate-600, .text-slate-500) { color: #a1a1aa !important; }
 .dark .theme-root :is(.text-neutral-400) { color: #71717a !important; }
 
-/* ── Border inversions ───────────────────────────────────────────────────── */
-.dark .theme-root :is(.border-neutral-200, .border-neutral-300, .border-slate-200, .border-slate-300, .border-blue-100, .border-blue-200\/80) { border-color: #27272a !important; }
-.dark .theme-root .border-neutral-400 { border-color: #3f3f46 !important; }
-.dark .theme-root .border-neutral-900 { border-color: #52525b !important; }
-.dark .theme-root .border-neutral-950 { border-color: #71717a !important; }
-.dark .theme-root .border-l-2.border-neutral-900 { border-left-color: #52525b !important; }
-.dark .theme-root .border-b-2.border-neutral-900 { border-bottom-color: #52525b !important; }
+/* ── Border inversions (High-Contrast Swiss Brutalism) ─────────────────────── */
+.dark .theme-root :is(.border-neutral-200, .border-neutral-300, .border-slate-200, .border-slate-300, .border-blue-100, .border-blue-200\/80) { border-color: #3f3f46 !important; }
+.dark .theme-root .border-neutral-400 { border-color: #52525b !important; }
+.dark .theme-root .border-neutral-900 { border-color: #71717a !important; }
+.dark .theme-root .border-neutral-950 { border-color: #a1a1aa !important; }
+.dark .theme-root .border-l-2.border-neutral-900 { border-left-color: #71717a !important; }
+.dark .theme-root .border-b-2.border-neutral-900 { border-bottom-color: #71717a !important; }
+
+/* ── Light Mode Border Contrast Enhancement ─────────────────────────────── */
+.theme-root :not(.dark *) :is(.border-neutral-200) { border-color: #cbd5e1; }
+.theme-root :not(.dark *) :is(.border-neutral-300) { border-color: #94a3b8; }
 
 /* ── Shadows ─────────────────────────────────────────────────────────────── */
 .dark .theme-root .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0,0,0,.4), 0 8px 10px -6px rgba(0,0,0,.4) !important; }
@@ -222,7 +253,7 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 
 /* ── Hardcoded bg-color elements ─────────────────────────────────────────── */
 .dark .theme-root .bg-neutral-200 { background-color: #27272a !important; }
-.dark .theme-root [class*="bg-neutral-950"] { background-color: #f4f4f5 !important; color: #09090b !important; }
+.dark .theme-root [class*="bg-neutral-950"]:not([class*="dark:bg-neutral-950"]) { background-color: #f4f4f5 !important; color: #09090b !important; }
 .dark .theme-root .bg-neutral-950.text-white { background-color: #f4f4f5 !important; color: #09090b !important; }
 /* Restore inverted CTA buttons & back-to-top */
 .dark .theme-root a.bg-neutral-950,
@@ -608,13 +639,6 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
    Ensures instantaneous loading, 60fps scrolling, and minimal GPU/RAM overhead
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* 1. Off-screen content rendering deferral (content-visibility) */
-@media (min-width: 0px) {
-  section[id]:not(#top) {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 720px;
-  }
-}
 
 /* 2. Instant touch response (eliminates 300ms mobile tap delay) */
 button, a, input, textarea, select {

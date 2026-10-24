@@ -6,12 +6,12 @@
 export const assetUrls = {
   logo: "/logo-thumb.webp",
   heroData: "https://placehold.co/800x600?text=Project+1",
-  tuitionArt: "/dashboard-kapasitas-akademik.png",
-  dashboardExecutive: "/dashboard-kapasitas-akademik.png",
-  dashboardDetail: "/dashboard-detail-prodi.png",
-  dashboardTrend: "/dashboard-tren-longitudinal.png",
+  tuitionArt: "/dashboard-kapasitas-akademik.webp",
+  dashboardExecutive: "/dashboard-kapasitas-akademik.webp",
+  dashboardDetail: "/dashboard-detail-prodi.webp",
+  dashboardTrend: "/dashboard-tren-longitudinal.webp",
   productSystemsArt: "https://placehold.co/800x600?text=Project+3",
-  profilePhoto: "/fauzinoorsyabani-foto.jpeg",
+  profilePhoto: "/fauzinoorsyabani-foto.webp",
 } as const;
 
 export const links = {
@@ -26,41 +26,41 @@ export const person = {
   name: "Fauzi Noorsyabani",
   role: "Full Stack AI Engineer",
   headline:
-    "I build end-to-end AI-powered products, from data and models through backend systems, full-stack experiences, and measurable delivery.",
+    "I engineer production-grade AI systems and full-stack software—connecting model integration, data pipelines, and responsive web architecture into reliable tools that solve real problems.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",
   phone: "+62 813-1064-1534",
   availability: "Open to Work",
   about:
-    "Fauzi is an innovation-driven Full Stack AI Engineer with a strong foundation in applied AI, data science, backend development, and product delivery. He builds end-to-end digital systems with Python, React, Laravel, and modern LLM tooling—then pairs the technical work with clear communication, product thinking, and community leadership.",
+    "Fauzi is a Full Stack AI Engineer and Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specializing in AI/LLM engineering and data systems. He led a 5-member engineering team through a 900+ hour AI product capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
   shortBio:
-    "From analysis and forecasting to deployed AI products, Fauzi connects the technical work to decisions people can actually use.",
+    "Connecting machine learning, LLM orchestration, and modern web architecture into practical software that drives informed decisions.",
 } as const;
 
 export const focusAreas = [
   {
-    label: "Build",
-    detail: "Full-stack products and responsive digital experiences.",
+    label: "Full-Stack Web Engineering",
+    detail: "Building fast, modular, and responsive web applications with React, TypeScript, Laravel, and FastAPI that scale smoothly under load.",
     index: "01",
   },
   {
-    label: "Analyze",
-    detail: "Data dashboards, forecasting, and decision-support insights.",
+    label: "Data Warehousing & BI",
+    detail: "Architecting dimensional star-schema warehouses, automated ETL pipelines, and Looker Studio dashboards for institutional decision-making.",
     index: "02",
   },
   {
-    label: "Lead",
-    detail: "AI advocacy, student communities, events, and technology adoption.",
+    label: "Technical Leadership & Outreach",
+    detail: "Advancing responsible AI adoption as Campus Lead for the Google Student Ambassador Program and mentoring student developer communities.",
     index: "03",
   },
 ] as const;
 
 export const facts = [
-  ["Based in", "Tasikmalaya, Indonesia"],
-  ["Education", "Information Systems, Universitas Siliwangi"],
-  ["Current focus", "End-to-end AI systems, data products, full-stack delivery"],
-  ["Availability", "Open to work"],
+  ["Location", "Tasikmalaya, Indonesia"],
+  ["Education", "Information Systems, Universitas Siliwangi (GPA 3.89, Cum Laude)"],
+  ["Core Specialization", "Applied AI, LLM Integration, Data Warehousing, Full-Stack Web"],
+  ["Status", "Open to full-time roles & high-impact projects"],
 ] as const;
 
 export type TechCategory = {
@@ -168,102 +168,113 @@ export type Project = {
 
 export const featuredProjects: readonly Project[] = [
   {
-    title: "Tuition Cost & Academic Capacity Dashboard",
+    title: "Academic Capacity Data Warehouse",
+    date: "2025 — 2026",
+    description:
+      "Star-schema data warehouse and Decision Support System (DSS) developed for Universitas Siliwangi to monitor academic capacity, student-to-lecturer ratios, and accreditation compliance across 35 study programs using longitudinal PDDikti aggregate data. Built with robust ETL pipelines and interactive Google Looker Studio executive dashboards for institutional strategic decision-making.",
+    result: "Centralized ratio monitoring across 35 academic programs over 5 reporting periods with automated compliance threshold tracking.",
+    technologies: ["Google Looker Studio", "Data Warehouse", "Star Schema", "ETL", "SQL", "Decision Support System"],
+    category: "Business Intelligence · Data Warehouse",
+    art: assetUrls.tuitionArt,
+    links: {},
+  },
+  {
+    title: "Higher Education Tuition & Policy Analytics",
     date: "Feb 2025 — Jun 2025",
     description:
-      "Interactive Decision Support System (DSS) and Business Intelligence data warehouse analyzing higher education capacity, tuition trends, and student-to-lecturer ratios across academic programs. Developed using ETL pipelines and interactive Google Looker Studio dashboards for institutional policy and trend monitoring.",
-    result: "Automated institutional capacity monitoring across 35 academic programs with longitudinal multi-period forecasting.",
-    technologies: ["Google Looker Studio", "Business Intelligence", "Data Warehouse", "ETL", "Python", "SQL"],
-    category: "Business Intelligence · Decision Support",
-    art: assetUrls.tuitionArt,
-    featured: true,
-    links: {}, // TODO: add case study, live demo, and source URLs.
+      "End-to-end data analytics and regression modeling for VINIX Seven Aurum (MSIB), analyzing higher education tuition cost structures, enrollment capacity, and student-to-lecturer distributions across 97 academic programs and 11 Indonesian universities. Delivered interactive dashboards and strategic policy recommendations to university leadership.",
+    result: "Modeled 97 academic programs across 11 universities with a 35% improvement in policy insight accuracy.",
+    technologies: ["Python", "Pandas", "Power BI", "Google Looker Studio", "Regression Models", "Data Analytics"],
+    category: "Data Science · MSIB Program",
+    art: assetUrls.dashboardTrend,
+    links: {},
   },
   {
-    title: "PolaStok",
+    title: "PolaStok — AI Inventory Forecasting Platform",
     date: "Feb 2026 — Jul 2026",
     description:
-      "Led a five-member team through a 900+ hour capstone to design and ship an AI-powered inventory forecasting platform for Indonesian SMEs.",
-    result: "Demand prediction, anomaly detection, and AI-generated reorder recommendations.",
-    technologies: ["Python", "ML", "Generative AI", "Full-Stack"],
+      "Led a five-member cross-functional team (PJK-GM041) through a 900+ hour capstone to design, build, and deploy an AI-powered inventory forecasting platform for Indonesian SMEs. Owned delivery end-to-end: data preparation, model integration, and MVP deployment; applied LLM orchestration and prompt engineering for stock prediction and reorder recommendations.",
+    result: "Demand prediction, stock anomaly detection, and AI-generated reorder recommendations for Indonesian SMEs.",
+    technologies: ["Python", "Machine Learning", "Generative AI", "Full-Stack", "FastAPI", "React"],
     category: "Applied AI · Team Lead",
     art: assetUrls.heroData,
-    links: {}, // TODO: add case study, live demo, and source URLs.
+    links: {},
   },
   {
-    title: "ClinicalNote AI",
+    title: "ClinicalNote AI — Clinical Documentation Platform",
     date: "2025",
     description:
-      "Built a clinical documentation prototype with real-time transcription and modular LLM skills for summary, ICD-10 suggestion, and medication extraction.",
-    result: "Designed for sub-two-second OpenAI-backed transcription latency.",
-    technologies: ["FastAPI", "OpenAI API", "React", "Docker"],
+      "Built a clinical documentation system with a FastAPI backend integrating OpenAI Whisper and GPT-4 for sub-two-second transcription latency. Designed reusable AI Skills for automated summarization, ICD-10 code suggestion, and medication extraction as modular LangChain chains; containerized and deployed on AWS EC2.",
+    result: "Designed for sub-two-second OpenAI-backed transcription latency with automated ICD-10 diagnostic coding.",
+    technologies: ["FastAPI", "OpenAI API", "LangChain", "React", "Docker", "AWS EC2"],
     category: "Applied AI · Solo Development",
-    links: {}, // TODO: add case study, live demo, and source URLs.
+    links: {},
   },
   {
-    title: "Wisata Indonesia",
+    title: "Wisata Indonesia — Tourism Booking Interface",
     date: "Mar 2025 — May 2025",
     description:
-      "Designed a responsive React tourism booking interface, adapting the UI and booking logic to user behavior and real-time tourism data.",
-    technologies: ["React", "JavaScript", "CSS3", "REST API"],
-    category: "Product Engineering",
+      "Designed and engineered a modern, responsive React tourism booking interface. Integrated dynamic booking workflows, user behavioral adaptation, and real-time destination availability data with fluid micro-interactions and accessible UI patterns.",
+    result: "High-performance, mobile-first booking experience with zero layout shift and sub-100ms interaction feedback.",
+    technologies: ["React", "JavaScript", "CSS3", "REST API", "Responsive Design"],
+    category: "Product Engineering · Frontend",
     art: assetUrls.productSystemsArt,
-    links: {}, // TODO: add case study, live demo, and source URLs.
+    links: {},
   },
   {
-    title: "NusaLadang",
+    title: "NusaLadang — Smart Farming Platform",
     date: "Aug 2024 — Dec 2024",
     description:
-      "Developed a smart farming investment platform with land leasing, dynamic pricing, crop projection logic, and transparent digital contracts.",
-    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    category: "Product Engineering",
+      "Engineered an end-to-end smart farming investment platform connecting landowners with agricultural investors. Implemented digital land leasing, dynamic crop pricing calculators, yield projection logic, and transparent digital contracts with role-based access.",
+    result: "Full-stack contract and investment workflow with dynamic pricing and land management for agricultural partners.",
+    technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "HTML5", "CSS3"],
+    category: "Product Engineering · Full-Stack",
     art: assetUrls.productSystemsArt,
-    links: {}, // TODO: add case study, live demo, and source URLs.
+    links: {},
+  },
+  {
+    title: "AI Study Assistant — RAG Knowledge Q&A",
+    date: "2025",
+    description:
+      "Engineered a Retrieval-Augmented Generation (RAG) knowledge assistant enabling semantic search over 500+ pages of academic lecture notes. Implemented vector indexing with ChromaDB, source citation, and a streaming FastAPI microservice paired with a Streamlit chat UI and conversational memory.",
+    result: "Accurate contextual retrieval with exact page citations and multi-turn conversational context.",
+    technologies: ["LangChain", "ChromaDB", "FastAPI", "Streamlit", "Python", "RAG"],
+    category: "Applied AI · Solo Development",
+    links: {},
+  },
+  {
+    title: "HR Analytics Capstone — LLM Data Pipeline",
+    date: "2025",
+    description:
+      "Developed an enterprise NLP and data pipeline for IBM SkillsBuild × Hacktiv8 that processed 838,566 employee reviews. Orchestrated multi-step processing: cleaning, LLM classification using IBM Granite, automatic sentiment summarization, and executive recommendation synthesis.",
+    result: "Scaled data transformation and sentiment synthesis across 838,566 employee records.",
+    technologies: ["IBM Granite", "Data Pipeline", "Python", "Pandas", "Analytics", "NLP"],
+    category: "Data Science · AI Pipeline",
+    links: {},
+  },
+  {
+    title: "RA Al-Fathunnisa — Academic Portal & PPDB",
+    date: "Feb 2024 — Jun 2024",
+    description:
+      "Built a production full-stack student admission (PPDB) and academic administration management system for an educational institution. Automated registration workflows, student records, document verification, and administrative reporting.",
+    result: "Reduced manual administrative processing time by 50% through workflow automation.",
+    technologies: ["PHP", "Laravel", "Bootstrap", "MySQL", "Git", "GitHub Actions"],
+    category: "Client Work · Full-Stack",
+    links: {},
+  },
+  {
+    title: "CV. Putra AR — CRM & Loyalty Platform",
+    date: "Mar 2024 — Jun 2024",
+    description:
+      "Developed and shipped a CRM-focused web platform for an F&B and retail client. Features customer loyalty tracking, automated feedback collection, service catalog management, and automated CI/CD deployment pipelines.",
+    result: "Delivered production system two weeks ahead of schedule with zero-downtime deployment.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "CI/CD"],
+    category: "Client Work · Full-Stack",
+    links: {},
   },
 ];
 
-export const otherProjects: readonly Project[] = [
-  {
-    title: "AI Study Assistant",
-    date: "2025",
-    description:
-      "Created a RAG-based knowledge Q&A experience with semantic search over 500+ pages of lecture notes, source citation, and conversation memory.",
-    technologies: ["LangChain", "ChromaDB", "FastAPI", "Streamlit"],
-    category: "Applied AI · Solo Development",
-  },
-  {
-    title: "HR Analytics Capstone",
-    date: "2025",
-    description:
-      "Processed 838,566 employee reviews using an LLM-powered pipeline for classification, summarization, and executive recommendations.",
-    technologies: ["IBM Granite", "Data Pipeline", "Analytics"],
-    category: "Data Science",
-  },
-  {
-    title: "Business Intelligence Data Warehouse",
-    date: "2025 — 2026",
-    description:
-      "Designed a star-schema warehouse around national higher-education data and translated findings into a peer-reviewed JITET manuscript.",
-    technologies: ["Star Schema", "SQL", "Looker Studio"],
-    category: "Research · Business Intelligence",
-  },
-  {
-    title: "CV. Putra AR",
-    date: "Mar 2024 — Jun 2024",
-    description:
-      "Led a CRM-focused website build with customer loyalty and feedback modules, delivered two weeks ahead of schedule.",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    category: "Client Work",
-  },
-  {
-    title: "RA Al-Fathunnisa",
-    date: "Feb 2024 — Jun 2024",
-    description:
-      "Built a full-stack registration and internship submission system that improved administrative efficiency by 50% through automation.",
-    technologies: ["PHP", "Bootstrap", "MySQL", "Git"],
-    category: "Client Work",
-  },
-];
+export const otherProjects: readonly Project[] = [];
 
 export const experience = [
   {
@@ -347,37 +358,160 @@ export const experience = [
 ] as const;
 
 export const awards = [
-  ["1st Place", "Life After DDC Challenge", "Dicoding Developer Conference · AI for Cloud Infra & DevOps track", "2026"],
-  ["1st Place", "MyBDDInsight Challenge", "Badan Ekraf Developer Day · Dicoding & Kemenparekraf", "Nov 2025"],
-  ["2nd Place", "Bookstagram Challenge", "Bank Indonesia", "Apr 2025"],
-  ["Gold Medal", "Mathematics", "Kompetisi Sains Mahasiswa Nasional Indonesia (KSPI)", "Jul 2024"],
-  ["Gold Medal", "Accounting", "Indonesian Student Science Competition (ISSC)", "Jul 2024"],
-  ["Gold Medal", "Mathematics", "Olimpiade Sains Nusantara (OLIMNUS)", "Jul 2024"],
-  ["Finalist", "SMEFU PART XIV", "Informatics Competition · Universitas Siliwangi", "2023"],
+  [
+    "1st Place",
+    "Life After DDC Challenge",
+    "Dicoding Developer Conference · AI for Cloud Infra & DevOps track",
+    "2026",
+    "Won among competing teams from across Indonesia in the AI for Cloud Infrastructure & DevOps track, demonstrating applied AI system design and cloud-native deployment architecture.",
+  ],
+  [
+    "1st Place",
+    "MyBDDInsight Challenge",
+    "Badan Ekraf Developer Day · Dicoding & Kemenparekraf",
+    "Nov 2025",
+    "Ranked first in a nationally-scoped data insight challenge co-hosted by Indonesia's Creative Economy Agency and Dicoding, delivering data-driven recommendations backed by structured analysis.",
+  ],
+  [
+    "2nd Place",
+    "Bookstagram Challenge",
+    "Bank Indonesia",
+    "Apr 2025",
+    "Recognized by Bank Indonesia for outstanding creative and informational content, competing among participants from multiple Indonesian universities and institutions.",
+  ],
+  [
+    "Gold Medal",
+    "Mathematics",
+    "Kompetisi Sains Mahasiswa Nasional Indonesia (KSPI)",
+    "Jul 2024",
+    "Awarded gold in the national student science olympiad for Mathematics, competing against participants from universities across Indonesia.",
+  ],
+  [
+    "Gold Medal",
+    "Accounting",
+    "Indonesian Student Science Competition (ISSC)",
+    "Jul 2024",
+    "Achieved gold medal in the International Student Science Competition, excelling in quantitative and analytical disciplines among multi-university competitors.",
+  ],
+  [
+    "Gold Medal",
+    "Mathematics",
+    "Olimpiade Sains Nusantara (OLIMNUS)",
+    "Jul 2024",
+    "Gold medal in OLIMNUS Mathematics Olympiad, a national-level competition testing advanced mathematical reasoning and problem-solving skills.",
+  ],
+  [
+    "Finalist",
+    "SMEFU PART XIV",
+    "Informatics Competition · Universitas Siliwangi",
+    "2023",
+    "Selected as finalist in an informatics and programming competition at the regional university level, demonstrating strong computational and software engineering foundations.",
+  ],
 ] as const;
 
 export const certifications = [
   {
-    name: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    description: "Foundational AWS cloud knowledge across infrastructure, security, storage, and reliability.",
-    credential: "", // TODO: add credential URL
+    name: "Dicoding Pijak Full Graduate · AI Capstone",
+    issuer: "Yayasan Dicoding Indonesia × IBM SkillsBuild",
+    date: "2026",
+    tag: "Program",
+    description:
+      "Completed 900+ hours of AI engineering training and led a 5-member team to ship PolaStok, an AI inventory forecasting MVP.",
+    credential: "/certificates/cert-dicoding-pijak-grad.webp",
+  },
+  {
+    name: "Internship Certificate · Data Science Division",
+    issuer: "PT VINIX Seven Aurum",
+    date: "Feb — May 2025",
+    tag: "Internship",
+    description:
+      "Rated 'very good' for the MSIB Batch 2 data science internship: analytics across 97 study programs from 11 universities.",
+    credential: "/certificates/Data_sains_Sertifikat_magang_Batch_2.webp",
   },
   {
     name: "ICT Project Manager",
     issuer: "BNSP Indonesia",
     date: "Valid Sep 2024 — Sep 2027",
+    tag: "Professional",
     description:
-      "Certified across project integration, scope, time, cost, quality, risk, procurement, and stakeholder management.",
-    credential: "", // TODO: add credential URL
+      "National competency certification covering project integration, scope, time, cost, quality, risk, procurement, and stakeholders.",
+    credential: "/certificates/cert-bnsp-ict-pm.webp",
   },
   {
     name: "Microsoft Office Specialist: Excel Associate",
     issuer: "Microsoft",
     date: "Dec 2024",
+    tag: "Professional",
     description: "Excel proficiency covering workbooks, data visualization, formulas, formatting, and professional data management.",
-    credential: "", // TODO: add credential URL
+    credential: "/certificates/cert-mos-excel.webp",
+  },
+  {
+    name: "AI Prompting Skills for Professionals",
+    issuer: "VINIX7 Soft-skill Training",
+    date: "Feb 2025",
+    tag: "Training",
+    description: "Soft-skill training on practical AI prompting techniques for professional workflows, held during the MSIB program.",
+    credential: "/certificates/1_Sertifikat_softskill.webp",
+  },
+  {
+    name: "Gemini Certified Student (University)",
+    issuer: "Google for Education",
+    date: "2025",
+    tag: "Google",
+    description: "Certified for the knowledge, skills, and basic competencies needed to use Google AI. Valid Oct 2025 — Oct 2028.",
+    credential: "/certificates/gemini-certified-student.webp",
+  },
+  {
+    name: "AWS Cloud Practitioner Essentials",
+    issuer: "Dicoding Indonesia",
+    date: "2024",
+    tag: "Cloud",
+    description: "Foundational AWS cloud knowledge across infrastructure, security, storage, pricing, and reliability.",
+    credential: "",
+  },
+  {
+    name: "Dicoding AI/ML Learning Path",
+    issuer: "Dicoding Indonesia",
+    date: "2025 — 2026",
+    tag: "AI / ML",
+    description:
+      "Four courses: AI Fundamentals, Machine Learning for Beginners, Deep Learning Fundamentals, and Building Machine Learning Systems.",
+    credential: "",
+  },
+  {
+    name: "Anthropic Academy",
+    issuer: "Anthropic",
+    date: "Sep — Oct 2026",
+    tag: "AI / LLM",
+    description:
+      "Five courses: Claude Code in Action, Introduction to MCP, MCP Advanced Topics, AI Fluency, and Claude Platform 101.",
+    credential: "",
+  },
+  {
+    name: "ICONIC IT Participant",
+    issuer: "HMIF Universitas Siliwangi",
+    date: "Sep 2024",
+    tag: "Event",
+    description: "Participant in the Innovative Competition and National Informatics Conference on digital transformation through technology.",
+    credential: "/certificates/Sertifikat_Peserta_ICONIC_IT_Fauzi_Noorsyabani.webp",
+  },
+  {
+    name: "IBM Granite Learning Path",
+    issuer: "IBM SkillsBuild",
+    date: "Jul 2025",
+    tag: "AI / LLM",
+    description:
+      "Three courses on classifying and summarizing data with IBM Granite (6.5 learning hours), the foundation for the 838K-review HR analytics pipeline.",
+    credential: "/certificates/ibm-granite-learning-path.webp",
+  },
+  {
+    name: "Liga Bisnis Sosial Siliwangi (LIBSOS)",
+    issuer: "UPT Kewirausahaan Mahasiswa, Universitas Siliwangi",
+    date: "Feb 2023",
+    tag: "Social Business",
+    description:
+      "Participated in a 5-day social-business league (17-21 Feb 2023) run in Selamanik Village, Ciamis, with CV Cakrawala Sarwa.",
+    credential: "/certificates/libsos-siliwangi.webp",
   },
 ] as const;
 
