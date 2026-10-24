@@ -154,10 +154,15 @@ export const translations = {
     contact: {
       kicker: "START A CONVERSATION",
       title: "Let’s Discuss Engineering Solutions or Collaborations",
+      connectTitle: "Let's connect",
+      connectSubtitle:
+        "Building something, hiring, or just want to talk shop? I'm always happy to meet other builders. Reach out and say hi.",
+      emailBtn: "Send me an email",
+      linkedinBtn: "Connect on LinkedIn",
+      orFormBtn: "Or send a message via form →",
       copy: "Whether you have an applied AI challenge, full-stack product opening, or a collaborative venture, I’m ready to connect.",
       directChannels: "Direct Channels",
       emailLabel: "Email",
-      phoneLabel: "Phone",
       locationLabel: "Location",
       preferredTitle: "How to connect",
       preferredCopy: "Send a brief overview of your project, technical context, or role requirements. I will respond promptly with practical next steps.",
@@ -173,6 +178,8 @@ export const translations = {
     },
     footer: {
       tagline: "Engineering intelligent products and reliable digital experiences.",
+      footerTag: "I'm Fauzi — Let's build together",
+      backToTop: "Back to Top",
       quickLinks: "Navigation",
       connect: "Connect",
       rights: "Made in Indonesia.",
@@ -333,10 +340,15 @@ export const translations = {
     contact: {
       kicker: "HUBUNGI SAYA",
       title: "Mari Berkolaborasi dan Bangun Solusi Bersama",
+      connectTitle: "Mari terhubung",
+      connectSubtitle:
+        "Sedang membangun sesuatu, membuka peluang kerja, atau sekadar ingin berdiskusi? Saya selalu senang bertemu dan bertukar ide. Jangan ragu untuk menyapa.",
+      emailBtn: "Kirim saya email",
+      linkedinBtn: "Terhubung di LinkedIn",
+      orFormBtn: "Atau kirim pesan via formulir →",
       copy: "Apakah Anda memiliki kebutuhan rekayasa sistem AI, peluang posisi profesional, atau proyek strategis yang ingin didiskusikan? Saya siap terhubung.",
       directChannels: "Kontak Langsung",
       emailLabel: "Email",
-      phoneLabel: "Telepon",
       locationLabel: "Domisili",
       preferredTitle: "Langkah Diskusi",
       preferredCopy: "Sampaikan garis besar kebutuhan sistem, sasaran proyek, atau peluang kerja sama yang Anda miliki. Saya akan segera merespons dengan rencana tindak lanjut yang konkret.",
@@ -352,6 +364,8 @@ export const translations = {
     },
     footer: {
       tagline: "Mengembangkan produk cerdas dan arsitektur digital dengan integritas serta keandalan tinggi.",
+      footerTag: "Saya Fauzi — Mari bangun bersama",
+      backToTop: "Kembali ke Atas",
       quickLinks: "Navigasi",
       connect: "Koneksi",
       rights: "Dibuat di Indonesia.",

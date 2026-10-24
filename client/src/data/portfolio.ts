@@ -23,8 +23,8 @@ export const links = {
   resume: "/Fauzi_Noorsyabani_CV.pdf",
   github: "https://github.com/fauzinoorsyabani",
   linkedin: "https://linkedin.com/in/fauzinoorsyabani",
+  medium: "https://medium.com/@fnoorsyabani",
   email: "mailto:fauzinoorsyabani05@gmail.com",
-  phone: "tel:+6281310641534",
 } as const;
 
 export const person = {
@@ -35,7 +35,6 @@ export const person = {
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",
-  phone: "+62 813-1064-1534",
   availability: "Open to Work",
   about:
     "Fauzi is a Full Stack AI Engineer and Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specializing in AI/LLM engineering and data systems. He led a 5-member engineering team through a 900+ hour AI product capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
@@ -352,13 +351,12 @@ export const experience = [
     type: "Volunteer",
     organization: "Global Game Jam Tasikmalaya",
     role: "Event Organizer Committee",
-    date: "January 2025 · 2026 involvement to confirm",
+    date: "January 2025",
     location: "Creative Center Tasikmalaya",
     details: [
       "Supported a 48-hour collaborative game-creation event for developers, artists, and storytellers.",
       "Helped strengthen inclusive access to game development and the local technology ecosystem.",
     ],
-    note: "TODO: Confirm the final year and wording for the additional 2026 organization effort before publishing.",
   },
 ] as const;
 

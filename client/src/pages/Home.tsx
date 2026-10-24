@@ -22,7 +22,6 @@ import {
   MapPin,
   Menu,
   Pause,
-  Phone,
   Play,
   Send,
   Sparkles,
@@ -57,6 +56,14 @@ import { motion } from "framer-motion";
 
 type FormFields = { name: string; email: string; subject: string; message: string };
 type FormErrors = Partial<Record<keyof FormFields, string>>;
+
+function MediumIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+    </svg>
+  );
+}
 
 function useCountUp(end: number, enabled: boolean, reducedMotion: boolean) {
   const [value, setValue] = useState(reducedMotion ? end : 0);
@@ -1027,10 +1034,12 @@ export default function Home() {
                   <Mail className="h-4 w-4 text-neutral-900" /> Email
                 </a>
                 <a
-                  href={links.phone}
+                  href={links.medium}
+                  target="_blank"
+                  rel="noreferrer"
                   className="inline-flex items-center gap-1.5 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
-                  <Phone className="h-4 w-4 text-neutral-900" /> {language === "en" ? "Phone" : "Telepon"}
+                  <MediumIcon className="h-4 w-4 text-neutral-900" /> Medium
                 </a>
               </div>
             </div>
@@ -1526,11 +1535,6 @@ export default function Home() {
                           </li>
                         ))}
                       </ul>
-                      {"note" in item && item.note ? (
-                        <p className="mt-5 rounded-lg border border-neutral-300 bg-neutral-50 p-4 text-xs leading-relaxed text-neutral-800 shadow-2xs">
-                          <strong className="font-semibold text-neutral-950">{t.experience.editorialNote}:</strong> {item.note}
-                        </p>
-                      ) : null}
                     </div>
                   </div>
                 </article>
@@ -1602,246 +1606,156 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 07: Contact */}
-        <section id="contact" className="scroll-mt-28 relative overflow-hidden bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950">
-          <div className="absolute inset-0 data-grid opacity-40 pointer-events-none" aria-hidden="true" />
-          {/* Ambient gradient aura */}
-          <div className="pointer-events-none absolute -left-20 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tr from-indigo-100/40 via-sky-100/30 to-transparent blur-3xl opacity-75" aria-hidden="true" />
-          {!prefersReducedMotion ? (
-            <SignalOrbit reverse className="contact-orbit absolute -right-20 top-10 z-0 hidden h-[25rem] w-[25rem] opacity-50 lg:block" />
-          ) : null}
-          <div className="relative mx-auto max-w-4xl lg:max-w-[1000px] reveal">
-            <SectionHeading
-              index="07"
-              kicker={t.contact.kicker}
-              title={t.contact.title}
-              copy={t.contact.copy}
-            />
-            <div className="mt-14 grid gap-12 lg:grid-cols-[.86fr_1.14fr] lg:gap-20">
-              <aside className="motion-contact space-y-8">
-                <div>
-                  <p className="mono-type text-[0.61rem] font-bold uppercase tracking-[0.13em] text-neutral-950">
-                    {t.contact.directChannels}
-                  </p>
-                  <div className="mt-5 space-y-4">
-                    <a
-                      href={links.email}
-                      className="group flex items-start gap-3 rounded-xl border border-neutral-300 bg-white p-4 shadow-xs transition hover:border-neutral-950 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
-                    >
-                      <Mail className="mt-0.5 h-5 w-5 text-neutral-950" />
-                      <span>
-                        <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-                          {t.contact.emailLabel}
-                        </span>
-                        <span className="mt-1 block text-sm font-bold text-neutral-950 group-hover:underline">
-                          {person.email}
-                        </span>
-                      </span>
-                    </a>
-                    <a
-                      href={links.phone}
-                      className="group flex items-start gap-3 rounded-xl border border-neutral-300 bg-white p-4 shadow-xs transition hover:border-neutral-950 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
-                    >
-                      <Phone className="mt-0.5 h-5 w-5 text-neutral-950" />
-                      <span>
-                        <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-                          {t.contact.phoneLabel}
-                        </span>
-                        <span className="mt-1 block text-sm font-bold text-neutral-950 group-hover:underline">
-                          {person.phone}
-                        </span>
-                      </span>
-                    </a>
-                    <div className="flex items-start gap-3 rounded-xl border border-neutral-300 bg-neutral-50 p-4 shadow-xs">
-                      <MapPin className="mt-0.5 h-5 w-5 text-neutral-950" />
-                      <span>
-                        <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-                          {t.contact.locationLabel}
-                        </span>
-                        <span className="mt-1 block text-sm font-bold text-neutral-950">{person.location}</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-xl border border-neutral-300 bg-neutral-50 p-5 shadow-xs">
-                  <p className="mono-type text-[0.61rem] font-bold uppercase tracking-[0.12em] text-neutral-950">
-                    {t.contact.preferredTitle}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-700">
-                    {t.contact.preferredCopy}
-                  </p>
-                </div>
-              </aside>
+        {/* Section 07: Contact / Let's Connect — Gede Arya watermark inspired */}
+        <section
+          id="contact"
+          className="scroll-mt-28 relative overflow-hidden bg-white dark:bg-neutral-950 px-4 pt-24 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 text-neutral-950 dark:text-neutral-50 border-t border-neutral-200 dark:border-neutral-800"
+        >
+          {/* Giant watermark typography in background */}
+          <div
+            className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center select-none overflow-hidden z-0"
+            aria-hidden="true"
+          >
+            <span className="display-type text-[16vw] sm:text-[14vw] font-bold tracking-tight text-neutral-950/[0.038] dark:text-white/[0.045] leading-[0.88] whitespace-nowrap">
+              Fauzi
+            </span>
+            <span className="display-type text-[12vw] sm:text-[10.5vw] font-bold tracking-tight text-neutral-950/[0.038] dark:text-white/[0.045] leading-[0.88] whitespace-nowrap">
+              Noorsyabani
+            </span>
+          </div>
 
-              <form
-                onSubmit={handleForm}
-                noValidate
-                className="motion-contact rounded-2xl border border-neutral-300 bg-white p-6 shadow-md sm:p-8"
+          <div className="relative z-10 mx-auto max-w-2xl px-4 text-center reveal">
+            {/* Centered circular avatar with waving hand emoji */}
+            <div className="relative mx-auto mb-6 inline-block">
+              <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-full overflow-hidden ring-4 ring-white dark:ring-neutral-900 shadow-lg shadow-neutral-900/10 dark:shadow-black/40">
+                <img
+                  src={assetUrls.heroPhoto}
+                  alt="Fauzi Noorsyabani"
+                  className="h-full w-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <motion.span
+                className="absolute -bottom-1 -left-2 text-2xl select-none"
+                role="img"
+                aria-label="waving hand"
+                animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut", repeatDelay: 1 }}
               >
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <label className="block text-sm font-bold text-neutral-950">
-                    {t.contact.formName}
-                    <input
-                      value={form.name}
-                      onChange={(event) => setForm((value) => ({ ...value, name: event.target.value }))}
-                      aria-invalid={Boolean(formErrors.name)}
-                      aria-describedby={formErrors.name ? "name-error" : undefined}
-                      className="mt-2 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
-                      placeholder={language === "en" ? "Your name" : "Nama Anda"}
-                    />
-                    {formErrors.name ? (
-                      <span id="name-error" className="mt-1.5 block text-xs text-red-600">
-                        {formErrors.name}
-                      </span>
-                    ) : null}
-                  </label>
-                  <label className="block text-sm font-bold text-neutral-950">
-                    {t.contact.formEmail}
-                    <input
-                      type="email"
-                      value={form.email}
-                      onChange={(event) => setForm((value) => ({ ...value, email: event.target.value }))}
-                      aria-invalid={Boolean(formErrors.email)}
-                      aria-describedby={formErrors.email ? "email-error" : undefined}
-                      className="mt-2 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
-                      placeholder="you@example.com"
-                    />
-                    {formErrors.email ? (
-                      <span id="email-error" className="mt-1.5 block text-xs text-red-600">
-                        {formErrors.email}
-                      </span>
-                    ) : null}
-                  </label>
-                </div>
-                <label className="mt-5 block text-sm font-bold text-neutral-950">
-                  {t.contact.formSubject}
-                  <input
-                    value={form.subject}
-                    onChange={(event) => setForm((value) => ({ ...value, subject: event.target.value }))}
-                    aria-invalid={Boolean(formErrors.subject)}
-                    aria-describedby={formErrors.subject ? "subject-error" : undefined}
-                    className="mt-2 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
-                    placeholder={t.contact.formSubjectPlaceholder}
-                  />
-                  {formErrors.subject ? (
-                    <span id="subject-error" className="mt-1.5 block text-xs text-red-600">
-                      {formErrors.subject}
-                    </span>
-                  ) : null}
-                </label>
-                <label className="mt-5 block text-sm font-bold text-neutral-950">
-                  {t.contact.formMessage}
-                  <textarea
-                    value={form.message}
-                    onChange={(event) => setForm((value) => ({ ...value, message: event.target.value }))}
-                    aria-invalid={Boolean(formErrors.message)}
-                    aria-describedby={formErrors.message ? "message-error" : undefined}
-                    rows={5}
-                    className="mt-2 w-full resize-y rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
-                    placeholder={t.contact.formMessagePlaceholder}
-                  />
-                  {formErrors.message ? (
-                    <span id="message-error" className="mt-1.5 block text-xs text-red-600">
-                      {formErrors.message}
-                    </span>
-                  ) : null}
-                </label>
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                  <p className="max-w-xs text-xs leading-5 text-neutral-600">
-                    {t.contact.formNotice}
-                  </p>
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-950 px-6 py-3.5 text-sm font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 w-full sm:w-auto"
-                  >
-                    {t.contact.btnSubmit} <Send className="h-4 w-4" />
-                  </button>
-                </div>
-                {formState === "success" ? (
-                  <p className="mt-5 flex items-center gap-2 text-sm text-neutral-800">
-                    <Check className="h-4 w-4 text-emerald-600" />
-                    {t.contact.formSuccess}
-                  </p>
-                ) : null}
-              </form>
+                👋
+              </motion.span>
+            </div>
+
+            {/* Title: Let's connect */}
+            <h2 className="display-type text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white">
+              {t.contact.connectTitle}
+            </h2>
+
+            {/* Subtitle */}
+            <p className="mt-4 text-sm sm:text-base leading-relaxed text-neutral-600 dark:text-neutral-400">
+              {t.contact.connectSubtitle}
+            </p>
+
+            {/* Pill CTA Buttons */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+              <a
+                href={links.email}
+                className="inline-flex items-center gap-2.5 rounded-full bg-neutral-950 dark:bg-white px-6 py-3.5 text-sm font-semibold text-white dark:text-neutral-950 shadow-sm transition hover:bg-neutral-800 dark:hover:bg-neutral-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 dark:focus-visible:ring-white focus-visible:ring-offset-2"
+              >
+                <Mail className="h-4 w-4" />
+                <span>{t.contact.emailBtn}</span>
+              </a>
+              <a
+                href={links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2.5 rounded-full border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 px-6 py-3.5 text-sm font-semibold text-neutral-900 dark:text-white shadow-xs transition hover:border-neutral-950 dark:hover:border-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white focus-visible:ring-offset-2"
+              >
+                <Linkedin className="h-4 w-4" />
+                <span>{t.contact.linkedinBtn}</span>
+              </a>
+            </div>
+
+            {/* Optional form modal trigger */}
+            <div className="mt-5">
+              <button
+                type="button"
+                onClick={() => setContactOpen(true)}
+                className="text-xs text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white underline underline-offset-4 transition focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950"
+              >
+                {t.contact.orFormBtn}
+              </button>
             </div>
           </div>
         </section>
       </main>
 
-      {/* Footer — Clean Minimalist Light */}
-      <footer className="bg-neutral-50/90 border-t border-neutral-300 px-4 py-12 text-neutral-700 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-4xl lg:max-w-[1000px] gap-9 border-t border-neutral-300 pt-9 md:grid-cols-[1.2fr_.7fr_.7fr] md:gap-12">
-          <div>
-            <div className="flex items-center gap-4">
-              <span className="relative flex h-12 w-12 items-center justify-center rounded-lg border border-neutral-300 bg-white shadow-xs">
-                <img src={assetUrls.logo} alt="" aria-hidden="true" loading="lazy" decoding="async" width={40} height={40} className="h-10 w-10 object-contain" />
-                <i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-neutral-950" />
-              </span>
-              <span className="mono-type grid text-left text-[0.66rem] font-bold leading-[1.1] tracking-[0.18em] text-neutral-950">
-                <span>FAUZI</span>
-                <span className="mt-1 text-neutral-500">NOORSYABANI</span>
-              </span>
-            </div>
-            <p className="mt-4 max-w-sm text-sm leading-7 text-neutral-700">
-              {t.footer.tagline}
-            </p>
+      {/* Footer — Gede Arya inspired minimalist bar */}
+      <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 px-4 py-8 text-neutral-700 dark:text-neutral-300 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 sm:flex-row">
+          {/* Left: I'm Fauzi — Let's build together */}
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-medium text-neutral-900 dark:text-neutral-100">
+              {language === "en" ? "I'm Fauzi" : "Saya Fauzi"}
+            </span>
+            <span className="h-px w-6 sm:w-8 bg-neutral-300 dark:bg-neutral-700" aria-hidden="true" />
+            <span className="text-sm text-neutral-500 dark:text-neutral-400">
+              {language === "en" ? "Let's build together" : "Mari bangun bersama"}
+            </span>
           </div>
-          <div>
-            <p className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.14em] text-neutral-950">
-              {t.footer.quickLinks}
-            </p>
-            <div className="mt-4 grid gap-2">
-              {navItems.map(([label, id]) => (
-                <button
-                  key={id}
-                  onClick={() => scrollTo(id)}
-                  className="w-fit text-sm text-neutral-700 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+
+          {/* Center: Social links (Medium, Email, LinkedIn, GitHub) */}
+          <div className="flex items-center gap-5 text-neutral-700 dark:text-neutral-300">
+            <a
+              href={links.medium}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Medium"
+              className="transition hover:text-neutral-950 dark:hover:text-white hover:scale-110 active:scale-95"
+            >
+              <MediumIcon className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+            </a>
+            <a
+              href={links.email}
+              aria-label="Email"
+              className="transition hover:text-neutral-950 dark:hover:text-white hover:scale-110 active:scale-95"
+            >
+              <Mail className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+            </a>
+            <a
+              href={links.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="transition hover:text-neutral-950 dark:hover:text-white hover:scale-110 active:scale-95"
+            >
+              <Linkedin className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+            </a>
+            <a
+              href={links.github}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="transition hover:text-neutral-950 dark:hover:text-white hover:scale-110 active:scale-95"
+            >
+              <Github className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
+            </a>
           </div>
-          <div>
-            <p className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.14em] text-neutral-950">{t.footer.connect}</p>
-            <div className="mt-4 grid gap-2">
-              <a
-                href={links.email}
-                className="w-fit text-sm text-neutral-700 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
-              >
-                Email
-              </a>
-              {links.linkedin ? (
-                <a
-                  href={links.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-fit text-sm text-neutral-700 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
-                >
-                  LinkedIn
-                </a>
-              ) : null}
-              {links.github ? (
-                <a
-                  href={links.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-fit text-sm text-neutral-700 transition hover:text-neutral-950"
-                >
-                  GitHub
-                </a>
-              ) : (
-                <PendingAction
-                  label="GitHub"
-                  onPending={notifyPending}
-                  className="w-fit text-left text-sm text-neutral-700 transition hover:text-neutral-950"
-                />
-              )}
-            </div>
-          </div>
+
+          {/* Right: Back to Top */}
+          <button
+            type="button"
+            onClick={() => scrollTo("top")}
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-neutral-700 dark:text-neutral-300 transition hover:text-neutral-950 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+          >
+            <span>{t.footer.backToTop}</span>
+            <ArrowUpRight className="h-4 w-4" />
+          </button>
         </div>
-        <div className="mx-auto mt-8 flex max-w-4xl lg:max-w-[1000px] flex-col gap-2 border-t border-neutral-300 pt-5 text-[0.68rem] text-neutral-600 sm:flex-row sm:items-center sm:justify-between">
+
+        {/* Subtle sub-footer rights */}
+        <div className="mx-auto mt-6 flex max-w-5xl flex-col items-center justify-between gap-2 border-t border-neutral-100 dark:border-neutral-900 pt-4 text-[0.68rem] text-neutral-400 dark:text-neutral-600 sm:flex-row">
           <p>© {new Date().getFullYear()} Fauzi Noorsyabani. {t.footer.rights}</p>
           <p className="mono-type text-[0.58rem] uppercase tracking-[0.1em]">Signal Ledger / portfolio v1.0</p>
         </div>
@@ -1849,58 +1763,114 @@ export default function Home() {
 
       {/* Contact & Networking Modal */}
       <Dialog open={contactOpen} onOpenChange={setContactOpen}>
-        <DialogContent className="network-dialog rounded-xl border border-neutral-300 bg-white p-0 text-neutral-950 shadow-2xl shadow-neutral-900/15 sm:max-w-md">
-          <div className="relative overflow-hidden p-7 sm:p-9">
+        <DialogContent className="network-dialog rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-0 text-neutral-950 dark:text-white shadow-2xl sm:max-w-md">
+          <div className="relative overflow-hidden p-6 sm:p-7">
             <div className="relative z-10">
               <DialogHeader>
                 <p className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.16em] text-neutral-500">
                   {language === "en" ? "FN / Networking channel" : "FN / Kanal Jaringan"}
                 </p>
-                <DialogTitle className="display-type mt-4 text-3xl font-bold tracking-[-0.06em] text-neutral-950">
+                <DialogTitle className="display-type mt-2 text-2xl font-bold tracking-tight text-neutral-950 dark:text-white">
                   {language === "en" ? "Open a conversation." : "Buka percakapan."}
                 </DialogTitle>
-                <DialogDescription className="mt-3 max-w-sm text-sm leading-7 text-neutral-700">
+                <DialogDescription className="mt-1.5 text-xs leading-relaxed text-neutral-600 dark:text-neutral-400">
                   {language === "en"
-                    ? "For collaboration, product work, or applied-AI conversations, use the channel that fits your context."
-                    : "Untuk kolaborasi, pengembangan produk, atau konsultasi AI terapan, hubungi saluran yang sesuai."}
+                    ? "Leave a note or inquiry below, or connect directly via email or LinkedIn."
+                    : "Tuliskan pesan atau pertanyaan Anda di bawah, atau hubungi langsung via email atau LinkedIn."}
                 </DialogDescription>
               </DialogHeader>
-              <div className="mt-7 grid gap-3">
+
+              {/* Direct channels in dialog */}
+              <div className="mt-4 grid grid-cols-2 gap-2.5">
                 <a
                   href={links.email}
-                  className="group flex items-center justify-between rounded-lg border border-neutral-300 bg-neutral-50 px-4 py-4 transition hover:border-neutral-900 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/60 px-3 py-2.5 text-xs font-semibold text-neutral-900 dark:text-white transition hover:border-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800"
                 >
-                  <span className="flex items-center gap-3">
-                    <Mail className="h-4 w-4 text-neutral-950" />
-                    <span>
-                      <span className="block mono-type text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-neutral-500">
-                        Email
-                      </span>
-                      <span className="mt-1 block text-sm font-bold text-neutral-950">{person.email}</span>
-                    </span>
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 text-neutral-500 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neutral-950" />
+                  <Mail className="h-3.5 w-3.5 shrink-0" />
+                  <span className="truncate">Email</span>
                 </a>
                 <a
                   href={links.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center justify-between rounded-lg border border-neutral-300 bg-neutral-50 px-4 py-4 transition hover:border-neutral-900 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-800/60 px-3 py-2.5 text-xs font-semibold text-neutral-900 dark:text-white transition hover:border-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800"
                 >
-                  <span className="flex items-center gap-3">
-                    <Linkedin className="h-4 w-4 text-neutral-950" />
-                    <span>
-                      <span className="block mono-type text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-neutral-500">
-                        LinkedIn
-                      </span>
-                      <span className="mt-1 block text-sm font-bold text-neutral-950">
-                        linkedin.com/in/fauzinoorsyabani
-                      </span>
-                    </span>
-                  </span>
-                  <ExternalLink className="h-4 w-4 text-neutral-500 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neutral-950" />
+                  <Linkedin className="h-3.5 w-3.5 shrink-0" />
+                  <span className="truncate">LinkedIn</span>
                 </a>
               </div>
+
+              {/* Form inside dialog */}
+              <form onSubmit={handleForm} noValidate className="mt-4 space-y-3">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div>
+                    <label className="block text-[0.72rem] font-bold text-neutral-950 dark:text-neutral-200 mb-1">
+                      {t.contact.formName}
+                    </label>
+                    <input
+                      value={form.name}
+                      onChange={(e) => setForm((v) => ({ ...v, name: e.target.value }))}
+                      className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-3 py-2 text-xs text-neutral-950 dark:text-white placeholder:text-neutral-400 focus:border-neutral-950 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-neutral-950"
+                      placeholder={language === "en" ? "Your name" : "Nama Anda"}
+                    />
+                    {formErrors.name && <span className="mt-1 block text-[0.68rem] text-red-600">{formErrors.name}</span>}
+                  </div>
+                  <div>
+                    <label className="block text-[0.72rem] font-bold text-neutral-950 dark:text-neutral-200 mb-1">
+                      {t.contact.formEmail}
+                    </label>
+                    <input
+                      type="email"
+                      value={form.email}
+                      onChange={(e) => setForm((v) => ({ ...v, email: e.target.value }))}
+                      className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-3 py-2 text-xs text-neutral-950 dark:text-white placeholder:text-neutral-400 focus:border-neutral-950 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-neutral-950"
+                      placeholder="you@example.com"
+                    />
+                    {formErrors.email && <span className="mt-1 block text-[0.68rem] text-red-600">{formErrors.email}</span>}
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[0.72rem] font-bold text-neutral-950 dark:text-neutral-200 mb-1">
+                    {t.contact.formSubject}
+                  </label>
+                  <input
+                    value={form.subject}
+                    onChange={(e) => setForm((v) => ({ ...v, subject: e.target.value }))}
+                    className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-3 py-2 text-xs text-neutral-950 dark:text-white placeholder:text-neutral-400 focus:border-neutral-950 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-neutral-950"
+                    placeholder={t.contact.formSubjectPlaceholder}
+                  />
+                  {formErrors.subject && <span className="mt-1 block text-[0.68rem] text-red-600">{formErrors.subject}</span>}
+                </div>
+                <div>
+                  <label className="block text-[0.72rem] font-bold text-neutral-950 dark:text-neutral-200 mb-1">
+                    {t.contact.formMessage}
+                  </label>
+                  <textarea
+                    value={form.message}
+                    onChange={(e) => setForm((v) => ({ ...v, message: e.target.value }))}
+                    rows={3}
+                    className="w-full resize-y rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-3 py-2 text-xs text-neutral-950 dark:text-white placeholder:text-neutral-400 focus:border-neutral-950 dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-neutral-950"
+                    placeholder={t.contact.formMessagePlaceholder}
+                  />
+                  {formErrors.message && <span className="mt-1 block text-[0.68rem] text-red-600">{formErrors.message}</span>}
+                </div>
+                <div className="flex items-center justify-between pt-1">
+                  <p className="text-[0.65rem] text-neutral-500 max-w-[200px] leading-tight">
+                    {t.contact.formNotice}
+                  </p>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center gap-1.5 rounded-md bg-neutral-950 dark:bg-white px-4 py-2 text-xs font-bold text-white dark:text-neutral-950 transition hover:bg-neutral-800 dark:hover:bg-neutral-200"
+                  >
+                    {t.contact.btnSubmit} <Send className="h-3 w-3" />
+                  </button>
+                </div>
+                {formState === "success" && (
+                  <p className="mt-2 flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400">
+                    <Check className="h-3.5 w-3.5" /> {t.contact.formSuccess}
+                  </p>
+                )}
+              </form>
             </div>
           </div>
         </DialogContent>

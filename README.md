@@ -76,7 +76,7 @@ Open [`client/src/data/portfolio.ts`](client/src/data/portfolio.ts) to update th
 
 | Need to update | Configuration field or collection | Notes |
 | --- | --- | --- |
-| Name, title, bio, contact details | `person` | The `email` and `phone` values support both display and contact fallback behavior. |
+| Name, title, bio, contact details | `person` | The `email` value supports both display and contact fallback behavior. |
 | Resume, GitHub, LinkedIn | `links` | Use full URLs; leave a value blank if it is not yet verified. Blank values show an accessible pending state rather than a broken link. |
 | Hero and About portrait | `assetUrls.profilePhoto` | Current managed portrait: `/manus-storage/fauzi-noorsyabani-portrait_5eb3cca1.jpg`. |
 | Generated editorial artwork | `assetUrls.heroData`, `tuitionArt`, `productSystemsArt` | Use these only as project illustration; never represent generated art as a real product screenshot. |
@@ -104,11 +104,11 @@ Store the final PDF in managed project storage, then place the returned URL in `
 
 ```ts
 export const links = {
-  resume: "/manus-storage/fauzi-noorsyabani-resume.pdf",
-  github: "https://github.com/your-verified-handle",
+  resume: "/Fauzi_Noorsyabani_CV.pdf",
+  github: "https://github.com/fauzinoorsyabani",
   linkedin: "https://linkedin.com/in/fauzinoorsyabani",
+  medium: "https://medium.com/@fnoorsyabani",
   email: "mailto:fauzinoorsyabani05@gmail.com",
-  phone: "tel:+6281310641534",
 } as const;
 ```
 
