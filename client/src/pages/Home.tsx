@@ -94,13 +94,13 @@ function SectionHeading({
   dark?: boolean;
 }) {
   return (
-    <div className="section-heading grid gap-6 border-t border-neutral-200 pt-6 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-10">
+    <div className="section-heading grid gap-6 border-t border-neutral-300 pt-6 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-10">
       <div className="dossier-rail mono-type text-xs font-semibold tracking-[0.15em] text-neutral-900">
         <div className="flex items-center gap-2">
           <span>{index}</span>
           <span className="h-px w-5 bg-neutral-900" />
         </div>
-        <div className="relative mt-5 flex h-12 w-12 items-center justify-center rounded-md border border-neutral-200 bg-white shadow-xs">
+        <div className="relative mt-5 flex h-12 w-12 items-center justify-center rounded-md border border-neutral-300 bg-white shadow-xs">
           <img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10 object-contain" />
           <i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-neutral-900" />
         </div>
@@ -108,10 +108,10 @@ function SectionHeading({
       </div>
       <div className="section-heading-copy">
         <p className="section-kicker">{kicker}</p>
-        <h2 className="display-type mt-4 max-w-3xl text-4xl font-bold tracking-[-0.065em] text-neutral-950 sm:text-5xl lg:text-6xl">
+        <h2 className="display-type mt-4 max-w-3xl text-3xl font-bold leading-[1.08] tracking-[-0.05em] text-neutral-950 sm:text-5xl lg:text-6xl">
           {title}
         </h2>
-        {copy ? <p className="mt-5 max-w-2xl text-base leading-8 text-neutral-600">{copy}</p> : null}
+        {copy ? <p className="mt-5 max-w-2xl text-base leading-8 text-neutral-700">{copy}</p> : null}
       </div>
     </div>
   );
@@ -417,61 +417,66 @@ export default function Home() {
         {announcement}
       </p>
 
-      {/* Sticky Top Navigation */}
-      <header
-        className={`nav-surface fixed inset-x-0 top-0 z-50 transition-all duration-300 border-b ${
-          scrolled
-            ? "border-neutral-200 bg-white/95 shadow-xs backdrop-blur-md"
-            : "border-neutral-200/80 bg-white/90 backdrop-blur-md"
-        }`}
-      >
-        <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12">
+      {/* Floating Pill Top Navigation */}
+      <header className="fixed top-3 sm:top-5 inset-x-0 z-50 flex flex-col items-center px-4 sm:px-6 pointer-events-none transition-all duration-300">
+        <div
+          className={`nav-surface pointer-events-auto flex w-full max-w-5xl items-center justify-between rounded-full border transition-all duration-300 px-3.5 sm:px-5 py-2.5 ${
+            scrolled
+              ? "border-neutral-300/90 bg-white/95 shadow-[0_8px_30px_rgba(0,0,0,0.1)] backdrop-blur-xl dark:border-neutral-700/80 dark:bg-neutral-900/95 dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+              : "border-neutral-200/80 bg-white/85 shadow-[0_4px_20px_rgba(0,0,0,0.05)] backdrop-blur-md dark:border-neutral-800/80 dark:bg-neutral-900/85 dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+          }`}
+        >
+          {/* Logo & Identity */}
           <button
             onClick={() => scrollTo("top")}
             type="button"
             aria-label="Go to top of Fauzi Noorsyabani portfolio"
-            className="group flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
+            className="group flex items-center gap-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white pr-2"
           >
-            <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-md border border-neutral-200 bg-neutral-50">
+            <span className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center overflow-hidden rounded-full border border-neutral-300/80 bg-neutral-100 shadow-xs dark:border-neutral-700 dark:bg-neutral-800">
               <img
                 src={assetUrls.logo}
                 alt=""
                 aria-hidden="true"
-                className="h-8 w-8 object-contain transition-transform duration-200 group-hover:-translate-y-0.5"
+                className="h-6 w-6 sm:h-7 sm:w-7 object-contain transition-transform duration-200 group-hover:scale-105"
               />
-              <i className="absolute bottom-1 right-1 h-2 w-2 rounded-full border border-white bg-neutral-900" />
+              <i className="absolute bottom-0.5 right-0.5 h-2 w-2 rounded-full border border-white bg-emerald-500" />
             </span>
-            <span className="mono-type grid text-left text-[0.62rem] font-bold leading-[1.15] tracking-[0.16em] text-neutral-950">
+            <span className="mono-type grid text-left text-[0.6rem] sm:text-[0.62rem] font-bold leading-[1.15] tracking-[0.14em] text-neutral-950 dark:text-white">
               <span>FAUZI</span>
-              <span className="mt-0.5 text-neutral-500">NOORSYABANI</span>
+              <span className="text-[0.52rem] text-neutral-500 dark:text-neutral-400">NOORSYABANI</span>
             </span>
           </button>
 
-          <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
-            {navItems.map(([label, id]) => (
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                type="button"
-                aria-current={activeSection === id ? "page" : undefined}
-                className={`relative rounded-md px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.11em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
-                  activeSection === id ? "text-neutral-950 font-bold" : "text-neutral-600 hover:text-neutral-950"
-                }`}
-              >
-                {label}
-                {activeSection === id ? (
-                  <span aria-hidden="true" className="nav-active-signal absolute bottom-0 left-3 right-3 h-0.5 bg-neutral-950" />
-                ) : null}
-              </button>
-            ))}
+          {/* Desktop Nav Links in pill container */}
+          <nav aria-label="Primary" className="hidden items-center gap-1 rounded-full bg-neutral-100/70 p-1 dark:bg-neutral-800/60 lg:flex border border-neutral-200/50 dark:border-neutral-700/50">
+            {navItems.map(([label, id]) => {
+              const isActive = activeSection === id;
+              return (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  type="button"
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative rounded-full px-3.5 py-1.5 text-[0.7rem] font-bold tracking-[0.08em] uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
+                    isActive
+                      ? "bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950"
+                      : "text-neutral-600 hover:text-neutral-950 hover:bg-white/60 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-700/50"
+                  }`}
+                >
+                  {label}
+                </button>
+              );
+            })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          {/* Right Action buttons */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <button
               onClick={handleThemeToggle}
               type="button"
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="theme-toggle group relative hidden h-9 w-8 items-center justify-center text-neutral-700 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 lg:flex"
+              className="theme-toggle group relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 text-neutral-700 transition hover:bg-neutral-100 hover:text-neutral-950 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
             >
               <Sun
                 className={`absolute h-4 w-4 transition duration-300 ${
@@ -487,7 +492,7 @@ export default function Home() {
             <button
               onClick={() => setContactOpen(true)}
               type="button"
-              className="hidden items-center gap-2 rounded-md bg-neutral-950 px-4 py-2.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 sm:flex"
+              className="hidden sm:flex items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 sm:px-4 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
             >
               Contact <ArrowUpRight className="h-3.5 w-3.5" />
             </button>
@@ -496,60 +501,74 @@ export default function Home() {
               aria-expanded={menuOpen}
               aria-controls="mobile-navigation"
               type="button"
-              className="rounded-md p-2.5 text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 lg:hidden"
+              className="rounded-full border border-neutral-200 p-2 text-neutral-900 hover:bg-neutral-100 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 lg:hidden"
             >
               <span className="sr-only">{menuOpen ? "Close" : "Open"} navigation menu</span>
-              {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Dropdown */}
+        {/* Floating Mobile Navigation Dropdown */}
         <div
           id="mobile-navigation"
-          className={`overflow-hidden border-t border-neutral-200 bg-white transition-[max-height,opacity] duration-300 lg:hidden ${
-            menuOpen ? "motion-menu-open max-h-96 opacity-100" : "max-h-0 opacity-0"
+          className={`pointer-events-auto mt-2 w-full max-w-5xl overflow-hidden rounded-2xl border border-neutral-300 bg-white/95 shadow-xl backdrop-blur-xl transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-900/95 lg:hidden ${
+            menuOpen ? "max-h-[85vh] opacity-100 p-4" : "max-h-0 opacity-0 p-0 border-transparent pointer-events-none"
           }`}
         >
-          <nav aria-label="Mobile" className="mx-auto max-w-[1440px] px-5 py-4 sm:px-8">
+          <nav aria-label="Mobile" className="mx-auto px-1 py-1">
             <button
               onClick={handleThemeToggle}
               type="button"
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="mb-3 flex w-full items-center justify-between rounded-md border border-neutral-200 px-3 py-2 text-xs font-semibold text-neutral-800"
+              className="mb-4 flex w-full items-center justify-between rounded-xl border border-neutral-300 bg-neutral-50 px-4 py-3 text-xs font-bold text-neutral-900 shadow-xs dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
             >
               <span>Appearance: {theme === "dark" ? "Dark Mode" : "Light Mode"}</span>
               {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </button>
-            <div className="grid gap-1">
+            <div className="grid gap-2">
               {navItems.map(([label, id]) => (
                 <button
                   key={id}
                   onClick={() => scrollTo(id)}
                   type="button"
-                  className={`mobile-nav-link flex items-center justify-between rounded-md px-3 py-3 text-left text-sm font-semibold ${
-                    activeSection === id ? "bg-neutral-100 text-neutral-950 font-bold" : "text-neutral-700"
+                  className={`mobile-nav-link flex items-center justify-between rounded-xl border px-4 py-3 text-left text-sm font-semibold transition ${
+                    activeSection === id
+                      ? "border-neutral-900 bg-neutral-950 text-white font-bold shadow-xs dark:border-white dark:bg-white dark:text-neutral-950"
+                      : "border-neutral-200 bg-white text-neutral-800 hover:border-neutral-400 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800/80 dark:text-neutral-200"
                   }`}
                 >
                   {label}
-                  <ChevronRight className="h-4 w-4 text-neutral-400" />
+                  <ChevronRight className={`h-4 w-4 ${activeSection === id ? "text-white dark:text-neutral-950" : "text-neutral-400"}`} />
                 </button>
               ))}
             </div>
+            <button
+              onClick={() => {
+                setContactOpen(true);
+                closeMenu();
+              }}
+              type="button"
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-neutral-950 px-4 py-3.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
+            >
+              Contact Fauzi <ArrowUpRight className="h-4 w-4" />
+            </button>
           </nav>
         </div>
       </header>
 
       <main id="main-content">
-        {/* Hero Section — Minimal, Clean, Professional White */}
+        {/* Hero Section — Clean, Rich Atmospheric Gradient & Editorial Typography */}
         <section
           id="top"
-          className={`hero-stage relative isolate overflow-hidden bg-white border-b border-neutral-200 pt-[72px] text-neutral-950 ${
+          className={`hero-stage relative isolate overflow-hidden bg-white border-b border-neutral-300 pt-24 sm:pt-32 text-neutral-950 ${
             heroReady && !prefersReducedMotion ? "motion-ready" : ""
           }`}
         >
-          <div className="absolute inset-0 data-grid opacity-60" aria-hidden="true" />
-          <div className="absolute -right-36 top-28 h-[34rem] w-[34rem] rounded-full bg-neutral-100 blur-3xl pointer-events-none" aria-hidden="true" />
+          <div className="absolute inset-0 data-grid opacity-50 pointer-events-none" aria-hidden="true" />
+          {/* Luminous dynamic ambient gradients — visible depth in both light and dark modes */}
+          <div className="hero-ambient-glow pointer-events-none absolute -right-20 top-16 h-[42rem] w-[42rem] rounded-full blur-3xl opacity-80" aria-hidden="true" />
+          <div className="pointer-events-none absolute -left-28 top-32 h-[34rem] w-[34rem] rounded-full bg-gradient-to-tr from-sky-200/35 via-indigo-100/30 to-transparent blur-3xl opacity-60 hero-aura" aria-hidden="true" />
           <img
             src={assetUrls.logo}
             alt=""
@@ -557,15 +576,15 @@ export default function Home() {
             className="hero-identity-stamp pointer-events-none absolute right-[8%] top-[12%] z-0 hidden h-72 w-72 object-contain opacity-[0.05] lg:block"
           />
 
-          <div className="relative mx-auto grid min-h-[780px] max-w-[1440px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.06fr_.94fr] lg:gap-20 lg:px-12 lg:py-24 xl:min-h-[820px]">
+          <div className="relative mx-auto grid min-h-[720px] max-w-5xl lg:max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-14 lg:px-8 lg:py-20 xl:min-h-[760px]">
             <div className="flex flex-col justify-center pt-8 lg:pt-0">
-              <div className="hero-sequence hero-sequence--1 flex w-fit items-center gap-2 rounded-md border border-neutral-200 bg-neutral-100 px-3 py-1.5 mono-type text-[0.62rem] font-semibold tracking-[0.14em] text-neutral-900 shadow-xs">
+              <div className="hero-sequence hero-sequence--1 flex w-fit items-center gap-2 rounded-md border border-neutral-300 bg-neutral-100/90 px-3 py-1.5 mono-type text-[0.62rem] font-bold tracking-[0.14em] text-neutral-900 shadow-xs">
                 <span className="availability-node h-1.5 w-1.5 rounded-full bg-emerald-600" /> OPEN TO WORK
               </div>
               <p className="hero-sequence hero-sequence--2 mt-9 display-type text-xl font-medium tracking-[-0.035em] text-neutral-600 sm:text-2xl">
                 Hello, I’m
               </p>
-              <h1 className="hero-sequence hero-sequence--3 display-type mt-1 max-w-3xl text-[3.8rem] font-bold leading-[0.88] tracking-[-0.085em] text-neutral-950 sm:text-8xl xl:text-[6.1rem]">
+              <h1 className="hero-sequence hero-sequence--3 display-type mt-1 max-w-3xl text-4xl font-bold leading-[0.94] tracking-[-0.06em] text-neutral-950 sm:text-6xl md:text-7xl lg:text-8xl xl:text-[5.9rem]">
                 Fauzi<br />
                 <span className="text-neutral-950">Noorsyabani.</span>
               </h1>
@@ -575,19 +594,19 @@ export default function Home() {
                   {person.role} <span className="mx-1 text-neutral-400">/</span> Applied AI &amp; Data Products
                 </p>
               </div>
-              <p className="hero-sequence hero-sequence--5 mt-7 max-w-xl text-base leading-8 text-neutral-600 sm:text-lg">
+              <p className="hero-sequence hero-sequence--5 mt-7 max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
                 {person.headline}
               </p>
-              <p className="hero-sequence hero-sequence--5 mt-5 flex items-center gap-2 text-sm font-semibold text-neutral-800">
+              <p className="hero-sequence hero-sequence--5 mt-5 flex items-center gap-2 text-sm font-semibold text-neutral-900">
                 <Sparkles className="h-4 w-4 text-neutral-950" /> {person.education}
               </p>
-              <div className="hero-sequence hero-sequence--6 mt-9 flex flex-wrap gap-3">
+              <div className="hero-sequence hero-sequence--6 mt-9 flex flex-col sm:flex-row flex-wrap gap-3">
                 {links.resume ? (
                   <a
                     href={links.resume}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-md bg-neutral-950 px-5 py-3.5 text-sm font-bold text-white transition hover:bg-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-950 px-5 py-3.5 text-sm font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
                   >
                     View CV <FileText className="h-4 w-4" />
                   </a>
@@ -595,29 +614,29 @@ export default function Home() {
                   <PendingAction
                     label="View CV"
                     onPending={notifyPending}
-                    className="rounded-md bg-neutral-950 px-5 py-3.5 text-sm font-bold text-white transition hover:bg-neutral-800 active:scale-[0.97]"
+                    className="inline-flex items-center justify-center rounded-lg bg-neutral-950 px-5 py-3.5 text-sm font-bold text-white transition hover:bg-neutral-800 active:scale-[0.97]"
                   />
                 )}
                 <button
                   onClick={() => scrollTo("projects")}
                   type="button"
-                  className="inline-flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-5 py-3.5 text-sm font-bold text-neutral-900 transition hover:border-neutral-900 hover:bg-neutral-50 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-neutral-300 bg-white px-5 py-3.5 text-sm font-bold text-neutral-900 shadow-xs transition hover:border-neutral-900 hover:bg-neutral-50 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
                   Review Project Evidence <ArrowDown className="h-4 w-4" />
                 </button>
               </div>
-              <div className="hero-sequence hero-sequence--7 hero-metrics mt-10 grid max-w-xl grid-cols-3 border-y border-neutral-200 py-4">
+              <div className="hero-sequence hero-sequence--7 hero-metrics mt-10 grid max-w-xl grid-cols-3 rounded-xl border border-neutral-300 bg-neutral-50/70 p-3 sm:p-5 shadow-xs">
                 {[
                   { value: capstoneHours, suffix: "+", label: "capstone hours" },
                   { value: programsAnalyzed, suffix: "", label: "programs analyzed" },
                   { value: studentsReached, suffix: "+", label: "students reached" },
                 ].map(({ value, suffix, label }, index) => (
-                  <div key={label} className={`px-3 first:pl-0 ${index !== 2 ? "border-r border-neutral-200" : ""}`}>
-                    <p className="display-type text-xl font-bold tracking-[-0.05em] text-neutral-950">
+                  <div key={label} className={`px-2 sm:px-4 ${index !== 2 ? "border-r border-neutral-300" : ""}`}>
+                    <p className="display-type text-lg font-bold tracking-[-0.04em] text-neutral-950 sm:text-2xl">
                       {value.toLocaleString()}
                       {suffix}
                     </p>
-                    <p className="mt-1 mono-type text-[0.55rem] leading-4 uppercase tracking-[0.09em] text-neutral-500">
+                    <p className="mt-1 mono-type text-[0.55rem] font-semibold leading-tight uppercase tracking-[0.08em] text-neutral-600">
                       {label}
                     </p>
                   </div>
@@ -670,15 +689,15 @@ export default function Home() {
                 <SignalOrbit className="hero-orbit absolute -right-12 top-1/2 z-0 hidden h-[35rem] w-[35rem] -translate-y-1/2 lg:block" />
               ) : null}
               <div
-                className="hero-frame absolute right-0 top-8 h-[88%] w-[92%] rounded-[2rem] border border-neutral-200 bg-neutral-50/50"
+                className="hero-frame absolute right-0 top-8 h-[88%] w-[92%] rounded-[2rem] border border-neutral-300 bg-neutral-50/50"
                 aria-hidden="true"
               />
               <img
                 src={assetUrls.profilePhoto}
                 alt="Portrait of Fauzi Noorsyabani"
-                className="hero-portrait relative z-10 h-[440px] w-full max-w-[570px] rounded-2xl border border-neutral-200 object-cover object-[50%_28%] shadow-xl shadow-neutral-900/10 sm:h-[530px]"
+                className="hero-portrait relative z-10 h-[360px] w-full max-w-[570px] rounded-2xl border border-neutral-300 object-cover object-[50%_28%] shadow-xl shadow-neutral-900/10 sm:h-[480px] lg:h-[530px]"
               />
-              <div className="hero-evidence absolute bottom-0 left-0 z-20 w-[244px] rounded-lg border border-neutral-200 bg-white/95 p-4 shadow-xl backdrop-blur-sm sm:-left-4 sm:bottom-5">
+              <div className="hero-evidence absolute bottom-0 left-0 z-20 w-[210px] rounded-xl border border-neutral-300 bg-white/95 p-3.5 shadow-xl backdrop-blur-md sm:w-[244px] sm:-left-4 sm:bottom-5 sm:p-4">
                 <div className="flex items-center gap-2">
                   <img src={assetUrls.logo} alt="" aria-hidden="true" className="h-8 w-8" />
                   <p className="mono-type text-[0.58rem] font-bold uppercase tracking-[0.14em] text-neutral-950">
@@ -697,10 +716,10 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="hero-artifact absolute right-2 top-0 z-20 rounded-md border border-neutral-200 bg-white/90 px-3 py-2 mono-type text-[0.6rem] font-bold uppercase tracking-[0.13em] text-neutral-900 shadow-sm backdrop-blur-sm">
+              <div className="hero-artifact absolute right-2 top-2 z-20 rounded-md border border-neutral-300 bg-white/95 px-3 py-1.5 mono-type text-[0.6rem] font-bold uppercase tracking-[0.13em] text-neutral-900 shadow-sm backdrop-blur-md sm:top-0">
                 Research artifact / 001
               </div>
-              <div className="hero-signal-tag absolute -right-3 bottom-20 z-20 hidden rounded-md border border-neutral-200 bg-white/95 p-3 text-center shadow-sm sm:block">
+              <div className="hero-signal-tag absolute -right-3 bottom-20 z-20 hidden rounded-md border border-neutral-300 bg-white/95 p-3 text-center shadow-sm sm:block">
                 <span className="mono-type text-[0.58rem] font-bold leading-4 tracking-[0.1em] text-neutral-900">
                   FROM<br />
                   SIGNAL<br />
@@ -715,15 +734,15 @@ export default function Home() {
         </section>
 
         {/* Section 01: About */}
-        <section id="about" className="scroll-mt-20 bg-white border-b border-neutral-200 px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-          <div className="mx-auto max-w-[1320px] reveal">
+        <section id="about" className="scroll-mt-28 bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
             <SectionHeading
               index="01"
               kicker="Professional position"
               title="Building useful systems from complex signals."
             />
             <div className="mt-14 grid gap-10 lg:grid-cols-[.88fr_1.12fr] lg:gap-20">
-              <div className="portrait-dossier relative overflow-hidden rounded-[1.4rem] border border-neutral-200 bg-neutral-50 p-7 signal-shadow sm:p-9">
+              <div className="portrait-dossier relative overflow-hidden rounded-[1.4rem] border border-neutral-300 bg-white p-6 signal-shadow sm:p-9">
                 <div className="absolute right-5 top-5 z-10 mono-type text-[0.58rem] font-semibold tracking-[0.13em] text-neutral-500">
                   FIELD PORTRAIT / 01
                 </div>
@@ -734,9 +753,9 @@ export default function Home() {
                   src={assetUrls.profilePhoto}
                   alt="Portrait of Fauzi Noorsyabani"
                   loading="lazy"
-                  className="relative z-[1] aspect-[4/5] w-full rounded-xl border border-neutral-200 object-cover object-[50%_20%]"
+                  className="relative z-[1] aspect-[4/5] w-full rounded-xl border border-neutral-300 object-cover object-[50%_20%]"
                 />
-                <div className="absolute bottom-10 left-10 z-10 flex items-center gap-3 rounded-md border border-neutral-200 bg-white/95 px-3 py-2 mono-type text-[0.54rem] font-bold uppercase tracking-[0.11em] text-neutral-950 shadow-sm backdrop-blur-sm">
+                <div className="absolute bottom-10 left-10 z-10 flex items-center gap-3 rounded-md border border-neutral-300 bg-white/95 px-3 py-2 mono-type text-[0.54rem] font-bold uppercase tracking-[0.11em] text-neutral-950 shadow-sm backdrop-blur-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-neutral-950" />
                   FN-26 / FULL STACK AI
                 </div>
@@ -746,32 +765,34 @@ export default function Home() {
                 <p className="display-type max-w-2xl text-2xl font-bold leading-[1.23] tracking-[-0.045em] text-neutral-950 sm:text-3xl">
                   {person.about}
                 </p>
-                <p className="mt-5 max-w-xl text-base leading-8 text-neutral-600">{person.shortBio}</p>
+                <p className="mt-5 max-w-xl text-base leading-8 text-neutral-700">{person.shortBio}</p>
                 <div className="mt-10 grid gap-3 sm:grid-cols-3">
                   {focusAreas.map((focus) => {
                     const Icon = focus.label === "Build" ? Code2 : focus.label === "Analyze" ? BarChart3 : UsersRound;
                     return (
                       <div
                         key={focus.label}
-                        className="motion-card group rounded-xl border border-neutral-200 bg-white p-5 transition duration-200 hover:-translate-y-1 hover:border-neutral-400 hover:shadow-md"
+                        className="motion-card group rounded-xl border border-neutral-300 bg-white p-5 sm:p-6 shadow-xs transition duration-200 hover:-translate-y-1 hover:border-neutral-900 hover:shadow-lg"
                       >
                         <div className="flex items-center justify-between">
-                          <Icon className="h-5 w-5 text-neutral-950" />
-                          <span className="mono-type text-[0.62rem] font-bold text-neutral-400">{focus.index}</span>
+                          <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-950 transition group-hover:border-neutral-900 group-hover:bg-neutral-950 group-hover:text-white">
+                            <Icon className="h-5 w-5" />
+                          </span>
+                          <span className="mono-type rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 text-[0.62rem] font-bold text-neutral-600">{focus.index}</span>
                         </div>
-                        <h3 className="display-type mt-7 text-xl font-bold tracking-[-0.04em] text-neutral-950">
+                        <h3 className="display-type mt-6 text-xl font-bold tracking-[-0.04em] text-neutral-950">
                           {focus.label}
                         </h3>
-                        <p className="mt-2 text-sm leading-6 text-neutral-600">{focus.detail}</p>
+                        <p className="mt-2 text-sm leading-6 text-neutral-700">{focus.detail}</p>
                       </div>
                     );
                   })}
                 </div>
               </div>
             </div>
-            <dl className="mt-14 grid gap-px overflow-hidden rounded-xl border border-neutral-200 bg-neutral-200 sm:grid-cols-2 lg:grid-cols-4">
+            <dl className="mt-14 grid gap-px overflow-hidden rounded-xl border border-neutral-300 bg-neutral-300 sm:grid-cols-2 lg:grid-cols-4 shadow-xs">
               {facts.map(([term, detail]) => (
-                <div key={term} className="min-h-28 bg-white p-5">
+                <div key={term} className="min-h-28 bg-white p-5 sm:p-6 transition hover:bg-neutral-50">
                   <dt className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.13em] text-neutral-500">
                     {term}
                   </dt>
@@ -783,40 +804,48 @@ export default function Home() {
         </section>
 
         {/* Section 02: Tech Stack */}
-        <section id="stack" className="scroll-mt-20 bg-white border-b border-neutral-200 px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-          <div className="mx-auto max-w-[1320px] reveal">
+        <section id="stack" className="scroll-mt-28 bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
             <SectionHeading
               index="02"
               kicker="Technical landscape"
               title="A broad toolkit, ordered around practical delivery."
               copy="The emphasis is on the tools that carry an idea from data and model through product, deployment, and decision-making."
             />
-            <div className="mt-14 border-y border-neutral-200">
+            <div className="mt-14 border-y border-neutral-300">
               {skillGroups.map((group, index) => (
                 <div
                   key={group.title}
-                  className={`motion-row grid gap-7 py-8 sm:py-10 lg:grid-cols-[11rem_minmax(0,1fr)] lg:gap-12 ${
-                    index !== skillGroups.length - 1 ? "border-b border-neutral-200" : ""
+                  className={`motion-row grid gap-7 py-8 sm:py-10 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-12 ${
+                    index !== skillGroups.length - 1 ? "border-b border-neutral-300" : ""
                   }`}
                 >
-                  <div className="border-l-2 border-neutral-900 pl-4">
+                  <div className="border-l-2 border-neutral-950 pl-4">
                     <p className="mono-type text-[0.62rem] font-bold tracking-[0.14em] text-neutral-500">{group.code}</p>
-                    <h3 className="display-type mt-3 text-2xl font-bold tracking-[-0.05em] text-neutral-950">
+                    <h3 className="display-type mt-2 text-2xl font-bold tracking-[-0.05em] text-neutral-950">
                       {group.title}
                     </h3>
                   </div>
                   <div>
-                    <div className="flex flex-wrap gap-x-5 gap-y-3">
+                    {/* Primary featured skills as solid high-contrast badges */}
+                    <div className="flex flex-wrap gap-2 sm:gap-2.5">
                       {group.featured.map((skill) => (
-                        <span key={skill} className="border-b-2 border-neutral-900 pb-1 text-sm font-bold text-neutral-950">
+                        <span
+                          key={skill}
+                          className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-950 bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs"
+                        >
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                           {skill}
                         </span>
                       ))}
                     </div>
-                    <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2 text-sm text-neutral-600">
+                    {/* Secondary skills as crisp bordered pills */}
+                    <div className="mt-4 flex flex-wrap gap-2">
                       {group.skills.map((skill) => (
-                        <span key={skill} className="inline-flex items-center gap-2">
-                          <span className="h-1 w-1 rounded-full bg-neutral-400" />
+                        <span
+                          key={skill}
+                          className="inline-flex items-center rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-1.5 text-xs font-semibold text-neutral-800 transition hover:border-neutral-900 hover:bg-white hover:text-neutral-950 shadow-2xs"
+                        >
                           {skill}
                         </span>
                       ))}
@@ -831,12 +860,14 @@ export default function Home() {
         {/* Section 03: Projects with Dashboard Screenshot Showcase */}
         <section
           id="projects"
-          className="relative scroll-mt-20 overflow-hidden bg-neutral-50/70 border-b border-neutral-200 px-5 py-24 sm:px-8 lg:px-12 lg:py-32"
+          className="relative scroll-mt-28 overflow-hidden bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28"
         >
+          {/* Ambient backdrop gradient */}
+          <div className="pointer-events-none absolute left-1/2 top-1/4 h-[36rem] w-[50rem] -translate-x-1/2 rounded-full bg-gradient-to-b from-indigo-100/40 via-sky-100/25 to-transparent blur-3xl opacity-75" aria-hidden="true" />
           {!prefersReducedMotion ? (
             <SignalOrbit reverse className="project-orbit absolute -right-24 top-24 z-0 hidden h-80 w-80 opacity-60 lg:block" />
           ) : null}
-          <div className="relative z-10 mx-auto max-w-[1320px] reveal">
+          <div className="relative z-10 mx-auto max-w-5xl lg:max-w-6xl reveal">
             <SectionHeading
               index="03"
               kicker="Selected work"
@@ -852,13 +883,13 @@ export default function Home() {
               return (
                 <article
                   key={project.title}
-                  className="motion-feature mt-14 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm"
+                  className="motion-feature mt-14 overflow-hidden rounded-2xl border border-neutral-300 bg-white shadow-md"
                 >
                   {/* Top Header: Project Context and Narrative */}
-                  <div className="border-b border-neutral-200 p-7 sm:p-10 lg:p-12">
+                  <div className="border-b border-neutral-300 p-6 sm:p-10 lg:p-12">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="mono-type rounded-md border border-neutral-300 bg-neutral-100 px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.13em] text-neutral-900">
+                        <span className="mono-type rounded-md border border-neutral-300 bg-neutral-100 px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.13em] text-neutral-900 shadow-2xs">
                           {project.category}
                         </span>
                         <span className="h-1 w-1 rounded-full bg-neutral-400" />
@@ -870,7 +901,7 @@ export default function Home() {
                         {project.links?.caseStudy ? (
                           <a
                             href={project.links.caseStudy}
-                            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3.5 py-1.5 text-xs font-bold text-neutral-900 transition hover:border-neutral-900 hover:bg-neutral-50"
+                            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3.5 py-1.5 text-xs font-bold text-neutral-900 shadow-xs transition hover:border-neutral-900 hover:bg-neutral-50"
                           >
                             Case Study <ArrowUpRight className="h-3.5 w-3.5" />
                           </a>
@@ -886,7 +917,7 @@ export default function Home() {
                             href={currentArt}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded-md bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white transition hover:bg-neutral-800"
+                            className="inline-flex items-center gap-1.5 rounded-md bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800"
                           >
                             View Original Resolution <Maximize2 className="h-3.5 w-3.5" />
                           </a>
@@ -897,12 +928,12 @@ export default function Home() {
                     <h3 className="display-type mt-5 text-3xl font-bold leading-[1.05] tracking-[-0.05em] text-neutral-950 sm:text-4xl lg:text-5xl">
                       {project.title}
                     </h3>
-                    <p className="mt-4 max-w-3xl text-base leading-8 text-neutral-600 sm:text-lg">
+                    <p className="mt-4 max-w-3xl text-base leading-8 text-neutral-700 sm:text-lg">
                       {project.description}
                     </p>
 
                     {project.result ? (
-                      <div className="mt-5 border-l-2 border-neutral-900 bg-neutral-50 p-4 text-sm font-semibold leading-6 text-neutral-900 rounded-r-md">
+                      <div className="mt-5 border-l-2 border-neutral-950 bg-neutral-50/80 p-4 text-sm font-semibold leading-6 text-neutral-900 rounded-r-md border border-neutral-200">
                         {project.result}
                       </div>
                     ) : null}
@@ -911,7 +942,7 @@ export default function Home() {
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-md border border-neutral-200 bg-neutral-50 px-3 py-1.5 mono-type text-[0.62rem] font-semibold tracking-wide text-neutral-800"
+                          className="rounded-md border border-neutral-300 bg-neutral-50 px-3 py-1.5 mono-type text-[0.62rem] font-bold tracking-wide text-neutral-800 shadow-2xs"
                         >
                           {tech}
                         </span>
@@ -922,30 +953,30 @@ export default function Home() {
                   {/* Bottom: 100% UN-CROPPED FITTED DASHBOARD WINDOW */}
                   <div className="bg-neutral-100 p-4 sm:p-6 lg:p-8">
                     {/* Browser Mockup Window Frame */}
-                    <div className="overflow-hidden rounded-xl border border-neutral-300 bg-white shadow-lg">
-                      {/* Window Titlebar */}
-                      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-200 bg-neutral-100/90 px-4 py-3">
+                    <div className="overflow-hidden rounded-xl border border-neutral-300 bg-white shadow-xl">
+                      {/* Window Titlebar with Responsive Switcher */}
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-neutral-300 bg-neutral-100/90 px-4 py-3">
                         <div className="flex items-center gap-2">
                           <span className="h-3 w-3 rounded-full bg-red-400" />
                           <span className="h-3 w-3 rounded-full bg-amber-400" />
                           <span className="h-3 w-3 rounded-full bg-emerald-400" />
-                          <span className="mono-type ml-3 text-[0.62rem] font-bold text-neutral-600">
+                          <span className="mono-type ml-3 text-[0.62rem] font-bold text-neutral-700">
                             Google Looker Studio — {isDashboardProject ? dashboardViews[dashboardView].title : project.title}
                           </span>
                         </div>
 
-                        {/* Interactive View Switcher Tabs */}
+                        {/* Interactive View Switcher Tabs - Responsive scroll on mobile */}
                         {isDashboardProject && (
-                          <div className="flex flex-wrap items-center gap-1.5">
+                          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full sm:w-auto pb-1 sm:pb-0">
                             {(["executive", "detail", "trend"] as const).map((key) => (
                               <button
                                 key={key}
                                 type="button"
                                 onClick={() => setDashboardView(key)}
-                                className={`rounded-md px-3 py-1.5 mono-type text-[0.62rem] font-bold transition ${
+                                className={`whitespace-nowrap rounded-md px-3 py-1.5 mono-type text-[0.62rem] font-bold transition ${
                                   dashboardView === key
                                     ? "bg-neutral-950 text-white shadow-xs"
-                                    : "bg-white text-neutral-700 hover:text-black hover:bg-neutral-200/80 border border-neutral-200"
+                                    : "bg-white text-neutral-700 hover:text-black hover:bg-neutral-200/80 border border-neutral-300"
                                 }`}
                               >
                                 {dashboardViews[key].title}
@@ -960,14 +991,14 @@ export default function Home() {
                         <img
                           src={currentArt}
                           alt={isDashboardProject ? dashboardViews[dashboardView].desc : project.title}
-                          className="block h-auto w-full max-w-full rounded border border-neutral-200 object-contain shadow-xs"
+                          className="block h-auto w-full max-w-full rounded border border-neutral-300 object-contain shadow-xs"
                           loading="lazy"
                         />
                       </div>
 
                       {/* Caption & Explanatory Footer */}
                       {isDashboardProject && (
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-t border-neutral-200 bg-neutral-50 px-5 py-3 text-xs">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-t border-neutral-300 bg-neutral-50 px-5 py-3 text-xs">
                           <span className="mono-type text-[0.64rem] font-semibold text-neutral-700">
                             <strong>Keterangan:</strong> {dashboardViews[dashboardView].desc}
                           </span>
@@ -994,7 +1025,7 @@ export default function Home() {
                 .map((project, index) => (
                   <article
                     key={project.title}
-                    className="motion-card group overflow-hidden rounded-xl border border-neutral-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-neutral-400 hover:shadow-xl hover:shadow-neutral-900/5"
+                    className="motion-card group overflow-hidden rounded-xl border border-neutral-300 bg-white transition duration-300 hover:-translate-y-1 hover:border-neutral-900 hover:shadow-xl hover:shadow-neutral-900/5 shadow-xs"
                   >
                     <ProjectEvidence index={index} category={project.category} />
                     <div className="p-6 sm:p-7">
@@ -1007,15 +1038,15 @@ export default function Home() {
                       <p className="mt-2 mono-type text-[0.61rem] uppercase tracking-[0.1em] text-neutral-500">
                         {project.date}
                       </p>
-                      <p className="mt-5 text-sm leading-7 text-neutral-600">{project.description}</p>
+                      <p className="mt-5 text-sm leading-7 text-neutral-700">{project.description}</p>
                       {project.result ? (
-                        <p className="mt-4 text-sm font-semibold leading-6 text-neutral-900">{project.result}</p>
+                        <p className="mt-4 rounded border border-neutral-200 bg-neutral-50 p-3 text-sm font-semibold leading-6 text-neutral-900">{project.result}</p>
                       ) : null}
                       <div className="mt-6 flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-md border border-neutral-200 bg-neutral-100 px-2.5 py-1 mono-type text-[0.58rem] font-semibold text-neutral-800"
+                            className="rounded-md border border-neutral-300 bg-neutral-50 px-2.5 py-1 mono-type text-[0.58rem] font-semibold text-neutral-800 shadow-2xs"
                           >
                             {tech}
                           </span>
@@ -1027,7 +1058,7 @@ export default function Home() {
             </div>
 
             {/* Other Projects Index Table */}
-            <div className="mt-16 border-t border-neutral-200 pt-7">
+            <div className="mt-16 border-t border-neutral-300 pt-7">
               <div className="flex items-end justify-between gap-5">
                 <div>
                   <p className="section-kicker">Other projects</p>
@@ -1039,12 +1070,12 @@ export default function Home() {
                   05 selected entries
                 </span>
               </div>
-              <div className="mt-7 border-y border-neutral-200">
+              <div className="mt-7 border-y border-neutral-300">
                 {otherProjects.map((project, index) => (
                   <article
                     key={project.title}
-                    className={`motion-index-row grid gap-4 py-6 transition hover:bg-neutral-100/50 md:grid-cols-[3.4rem_minmax(0,1fr)_minmax(0,1.15fr)] md:gap-7 ${
-                      index !== otherProjects.length - 1 ? "border-b border-neutral-200" : ""
+                    className={`motion-index-row grid gap-4 py-6 transition hover:bg-neutral-100/70 md:grid-cols-[3.4rem_minmax(0,1fr)_minmax(0,1.15fr)] md:gap-7 ${
+                      index !== otherProjects.length - 1 ? "border-b border-neutral-300" : ""
                     }`}
                   >
                     <p className="mono-type text-[0.58rem] font-bold tracking-[0.12em] text-neutral-950">
@@ -1062,12 +1093,11 @@ export default function Home() {
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm leading-6 text-neutral-600">{project.description}</p>
+                      <p className="text-sm leading-6 text-neutral-700">{project.description}</p>
                       <div className="mt-4 flex flex-wrap gap-1.5">
                         {project.technologies.map((tech) => (
-                          <span key={tech} className="text-[0.68rem] text-neutral-600">
+                          <span key={tech} className="rounded border border-neutral-300 bg-white px-2 py-0.5 text-[0.65rem] font-medium text-neutral-800 shadow-2xs">
                             {tech}
-                            {tech !== project.technologies[project.technologies.length - 1] ? " ·" : ""}
                           </span>
                         ))}
                       </div>
@@ -1082,27 +1112,27 @@ export default function Home() {
         {/* Section 04: Experience & Leadership */}
         <section
           id="experience"
-          className="scroll-mt-20 bg-white border-b border-neutral-200 px-5 py-24 text-neutral-950 sm:px-8 lg:px-12 lg:py-32"
+          className="scroll-mt-28 bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950"
         >
-          <div className="mx-auto max-w-[1320px] reveal">
+          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
             <SectionHeading
               index="04"
               kicker="Experience & leadership"
               title="A record of applied work and people-first momentum."
               copy="A developing career shaped by product delivery, data analysis, responsible AI advocacy, and local community work."
             />
-            <div className="mt-16 space-y-0 border-l border-neutral-200 pl-7 sm:pl-10 lg:ml-[7.4rem]">
+            <div className="mt-16 space-y-0 border-l-2 border-neutral-300 pl-6 sm:pl-10 lg:ml-[7.4rem]">
               {experience.map((item, index) => (
                 <article key={`${item.organization}-${item.role}`} className="motion-timeline relative pb-12 last:pb-0">
-                  <span className="timeline-node absolute -left-[35px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border border-neutral-300 bg-white sm:-left-[47px]">
+                  <span className="timeline-node absolute -left-[33px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-neutral-950 bg-white sm:-left-[49px]">
                     <span className="h-1.5 w-1.5 rounded-full bg-neutral-950" />
                   </span>
                   <div className="grid gap-4 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-10">
                     <div>
-                      <p className="mono-type text-[0.61rem] font-bold uppercase tracking-[0.14em] text-neutral-900">
+                      <span className="inline-block rounded-md border border-neutral-300 bg-neutral-100 px-2.5 py-1 mono-type text-[0.61rem] font-bold uppercase tracking-[0.14em] text-neutral-900 shadow-2xs">
                         {String(index + 1).padStart(2, "0")} / {item.type}
-                      </p>
-                      <p className="mt-3 mono-type text-[0.61rem] leading-5 tracking-[0.07em] text-neutral-500">
+                      </span>
+                      <p className="mt-3 mono-type text-[0.61rem] leading-5 tracking-[0.07em] text-neutral-600 font-semibold">
                         {item.date}
                         <br />
                         {item.location}
@@ -1110,18 +1140,18 @@ export default function Home() {
                     </div>
                     <div className="max-w-2xl">
                       <h3 className="display-type text-2xl font-bold tracking-[-0.045em] text-neutral-950">{item.role}</h3>
-                      <p className="mt-1 text-base font-semibold text-neutral-700">{item.organization}</p>
+                      <p className="mt-1 text-base font-semibold text-neutral-800">{item.organization}</p>
                       <ul className="mt-5 space-y-3">
                         {item.details.map((detail) => (
-                          <li key={detail} className="flex gap-3 text-sm leading-7 text-neutral-600">
+                          <li key={detail} className="flex gap-3 text-sm leading-7 text-neutral-700">
                             <Check className="mt-1 h-4 w-4 shrink-0 text-neutral-950" />
                             {detail}
                           </li>
                         ))}
                       </ul>
                       {"note" in item && item.note ? (
-                        <p className="mt-5 rounded-md border border-neutral-200 bg-neutral-50 px-4 py-3 text-xs leading-5 text-neutral-700">
-                          <strong className="font-semibold text-neutral-900">Editorial note:</strong> {item.note}
+                        <p className="mt-5 rounded-lg border border-neutral-300 bg-neutral-50 p-4 text-xs leading-relaxed text-neutral-800 shadow-2xs">
+                          <strong className="font-semibold text-neutral-950">Editorial note:</strong> {item.note}
                         </p>
                       ) : null}
                     </div>
@@ -1133,27 +1163,27 @@ export default function Home() {
         </section>
 
         {/* Section 05: Awards & Recognition */}
-        <section id="awards" className="scroll-mt-20 bg-white border-b border-neutral-200 px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-          <div className="mx-auto max-w-[1320px] reveal">
+        <section id="awards" className="scroll-mt-28 bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
             <SectionHeading
               index="05"
               kicker="Recognition"
               title="Evidence of analytical excellence and initiative."
             />
-            <div className="mt-14 border-y border-neutral-200 lg:ml-[7.5rem]">
+            <div className="mt-14 border-y border-neutral-300 lg:ml-[7.5rem]">
               {awards.map(([placement, title, organization, date], index) => (
                 <article
                   key={`${title}-${organization}`}
                   className={`motion-award grid gap-5 py-7 sm:grid-cols-[5rem_minmax(0,1fr)_8rem] sm:items-start lg:grid-cols-[6.25rem_minmax(0,1fr)_8rem] ${
-                    index !== awards.length - 1 ? "border-b border-neutral-200" : ""
+                    index !== awards.length - 1 ? "border-b border-neutral-300" : ""
                   }`}
                 >
                   <div className="flex items-center gap-2 sm:block">
                     <span
-                      className={`flex h-9 w-9 items-center justify-center rounded border ${
+                      className={`flex h-9 w-9 items-center justify-center rounded-lg border ${
                         index === 0
-                          ? "border-neutral-950 bg-neutral-950 text-white"
-                          : "border-neutral-300 bg-neutral-50 text-neutral-700"
+                          ? "border-neutral-950 bg-neutral-950 text-white shadow-xs"
+                          : "border-neutral-300 bg-white text-neutral-800 shadow-xs"
                       }`}
                     >
                       <Award className="h-4 w-4" />
@@ -1166,7 +1196,7 @@ export default function Home() {
                     <h3 className="display-type text-2xl font-bold leading-tight tracking-[-0.05em] text-neutral-950">
                       {title}
                     </h3>
-                    <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-600">{organization}</p>
+                    <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-700 font-medium">{organization}</p>
                   </div>
                   <p className="mono-type text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-neutral-500 sm:pt-1">
                     {date}
@@ -1178,8 +1208,8 @@ export default function Home() {
         </section>
 
         {/* Section 06: Credentials */}
-        <section className="bg-neutral-50/70 border-b border-neutral-200 px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
-          <div className="mx-auto max-w-[1320px] reveal">
+        <section className="bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
             <SectionHeading
               index="06"
               kicker="Credentials"
@@ -1190,10 +1220,10 @@ export default function Home() {
               {certifications.map((cert, index) => (
                 <article
                   key={cert.name}
-                  className="motion-cert flex min-h-[290px] flex-col rounded-xl border border-neutral-200 bg-white p-7 shadow-xs hover:border-neutral-400 hover:shadow-md transition"
+                  className="motion-cert flex min-h-[290px] flex-col rounded-xl border border-neutral-300 bg-white p-7 shadow-xs hover:border-neutral-950 hover:shadow-lg transition"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="mono-type text-[0.62rem] font-bold tracking-[0.13em] text-neutral-950">
+                    <span className="mono-type rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 text-[0.62rem] font-bold tracking-[0.13em] text-neutral-950">
                       0{index + 1}
                     </span>
                     <BriefcaseBusiness className="h-5 w-5 text-neutral-400" />
@@ -1201,10 +1231,10 @@ export default function Home() {
                   <h3 className="display-type mt-7 text-2xl font-bold leading-tight tracking-[-0.05em] text-neutral-950">
                     {cert.name}
                   </h3>
-                  <p className="mt-2 text-sm font-semibold text-neutral-700">{cert.issuer}</p>
-                  <p className="mt-4 text-sm leading-7 text-neutral-600">{cert.description}</p>
-                  <div className="mt-auto border-t border-neutral-200 pt-5">
-                    <p className="mono-type text-[0.6rem] uppercase tracking-[0.1em] text-neutral-500">{cert.date}</p>
+                  <p className="mt-2 text-sm font-semibold text-neutral-800">{cert.issuer}</p>
+                  <p className="mt-4 text-sm leading-7 text-neutral-700">{cert.description}</p>
+                  <div className="mt-auto border-t border-neutral-300 pt-5">
+                    <p className="mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">{cert.date}</p>
                     {cert.credential ? (
                       <a
                         href={cert.credential}
@@ -1227,12 +1257,14 @@ export default function Home() {
         </section>
 
         {/* Section 07: Contact */}
-        <section id="contact" className="scroll-mt-20 relative overflow-hidden bg-white px-5 py-24 text-neutral-950 sm:px-8 lg:px-12 lg:py-32">
-          <div className="absolute inset-0 data-grid opacity-30 pointer-events-none" aria-hidden="true" />
+        <section id="contact" className="scroll-mt-28 relative overflow-hidden bg-white px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950">
+          <div className="absolute inset-0 data-grid opacity-40 pointer-events-none" aria-hidden="true" />
+          {/* Ambient gradient aura */}
+          <div className="pointer-events-none absolute -left-20 bottom-0 h-96 w-96 rounded-full bg-gradient-to-tr from-indigo-100/40 via-sky-100/30 to-transparent blur-3xl opacity-75" aria-hidden="true" />
           {!prefersReducedMotion ? (
             <SignalOrbit reverse className="contact-orbit absolute -right-20 top-10 z-0 hidden h-[25rem] w-[25rem] opacity-50 lg:block" />
           ) : null}
-          <div className="relative mx-auto max-w-[1320px] reveal">
+          <div className="relative mx-auto max-w-5xl lg:max-w-6xl reveal">
             <SectionHeading
               index="07"
               kicker="Contact & collaboration"
@@ -1248,11 +1280,11 @@ export default function Home() {
                   <div className="mt-5 space-y-4">
                     <a
                       href={links.email}
-                      className="group flex items-start gap-3 rounded-lg border border-neutral-200 bg-white p-4 transition hover:border-neutral-900 hover:shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                      className="group flex items-start gap-3 rounded-xl border border-neutral-300 bg-white p-4 shadow-xs transition hover:border-neutral-950 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                     >
-                      <Mail className="mt-0.5 h-5 w-5 text-neutral-900" />
+                      <Mail className="mt-0.5 h-5 w-5 text-neutral-950" />
                       <span>
-                        <span className="block mono-type text-[0.6rem] uppercase tracking-[0.1em] text-neutral-500">
+                        <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
                           Email
                         </span>
                         <span className="mt-1 block text-sm font-bold text-neutral-950 group-hover:underline">
@@ -1262,11 +1294,11 @@ export default function Home() {
                     </a>
                     <a
                       href={links.phone}
-                      className="group flex items-start gap-3 rounded-lg border border-neutral-200 bg-white p-4 transition hover:border-neutral-900 hover:shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                      className="group flex items-start gap-3 rounded-xl border border-neutral-300 bg-white p-4 shadow-xs transition hover:border-neutral-950 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                     >
-                      <Phone className="mt-0.5 h-5 w-5 text-neutral-900" />
+                      <Phone className="mt-0.5 h-5 w-5 text-neutral-950" />
                       <span>
-                        <span className="block mono-type text-[0.6rem] uppercase tracking-[0.1em] text-neutral-500">
+                        <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
                           Phone
                         </span>
                         <span className="mt-1 block text-sm font-bold text-neutral-950 group-hover:underline">
@@ -1274,10 +1306,10 @@ export default function Home() {
                         </span>
                       </span>
                     </a>
-                    <div className="flex items-start gap-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-                      <MapPin className="mt-0.5 h-5 w-5 text-neutral-900" />
+                    <div className="flex items-start gap-3 rounded-xl border border-neutral-300 bg-neutral-50 p-4 shadow-xs">
+                      <MapPin className="mt-0.5 h-5 w-5 text-neutral-950" />
                       <span>
-                        <span className="block mono-type text-[0.6rem] uppercase tracking-[0.1em] text-neutral-500">
+                        <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
                           Location
                         </span>
                         <span className="mt-1 block text-sm font-bold text-neutral-950">{person.location}</span>
@@ -1285,11 +1317,11 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-5">
+                <div className="rounded-xl border border-neutral-300 bg-neutral-50 p-5 shadow-xs">
                   <p className="mono-type text-[0.61rem] font-bold uppercase tracking-[0.12em] text-neutral-950">
                     Preferred starting point
                   </p>
-                  <p className="mt-3 text-sm leading-7 text-neutral-600">
+                  <p className="mt-3 text-sm leading-7 text-neutral-700">
                     Share your context, the outcome you are working toward, and the constraints that matter. A useful first conversation starts with a real problem.
                   </p>
                 </div>
@@ -1298,7 +1330,7 @@ export default function Home() {
               <form
                 onSubmit={handleForm}
                 noValidate
-                className="motion-contact rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-8"
+                className="motion-contact rounded-2xl border border-neutral-300 bg-white p-6 shadow-md sm:p-8"
               >
                 <div className="grid gap-5 sm:grid-cols-2">
                   <label className="block text-sm font-bold text-neutral-950">
@@ -1308,7 +1340,7 @@ export default function Home() {
                       onChange={(event) => setForm((value) => ({ ...value, name: event.target.value }))}
                       aria-invalid={Boolean(formErrors.name)}
                       aria-describedby={formErrors.name ? "name-error" : undefined}
-                      className="mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
+                      className="mt-2 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
                       placeholder="Your name"
                     />
                     {formErrors.name ? (
@@ -1325,7 +1357,7 @@ export default function Home() {
                       onChange={(event) => setForm((value) => ({ ...value, email: event.target.value }))}
                       aria-invalid={Boolean(formErrors.email)}
                       aria-describedby={formErrors.email ? "email-error" : undefined}
-                      className="mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
+                      className="mt-2 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
                       placeholder="you@example.com"
                     />
                     {formErrors.email ? (
@@ -1342,7 +1374,7 @@ export default function Home() {
                     onChange={(event) => setForm((value) => ({ ...value, subject: event.target.value }))}
                     aria-invalid={Boolean(formErrors.subject)}
                     aria-describedby={formErrors.subject ? "subject-error" : undefined}
-                    className="mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
+                    className="mt-2 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
                     placeholder="What would you like to discuss?"
                   />
                   {formErrors.subject ? (
@@ -1359,7 +1391,7 @@ export default function Home() {
                     aria-invalid={Boolean(formErrors.message)}
                     aria-describedby={formErrors.message ? "message-error" : undefined}
                     rows={5}
-                    className="mt-2 w-full resize-y rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
+                    className="mt-2 w-full resize-y rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
                     placeholder="A little context goes a long way."
                   />
                   {formErrors.message ? (
@@ -1369,12 +1401,12 @@ export default function Home() {
                   ) : null}
                 </label>
                 <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                  <p className="max-w-xs text-xs leading-5 text-neutral-500">
+                  <p className="max-w-xs text-xs leading-5 text-neutral-600">
                     This static portfolio uses a safe mailto fallback. No information is stored on the website.
                   </p>
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 rounded-md bg-neutral-950 px-5 py-3.5 text-sm font-bold text-white transition hover:bg-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2"
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-950 px-6 py-3.5 text-sm font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 w-full sm:w-auto"
                   >
                     Start a Conversation <Send className="h-4 w-4" />
                   </button>
@@ -1392,11 +1424,11 @@ export default function Home() {
       </main>
 
       {/* Footer — Clean Minimalist Light */}
-      <footer className="bg-neutral-100 border-t border-neutral-200 px-5 py-12 text-neutral-600 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-[1320px] gap-9 border-t border-neutral-200 pt-9 md:grid-cols-[1.2fr_.7fr_.7fr] md:gap-12">
+      <footer className="bg-neutral-50/90 border-t border-neutral-300 px-4 py-12 text-neutral-700 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-5xl lg:max-w-6xl gap-9 border-t border-neutral-300 pt-9 md:grid-cols-[1.2fr_.7fr_.7fr] md:gap-12">
           <div>
             <div className="flex items-center gap-4">
-              <span className="relative flex h-12 w-12 items-center justify-center rounded-md border border-neutral-300 bg-white">
+              <span className="relative flex h-12 w-12 items-center justify-center rounded-lg border border-neutral-300 bg-white shadow-xs">
                 <img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10 object-contain" />
                 <i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-neutral-950" />
               </span>
@@ -1405,7 +1437,7 @@ export default function Home() {
                 <span className="mt-1 text-neutral-500">NOORSYABANI</span>
               </span>
             </div>
-            <p className="mt-4 max-w-sm text-sm leading-7 text-neutral-600">
+            <p className="mt-4 max-w-sm text-sm leading-7 text-neutral-700">
               Building digital experiences and AI products with passion and purpose.
             </p>
           </div>
@@ -1423,7 +1455,7 @@ export default function Home() {
                 <button
                   key={id}
                   onClick={() => scrollTo(id)}
-                  className="w-fit text-sm text-neutral-600 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="w-fit text-sm text-neutral-700 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
                   {label}
                 </button>
@@ -1435,7 +1467,7 @@ export default function Home() {
             <div className="mt-4 grid gap-2">
               <a
                 href={links.email}
-                className="w-fit text-sm text-neutral-600 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                className="w-fit text-sm text-neutral-700 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
               >
                 Email
               </a>
@@ -1444,7 +1476,7 @@ export default function Home() {
                   href={links.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-fit text-sm text-neutral-600 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="w-fit text-sm text-neutral-700 transition hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
                   LinkedIn
                 </a>
@@ -1454,7 +1486,7 @@ export default function Home() {
                   href={links.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-fit text-sm text-neutral-600 transition hover:text-neutral-950"
+                  className="w-fit text-sm text-neutral-700 transition hover:text-neutral-950"
                 >
                   GitHub
                 </a>
@@ -1462,13 +1494,13 @@ export default function Home() {
                 <PendingAction
                   label="GitHub"
                   onPending={notifyPending}
-                  className="w-fit text-left text-sm text-neutral-600 transition hover:text-neutral-950"
+                  className="w-fit text-left text-sm text-neutral-700 transition hover:text-neutral-950"
                 />
               )}
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-8 flex max-w-[1320px] flex-col gap-2 border-t border-neutral-200 pt-5 text-[0.68rem] text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto mt-8 flex max-w-5xl lg:max-w-6xl flex-col gap-2 border-t border-neutral-300 pt-5 text-[0.68rem] text-neutral-600 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Fauzi Noorsyabani. Made in Indonesia.</p>
           <p className="mono-type text-[0.58rem] uppercase tracking-[0.1em]">Signal Ledger / portfolio v1.0</p>
         </div>
@@ -1476,7 +1508,7 @@ export default function Home() {
 
       {/* Contact & Networking Modal */}
       <Dialog open={contactOpen} onOpenChange={setContactOpen}>
-        <DialogContent className="network-dialog rounded-xl border border-neutral-200 bg-white p-0 text-neutral-950 shadow-2xl shadow-neutral-900/15 sm:max-w-md">
+        <DialogContent className="network-dialog rounded-xl border border-neutral-300 bg-white p-0 text-neutral-950 shadow-2xl shadow-neutral-900/15 sm:max-w-md">
           <div className="relative overflow-hidden p-7 sm:p-9">
             <div className="relative z-10">
               <DialogHeader>
@@ -1486,17 +1518,17 @@ export default function Home() {
                 <DialogTitle className="display-type mt-4 text-3xl font-bold tracking-[-0.06em] text-neutral-950">
                   Open a conversation.
                 </DialogTitle>
-                <DialogDescription className="mt-3 max-w-sm text-sm leading-7 text-neutral-600">
+                <DialogDescription className="mt-3 max-w-sm text-sm leading-7 text-neutral-700">
                   For collaboration, product work, or applied-AI conversations, use the channel that fits your context.
                 </DialogDescription>
               </DialogHeader>
               <div className="mt-7 grid gap-3">
                 <a
                   href={links.email}
-                  className="group flex items-center justify-between rounded-md border border-neutral-200 bg-neutral-50 px-4 py-4 transition hover:border-neutral-900 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="group flex items-center justify-between rounded-lg border border-neutral-300 bg-neutral-50 px-4 py-4 transition hover:border-neutral-900 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
                   <span className="flex items-center gap-3">
-                    <Mail className="h-4 w-4 text-neutral-900" />
+                    <Mail className="h-4 w-4 text-neutral-950" />
                     <span>
                       <span className="block mono-type text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-neutral-500">
                         Email
@@ -1510,10 +1542,10 @@ export default function Home() {
                   href={links.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center justify-between rounded-md border border-neutral-200 bg-neutral-50 px-4 py-4 transition hover:border-neutral-900 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+                  className="group flex items-center justify-between rounded-lg border border-neutral-300 bg-neutral-50 px-4 py-4 transition hover:border-neutral-900 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
                   <span className="flex items-center gap-3">
-                    <Linkedin className="h-4 w-4 text-neutral-900" />
+                    <Linkedin className="h-4 w-4 text-neutral-950" />
                     <span>
                       <span className="block mono-type text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-neutral-500">
                         LinkedIn

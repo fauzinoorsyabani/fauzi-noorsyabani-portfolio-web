@@ -54,8 +54,8 @@
   --accent-foreground: #18181b;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
+  --border: #d4d4d8;
+  --input: #d4d4d8;
   --ring: #0a0a0a;
   --motion-snap: cubic-bezier(0.23, 1, 0.32, 1);
   --motion-curve: cubic-bezier(0.77, 0, 0.175, 1);
@@ -134,46 +134,289 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 .display-type { font-family: "Space Grotesk", sans-serif; }
 .mono-type { font-family: "IBM Plex Mono", monospace; }
 
-/* Dark mode: sleek neutral deep charcoal */
+/* ── Light Mode Ambient Gradients & Atmospheric Aura ──────────────────────── */
+.hero-ambient-glow {
+  background:
+    radial-gradient(circle at 75% 20%, rgba(99, 102, 241, 0.14) 0%, rgba(56, 189, 248, 0.09) 38%, transparent 68%),
+    radial-gradient(circle at 18% 45%, rgba(168, 85, 247, 0.09) 0%, transparent 58%);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Light Mode Structural Clarity & Text Boundaries ──────────────────────── */
+.theme-root:not(.dark) {
+  --border: #d4d4d8;
+}
+
+.theme-root:not(.dark) .section-kicker {
+  color: #18181b;
+}
+
+.theme-root:not(.dark) :is(.border-neutral-200) {
+  border-color: #d4d4d8;
+}
+
+.theme-root:not(.dark) :is(.border-neutral-300) {
+  border-color: #cbd5e1;
+}
+
+.theme-root:not(.dark) .motion-card,
+.theme-root:not(.dark) .motion-feature,
+.theme-root:not(.dark) .motion-cert {
+  border-color: #d4d4d8;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+
+.theme-root:not(.dark) .motion-card:hover,
+.theme-root:not(.dark) .motion-feature:hover,
+.theme-root:not(.dark) .motion-cert:hover {
+  border-color: #71717a;
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.08), 0 6px 12px -4px rgba(0, 0, 0, 0.04);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE — Premium deep charcoal with warm zinc palette
+   Comprehensive coverage: surfaces, text, borders, decorative, forms, nav
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Core surface & text ─────────────────────────────────────────────────── */
 .dark .theme-root { background: #09090b; color: #f4f4f5; }
 .dark .theme-root .paper-grain { background-color: #09090b; background-image: none; }
+
+/* ── Background inversions ───────────────────────────────────────────────── */
 .dark .theme-root :is(.bg-white, .bg-neutral-50, .bg-\[\#faf9f5\], .bg-\[\#f1f4fb\], .bg-\[\#eff3fb\]) { background-color: #121214 !important; }
 .dark .theme-root :is(.bg-\[\#f5f7fb\], .bg-\[\#edf4f2\], .bg-\[\#eef2e8\]) { background-color: #18181b !important; }
+.dark .theme-root :is(.bg-neutral-100, .bg-neutral-100\/90, .bg-neutral-100\/50) { background-color: #18181b !important; }
+.dark .theme-root .bg-neutral-50\/70 { background-color: #0f0f11 !important; }
+.dark .theme-root .bg-white\/95 { background-color: rgba(18,18,20,.95) !important; }
+.dark .theme-root .bg-white\/90 { background-color: rgba(18,18,20,.92) !important; }
+.dark .theme-root .bg-white\/70 { background-color: rgba(18,18,20,.7) !important; }
+.dark .theme-root .bg-neutral-50\/50 { background-color: rgba(15,15,17,.5) !important; }
+
+/* ── Text inversions — complete coverage ─────────────────────────────────── */
 .dark .theme-root :is(.text-neutral-950, .text-black, .text-\[\#101c3d\], .text-\[\#182650\]) { color: #f4f4f5 !important; }
+.dark .theme-root :is(.text-neutral-900) { color: #e4e4e7 !important; }
+.dark .theme-root :is(.text-neutral-800) { color: #d4d4d8 !important; }
+.dark .theme-root :is(.text-neutral-700) { color: #b8b8be !important; }
 .dark .theme-root :is(.text-neutral-600, .text-neutral-500, .text-slate-600, .text-slate-500) { color: #a1a1aa !important; }
+.dark .theme-root :is(.text-neutral-400) { color: #71717a !important; }
+
+/* ── Border inversions ───────────────────────────────────────────────────── */
 .dark .theme-root :is(.border-neutral-200, .border-neutral-300, .border-slate-200, .border-slate-300, .border-blue-100, .border-blue-200\/80) { border-color: #27272a !important; }
-.dark .theme-root .data-grid { background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); }
-.dark .theme-root .project-evidence { background-color: #18181b; }
-.dark .theme-root .project-evidence [class*="bg-white"] { background-color: rgba(255,255,255,.08) !important; }
-.dark .theme-root .project-evidence [class*="bg-slate"] { background-color: rgba(255,255,255,.15) !important; }
+.dark .theme-root .border-neutral-400 { border-color: #3f3f46 !important; }
+.dark .theme-root .border-neutral-900 { border-color: #52525b !important; }
+.dark .theme-root .border-neutral-950 { border-color: #71717a !important; }
+.dark .theme-root .border-l-2.border-neutral-900 { border-left-color: #52525b !important; }
+.dark .theme-root .border-b-2.border-neutral-900 { border-bottom-color: #52525b !important; }
+
+/* ── Shadows ─────────────────────────────────────────────────────────────── */
+.dark .theme-root .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0,0,0,.4), 0 8px 10px -6px rgba(0,0,0,.4) !important; }
+.dark .theme-root .signal-shadow { box-shadow: 0 18px 48px -25px rgba(0,0,0,.35); }
+
+/* ── Selection ───────────────────────────────────────────────────────────── */
+.dark .theme-root ::selection { background: #3f3f46; color: #f4f4f5; }
+
+/* ── Focus rings ─────────────────────────────────────────────────────────── */
+.dark .theme-root :is(.focus-visible\:ring-neutral-900, .focus-visible\:ring-neutral-950) { --tw-ring-color: #a1a1aa !important; }
+
+/* ── Hardcoded bg-color elements ─────────────────────────────────────────── */
+.dark .theme-root .bg-neutral-200 { background-color: #27272a !important; }
+.dark .theme-root [class*="bg-neutral-950"] { background-color: #f4f4f5 !important; color: #09090b !important; }
+.dark .theme-root .bg-neutral-950.text-white { background-color: #f4f4f5 !important; color: #09090b !important; }
+/* Restore inverted CTA buttons & back-to-top */
+.dark .theme-root a.bg-neutral-950,
+.dark .theme-root button.bg-neutral-950,
+.dark .theme-root button[type="submit"].bg-neutral-950 {
+  background-color: #f4f4f5 !important;
+  color: #09090b !important;
+}
+.dark .theme-root a.bg-neutral-950:hover,
+.dark .theme-root button.bg-neutral-950:hover,
+.dark .theme-root button[type="submit"].bg-neutral-950:hover {
+  background-color: #d4d4d8 !important;
+}
+/* Award badge — keep the dark first badge as inverted */
+.dark .theme-root .border-neutral-950.bg-neutral-950 {
+  background-color: #f4f4f5 !important;
+  border-color: #f4f4f5 !important;
+  color: #09090b !important;
+}
+
+/* ── Navbar — floating pill surface in dark mode ────────────────────────── */
+.dark .theme-root .nav-surface {
+  background-color: rgba(18, 18, 20, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(16px) saturate(1.4);
+}
+.dark .theme-root .nav-surface .nav-active-signal {
+  background-color: #f4f4f5 !important;
+}
+
+/* ── Mobile nav in dark mode ─────────────────────────────────────────────── */
+.dark .theme-root #mobile-navigation {
+  background-color: rgba(18, 18, 20, 0.96) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(16px) saturate(1.4);
+}
+
+/* ── Data-grid in dark ───────────────────────────────────────────────────── */
+.dark .theme-root .data-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+}
+
+/* ── Section kicker (hardcoded color) ────────────────────────────────────── */
+.dark .theme-root .section-kicker { color: #e4e4e7; }
+
+/* ── Dossier rail decorative elements ────────────────────────────────────── */
+.dark .theme-root .dossier-node { background-color: #a1a1aa !important; }
+.dark .theme-root .h-px.bg-neutral-900,
+.dark .theme-root .w-5.bg-neutral-900,
+.dark .theme-root .h-px.w-10.bg-neutral-900 { background-color: #52525b !important; }
+.dark .theme-root .dossier-rail::after { opacity: .3; }
+
+/* ── Signal stream — nodes & tokens for dark bg ──────────────────────────── */
+.dark .theme-root .signal-stream-node { background: #a1a1aa; box-shadow: 0 0 0 3px rgba(255,255,255,.08); }
+.dark .theme-root .signal-stream--dark .signal-stream-token { color: rgba(161,161,170,.55); }
+.dark .theme-root .signal-stream--light .signal-stream-token { color: rgba(161,161,170,.5); }
+
+/* ── Signal orbit — rings, nodes, core ───────────────────────────────────── */
+.dark .theme-root .signal-orbit-ring { border-color: rgba(255,255,255,.08) !important; }
+.dark .theme-root .signal-orbit-ring--inner { border-color: rgba(255,255,255,.06) !important; }
+.dark .theme-root .signal-orbit-node { background: #a1a1aa; border-color: #18181b !important; box-shadow: 0 0 0 4px rgba(255,255,255,.06); }
+.dark .theme-root .signal-orbit-core { background: rgba(18,18,20,.85); border-color: rgba(255,255,255,.08) !important; }
+.dark .theme-root .signal-orbit-marker { background: rgba(113,113,122,.5); }
+
+/* ── Project orbit specifics ─────────────────────────────────────────────── */
 .dark .theme-root .project-orbit .signal-orbit-node { border-color: #18181b; }
 .dark .theme-root .project-orbit .signal-orbit-core { background: rgba(24,24,27,.8); }
 .dark .theme-root .project-orbit .signal-orbit-ring { border-color: rgba(255,255,255,.1); }
+.dark .theme-root .contact-orbit .signal-orbit-node { border-color: #121214; }
+
+/* ── Project evidence panels ─────────────────────────────────────────────── */
+.dark .theme-root .project-evidence { background-color: #18181b !important; }
+.dark .theme-root .project-evidence [class*="bg-white"] { background-color: rgba(255,255,255,.06) !important; }
+.dark .theme-root .project-evidence [class*="bg-slate"] { background-color: rgba(255,255,255,.12) !important; }
+.dark .theme-root .project-evidence [class*="bg-neutral-300"] { background-color: rgba(255,255,255,.12) !important; }
+.dark .theme-root .project-evidence [class*="bg-neutral-400"] { background-color: rgba(255,255,255,.16) !important; }
+.dark .theme-root .project-evidence [class*="bg-neutral-500"] { background-color: rgba(255,255,255,.20) !important; }
+.dark .theme-root .project-evidence [class*="bg-neutral-800"] { background-color: rgba(255,255,255,.30) !important; }
+.dark .theme-root .project-evidence [class*="bg-neutral-900"] { background-color: rgba(255,255,255,.24) !important; }
+.dark .theme-root .project-evidence [class*="bg-neutral-950"] { background-color: rgba(255,255,255,.30) !important; color: inherit !important; }
+.dark .theme-root .project-evidence svg path { stroke: #a1a1aa; }
+.dark .theme-root .project-evidence svg circle { fill: #a1a1aa; }
+.dark .theme-root .project-evidence svg circle[stroke="white"] { stroke: #27272a; }
+.dark .theme-root .project-evidence .evidence-scan { background: #6366f1; box-shadow: 0 0 0 4px rgba(99,102,241,.15); }
+.dark .theme-root .project-evidence::before { background: linear-gradient(90deg, transparent, rgba(99,102,241,.7), transparent); }
+.dark .theme-root .evidence-line { background-color: #71717a !important; }
+.dark .theme-root .evidence-node { background-color: #a1a1aa !important; border-color: #27272a !important; }
+
+/* ── Portrait dossier decorative borders ─────────────────────────────────── */
+.dark .theme-root .portrait-dossier::before { border-top-color: rgba(255,255,255,.08); border-right-color: rgba(255,255,255,.08); }
+.dark .theme-root .portrait-dossier::after { border-left-color: rgba(255,255,255,.08); border-bottom-color: rgba(255,255,255,.08); }
+.dark .theme-root .portrait-dossier-rule { background-color: #52525b !important; }
+
+/* ── Hero gradient blob ──────────────────────────────────────────────────── */
+.dark .theme-root .bg-neutral-100.blur-3xl { background-color: rgba(39,39,42,.4) !important; }
+.dark .theme-root .hero-ambient-glow {
+  background:
+    radial-gradient(circle at 75% 20%, rgba(99, 102, 241, 0.22) 0%, rgba(56, 189, 248, 0.14) 38%, transparent 68%),
+    radial-gradient(circle at 18% 45%, rgba(168, 85, 247, 0.16) 0%, transparent 58%) !important;
+}
+
+/* ── Hero identity stamp (watermark logo) ────────────────────────────────── */
+.dark .theme-root .hero-identity-stamp { opacity: 0.03 !important; filter: invert(1); }
+
+/* ── Inline hardcoded bg elements (hero metric borders, separator lines) ── */
+.dark .theme-root .h-2.bg-neutral-900,
+.dark .theme-root .h-1\.5.bg-neutral-300,
+.dark .theme-root .h-1\.5.bg-neutral-200 {
+  background-color: rgba(255,255,255,.15) !important;
+}
+
+/* ── Availability node (green dot) ───────────────────────────────────────── */
+.dark .theme-root .bg-emerald-600 { background-color: #22c55e !important; }
+.dark .theme-root .availability-node { box-shadow: 0 0 0 0 rgba(34,197,94,.55); }
+
+/* ── Project evidence mark inner bg fix ──────────────────────────────────── */
+.dark .theme-root .project-evidence-mark { box-shadow: 0 6px 14px -10px rgba(0,0,0,.4); }
+
+/* ── Form inputs ─────────────────────────────────────────────────────────── */
+.dark .theme-root input,
+.dark .theme-root textarea {
+  background-color: #18181b !important;
+  border-color: #3f3f46 !important;
+  color: #f4f4f5 !important;
+}
+.dark .theme-root input::placeholder,
+.dark .theme-root textarea::placeholder { color: #71717a !important; }
+.dark .theme-root input:focus,
+.dark .theme-root textarea:focus {
+  border-color: #a1a1aa !important;
+  --tw-ring-color: rgba(161,161,170,.2) !important;
+}
+
+/* ── Dialog / Modal ──────────────────────────────────────────────────────── */
+.dark .theme-root .network-dialog,
+.dark .theme-root [role="dialog"] {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+}
+
+/* ── Theme toggle ────────────────────────────────────────────────────────── */
 .dark .theme-root .theme-toggle:hover { color: #ffffff; }
 .theme-toggle:hover { color: #0a0a0a; transform: translateY(-1px); }
 
-/* Navigation bar in dark mode: keep text black while leaving light mode unchanged */
-.dark .theme-root .nav-surface .mono-type span {
-  color: #000000 !important;
+/* ── Technical rule in dark ──────────────────────────────────────────────── */
+.dark .theme-root .technical-rule {
+  background-image: linear-gradient(to right, rgba(255,255,255,.08) 0 1px, transparent 1px 100%);
 }
-.dark .theme-root .nav-surface nav[aria-label="Primary"] button {
-  color: #000000 !important;
+
+/* ── Portrait placeholder gradient ───────────────────────────────────────── */
+.dark .theme-root .portrait-placeholder {
+  background:
+    radial-gradient(circle at 50% 35%, rgba(99,102,241,0.15) 0 12%, transparent 12.7%),
+    radial-gradient(ellipse at 50% 76%, rgba(99,102,241,0.15) 0 25%, transparent 25.7%),
+    linear-gradient(135deg, #1a1a2e, #16213e) !important;
 }
-.dark .theme-root .nav-surface nav[aria-label="Primary"] button:hover {
-  color: #000000 !important;
+
+/* ── Dashboard tab buttons — active state already uses bg-neutral-950 ──── */
+.dark .theme-root button.bg-neutral-950.text-white {
+  background-color: #f4f4f5 !important;
+  color: #09090b !important;
 }
-.dark .theme-root .nav-surface .nav-active-signal {
-  background-color: #000000 !important;
+
+/* ── Dots used as bullet separators ──────────────────────────────────────── */
+.dark .theme-root .bg-neutral-400 { background-color: #52525b !important; }
+.dark .theme-root .bg-neutral-300 { background-color: #3f3f46 !important; }
+
+/* ── "bg-neutral-200" used as grid separator bg ──────────────────────────── */
+.dark .theme-root dl.bg-neutral-200 { background-color: #27272a !important; }
+
+/* ── Hover states for dark cards ─────────────────────────────────────────── */
+.dark .theme-root .hover\:bg-neutral-50:hover { background-color: #1a1a1d !important; }
+.dark .theme-root .hover\:bg-neutral-100:hover { background-color: #1f1f22 !important; }
+.dark .theme-root .hover\:bg-neutral-200\/80:hover { background-color: #27272a !important; }
+.dark .theme-root .hover\:border-neutral-900:hover { border-color: #71717a !important; }
+.dark .theme-root .hover\:border-neutral-400:hover { border-color: #52525b !important; }
+.dark .theme-root .hover\:bg-neutral-800:hover { background-color: #d4d4d8 !important; }
+
+/* ── Back-to-top button ──────────────────────────────────────────────────── */
+.dark .theme-root button.bg-neutral-950.text-white.shadow-lg {
+  background-color: #27272a !important;
+  color: #f4f4f5 !important;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.4) !important;
 }
-.dark .theme-root .nav-surface .theme-toggle {
-  color: #000000 !important;
+.dark .theme-root button.bg-neutral-950.text-white.shadow-lg:hover {
+  background-color: #3f3f46 !important;
 }
-.dark .theme-root .nav-surface .theme-toggle:hover {
-  color: #000000 !important;
-}
-.dark .theme-root .nav-surface button[aria-controls="mobile-navigation"] {
-  color: #000000 !important;
-}
+
+/* ── Red dot browser mockup circles — keep them vivid ────────────────────── */
+.dark .theme-root .bg-red-400 { background-color: #f87171 !important; }
+.dark .theme-root .bg-amber-400 { background-color: #fbbf24 !important; }
+.dark .theme-root .bg-emerald-400 { background-color: #34d399 !important; }
 .network-dialog { animation: network-dialog-in 360ms var(--motion-snap) both; }
 .portrait-dossier::before { content: ""; position: absolute; inset: 12% 8% auto auto; z-index: 2; height: 9rem; width: 9rem; border-top: 1px solid rgba(0,0,0,.08); border-right: 1px solid rgba(0,0,0,.08); opacity: .75; pointer-events: none; }
 .portrait-dossier::after { content: ""; position: absolute; inset: auto auto 13% 7%; z-index: 2; height: 6rem; width: 6rem; border-left: 1px solid rgba(0,0,0,.08); border-bottom: 1px solid rgba(0,0,0,.08); pointer-events: none; }
