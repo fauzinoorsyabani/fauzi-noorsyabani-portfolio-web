@@ -41,18 +41,13 @@ import {
   otherProjects,
   person,
   skillGroups,
+  techStackCategories,
 } from "@/data/portfolio";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/data/translations";
+import { TechIcon } from "@/components/TechIcon";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-
-const navItems = [
-  ["About", "about"],
-  ["Tech Stack", "stack"],
-  ["Projects", "projects"],
-  ["Experience", "experience"],
-  ["Awards", "awards"],
-  ["Contact", "contact"],
-] as const;
 
 type FormFields = { name: string; email: string; subject: string; message: string };
 type FormErrors = Partial<Record<keyof FormFields, string>>;
@@ -101,14 +96,14 @@ function SectionHeading({
           <span className="h-px w-5 bg-neutral-900" />
         </div>
         <div className="relative mt-5 flex h-12 w-12 items-center justify-center rounded-md border border-neutral-300 bg-white shadow-xs">
-          <img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10 object-contain" />
+          <img src={assetUrls.logo} alt="" aria-hidden="true" loading="lazy" decoding="async" width={40} height={40} className="h-10 w-10 object-contain" />
           <i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-neutral-900" />
         </div>
         <span className="dossier-node mt-2 block h-1.5 w-1.5 rounded-full bg-neutral-900" aria-hidden="true" />
       </div>
       <div className="section-heading-copy">
         <p className="section-kicker">{kicker}</p>
-        <h2 className="display-type mt-4 max-w-3xl text-3xl font-bold leading-[1.08] tracking-[-0.05em] text-neutral-950 sm:text-5xl lg:text-6xl">
+        <h2 className="display-type mt-4 max-w-3xl text-2xl font-bold leading-[1.12] tracking-[-0.04em] text-neutral-950 sm:text-4xl lg:text-[2.75rem]">
           {title}
         </h2>
         {copy ? <p className="mt-5 max-w-2xl text-base leading-8 text-neutral-700">{copy}</p> : null}
@@ -272,11 +267,53 @@ function ProjectEvidence({ index, category }: { index: number; category: string 
   );
 }
 
+function UKFlagIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 60 60" fill="none">
+      <defs>
+        <clipPath id="uk-flag-circle">
+          <circle cx="30" cy="30" r="28" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#uk-flag-circle)">
+        <rect width="60" height="60" fill="#012169" />
+        <path d="M0 0L60 60M60 0L0 60" stroke="#FFFFFF" strokeWidth="10" />
+        <path d="M0 0L60 60M60 0L0 60" stroke="#C8102E" strokeWidth="4" />
+        <path d="M30 0v60M0 30h60" stroke="#FFFFFF" strokeWidth="16" />
+        <path d="M30 0v60M0 30h60" stroke="#C8102E" strokeWidth="10" />
+      </g>
+      <circle cx="30" cy="30" r="28" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1.5" fill="none" />
+    </svg>
+  );
+}
+
+function IndonesiaFlagIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 60 60" fill="none">
+      <defs>
+        <clipPath id="id-flag-circle">
+          <circle cx="30" cy="30" r="28" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#id-flag-circle)">
+        <rect y="0" width="60" height="30" fill="#E70011" />
+        <rect y="30" width="60" height="30" fill="#FFFFFF" />
+      </g>
+      <circle cx="30" cy="30" r="28" stroke="currentColor" strokeOpacity="0.25" strokeWidth="1.5" fill="none" />
+    </svg>
+  );
+}
+
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language];
+  const navItems = t.nav;
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
+  const [selectedTechCategory, setSelectedTechCategory] = useState<string>("all");
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [announcement, setAnnouncement] = useState("");
@@ -294,18 +331,18 @@ export default function Home() {
   const dashboardViews = {
     executive: {
       src: assetUrls.dashboardExecutive,
-      title: "Executive Overview",
-      desc: "Kapasitas Akademik & Rasio Mahasiswa-Dosen Institusi (Universitas Siliwangi)",
+      title: t.projects.views.executive.title,
+      desc: t.projects.views.executive.desc,
     },
     detail: {
       src: assetUrls.dashboardDetail,
-      title: "Detail Per Program Studi",
-      desc: "Distribusi Rasio Dosen-Mahasiswa & Matriks Antar Program Studi",
+      title: t.projects.views.detail.title,
+      desc: t.projects.views.detail.desc,
     },
     trend: {
       src: assetUrls.dashboardTrend,
-      title: "Tren Longitudinal",
-      desc: "Monitoring Rasio Longitudinal Multi-Semester (Ganjil 2023 - Ganjil 2025)",
+      title: t.projects.views.trend.title,
+      desc: t.projects.views.trend.desc,
     },
   } as const;
 
@@ -346,7 +383,14 @@ export default function Home() {
 
   useEffect(() => {
     const revealObserver = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-visible")),
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
       { threshold: 0.08 },
     );
     document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
@@ -354,9 +398,17 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-      setShowTop(window.scrollY > 700);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sy = window.scrollY;
+          setScrolled(sy > 24);
+          setShowTop(sy > 700);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -420,7 +472,7 @@ export default function Home() {
       {/* Floating Pill Top Navigation */}
       <header className="fixed top-3 sm:top-5 inset-x-0 z-50 flex flex-col items-center px-4 sm:px-6 pointer-events-none transition-all duration-300">
         <div
-          className={`nav-surface pointer-events-auto flex w-full max-w-5xl items-center justify-between rounded-full border transition-all duration-300 px-3.5 sm:px-5 py-2.5 ${
+          className={`nav-surface pointer-events-auto flex w-full max-w-4xl lg:max-w-[1000px] items-center justify-between rounded-full border transition-all duration-300 px-3.5 sm:px-5 py-2.5 ${
             scrolled
               ? "border-neutral-300/90 bg-white/95 shadow-[0_8px_30px_rgba(0,0,0,0.1)] backdrop-blur-xl dark:border-neutral-700/80 dark:bg-neutral-900/95 dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
               : "border-neutral-200/80 bg-white/85 shadow-[0_4px_20px_rgba(0,0,0,0.05)] backdrop-blur-md dark:border-neutral-800/80 dark:bg-neutral-900/85 dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
@@ -438,6 +490,10 @@ export default function Home() {
                 src={assetUrls.logo}
                 alt=""
                 aria-hidden="true"
+                loading="eager"
+                decoding="async"
+                width={28}
+                height={28}
                 className="h-6 w-6 sm:h-7 sm:w-7 object-contain transition-transform duration-200 group-hover:scale-105"
               />
               <i className="absolute bottom-0.5 right-0.5 h-2 w-2 rounded-full border border-white bg-emerald-500" />
@@ -448,20 +504,25 @@ export default function Home() {
             </span>
           </button>
 
-          {/* Desktop Nav Links in pill container */}
-          <nav aria-label="Primary" className="hidden items-center gap-1 rounded-full bg-neutral-100/70 p-1 dark:bg-neutral-800/60 lg:flex border border-neutral-200/50 dark:border-neutral-700/50">
+          {/* Desktop Nav Links in pill container with dynamic hover background animation */}
+          <nav
+            aria-label="Primary"
+            onMouseLeave={() => setHoveredNav(null)}
+            className="hidden items-center gap-1 rounded-full bg-neutral-100/70 p-1 dark:bg-neutral-800/60 lg:flex border border-neutral-200/50 dark:border-neutral-700/50"
+          >
             {navItems.map(([label, id]) => {
-              const isActive = activeSection === id;
+              const isHighlighted = (hoveredNav ?? activeSection) === id;
               return (
                 <button
                   key={id}
                   onClick={() => scrollTo(id)}
+                  onMouseEnter={() => setHoveredNav(id)}
                   type="button"
-                  aria-current={isActive ? "page" : undefined}
+                  aria-current={activeSection === id ? "page" : undefined}
                   className={`relative rounded-full px-3.5 py-1.5 text-[0.7rem] font-bold tracking-[0.08em] uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
-                    isActive
-                      ? "bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950"
-                      : "text-neutral-600 hover:text-neutral-950 hover:bg-white/60 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-700/50"
+                    isHighlighted
+                      ? "bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950 scale-[1.02]"
+                      : "text-neutral-600 hover:text-neutral-950 hover:bg-neutral-200/50 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-700/50"
                   }`}
                 >
                   {label}
@@ -472,6 +533,21 @@ export default function Home() {
 
           {/* Right Action buttons */}
           <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Language Switcher: ICON ONLY (UK 🇬🇧 / Indonesia 🇮🇩) */}
+            <button
+              onClick={toggleLanguage}
+              type="button"
+              aria-label={language === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
+              title={language === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
+              className="group relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 text-neutral-700 transition hover:bg-neutral-100 hover:scale-105 active:scale-95 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+            >
+              {language === "en" ? (
+                <UKFlagIcon className="h-5 w-5 sm:h-5.5 sm:w-5.5 transition-transform duration-200 group-hover:scale-110" />
+              ) : (
+                <IndonesiaFlagIcon className="h-5 w-5 sm:h-5.5 sm:w-5.5 transition-transform duration-200 group-hover:scale-110" />
+              )}
+            </button>
+
             <button
               onClick={handleThemeToggle}
               type="button"
@@ -494,7 +570,7 @@ export default function Home() {
               type="button"
               className="hidden sm:flex items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 sm:px-4 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
             >
-              Contact <ArrowUpRight className="h-3.5 w-3.5" />
+              {t.header.contactBtn} <ArrowUpRight className="h-3.5 w-3.5" />
             </button>
             <button
               onClick={() => setMenuOpen((value) => !value)}
@@ -512,20 +588,31 @@ export default function Home() {
         {/* Floating Mobile Navigation Dropdown */}
         <div
           id="mobile-navigation"
-          className={`pointer-events-auto mt-2 w-full max-w-5xl overflow-hidden rounded-2xl border border-neutral-300 bg-white/95 shadow-xl backdrop-blur-xl transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-900/95 lg:hidden ${
+          className={`pointer-events-auto mt-2 w-full max-w-4xl lg:max-w-[1000px] overflow-hidden rounded-2xl border border-neutral-300 bg-white/95 shadow-xl backdrop-blur-xl transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-900/95 lg:hidden ${
             menuOpen ? "max-h-[85vh] opacity-100 p-4" : "max-h-0 opacity-0 p-0 border-transparent pointer-events-none"
           }`}
         >
           <nav aria-label="Mobile" className="mx-auto px-1 py-1">
-            <button
-              onClick={handleThemeToggle}
-              type="button"
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="mb-4 flex w-full items-center justify-between rounded-xl border border-neutral-300 bg-neutral-50 px-4 py-3 text-xs font-bold text-neutral-900 shadow-xs dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
-            >
-              <span>Appearance: {theme === "dark" ? "Dark Mode" : "Light Mode"}</span>
-              {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-            </button>
+            <div className="mb-4 grid grid-cols-2 gap-2">
+              <button
+                onClick={handleThemeToggle}
+                type="button"
+                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                className="flex items-center justify-between rounded-xl border border-neutral-300 bg-neutral-50 px-3.5 py-2.5 text-xs font-bold text-neutral-900 shadow-xs dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+              >
+                <span>{theme === "dark" ? "Dark Mode" : "Light Mode"}</span>
+                {theme === "dark" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+              </button>
+              <button
+                onClick={toggleLanguage}
+                type="button"
+                aria-label={language === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
+                className="flex items-center justify-between rounded-xl border border-neutral-300 bg-neutral-50 px-3.5 py-2.5 text-xs font-bold text-neutral-900 shadow-xs dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+              >
+                <span>{language === "en" ? "English" : "Indonesia"}</span>
+                {language === "en" ? <UKFlagIcon className="h-4.5 w-4.5" /> : <IndonesiaFlagIcon className="h-4.5 w-4.5" />}
+              </button>
+            </div>
             <div className="grid gap-2">
               {navItems.map(([label, id]) => (
                 <button
@@ -551,7 +638,7 @@ export default function Home() {
               type="button"
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-neutral-950 px-4 py-3.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-950"
             >
-              Contact Fauzi <ArrowUpRight className="h-4 w-4" />
+              {t.header.contactBtn} Fauzi <ArrowUpRight className="h-4 w-4" />
             </button>
           </nav>
         </div>
@@ -573,29 +660,33 @@ export default function Home() {
             src={assetUrls.logo}
             alt=""
             aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+            width={288}
+            height={288}
             className="hero-identity-stamp pointer-events-none absolute right-[8%] top-[12%] z-0 hidden h-72 w-72 object-contain opacity-[0.05] lg:block"
           />
 
-          <div className="relative mx-auto grid min-h-[720px] max-w-5xl lg:max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-14 lg:px-8 lg:py-20 xl:min-h-[760px]">
+          <div className="relative mx-auto grid min-h-[720px] max-w-4xl lg:max-w-[1000px] gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-14 lg:px-8 lg:py-20 xl:min-h-[760px]">
             <div className="flex flex-col justify-center pt-8 lg:pt-0">
               <div className="hero-sequence hero-sequence--1 flex w-fit items-center gap-2 rounded-md border border-neutral-300 bg-neutral-100/90 px-3 py-1.5 mono-type text-[0.62rem] font-bold tracking-[0.14em] text-neutral-900 shadow-xs">
-                <span className="availability-node h-1.5 w-1.5 rounded-full bg-emerald-600" /> OPEN TO WORK
+                <span className="availability-node h-1.5 w-1.5 rounded-full bg-emerald-600" /> {t.hero.availability}
               </div>
               <p className="hero-sequence hero-sequence--2 mt-9 display-type text-xl font-medium tracking-[-0.035em] text-neutral-600 sm:text-2xl">
-                Hello, I’m
+                {t.hero.greeting}
               </p>
-              <h1 className="hero-sequence hero-sequence--3 display-type mt-1 max-w-3xl text-4xl font-bold leading-[0.94] tracking-[-0.06em] text-neutral-950 sm:text-6xl md:text-7xl lg:text-8xl xl:text-[5.9rem]">
+              <h1 className="hero-sequence hero-sequence--3 display-type mt-1 max-w-3xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] font-bold leading-[1.0] tracking-[-0.05em] text-neutral-950">
                 Fauzi<br />
                 <span className="text-neutral-950">Noorsyabani.</span>
               </h1>
               <div className="hero-sequence hero-sequence--4 mt-8 flex items-center gap-3 text-neutral-900">
                 <span className="h-px w-10 bg-neutral-900" />
                 <p className="mono-type text-[0.66rem] font-bold uppercase tracking-[0.16em] text-neutral-900">
-                  {person.role} <span className="mx-1 text-neutral-400">/</span> Applied AI &amp; Data Products
+                  {person.role} <span className="mx-1 text-neutral-400">/</span> {t.hero.roleSub}
                 </p>
               </div>
               <p className="hero-sequence hero-sequence--5 mt-7 max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
-                {person.headline}
+                {t.hero.headline}
               </p>
               <p className="hero-sequence hero-sequence--5 mt-5 flex items-center gap-2 text-sm font-semibold text-neutral-900">
                 <Sparkles className="h-4 w-4 text-neutral-950" /> {person.education}
@@ -608,11 +699,11 @@ export default function Home() {
                     rel="noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-950 px-5 py-3.5 text-sm font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 focus-visible:ring-offset-2"
                   >
-                    View CV <FileText className="h-4 w-4" />
+                    {language === "en" ? "View CV" : "Lihat CV"} <FileText className="h-4 w-4" />
                   </a>
                 ) : (
                   <PendingAction
-                    label="View CV"
+                    label={language === "en" ? "View CV" : "Lihat CV"}
                     onPending={notifyPending}
                     className="inline-flex items-center justify-center rounded-lg bg-neutral-950 px-5 py-3.5 text-sm font-bold text-white transition hover:bg-neutral-800 active:scale-[0.97]"
                   />
@@ -622,14 +713,14 @@ export default function Home() {
                   type="button"
                   className="inline-flex items-center justify-center gap-2 rounded-lg border border-neutral-300 bg-white px-5 py-3.5 text-sm font-bold text-neutral-900 shadow-xs transition hover:border-neutral-900 hover:bg-neutral-50 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
-                  Review Project Evidence <ArrowDown className="h-4 w-4" />
+                  {t.hero.exploreBtn} <ArrowDown className="h-4 w-4" />
                 </button>
               </div>
               <div className="hero-sequence hero-sequence--7 hero-metrics mt-10 grid max-w-xl grid-cols-3 rounded-xl border border-neutral-300 bg-neutral-50/70 p-3 sm:p-5 shadow-xs">
                 {[
-                  { value: capstoneHours, suffix: "+", label: "capstone hours" },
-                  { value: programsAnalyzed, suffix: "", label: "programs analyzed" },
-                  { value: studentsReached, suffix: "+", label: "students reached" },
+                  { value: capstoneHours, suffix: "+", label: t.hero.hoursLabel },
+                  { value: programsAnalyzed, suffix: "", label: t.hero.programsLabel },
+                  { value: studentsReached, suffix: "+", label: t.hero.studentsLabel },
                 ].map(({ value, suffix, label }, index) => (
                   <div key={label} className={`px-2 sm:px-4 ${index !== 2 ? "border-r border-neutral-300" : ""}`}>
                     <p className="display-type text-lg font-bold tracking-[-0.04em] text-neutral-950 sm:text-2xl">
@@ -679,7 +770,7 @@ export default function Home() {
                   href={links.phone}
                   className="inline-flex items-center gap-2 text-neutral-700 transition hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
                 >
-                  <Phone className="h-4 w-4 text-neutral-900" /> Phone
+                  <Phone className="h-4 w-4 text-neutral-900" /> {language === "en" ? "Phone" : "Telepon"}
                 </a>
               </div>
             </div>
@@ -695,6 +786,8 @@ export default function Home() {
               <img
                 src={assetUrls.profilePhoto}
                 alt="Portrait of Fauzi Noorsyabani"
+                fetchPriority="high"
+                decoding="async"
                 className="hero-portrait relative z-10 h-[360px] w-full max-w-[570px] rounded-2xl border border-neutral-300 object-cover object-[50%_28%] shadow-xl shadow-neutral-900/10 sm:h-[480px] lg:h-[530px]"
               />
               <div className="hero-evidence absolute bottom-0 left-0 z-20 w-[210px] rounded-xl border border-neutral-300 bg-white/95 p-3.5 shadow-xl backdrop-blur-md sm:w-[244px] sm:-left-4 sm:bottom-5 sm:p-4">
@@ -735,16 +828,16 @@ export default function Home() {
 
         {/* Section 01: About */}
         <section id="about" className="scroll-mt-28 bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
+          <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="01"
-              kicker="Professional position"
-              title="Building useful systems from complex signals."
+              kicker={t.about.kicker}
+              title={t.about.title}
             />
             <div className="mt-14 grid gap-10 lg:grid-cols-[.88fr_1.12fr] lg:gap-20">
               <div className="portrait-dossier relative overflow-hidden rounded-[1.4rem] border border-neutral-300 bg-white p-6 signal-shadow sm:p-9">
                 <div className="absolute right-5 top-5 z-10 mono-type text-[0.58rem] font-semibold tracking-[0.13em] text-neutral-500">
-                  FIELD PORTRAIT / 01
+                  {t.about.fieldPortrait}
                 </div>
                 <div className="absolute left-5 top-5 z-10 flex items-center gap-2 mono-type text-[0.54rem] font-bold tracking-[0.12em] text-neutral-950">
                   <img src={assetUrls.logo} alt="" aria-hidden="true" className="h-6 w-6" /> FN / IDENTITY PLATE
@@ -753,22 +846,27 @@ export default function Home() {
                   src={assetUrls.profilePhoto}
                   alt="Portrait of Fauzi Noorsyabani"
                   loading="lazy"
+                  decoding="async"
                   className="relative z-[1] aspect-[4/5] w-full rounded-xl border border-neutral-300 object-cover object-[50%_20%]"
                 />
                 <div className="absolute bottom-10 left-10 z-10 flex items-center gap-3 rounded-md border border-neutral-300 bg-white/95 px-3 py-2 mono-type text-[0.54rem] font-bold uppercase tracking-[0.11em] text-neutral-950 shadow-sm backdrop-blur-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-neutral-950" />
-                  FN-26 / FULL STACK AI
+                  {t.about.badge}
                 </div>
                 <span className="portrait-dossier-rule absolute bottom-0 left-[17%] h-20 w-px bg-neutral-400" aria-hidden="true" />
               </div>
               <div className="flex flex-col justify-center">
                 <p className="display-type max-w-2xl text-2xl font-bold leading-[1.23] tracking-[-0.045em] text-neutral-950 sm:text-3xl">
-                  {person.about}
+                  {t.about.aboutText}
                 </p>
-                <p className="mt-5 max-w-xl text-base leading-8 text-neutral-700">{person.shortBio}</p>
+                <p className="mt-5 max-w-xl text-base leading-8 text-neutral-700">{t.about.shortBio}</p>
                 <div className="mt-10 grid gap-3 sm:grid-cols-3">
-                  {focusAreas.map((focus) => {
-                    const Icon = focus.label === "Build" ? Code2 : focus.label === "Analyze" ? BarChart3 : UsersRound;
+                  {[
+                    { ...t.about.focus.build, index: "01", icon: Code2 },
+                    { ...t.about.focus.analyze, index: "02", icon: BarChart3 },
+                    { ...t.about.focus.lead, index: "03", icon: UsersRound },
+                  ].map((focus) => {
+                    const Icon = focus.icon;
                     return (
                       <div
                         key={focus.label}
@@ -791,7 +889,7 @@ export default function Home() {
               </div>
             </div>
             <dl className="mt-14 grid gap-px overflow-hidden rounded-xl border border-neutral-300 bg-neutral-300 sm:grid-cols-2 lg:grid-cols-4 shadow-xs">
-              {facts.map(([term, detail]) => (
+              {t.about.facts.map(([term, detail]) => (
                 <div key={term} className="min-h-28 bg-white p-5 sm:p-6 transition hover:bg-neutral-50">
                   <dt className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.13em] text-neutral-500">
                     {term}
@@ -803,56 +901,91 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 02: Tech Stack */}
-        <section id="stack" className="scroll-mt-28 bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
+        {/* Section 02: Tech Stacks & Tools (Categorized with Interactive Filters & Hover Tooltips) */}
+        <section id="stack" className="scroll-mt-28 bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 dark:bg-neutral-950 dark:border-neutral-800">
+          <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="02"
-              kicker="Technical landscape"
-              title="A broad toolkit, ordered around practical delivery."
-              copy="The emphasis is on the tools that carry an idea from data and model through product, deployment, and decision-making."
+              kicker={t.techStack.kicker}
+              title={t.techStack.title}
+              copy={t.techStack.copy}
             />
-            <div className="mt-14 border-y border-neutral-300">
-              {skillGroups.map((group, index) => (
-                <div
-                  key={group.title}
-                  className={`motion-row grid gap-7 py-8 sm:py-10 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-12 ${
-                    index !== skillGroups.length - 1 ? "border-b border-neutral-300" : ""
-                  }`}
-                >
-                  <div className="border-l-2 border-neutral-950 pl-4">
-                    <p className="mono-type text-[0.62rem] font-bold tracking-[0.14em] text-neutral-500">{group.code}</p>
-                    <h3 className="display-type mt-2 text-2xl font-bold tracking-[-0.05em] text-neutral-950">
-                      {group.title}
-                    </h3>
-                  </div>
-                  <div>
-                    {/* Primary featured skills as solid high-contrast badges */}
-                    <div className="flex flex-wrap gap-2 sm:gap-2.5">
-                      {group.featured.map((skill) => (
-                        <span
-                          key={skill}
-                          className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-950 bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs"
-                        >
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                          {skill}
-                        </span>
-                      ))}
+
+            {/* Interactive Category Filter Bar */}
+            <div className="mt-10 flex flex-wrap items-center gap-1.5 rounded-2xl border border-neutral-300/80 bg-neutral-100/70 p-1.5 shadow-2xs backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900/80">
+              {Object.entries(t.techStack.filters).map(([key, label]) => {
+                const isActive = selectedTechCategory === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setSelectedTechCategory(key)}
+                    className={`rounded-xl px-3.5 py-1.5 text-xs font-bold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
+                      isActive
+                        ? "bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950 scale-[1.02]"
+                        : "text-neutral-600 hover:text-neutral-950 hover:bg-white/80 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-neutral-800/70"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Categorized Groups & Prominent Logo Tiles Grid */}
+            <div className="mt-12 space-y-12">
+              {techStackCategories
+                .filter((cat) => selectedTechCategory === "all" || cat.filterKey === selectedTechCategory)
+                .map((cat) => {
+                  const catMeta = t.techStack.categories[cat.filterKey] ?? {
+                    title: cat.title,
+                    description: cat.description,
+                  };
+                  return (
+                    <div key={cat.id} className="tech-group-block">
+                      {/* Category Title with Accent Indicator */}
+                      <div className="flex items-center gap-3">
+                        <span className="h-0.5 w-6 rounded-full bg-red-500 dark:bg-red-400" aria-hidden="true" />
+                        <h3 className="display-type text-xl font-bold tracking-tight text-neutral-950 dark:text-white">
+                          {catMeta.title}
+                        </h3>
+                      </div>
+                      <p className="mt-1 text-xs text-neutral-600 dark:text-neutral-400">
+                        {catMeta.description}
+                      </p>
+
+                      {/* Prominent Square Logo Cards with Enlarged Icons */}
+                      <div className="mt-5 grid grid-cols-3 gap-3 min-[480px]:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 sm:gap-4">
+                        {cat.skills.map((skill) => (
+                          <div
+                            key={skill}
+                            tabIndex={0}
+                            role="img"
+                            aria-label={skill}
+                            className="group relative flex aspect-square items-center justify-center rounded-2xl border border-neutral-300/80 bg-neutral-50/80 p-2 sm:p-2.5 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:border-neutral-950 hover:bg-white hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-neutral-300 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 cursor-pointer"
+                          >
+                            {/* Enlarged Logo filling ~75-80% of tile */}
+                            <TechIcon
+                              name={skill}
+                              className="h-11 w-11 sm:h-12 sm:w-12 md:h-13 md:w-13 shrink-0 transition-transform duration-200 group-hover:scale-110 text-neutral-950 dark:text-white"
+                            />
+
+                            {/* Smooth Tooltip showing name when cursor hovers over card */}
+                            <div
+                              role="tooltip"
+                              className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 z-30 opacity-0 translate-y-1 transition-all duration-150 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0"
+                            >
+                              <div className="relative rounded-md bg-neutral-950 px-2.5 py-1 text-[0.68rem] font-bold tracking-wide text-white shadow-lg whitespace-nowrap dark:bg-white dark:text-neutral-950">
+                                {skill}
+                                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-4 border-transparent border-t-neutral-950 dark:border-t-white" />
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    {/* Secondary skills as crisp bordered pills */}
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {group.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="inline-flex items-center rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-1.5 text-xs font-semibold text-neutral-800 transition hover:border-neutral-900 hover:bg-white hover:text-neutral-950 shadow-2xs"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  );
+                })}
             </div>
           </div>
         </section>
@@ -867,12 +1000,12 @@ export default function Home() {
           {!prefersReducedMotion ? (
             <SignalOrbit reverse className="project-orbit absolute -right-24 top-24 z-0 hidden h-80 w-80 opacity-60 lg:block" />
           ) : null}
-          <div className="relative z-10 mx-auto max-w-5xl lg:max-w-6xl reveal">
+          <div className="relative z-10 mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="03"
-              kicker="Selected work"
-              title="Projects built to clarify, predict, and improve."
-              copy="A selected index of data work, applied AI, and product engineering. Real decision-support systems and analytics dashboards."
+              kicker={t.projects.kicker}
+              title={t.projects.title}
+              copy={t.projects.copy}
             />
 
             {/* Featured Project Showcase: 100% UN-CROPPED, FITTED DASHBOARD SHOWCASE */}
@@ -903,11 +1036,11 @@ export default function Home() {
                             href={project.links.caseStudy}
                             className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3.5 py-1.5 text-xs font-bold text-neutral-900 shadow-xs transition hover:border-neutral-900 hover:bg-neutral-50"
                           >
-                            Case Study <ArrowUpRight className="h-3.5 w-3.5" />
+                            {t.projects.caseStudy} <ArrowUpRight className="h-3.5 w-3.5" />
                           </a>
                         ) : (
                           <PendingAction
-                            label="Case Study"
+                            label={t.projects.caseStudy}
                             onPending={notifyPending}
                             className="rounded-md border border-neutral-200 bg-neutral-50 px-3.5 py-1.5 text-xs font-bold text-neutral-700"
                           />
@@ -919,7 +1052,7 @@ export default function Home() {
                             rel="noreferrer"
                             className="inline-flex items-center gap-1.5 rounded-md bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800"
                           >
-                            View Original Resolution <Maximize2 className="h-3.5 w-3.5" />
+                            {t.projects.viewOriginal} <Maximize2 className="h-3.5 w-3.5" />
                           </a>
                         )}
                       </div>
@@ -942,9 +1075,10 @@ export default function Home() {
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-md border border-neutral-300 bg-neutral-50 px-3 py-1.5 mono-type text-[0.62rem] font-bold tracking-wide text-neutral-800 shadow-2xs"
+                          className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-neutral-50 px-3 py-1.5 mono-type text-[0.62rem] font-bold tracking-wide text-neutral-800 shadow-2xs"
                         >
-                          {tech}
+                          <TechIcon name={tech} className="h-3.5 w-3.5 shrink-0" />
+                          <span>{tech}</span>
                         </span>
                       ))}
                     </div>
@@ -993,6 +1127,7 @@ export default function Home() {
                           alt={isDashboardProject ? dashboardViews[dashboardView].desc : project.title}
                           className="block h-auto w-full max-w-full rounded border border-neutral-300 object-contain shadow-xs"
                           loading="lazy"
+                          decoding="async"
                         />
                       </div>
 
@@ -1000,7 +1135,7 @@ export default function Home() {
                       {isDashboardProject && (
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-t border-neutral-300 bg-neutral-50 px-5 py-3 text-xs">
                           <span className="mono-type text-[0.64rem] font-semibold text-neutral-700">
-                            <strong>Keterangan:</strong> {dashboardViews[dashboardView].desc}
+                            <strong>{language === "en" ? "Note:" : "Keterangan:"}</strong> {dashboardViews[dashboardView].desc}
                           </span>
                           <a
                             href={currentArt}
@@ -1008,7 +1143,7 @@ export default function Home() {
                             rel="noreferrer"
                             className="mono-type inline-flex items-center gap-1 text-[0.64rem] font-bold text-neutral-950 hover:underline"
                           >
-                            Buka Gambar Resolusi Penuh <ExternalLink className="h-3 w-3" />
+                            {language === "en" ? "Open Full Resolution Image" : "Buka Gambar Resolusi Penuh"} <ExternalLink className="h-3 w-3" />
                           </a>
                         </div>
                       )}
@@ -1046,9 +1181,10 @@ export default function Home() {
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-md border border-neutral-300 bg-neutral-50 px-2.5 py-1 mono-type text-[0.58rem] font-semibold text-neutral-800 shadow-2xs"
+                            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-neutral-50 px-2.5 py-1 mono-type text-[0.58rem] font-semibold text-neutral-800 shadow-2xs"
                           >
-                            {tech}
+                            <TechIcon name={tech} className="h-3 w-3 shrink-0" />
+                            <span>{tech}</span>
                           </span>
                         ))}
                       </div>
@@ -1061,13 +1197,13 @@ export default function Home() {
             <div className="mt-16 border-t border-neutral-300 pt-7">
               <div className="flex items-end justify-between gap-5">
                 <div>
-                  <p className="section-kicker">Other projects</p>
+                  <p className="section-kicker">{t.projects.otherKicker}</p>
                   <h3 className="display-type mt-3 text-2xl font-bold tracking-[-0.05em] text-neutral-950">
-                    A compact working index.
+                    {t.projects.otherTitle}
                   </h3>
                 </div>
                 <span className="mono-type hidden text-[0.62rem] uppercase tracking-[0.12em] text-neutral-500 sm:block">
-                  05 selected entries
+                  {t.projects.otherCount}
                 </span>
               </div>
               <div className="mt-7 border-y border-neutral-300">
@@ -1114,12 +1250,12 @@ export default function Home() {
           id="experience"
           className="scroll-mt-28 bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950"
         >
-          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
+          <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="04"
-              kicker="Experience & leadership"
-              title="A record of applied work and people-first momentum."
-              copy="A developing career shaped by product delivery, data analysis, responsible AI advocacy, and local community work."
+              kicker={t.experience.kicker}
+              title={t.experience.title}
+              copy={t.experience.copy}
             />
             <div className="mt-16 space-y-0 border-l-2 border-neutral-300 pl-6 sm:pl-10 lg:ml-[7.4rem]">
               {experience.map((item, index) => (
@@ -1151,7 +1287,7 @@ export default function Home() {
                       </ul>
                       {"note" in item && item.note ? (
                         <p className="mt-5 rounded-lg border border-neutral-300 bg-neutral-50 p-4 text-xs leading-relaxed text-neutral-800 shadow-2xs">
-                          <strong className="font-semibold text-neutral-950">Editorial note:</strong> {item.note}
+                          <strong className="font-semibold text-neutral-950">{t.experience.editorialNote}:</strong> {item.note}
                         </p>
                       ) : null}
                     </div>
@@ -1164,11 +1300,11 @@ export default function Home() {
 
         {/* Section 05: Awards & Recognition */}
         <section id="awards" className="scroll-mt-28 bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
+          <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="05"
-              kicker="Recognition"
-              title="Evidence of analytical excellence and initiative."
+              kicker={t.awards.kicker}
+              title={t.awards.title}
             />
             <div className="mt-14 border-y border-neutral-300 lg:ml-[7.5rem]">
               {awards.map(([placement, title, organization, date], index) => (
@@ -1209,12 +1345,12 @@ export default function Home() {
 
         {/* Section 06: Credentials */}
         <section className="bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-          <div className="mx-auto max-w-5xl lg:max-w-6xl reveal">
+          <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="06"
-              kicker="Credentials"
-              title="Certifications that support delivery."
-              copy="Credential destinations are intentionally kept as editable placeholders until verified public URLs are supplied."
+              kicker={t.credentials.kicker}
+              title={t.credentials.title}
+              copy={t.credentials.copy}
             />
             <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:ml-[7.5rem] lg:grid-cols-3">
               {certifications.map((cert, index) => (
@@ -1240,11 +1376,11 @@ export default function Home() {
                         href={cert.credential}
                         className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-neutral-950 hover:underline"
                       >
-                        View Credential <ExternalLink className="h-3.5 w-3.5" />
+                        {t.credentials.viewBtn} <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     ) : (
                       <PendingAction
-                        label="View Credential"
+                        label={t.credentials.viewBtn}
                         onPending={notifyPending}
                         className="mt-4 text-sm font-bold text-neutral-950 hover:underline"
                       />
@@ -1264,18 +1400,18 @@ export default function Home() {
           {!prefersReducedMotion ? (
             <SignalOrbit reverse className="contact-orbit absolute -right-20 top-10 z-0 hidden h-[25rem] w-[25rem] opacity-50 lg:block" />
           ) : null}
-          <div className="relative mx-auto max-w-5xl lg:max-w-6xl reveal">
+          <div className="relative mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="07"
-              kicker="Contact & collaboration"
-              title="Start with the outcome."
-              copy="Share the product context, the decision it needs to support, and the delivery constraints. I’ll respond with a focused next step."
+              kicker={t.contact.kicker}
+              title={t.contact.title}
+              copy={t.contact.copy}
             />
             <div className="mt-14 grid gap-12 lg:grid-cols-[.86fr_1.14fr] lg:gap-20">
               <aside className="motion-contact space-y-8">
                 <div>
                   <p className="mono-type text-[0.61rem] font-bold uppercase tracking-[0.13em] text-neutral-950">
-                    Direct channels
+                    {t.contact.directChannels}
                   </p>
                   <div className="mt-5 space-y-4">
                     <a
@@ -1285,7 +1421,7 @@ export default function Home() {
                       <Mail className="mt-0.5 h-5 w-5 text-neutral-950" />
                       <span>
                         <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-                          Email
+                          {t.contact.emailLabel}
                         </span>
                         <span className="mt-1 block text-sm font-bold text-neutral-950 group-hover:underline">
                           {person.email}
@@ -1299,7 +1435,7 @@ export default function Home() {
                       <Phone className="mt-0.5 h-5 w-5 text-neutral-950" />
                       <span>
                         <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-                          Phone
+                          {t.contact.phoneLabel}
                         </span>
                         <span className="mt-1 block text-sm font-bold text-neutral-950 group-hover:underline">
                           {person.phone}
@@ -1310,7 +1446,7 @@ export default function Home() {
                       <MapPin className="mt-0.5 h-5 w-5 text-neutral-950" />
                       <span>
                         <span className="block mono-type text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-                          Location
+                          {t.contact.locationLabel}
                         </span>
                         <span className="mt-1 block text-sm font-bold text-neutral-950">{person.location}</span>
                       </span>
@@ -1319,10 +1455,10 @@ export default function Home() {
                 </div>
                 <div className="rounded-xl border border-neutral-300 bg-neutral-50 p-5 shadow-xs">
                   <p className="mono-type text-[0.61rem] font-bold uppercase tracking-[0.12em] text-neutral-950">
-                    Preferred starting point
+                    {t.contact.preferredTitle}
                   </p>
                   <p className="mt-3 text-sm leading-7 text-neutral-700">
-                    Share your context, the outcome you are working toward, and the constraints that matter. A useful first conversation starts with a real problem.
+                    {t.contact.preferredCopy}
                   </p>
                 </div>
               </aside>
@@ -1334,14 +1470,14 @@ export default function Home() {
               >
                 <div className="grid gap-5 sm:grid-cols-2">
                   <label className="block text-sm font-bold text-neutral-950">
-                    Name
+                    {t.contact.formName}
                     <input
                       value={form.name}
                       onChange={(event) => setForm((value) => ({ ...value, name: event.target.value }))}
                       aria-invalid={Boolean(formErrors.name)}
                       aria-describedby={formErrors.name ? "name-error" : undefined}
                       className="mt-2 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
-                      placeholder="Your name"
+                      placeholder={language === "en" ? "Your name" : "Nama Anda"}
                     />
                     {formErrors.name ? (
                       <span id="name-error" className="mt-1.5 block text-xs text-red-600">
@@ -1350,7 +1486,7 @@ export default function Home() {
                     ) : null}
                   </label>
                   <label className="block text-sm font-bold text-neutral-950">
-                    Email
+                    {t.contact.formEmail}
                     <input
                       type="email"
                       value={form.email}
@@ -1368,14 +1504,14 @@ export default function Home() {
                   </label>
                 </div>
                 <label className="mt-5 block text-sm font-bold text-neutral-950">
-                  Subject
+                  {t.contact.formSubject}
                   <input
                     value={form.subject}
                     onChange={(event) => setForm((value) => ({ ...value, subject: event.target.value }))}
                     aria-invalid={Boolean(formErrors.subject)}
                     aria-describedby={formErrors.subject ? "subject-error" : undefined}
                     className="mt-2 w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
-                    placeholder="What would you like to discuss?"
+                    placeholder={t.contact.formSubjectPlaceholder}
                   />
                   {formErrors.subject ? (
                     <span id="subject-error" className="mt-1.5 block text-xs text-red-600">
@@ -1384,7 +1520,7 @@ export default function Home() {
                   ) : null}
                 </label>
                 <label className="mt-5 block text-sm font-bold text-neutral-950">
-                  Message
+                  {t.contact.formMessage}
                   <textarea
                     value={form.message}
                     onChange={(event) => setForm((value) => ({ ...value, message: event.target.value }))}
@@ -1392,7 +1528,7 @@ export default function Home() {
                     aria-describedby={formErrors.message ? "message-error" : undefined}
                     rows={5}
                     className="mt-2 w-full resize-y rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base sm:text-sm text-neutral-950 placeholder:text-neutral-400 shadow-2xs focus:border-neutral-950 focus:outline-none focus:ring-2 focus:ring-neutral-950/20"
-                    placeholder="A little context goes a long way."
+                    placeholder={t.contact.formMessagePlaceholder}
                   />
                   {formErrors.message ? (
                     <span id="message-error" className="mt-1.5 block text-xs text-red-600">
@@ -1402,19 +1538,19 @@ export default function Home() {
                 </label>
                 <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
                   <p className="max-w-xs text-xs leading-5 text-neutral-600">
-                    This static portfolio uses a safe mailto fallback. No information is stored on the website.
+                    {t.contact.formNotice}
                   </p>
                   <button
                     type="submit"
                     className="inline-flex items-center justify-center gap-2 rounded-lg bg-neutral-950 px-6 py-3.5 text-sm font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 w-full sm:w-auto"
                   >
-                    Start a Conversation <Send className="h-4 w-4" />
+                    {t.contact.btnSubmit} <Send className="h-4 w-4" />
                   </button>
                 </div>
                 {formState === "success" ? (
                   <p className="mt-5 flex items-center gap-2 text-sm text-neutral-800">
                     <Check className="h-4 w-4 text-emerald-600" />
-                    Your message has been prepared in your email client.
+                    {t.contact.formSuccess}
                   </p>
                 ) : null}
               </form>
@@ -1425,11 +1561,11 @@ export default function Home() {
 
       {/* Footer — Clean Minimalist Light */}
       <footer className="bg-neutral-50/90 border-t border-neutral-300 px-4 py-12 text-neutral-700 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-5xl lg:max-w-6xl gap-9 border-t border-neutral-300 pt-9 md:grid-cols-[1.2fr_.7fr_.7fr] md:gap-12">
+        <div className="mx-auto grid max-w-4xl lg:max-w-[1000px] gap-9 border-t border-neutral-300 pt-9 md:grid-cols-[1.2fr_.7fr_.7fr] md:gap-12">
           <div>
             <div className="flex items-center gap-4">
               <span className="relative flex h-12 w-12 items-center justify-center rounded-lg border border-neutral-300 bg-white shadow-xs">
-                <img src={assetUrls.logo} alt="" aria-hidden="true" className="h-10 w-10 object-contain" />
+                <img src={assetUrls.logo} alt="" aria-hidden="true" loading="lazy" decoding="async" width={40} height={40} className="h-10 w-10 object-contain" />
                 <i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-neutral-950" />
               </span>
               <span className="mono-type grid text-left text-[0.66rem] font-bold leading-[1.1] tracking-[0.18em] text-neutral-950">
@@ -1438,20 +1574,15 @@ export default function Home() {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-7 text-neutral-700">
-              Building digital experiences and AI products with passion and purpose.
+              {t.footer.tagline}
             </p>
           </div>
           <div>
             <p className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.14em] text-neutral-950">
-              Quick links
+              {t.footer.quickLinks}
             </p>
             <div className="mt-4 grid gap-2">
-              {[
-                ["About", "about"],
-                ["Projects", "projects"],
-                ["Experience", "experience"],
-                ["Contact", "contact"],
-              ].map(([label, id]) => (
+              {navItems.map(([label, id]) => (
                 <button
                   key={id}
                   onClick={() => scrollTo(id)}
@@ -1463,7 +1594,7 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <p className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.14em] text-neutral-950">Connect</p>
+            <p className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.14em] text-neutral-950">{t.footer.connect}</p>
             <div className="mt-4 grid gap-2">
               <a
                 href={links.email}
@@ -1500,8 +1631,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="mx-auto mt-8 flex max-w-5xl lg:max-w-6xl flex-col gap-2 border-t border-neutral-300 pt-5 text-[0.68rem] text-neutral-600 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Fauzi Noorsyabani. Made in Indonesia.</p>
+        <div className="mx-auto mt-8 flex max-w-4xl lg:max-w-[1000px] flex-col gap-2 border-t border-neutral-300 pt-5 text-[0.68rem] text-neutral-600 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Fauzi Noorsyabani. {t.footer.rights}</p>
           <p className="mono-type text-[0.58rem] uppercase tracking-[0.1em]">Signal Ledger / portfolio v1.0</p>
         </div>
       </footer>
@@ -1513,13 +1644,15 @@ export default function Home() {
             <div className="relative z-10">
               <DialogHeader>
                 <p className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.16em] text-neutral-500">
-                  FN / Networking channel
+                  {language === "en" ? "FN / Networking channel" : "FN / Kanal Jaringan"}
                 </p>
                 <DialogTitle className="display-type mt-4 text-3xl font-bold tracking-[-0.06em] text-neutral-950">
-                  Open a conversation.
+                  {language === "en" ? "Open a conversation." : "Buka percakapan."}
                 </DialogTitle>
                 <DialogDescription className="mt-3 max-w-sm text-sm leading-7 text-neutral-700">
-                  For collaboration, product work, or applied-AI conversations, use the channel that fits your context.
+                  {language === "en"
+                    ? "For collaboration, product work, or applied-AI conversations, use the channel that fits your context."
+                    : "Untuk kolaborasi, pengembangan produk, atau konsultasi AI terapan, hubungi saluran yang sesuai."}
                 </DialogDescription>
               </DialogHeader>
               <div className="mt-7 grid gap-3">

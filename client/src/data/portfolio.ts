@@ -4,7 +4,7 @@
  */
 
 export const assetUrls = {
-  logo: "/logo.webp",
+  logo: "/logo-thumb.webp",
   heroData: "https://placehold.co/800x600?text=Project+1",
   tuitionArt: "/dashboard-kapasitas-akademik.png",
   dashboardExecutive: "/dashboard-kapasitas-akademik.png",
@@ -63,64 +63,96 @@ export const facts = [
   ["Availability", "Open to work"],
 ] as const;
 
-export const skillGroups = [
+export type TechCategory = {
+  id: string;
+  filterKey: string;
+  title: string;
+  code: string;
+  description: string;
+  skills: readonly string[];
+};
+
+export const techStackCategories: readonly TechCategory[] = [
   {
-    title: "Applied AI & Data",
+    id: "languages",
+    filterKey: "languages",
+    title: "Programming Languages",
     code: "01",
-    featured: ["Python", "Pandas", "Scikit-learn", "Streamlit", "Power BI", "SQL"],
+    description: "Languages I've mastered for building robust and efficient software solutions.",
+    skills: ["Python", "JavaScript", "TypeScript", "PHP", "Java", "C", "C++", "C#", "Go", "Dart", "SQL"],
+  },
+  {
+    id: "frontend",
+    filterKey: "frontend",
+    title: "Frontend Technologies",
+    code: "02",
+    description: "Tools and frameworks I use to create responsive, interactive user interfaces.",
+    skills: ["HTML5", "CSS3", "Tailwind CSS", "JavaScript", "TypeScript", "React.js", "Next.js", "Vue.js", "Bootstrap", "Flutter"],
+  },
+  {
+    id: "backend",
+    filterKey: "backend",
+    title: "Backend Technologies",
+    code: "03",
+    description: "Technologies I leverage to build scalable server-side applications and APIs.",
+    skills: ["Python", "FastAPI", "Laravel", "Node.js", "Express", "Flask", "PHP", "Go", "Supabase", "REST API"],
+  },
+  {
+    id: "ai-ml",
+    filterKey: "ai-ml",
+    title: "AI & ML",
+    code: "04",
+    description: "Machine learning, statistical modeling, and data intelligence frameworks.",
+    skills: ["Python", "Scikit-learn", "Pandas", "NumPy", "TensorFlow", "Keras", "PyTorch", "Jupyter", "Streamlit", "Power BI", "Google Looker", "Tableau", "OpenCV"],
+  },
+  {
+    id: "ai-tools",
+    filterKey: "ai-tools",
+    title: "AI Developer Tools",
+    code: "05",
+    description: "AI coding assistants and agentic tools I use to enhance productivity and problem-solving.",
     skills: [
-      "OpenAI API",
-      "IBM Granite",
-      "Gemini API",
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "Manus AI",
+      "DeepSeek",
+      "Cursor",
+      "GitHub Copilot",
+      "Antigravity",
+      "OpenAI Codex",
       "LangChain",
       "LangGraph",
-      "RAG",
-      "Prompt Engineering",
-      "NumPy",
-      "Google Looker",
-      "Tableau",
       "Google Colab",
-      "Orange",
-      "ARIMA",
-      "K-Means",
     ],
   },
   {
-    title: "Product Engineering",
-    code: "02",
-    featured: ["React.js", "JavaScript", "TypeScript", "PHP", "Laravel", "FastAPI"],
-    skills: [
-      "React Native",
-      "Next.js",
-      "Vue.js",
-      "Tailwind CSS",
-      "HTML5",
-      "CSS3",
-      "Bootstrap",
-      "Node.js",
-      "Flask",
-      "Filament",
-      "REST API",
-    ],
+    id: "databases",
+    filterKey: "databases",
+    title: "Databases & Data Store",
+    code: "06",
+    description: "Database systems I'm proficient in for managing and optimizing data storage.",
+    skills: ["PostgreSQL", "MySQL", "SQLite", "MongoDB", "Redis", "Supabase", "Firebase", "ChromaDB"],
   },
   {
-    title: "Data Infrastructure",
-    code: "03",
-    featured: ["MySQL", "PostgreSQL", "ChromaDB", "AWS", "Git", "GitHub"],
-    skills: [
-      "SQLite",
-      "MariaDB",
-      "Supabase",
-      "Redis",
-      "Docker",
-      "Nginx",
-      "GitHub Actions CI/CD",
-      "Cloudflare",
-      "Figma",
-      "VS Code",
-    ],
+    id: "devops",
+    filterKey: "devops",
+    title: "DevOps & Cloud",
+    code: "07",
+    description: "Cloud platforms and tools I use for deployment, CI/CD, and infrastructure management.",
+    skills: ["AWS", "Google Cloud", "Docker", "Kubernetes", "GitHub Actions", "Nginx", "Cloudflare", "Vercel"],
+  },
+  {
+    id: "tools",
+    filterKey: "tools",
+    title: "Development Tools",
+    code: "08",
+    description: "Utilities and platforms that enhance my development workflow and productivity.",
+    skills: ["Git", "GitHub", "GitLab", "Jira", "Atlassian", "VS Code", "Postman", "Figma", "Slack"],
   },
 ] as const;
+
+export const skillGroups = techStackCategories;
 
 export type Project = {
   title: string;
