@@ -645,18 +645,18 @@ function HeroRoleTicker({
   }, [displayedText, isDeleting, fullTitle, prefersReducedMotion]);
 
   return (
-    <div className="hero-sequence hero-sequence--4 mt-8 flex flex-wrap items-center gap-3 text-neutral-900 dark:text-neutral-100 min-h-[2.2rem]">
-      <span className="h-0.5 w-7 sm:w-10 bg-neutral-900 dark:bg-white shrink-0" aria-hidden="true" />
-      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-        <span className="mono-type text-xs sm:text-sm md:text-[0.92rem] font-bold uppercase tracking-[0.14em] text-neutral-950 dark:text-white inline-flex items-center">
+    <div className="hero-sequence hero-sequence--4 mt-8 flex h-7 items-center gap-2.5 sm:gap-3 text-neutral-900 dark:text-neutral-100 overflow-hidden whitespace-nowrap">
+      <span className="h-px w-6 sm:w-10 bg-neutral-900 dark:bg-neutral-100 shrink-0" aria-hidden="true" />
+      <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 overflow-hidden whitespace-nowrap">
+        <span className="mono-type text-[0.62rem] sm:text-[0.68rem] md:text-[0.74rem] font-bold uppercase tracking-[0.12em] sm:tracking-[0.14em] text-neutral-950 dark:text-white shrink-0 inline-flex items-center">
           {displayedText}
           <span
-            className="inline-block w-0.5 h-3.5 sm:h-4 ml-1.5 bg-blue-600 dark:bg-blue-400 animate-pulse"
+            className="inline-block w-0.5 h-3 sm:h-3.5 ml-1 bg-blue-600 dark:bg-blue-400 animate-pulse shrink-0"
             aria-hidden="true"
           />
         </span>
-        <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none">/</span>
-        <span className="mono-type text-[0.72rem] sm:text-xs md:text-[0.82rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.05em] transition-opacity duration-300">
+        <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-[0.7rem] sm:text-xs">/</span>
+        <span className="mono-type text-[0.56rem] sm:text-[0.64rem] md:text-[0.7rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.02em] sm:tracking-[0.04em] truncate transition-opacity duration-300">
           {currentRole.sub[language]}
         </span>
       </div>
