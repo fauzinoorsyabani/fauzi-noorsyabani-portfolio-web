@@ -1076,11 +1076,7 @@ export default function Home() {
 
           <div className="relative mx-auto grid max-w-4xl lg:max-w-[1000px] gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-12 lg:px-8 lg:py-16">
             <div className="flex flex-col justify-center pt-4 lg:pt-0">
-              <div className="hero-sequence hero-sequence--1 flex w-fit items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/20 px-3.5 py-1.5 mono-type text-[0.64rem] sm:text-[0.68rem] font-bold uppercase tracking-[0.16em] text-emerald-900 dark:text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
-                <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] shrink-0" aria-hidden="true" />
-                <span className="font-bold">{t.hero.availability}</span>
-              </div>
-              <p className="hero-sequence hero-sequence--2 mt-8 display-type text-xl font-medium tracking-[-0.035em] text-neutral-600 sm:text-2xl">
+              <p className="hero-sequence hero-sequence--2 display-type text-xl font-medium tracking-[-0.035em] text-neutral-600 sm:text-2xl">
                 {t.hero.greeting}
               </p>
               <h1 className="hero-sequence hero-sequence--3 display-type mt-1 max-w-3xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] font-bold leading-[1.0] tracking-[-0.05em] text-neutral-950">
