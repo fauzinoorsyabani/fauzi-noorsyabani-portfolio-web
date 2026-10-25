@@ -8,6 +8,7 @@ export interface CoverflowCertificate {
   readonly description: string;
   readonly tag: string;
   readonly credential: string;
+  readonly verifyUrl?: string;
 }
 
 interface CertificateCoverflowProps {
@@ -179,15 +180,15 @@ export function CertificateCoverflow({
                       {item.date}
                     </p>
                   </div>
-                  {hasImage && isActive && (
+                  {(hasImage || item.verifyUrl) && isActive && (
                     <a
-                      href={item.credential}
+                      href={item.verifyUrl || item.credential}
                       target="_blank"
                       rel="noreferrer"
                       onClick={(event) => event.stopPropagation()}
                       className="inline-flex shrink-0 items-center gap-1 rounded-full bg-neutral-950 dark:bg-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-[0.68rem] sm:text-xs font-bold text-white dark:text-neutral-950 transition hover:bg-neutral-700 dark:hover:bg-neutral-200"
                     >
-                      {viewLabel} <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                      {item.verifyUrl ? "Verify on Credly" : viewLabel} <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                     </a>
                   )}
                 </div>

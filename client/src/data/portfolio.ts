@@ -472,6 +472,7 @@ export const certifications = [
     description:
       "Official AWS training badge validating fundamental understanding of generative AI concepts, foundation models, and enterprise use cases. Verified on Credly.",
     credential: "/certificates/aws-educate-generative-ai.webp",
+    verifyUrl: "https://www.credly.com/badges/d804b257-b110-4cfd-b27c-90a4a084c420/public_url",
   },
   {
     name: "AWS Cloud Practitioner Essentials",
