@@ -11,12 +11,12 @@ export const assetUrls = {
   dashboardDetail: "/dashboard-detail-prodi.webp",
   dashboardTrend: "/dashboard-tren-longitudinal.webp",
   productSystemsArt: "https://placehold.co/800x600?text=Project+3",
-  heroPhoto: "/fauzi-hero-google.webp",
-  aboutPhoto: "/fauzi-about-white.webp",
+  heroPhoto: "/fauzi-about-white.webp",
+  aboutPhoto: "/fauzi-hero-google.webp",
   profilePhotoDark: "/fauzi-portrait-dark.webp",
   profilePhotoWhite: "/fauzi-about-white.webp",
   profilePhotoGoogle: "/fauzi-hero-google.webp",
-  profilePhoto: "/fauzi-hero-google.webp",
+  profilePhoto: "/fauzi-about-white.webp",
 } as const;
 
 export const links = {

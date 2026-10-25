@@ -1611,15 +1611,15 @@ export default function Home() {
           id="contact"
           className="scroll-mt-28 relative overflow-hidden bg-white dark:bg-neutral-950 px-4 pt-24 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 text-neutral-950 dark:text-neutral-50 border-t border-neutral-200 dark:border-neutral-800"
         >
-          {/* Giant watermark typography in background */}
+          {/* Giant watermark typography in background — Gede Arya inspired */}
           <div
-            className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center select-none overflow-hidden z-0"
+            className="pointer-events-none absolute inset-0 flex flex-col justify-between items-center select-none overflow-hidden z-0 py-4 sm:py-6 lg:py-8"
             aria-hidden="true"
           >
-            <span className="display-type text-[16vw] sm:text-[14vw] font-bold tracking-tight text-neutral-950/[0.038] dark:text-white/[0.045] leading-[0.88] whitespace-nowrap">
+            <span className="display-type text-[18vw] sm:text-[17vw] lg:text-[15.5vw] font-normal tracking-tight text-neutral-950/[0.038] dark:text-white/[0.045] leading-none whitespace-nowrap">
               Fauzi
             </span>
-            <span className="display-type text-[12vw] sm:text-[10.5vw] font-bold tracking-tight text-neutral-950/[0.038] dark:text-white/[0.045] leading-[0.88] whitespace-nowrap">
+            <span className="display-type text-[16vw] sm:text-[15vw] lg:text-[14.2vw] font-normal tracking-tight text-neutral-950/[0.038] dark:text-white/[0.045] leading-none whitespace-nowrap">
               Noorsyabani
             </span>
           </div>
@@ -1629,7 +1629,7 @@ export default function Home() {
             <div className="relative mx-auto mb-6 inline-block">
               <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-full overflow-hidden ring-4 ring-white dark:ring-neutral-900 shadow-lg shadow-neutral-900/10 dark:shadow-black/40">
                 <img
-                  src={assetUrls.heroPhoto}
+                  src={assetUrls.aboutPhoto}
                   alt="Fauzi Noorsyabani"
                   className="h-full w-full object-cover object-top"
                   loading="lazy"
