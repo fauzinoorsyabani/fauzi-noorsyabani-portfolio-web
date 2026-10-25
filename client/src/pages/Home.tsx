@@ -684,6 +684,9 @@ export default function Home() {
     () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
 
+  const isNavigatingRef = useRef(false);
+  const navTimerRef = useRef<number | null>(null);
+
   // Looker Studio Dashboard views selector for the featured project
   const [dashboardView, setDashboardView] = useState<"executive" | "detail" | "trend">("executive");
 
@@ -745,6 +748,12 @@ export default function Home() {
           setScrolled(sy > 24);
           setShowTop(sy > 700);
 
+          // Prevent active pill from bouncing back and forth during fast programmatic scroll
+          if (isNavigatingRef.current) {
+            ticking = false;
+            return;
+          }
+
           // Detect active section on scroll
           const isBottom =
             window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
@@ -794,13 +803,33 @@ export default function Home() {
     setAnnouncement(message);
     window.setTimeout(() => setAnnouncement(""), 5200);
   };
+
+  // Fast-response, instant navigation without lag or pill-rebound jitter
   const scrollTo = (id: string) => {
     setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({
-      behavior: prefersReducedMotion ? "auto" : "smooth",
-      block: "start",
-    });
     closeMenu();
+
+    isNavigatingRef.current = true;
+    if (navTimerRef.current) window.clearTimeout(navTimerRef.current);
+
+    const targetEl = id === "top" ? document.body : document.getElementById(id);
+    if (!targetEl) {
+      isNavigatingRef.current = false;
+      return;
+    }
+
+    const headerHeight = 75;
+    const targetY = id === "top" ? 0 : Math.max(0, targetEl.getBoundingClientRect().top + window.scrollY - headerHeight);
+
+    window.scrollTo({
+      top: targetY,
+      behavior: "auto",
+    });
+
+    // Keep navigation lock active briefly so delayed scroll events don't override active tab
+    navTimerRef.current = window.setTimeout(() => {
+      isNavigatingRef.current = false;
+    }, 150);
   };
 
   const handleForm = (event: FormEvent<HTMLFormElement>) => {
@@ -1141,7 +1170,7 @@ export default function Home() {
                   alt="Portrait of Fauzi Noorsyabani"
                   fetchPriority="high"
                   decoding="async"
-                  className="hero-portrait relative z-10 h-[240px] w-[240px] sm:h-[300px] sm:w-[300px] lg:h-[370px] lg:w-[370px] rounded-2xl border border-neutral-300 dark:border-neutral-700 object-cover object-center shadow-lg shadow-neutral-900/10"
+                  className="hero-portrait relative z-10 h-[270px] w-[220px] sm:h-[335px] sm:w-[270px] lg:h-[400px] lg:w-[325px] rounded-2xl border border-neutral-300 dark:border-neutral-700 object-cover object-top shadow-lg shadow-neutral-900/10"
                 />
                 <div className="hero-artifact absolute right-2.5 top-2.5 z-20 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white/95 dark:bg-neutral-900/95 px-2.5 py-1 mono-type text-[0.58rem] font-bold uppercase tracking-[0.12em] text-neutral-900 dark:text-neutral-100 shadow-sm backdrop-blur-md">
                   Data & AI · 2026
