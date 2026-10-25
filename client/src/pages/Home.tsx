@@ -571,6 +571,99 @@ function DocumentationShowcase({
   );
 }
 
+const heroRoles = [
+  {
+    title: "Full Stack AI Engineer",
+    sub: {
+      en: "Applied AI & Data Products",
+      id: "Produk AI Terapan & Sistem Data",
+    },
+  },
+  {
+    title: "Data Analyst",
+    sub: {
+      en: "BI & Institutional Analytics",
+      id: "Kecerdasan Bisnis & Analitik Data",
+    },
+  },
+  {
+    title: "Business Analyst",
+    sub: {
+      en: "System Strategy & Decision Support",
+      id: "Strategi Sistem & Solusi Bisnis",
+    },
+  },
+  {
+    title: "IT Project Manager",
+    sub: {
+      en: "BNSP Certified & Agile Delivery",
+      id: "Tersertifikasi BNSP & Tata Kelola Proyek",
+    },
+  },
+] as const;
+
+function HeroRoleTicker({
+  language,
+  prefersReducedMotion,
+}: {
+  language: "en" | "id";
+  prefersReducedMotion: boolean;
+}) {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState<string>(heroRoles[0].title);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const currentRole = heroRoles[roleIndex];
+  const fullTitle = currentRole.title;
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setDisplayedText(fullTitle);
+      return;
+    }
+
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && displayedText.length < fullTitle.length) {
+      timer = setTimeout(() => {
+        setDisplayedText(fullTitle.slice(0, displayedText.length + 1));
+      }, 70);
+    } else if (!isDeleting && displayedText.length === fullTitle.length) {
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2300);
+    } else if (isDeleting && displayedText.length > 0) {
+      timer = setTimeout(() => {
+        setDisplayedText(fullTitle.slice(0, displayedText.length - 1));
+      }, 35);
+    } else if (isDeleting && displayedText.length === 0) {
+      setIsDeleting(false);
+      setRoleIndex((prev) => (prev + 1) % heroRoles.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, fullTitle, prefersReducedMotion]);
+
+  return (
+    <div className="hero-sequence hero-sequence--4 mt-8 flex flex-wrap items-center gap-3 text-neutral-900 dark:text-neutral-100 min-h-[2.2rem]">
+      <span className="h-0.5 w-7 sm:w-10 bg-neutral-900 dark:bg-white shrink-0" aria-hidden="true" />
+      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+        <span className="mono-type text-xs sm:text-sm md:text-[0.92rem] font-bold uppercase tracking-[0.14em] text-neutral-950 dark:text-white inline-flex items-center">
+          {displayedText}
+          <span
+            className="inline-block w-0.5 h-3.5 sm:h-4 ml-1.5 bg-blue-600 dark:bg-blue-400 animate-pulse"
+            aria-hidden="true"
+          />
+        </span>
+        <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none">/</span>
+        <span className="mono-type text-[0.72rem] sm:text-xs md:text-[0.82rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.05em] transition-opacity duration-300">
+          {currentRole.sub[language]}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
@@ -962,12 +1055,7 @@ export default function Home() {
                 Fauzi<br />
                 <span className="text-neutral-950">Noorsyabani.</span>
               </h1>
-              <div className="hero-sequence hero-sequence--4 mt-8 flex items-center gap-3 text-neutral-900">
-                <span className="h-px w-10 bg-neutral-900" />
-                <p className="mono-type text-[0.66rem] font-bold uppercase tracking-[0.16em] text-neutral-900">
-                  {person.role} <span className="mx-1 text-neutral-400">/</span> <span className="italic font-medium">{t.hero.roleSub}</span>
-                </p>
-              </div>
+              <HeroRoleTicker language={language} prefersReducedMotion={prefersReducedMotion} />
               <p className="hero-sequence hero-sequence--5 mt-7 max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
                 <FormattedText text={t.hero.headline} />
               </p>
