@@ -1055,7 +1055,7 @@ export default function Home() {
         {/* Hero Section — Clean, Rich Atmospheric Gradient & Editorial Typography */}
         <section
           id="top"
-          className={`hero-stage relative isolate overflow-hidden bg-white dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 pt-24 sm:pt-32 text-neutral-950 dark:text-neutral-50 ${
+          className={`hero-stage relative isolate overflow-hidden bg-white dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 pt-20 sm:pt-24 lg:pt-24 text-neutral-950 dark:text-neutral-50 ${
             heroReady && !prefersReducedMotion ? "motion-ready" : ""
           }`}
         >
@@ -1074,8 +1074,8 @@ export default function Home() {
             className="hero-identity-stamp pointer-events-none absolute right-[8%] top-[12%] z-0 hidden h-72 w-72 object-contain opacity-[0.05] lg:block"
           />
 
-          <div className="relative mx-auto grid max-w-4xl lg:max-w-[1000px] gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-12 lg:px-8 lg:py-16">
-            <div className="flex flex-col justify-center pt-4 lg:pt-0">
+          <div className="relative mx-auto grid max-w-4xl lg:max-w-[1000px] gap-8 px-4 pt-2 pb-8 sm:px-6 sm:pt-4 sm:pb-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-12 lg:px-8 lg:pt-6 lg:pb-14">
+            <div className="flex flex-col justify-center pt-0">
               <p className="hero-sequence hero-sequence--2 display-type text-xl font-medium tracking-[-0.035em] text-neutral-600 sm:text-2xl">
                 {t.hero.greeting}
               </p>
@@ -1084,13 +1084,13 @@ export default function Home() {
                 <span className="text-neutral-950">Noorsyabani.</span>
               </h1>
               <HeroRoleTicker language={language} prefersReducedMotion={prefersReducedMotion} />
-              <p className="hero-sequence hero-sequence--5 mt-7 max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
+              <p className="hero-sequence hero-sequence--5 mt-5 max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
                 <FormattedText text={t.hero.headline} />
               </p>
-              <p className="hero-sequence hero-sequence--5 mt-5 flex items-center gap-2 text-sm font-semibold text-neutral-900">
+              <p className="hero-sequence hero-sequence--5 mt-4 flex items-center gap-2 text-sm font-semibold text-neutral-900">
                 <Sparkles className="h-4 w-4 text-neutral-950" /> {person.education}
               </p>
-              <div className="hero-sequence hero-sequence--6 mt-9 flex flex-col sm:flex-row flex-wrap gap-3">
+              <div className="hero-sequence hero-sequence--6 mt-7 flex flex-col sm:flex-row flex-wrap gap-3">
                 {links.resume ? (
                   <a
                     href={links.resume}
