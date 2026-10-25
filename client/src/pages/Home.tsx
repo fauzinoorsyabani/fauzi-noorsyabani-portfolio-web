@@ -645,18 +645,21 @@ function HeroRoleTicker({
   }, [displayedText, isDeleting, fullTitle, prefersReducedMotion]);
 
   return (
-    <div className="hero-sequence hero-sequence--4 mt-8 flex h-7 items-center gap-2.5 sm:gap-3 text-neutral-900 dark:text-neutral-100 overflow-hidden whitespace-nowrap">
-      <span className="h-px w-6 sm:w-10 bg-neutral-900 dark:bg-neutral-100 shrink-0" aria-hidden="true" />
-      <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 overflow-hidden whitespace-nowrap">
-        <span className="mono-type text-[0.62rem] sm:text-[0.68rem] md:text-[0.74rem] font-bold uppercase tracking-[0.12em] sm:tracking-[0.14em] text-neutral-950 dark:text-white shrink-0 inline-flex items-center">
+    <div className="hero-sequence hero-sequence--4 mt-7 flex h-10 items-center gap-2.5 sm:gap-3 text-neutral-900 dark:text-neutral-100 overflow-hidden whitespace-nowrap">
+      <span className="h-px w-6 sm:w-10 bg-neutral-900 dark:bg-white shrink-0" aria-hidden="true" />
+      <div className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-3.5 sm:px-4 py-1.5 text-white shadow-sm dark:bg-white dark:text-neutral-950 border border-neutral-800 dark:border-white/20 shrink-0">
+        <Sparkles className="h-3.5 w-3.5 text-blue-400 dark:text-blue-600 shrink-0" />
+        <span className="mono-type text-[0.78rem] sm:text-[0.88rem] md:text-[0.95rem] font-bold uppercase tracking-[0.08em] sm:tracking-[0.1em] inline-flex items-center">
           {displayedText}
           <span
-            className="inline-block w-0.5 h-3 sm:h-3.5 ml-1 bg-blue-600 dark:bg-blue-400 animate-pulse shrink-0"
+            className="inline-block w-0.5 h-3.5 sm:h-4 ml-1 bg-blue-500 dark:bg-blue-600 animate-pulse shrink-0"
             aria-hidden="true"
           />
         </span>
-        <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-[0.7rem] sm:text-xs">/</span>
-        <span className="mono-type text-[0.56rem] sm:text-[0.64rem] md:text-[0.7rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.02em] sm:tracking-[0.04em] truncate transition-opacity duration-300">
+      </div>
+      <div className="hidden md:inline-flex items-center gap-2 min-w-0 overflow-hidden">
+        <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-xs">/</span>
+        <span className="mono-type text-[0.72rem] md:text-[0.76rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.03em] truncate max-w-[260px] transition-opacity duration-300">
           {currentRole.sub[language]}
         </span>
       </div>
@@ -834,13 +837,11 @@ export default function Home() {
         {announcement}
       </p>
 
-      {/* Floating Pill Top Navigation */}
+      {/* Floating Pill Top Navigation — Apple Liquid Glass */}
       <header className="fixed top-3 sm:top-5 inset-x-0 z-50 flex flex-col items-center px-4 sm:px-6 pointer-events-none transition-all duration-300">
         <div
-          className={`nav-surface pointer-events-auto flex w-full max-w-4xl lg:max-w-[1000px] items-center justify-between rounded-full border transition-all duration-300 px-3.5 sm:px-5 py-2.5 ${
-            scrolled
-              ? "border-neutral-300/90 bg-white/95 shadow-[0_8px_30px_rgba(0,0,0,0.1)] backdrop-blur-xl dark:border-neutral-700/80 dark:bg-neutral-900/95 dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
-              : "border-neutral-200/80 bg-white/85 shadow-[0_4px_20px_rgba(0,0,0,0.05)] backdrop-blur-md dark:border-neutral-800/80 dark:bg-neutral-900/85 dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+          className={`nav-surface apple-glass-pill pointer-events-auto flex w-full max-w-4xl lg:max-w-[1000px] items-center justify-between rounded-full transition-all duration-300 px-3.5 sm:px-5 py-2 sm:py-2.5 ${
+            scrolled ? "is-scrolled" : ""
           }`}
         >
           {/* Logo & Identity */}
@@ -850,7 +851,7 @@ export default function Home() {
             aria-label="Go to top of Fauzi Noorsyabani portfolio"
             className="group flex items-center gap-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white pr-2"
           >
-            <span className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center overflow-hidden rounded-full border border-neutral-300/80 bg-neutral-100 shadow-xs dark:border-neutral-700 dark:bg-neutral-800">
+            <span className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center overflow-hidden rounded-full border border-white/70 bg-white/50 shadow-xs dark:border-white/10 dark:bg-white/10 backdrop-blur-md">
               <img
                 src={assetUrls.logo}
                 alt=""
@@ -861,7 +862,7 @@ export default function Home() {
                 height={28}
                 className="h-6 w-6 sm:h-7 sm:w-7 object-contain transition-transform duration-200 group-hover:scale-105"
               />
-              <i className="absolute bottom-0.5 right-0.5 h-2 w-2 rounded-full border border-white bg-emerald-500" />
+              <i className="absolute bottom-0.5 right-0.5 h-2 w-2 rounded-full border border-white bg-emerald-500 shadow-[0_0_6px_#10b981]" />
             </span>
             <span className="mono-type grid text-left text-[0.6rem] sm:text-[0.62rem] font-bold leading-[1.15] tracking-[0.14em] text-neutral-950 dark:text-white">
               <span>FAUZI</span>
@@ -873,7 +874,7 @@ export default function Home() {
           <nav
             aria-label="Primary"
             onMouseLeave={() => setHoveredNav(null)}
-            className="hidden items-center gap-1 rounded-full bg-neutral-100/70 p-1 dark:bg-neutral-800/60 lg:flex border border-neutral-200/50 dark:border-neutral-700/50"
+            className="hidden items-center gap-1 rounded-full bg-neutral-900/[0.04] p-1 dark:bg-white/[0.08] lg:flex border border-neutral-900/[0.05] dark:border-white/10 backdrop-blur-md"
           >
             {navItems.map(([label, id]) => {
               const isHighlighted = (hoveredNav ?? activeSection) === id;
@@ -915,7 +916,7 @@ export default function Home() {
               type="button"
               aria-label={language === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
               title={language === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
-              className="group relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 text-neutral-700 transition hover:bg-neutral-100 hover:scale-105 active:scale-95 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:bg-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+              className="apple-glass-subtle group relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full text-neutral-700 transition hover:scale-105 active:scale-95 dark:text-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
             >
               {language === "en" ? (
                 <UKFlagIcon className="h-5 w-5 sm:h-5.5 sm:w-5.5 transition-transform duration-200 group-hover:scale-110" />
@@ -928,7 +929,7 @@ export default function Home() {
               onClick={handleThemeToggle}
               type="button"
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="theme-toggle group relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-neutral-200 bg-neutral-50 text-neutral-700 transition hover:bg-neutral-100 hover:text-neutral-950 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+              className="apple-glass-subtle theme-toggle group relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full text-neutral-700 transition hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
             >
               <Sun
                 className={`absolute h-4 w-4 transition duration-300 ${
@@ -944,7 +945,7 @@ export default function Home() {
             <button
               onClick={() => setContactOpen(true)}
               type="button"
-              className="hidden sm:flex items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 sm:px-4 py-2 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 active:scale-[0.97] dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+              className="hidden sm:flex items-center gap-1.5 rounded-full bg-neutral-950 px-3.5 sm:px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-neutral-800 active:scale-[0.97] dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
             >
               {t.header.contactBtn} <ArrowUpRight className="h-3.5 w-3.5" />
             </button>
@@ -953,7 +954,7 @@ export default function Home() {
               aria-expanded={menuOpen}
               aria-controls="mobile-navigation"
               type="button"
-              className="rounded-full border border-neutral-200 p-2 text-neutral-900 hover:bg-neutral-100 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 lg:hidden"
+              className="apple-glass-subtle rounded-full p-2 text-neutral-900 hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 lg:hidden"
             >
               <span className="sr-only">{menuOpen ? "Close" : "Open"} navigation menu</span>
               {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -964,7 +965,7 @@ export default function Home() {
         {/* Floating Mobile Navigation Dropdown */}
         <div
           id="mobile-navigation"
-          className={`pointer-events-auto mt-2 w-full max-w-4xl lg:max-w-[1000px] overflow-hidden rounded-2xl border border-neutral-300 bg-white/95 shadow-xl backdrop-blur-xl transition-all duration-300 dark:border-neutral-800 dark:bg-neutral-900/95 lg:hidden ${
+          className={`apple-glass-pill pointer-events-auto mt-2 w-full max-w-4xl lg:max-w-[1000px] overflow-hidden rounded-2xl transition-all duration-300 lg:hidden ${
             menuOpen ? "max-h-[85vh] opacity-100 p-4" : "max-h-0 opacity-0 p-0 border-transparent pointer-events-none"
           }`}
         >
@@ -1043,12 +1044,16 @@ export default function Home() {
             className="hero-identity-stamp pointer-events-none absolute right-[8%] top-[12%] z-0 hidden h-72 w-72 object-contain opacity-[0.05] lg:block"
           />
 
-          <div className="relative mx-auto grid min-h-[720px] max-w-4xl lg:max-w-[1000px] gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_.9fr] lg:gap-14 lg:px-8 lg:py-20 xl:min-h-[760px]">
-            <div className="flex flex-col justify-center pt-8 lg:pt-0">
-              <div className="hero-sequence hero-sequence--1 flex w-fit items-center gap-2 rounded-md border border-neutral-300 bg-neutral-100/90 px-3 py-1.5 mono-type text-[0.62rem] font-bold tracking-[0.14em] text-neutral-900 shadow-xs">
-                <span className="availability-node h-1.5 w-1.5 rounded-full bg-emerald-600" /> {t.hero.availability}
+          <div className="relative mx-auto grid max-w-4xl lg:max-w-[1000px] gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-12 lg:px-8 lg:py-16">
+            <div className="flex flex-col justify-center pt-4 lg:pt-0">
+              <div className="hero-sequence hero-sequence--1 open-to-work-glow relative flex w-fit items-center gap-2.5 rounded-full border border-emerald-400/60 px-3.5 py-1.5 mono-type text-[0.64rem] sm:text-[0.68rem] font-bold uppercase tracking-[0.16em] text-emerald-950 dark:text-emerald-200">
+                <span className="relative flex h-2 w-2 shrink-0 items-center justify-center">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+                </span>
+                <span className="relative z-10 font-bold">{t.hero.availability}</span>
               </div>
-              <p className="hero-sequence hero-sequence--2 mt-9 display-type text-xl font-medium tracking-[-0.035em] text-neutral-600 sm:text-2xl">
+              <p className="hero-sequence hero-sequence--2 mt-8 display-type text-xl font-medium tracking-[-0.035em] text-neutral-600 sm:text-2xl">
                 {t.hero.greeting}
               </p>
               <h1 className="hero-sequence hero-sequence--3 display-type mt-1 max-w-3xl text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] font-bold leading-[1.0] tracking-[-0.05em] text-neutral-950">
@@ -1132,23 +1137,25 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative flex items-center justify-center pb-5 lg:pb-0">
+            <div className="relative flex items-center justify-center py-4 lg:py-0">
               {!prefersReducedMotion ? (
-                <SignalOrbit className="hero-orbit absolute -right-12 top-1/2 z-0 hidden h-[35rem] w-[35rem] -translate-y-1/2 lg:block" />
+                <SignalOrbit className="hero-orbit absolute -right-6 top-1/2 z-0 hidden h-[26rem] w-[26rem] -translate-y-1/2 lg:block opacity-40" />
               ) : null}
-              <div
-                className="hero-frame absolute right-0 top-8 h-[88%] w-[92%] rounded-[2rem] border border-neutral-300 bg-neutral-50/50"
-                aria-hidden="true"
-              />
-              <img
-                src={assetUrls.heroPhoto}
-                alt="Portrait of Fauzi Noorsyabani"
-                fetchPriority="high"
-                decoding="async"
-                className="hero-portrait relative z-10 h-[360px] w-full max-w-[570px] rounded-2xl border border-neutral-300 object-cover object-center shadow-xl shadow-neutral-900/10 sm:h-[480px] lg:h-[530px]"
-              />
-              <div className="hero-artifact absolute right-2 top-2 z-20 rounded-md border border-neutral-300 bg-white/95 px-3 py-1.5 mono-type text-[0.6rem] font-bold uppercase tracking-[0.13em] text-neutral-900 shadow-sm backdrop-blur-md sm:top-0">
-                Data & AI · 2026
+              <div className="relative">
+                <div
+                  className="hero-frame absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 h-full w-full rounded-2xl border border-neutral-300 dark:border-neutral-700 bg-neutral-100/70 dark:bg-neutral-800/50"
+                  aria-hidden="true"
+                />
+                <img
+                  src={assetUrls.heroPhoto}
+                  alt="Portrait of Fauzi Noorsyabani"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="hero-portrait relative z-10 h-[240px] w-[240px] sm:h-[300px] sm:w-[300px] lg:h-[370px] lg:w-[370px] rounded-2xl border border-neutral-300 dark:border-neutral-700 object-cover object-center shadow-lg shadow-neutral-900/10"
+                />
+                <div className="hero-artifact absolute right-2.5 top-2.5 z-20 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white/95 dark:bg-neutral-900/95 px-2.5 py-1 mono-type text-[0.58rem] font-bold uppercase tracking-[0.12em] text-neutral-900 dark:text-neutral-100 shadow-sm backdrop-blur-md">
+                  Data & AI · 2026
+                </div>
               </div>
             </div>
           </div>
