@@ -188,7 +188,14 @@ export function CertificateCoverflow({
                       onClick={(event) => event.stopPropagation()}
                       className="inline-flex shrink-0 items-center gap-1 rounded-full bg-neutral-950 dark:bg-white px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-[0.68rem] sm:text-xs font-bold text-white dark:text-neutral-950 transition hover:bg-neutral-700 dark:hover:bg-neutral-200"
                     >
-                      {item.verifyUrl ? "Verify on Credly" : viewLabel} <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                      {item.verifyUrl
+                        ? item.verifyUrl.includes("credly.com")
+                          ? "Verify on Credly"
+                          : item.verifyUrl.includes("dicoding.com")
+                          ? "Verify on Dicoding"
+                          : "Verify Credential"
+                        : viewLabel}{" "}
+                      <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                     </a>
                   )}
                 </div>

@@ -481,8 +481,8 @@ export const certifications = [
     tag: "Google Cloud / AI",
     description:
       "Validates hands-on proficiency deploying production multimodal generative AI applications with Gemini and Imagen on Vertex AI. Verified on Credly.",
-    credential: "",
-    verifyUrl: "https://www.credly.com/users/fauzi-noor-syabani",
+    credential: "/certificates/google-cloud-gemini-imagen.webp",
+    verifyUrl: "https://www.credly.com/badges/91ebe91c-cd6f-46a3-810e-7ad60a8d3d8d/public_url",
   },
   {
     name: "Create ML Models with BigQuery ML",
@@ -491,8 +491,8 @@ export const certifications = [
     tag: "Google Cloud / ML",
     description:
       "Validates competency in building, training, evaluating, and deploying SQL-based predictive machine learning models in BigQuery. Verified on Credly.",
-    credential: "",
-    verifyUrl: "https://www.credly.com/users/fauzi-noor-syabani",
+    credential: "/certificates/google-cloud-bigquery-ml.webp",
+    verifyUrl: "https://www.credly.com/badges/2dc26caa-8fc7-4b9e-9031-85df4dde45d9/public_url",
   },
   {
     name: "Prompt Design in Vertex AI",
@@ -501,8 +501,8 @@ export const certifications = [
     tag: "Google Cloud / AI",
     description:
       "Validates advanced prompt engineering techniques, multimodal prompt design, and system parameter tuning with Vertex AI Gemini. Verified on Credly.",
-    credential: "",
-    verifyUrl: "https://www.credly.com/users/fauzi-noor-syabani",
+    credential: "/certificates/google-cloud-prompt-design.webp",
+    verifyUrl: "https://www.credly.com/badges/6f76b8fe-85b3-4771-bc14-a91cee1d35d4/public_url",
   },
   {
     name: "Build Serverless Applications with Cloud Run",
@@ -511,16 +511,28 @@ export const certifications = [
     tag: "Google Cloud / Serverless",
     description:
       "Validates containerized microservices architecture, event-driven integrations, and auto-scaling serverless deployments on Cloud Run. Verified on Credly.",
-    credential: "",
-    verifyUrl: "https://www.credly.com/users/fauzi-noor-syabani",
+    credential: "/certificates/google-cloud-cloud-run.webp",
+    verifyUrl: "https://www.credly.com/badges/97690e11-79dc-48ab-8282-400556a08db0/public_url",
   },
   {
     name: "AWS Cloud Practitioner Essentials",
     issuer: "Dicoding Indonesia",
-    date: "2024",
-    tag: "Cloud",
-    description: "Foundational AWS cloud knowledge across infrastructure, security, storage, pricing, and reliability.",
-    credential: "",
+    date: "Apr 2024",
+    tag: "Cloud / AWS",
+    description:
+      "Foundational AWS cloud knowledge across global infrastructure, security, storage, pricing, and architecture. Certified by Dicoding Indonesia (MRZMEGO23PYQ).",
+    credential: "/certificates/cert-dicoding-aws-cloud.webp",
+    verifyUrl: "https://dicoding.com/certificates/MRZMEGO23PYQ",
+  },
+  {
+    name: "Belajar Dasar AI (AI Fundamentals)",
+    issuer: "Dicoding Indonesia",
+    date: "Oct 2025",
+    tag: "AI / ML",
+    description:
+      "Official Dicoding certificate of competence in artificial intelligence fundamentals, machine learning principles, and modern AI algorithms. Valid Oct 2025 — Oct 2028 (KEXL2YGVWZG2).",
+    credential: "/certificates/cert-dicoding-belajar-dasar-ai.webp",
+    verifyUrl: "https://dicoding.com/certificates/KEXL2YGVWZG2",
   },
   {
     name: "Dicoding AI/ML Learning Path",
