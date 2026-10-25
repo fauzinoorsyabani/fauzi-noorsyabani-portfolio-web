@@ -458,6 +458,16 @@ export const certifications = [
     credential: "/certificates/Data_sains_Sertifikat_magang_Batch_2.webp",
   },
   {
+    name: "Claude on Google Cloud",
+    issuer: "Anthropic Claude Academy",
+    date: "Oct 2026",
+    tag: "Anthropic / Google Cloud",
+    description:
+      "Official Anthropic completion badge validating enterprise Claude deployment, Vertex AI integration, IAM governance, and production workloads on Google Cloud (66 lessons · 8.5 hr).",
+    credential: "/certificates/claude-on-google-cloud.webp",
+    verifyUrl: "https://academy.claude.com/verify/901962c95e866b0145edd4ebf7649307",
+  },
+  {
     name: "Create ML Models with BigQuery ML",
     issuer: "Google Cloud",
     date: "Feb 2026",
@@ -506,6 +516,46 @@ export const certifications = [
       "Official AWS training badge validating fundamental understanding of generative AI concepts, foundation models, and enterprise use cases. Verified on Credly.",
     credential: "/certificates/aws-educate-generative-ai.webp",
     verifyUrl: "https://www.credly.com/badges/d804b257-b110-4cfd-b27c-90a4a084c420/public_url",
+  },
+  {
+    name: "Model Context Protocol: Advanced Topics",
+    issuer: "Anthropic Claude Academy",
+    date: "Oct 2026",
+    tag: "Anthropic / MCP",
+    description:
+      "Official Anthropic certification covering advanced Model Context Protocol architecture, client-server transport patterns, tool orchestration, and secure prompt integration.",
+    credential: "/certificates/claude-mcp-advanced.webp",
+    verifyUrl: "https://academy.claude.com/verify/3164db2a716cc39608cbbd191c0425a3",
+  },
+  {
+    name: "Introduction to Model Context Protocol",
+    issuer: "Anthropic Claude Academy",
+    date: "Oct 2026",
+    tag: "Anthropic / MCP",
+    description:
+      "Foundational Model Context Protocol certification covering universal context standard, local server integration, and Claude desktop & agent extensibility.",
+    credential: "/certificates/claude-mcp-intro.webp",
+    verifyUrl: "https://academy.claude.com/verify/b532242cffda9ab9d5c17757b81079e9",
+  },
+  {
+    name: "Claude Code in Action",
+    issuer: "Anthropic Claude Academy",
+    date: "Oct 2026",
+    tag: "Anthropic / CLI",
+    description:
+      "Hands-on certification in CLI agentic coding, project-level codebase reasoning, automated refactoring, and AI-native software delivery with Claude Code.",
+    credential: "/certificates/claude-code-in-action.webp",
+    verifyUrl: "https://academy.claude.com/verify/818ae9c581ee8d929c9e8d55ec8b9cb8",
+  },
+  {
+    name: "Building Effective Human-Agent Teams",
+    issuer: "Anthropic Claude Academy",
+    date: "Oct 2026",
+    tag: "Anthropic / Agents",
+    description:
+      "Official certification on multi-agent orchestration, autonomous subagents, human-in-the-loop task delegation, and effective human-agent collaborative systems.",
+    credential: "/certificates/claude-human-agent-teams.webp",
+    verifyUrl: "https://academy.claude.com/verify/7db647a5e3e0002d47c08ff882055ad3",
   },
   {
     name: "Membangun Sistem Machine Learning",
@@ -644,15 +694,6 @@ export const certifications = [
     tag: "Event",
     description: "Participant in the Innovative Competition and National Informatics Conference on digital transformation through technology.",
     credential: "/certificates/Sertifikat_Peserta_ICONIC_IT_Fauzi_Noorsyabani.webp",
-  },
-  {
-    name: "Anthropic Academy",
-    issuer: "Anthropic",
-    date: "Sep — Oct 2026",
-    tag: "AI / LLM",
-    description:
-      "Five courses: Claude Code in Action, Introduction to MCP, MCP Advanced Topics, AI Fluency, and Claude Platform 101.",
-    credential: "",
   },
 ] as const;
 

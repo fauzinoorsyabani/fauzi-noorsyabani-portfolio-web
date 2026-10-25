@@ -193,6 +193,8 @@ export function CertificateCoverflow({
                           ? "Verify on Credly"
                           : item.verifyUrl.includes("dicoding.com")
                           ? "Verify on Dicoding"
+                          : item.verifyUrl.includes("academy.claude.com")
+                          ? "Verify on Claude Academy"
                           : "Verify Credential"
                         : viewLabel}{" "}
                       <ArrowUpRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
