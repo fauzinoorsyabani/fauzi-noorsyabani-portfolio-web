@@ -645,18 +645,26 @@ function HeroRoleTicker({
   }, [displayedText, isDeleting, fullTitle, prefersReducedMotion]);
 
   return (
-    <div className="hero-sequence hero-sequence--4 mt-8 flex h-7 items-center gap-2.5 sm:gap-3 text-neutral-900 dark:text-neutral-100 overflow-hidden whitespace-nowrap">
-      <span className="h-px w-6 sm:w-10 bg-neutral-900 dark:bg-white shrink-0" aria-hidden="true" />
-      <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 overflow-hidden whitespace-nowrap">
-        <span className="mono-type text-[0.66rem] sm:text-[0.72rem] md:text-[0.78rem] font-bold uppercase tracking-[0.12em] sm:tracking-[0.14em] text-neutral-950 dark:text-white shrink-0 inline-flex items-center">
+    <div className="hero-sequence hero-sequence--4 mt-6 sm:mt-8 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2.5 text-neutral-900 dark:text-neutral-100 max-w-full overflow-hidden">
+      {/* Line 1 (mobile) / Main part: Rule line + Typing title */}
+      <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 max-w-full overflow-hidden">
+        <span className="h-px w-5 sm:w-8 bg-neutral-900 dark:bg-white shrink-0" aria-hidden="true" />
+        <span className="mono-type text-[0.62rem] sm:text-[0.72rem] md:text-[0.78rem] font-bold uppercase tracking-[0.08em] sm:tracking-[0.14em] text-neutral-950 dark:text-white shrink-0 inline-flex items-center truncate">
           {displayedText}
           <span
             className="inline-block w-0.5 h-3 sm:h-3.5 ml-1 bg-neutral-900 dark:bg-white animate-pulse shrink-0"
             aria-hidden="true"
           />
         </span>
-        <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-[0.7rem] sm:text-xs">/</span>
-        <span className="mono-type text-[0.6rem] sm:text-[0.66rem] md:text-[0.72rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.02em] sm:tracking-[0.04em] truncate transition-opacity duration-300">
+        {/* Separator slash only shown on desktop/tablet */}
+        <span className="hidden sm:inline text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-xs" aria-hidden="true">
+          /
+        </span>
+      </div>
+
+      {/* Line 2 (mobile): Subtitle moved below on mobile with neat indentation; inline on sm+ */}
+      <div className="pl-7 sm:pl-0 min-w-0 max-w-full overflow-hidden">
+        <span className="mono-type text-[0.55rem] sm:text-[0.66rem] md:text-[0.72rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.01em] sm:tracking-[0.03em] block sm:inline truncate transition-opacity duration-300">
           {currentRole.sub[language]}
         </span>
       </div>
