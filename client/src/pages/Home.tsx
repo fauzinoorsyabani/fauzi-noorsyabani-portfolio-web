@@ -1243,10 +1243,10 @@ export default function Home() {
                             aria-label={skill}
                             className="group relative flex aspect-square items-center justify-center rounded-2xl border border-neutral-300/80 bg-neutral-50/80 p-2 sm:p-2.5 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:border-neutral-950 hover:bg-white hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-neutral-300 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 cursor-pointer"
                           >
-                            {/* Enlarged Logo filling ~75-80% of tile */}
+                            {/* Standardized SVG filling 60% of square tile */}
                             <TechIcon
                               name={skill}
-                              className="h-11 w-11 sm:h-12 sm:w-12 md:h-13 md:w-13 shrink-0 transition-transform duration-200 group-hover:scale-110 text-neutral-950 dark:text-white"
+                              className="h-[60%] w-[60%] shrink-0 transition-transform duration-200 group-hover:scale-110 text-neutral-950 dark:text-white"
                             />
 
                             {/* Smooth Tooltip showing name when cursor hovers over card */}

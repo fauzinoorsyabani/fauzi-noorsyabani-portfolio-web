@@ -1,934 +1,398 @@
 import React from "react";
 
-interface TechIconProps {
+export interface TechIconProps {
   name: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function TechIcon({ name, className = "h-11 w-11 shrink-0" }: TechIconProps) {
-  const n = name.trim().toLowerCase();
-
-  // Python
-  if (n === "python") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path
-          d="M63.54 2c-32.5 0-30.47 14.09-30.47 14.09l.04 14.6h31.01v4.38H20.79S0 32.71 0 65.5s18.15 31.62 18.15 31.62h10.83V81.91s-.58-18.15 17.86-18.15h30.75s17.28.28 17.28-16.7V20.79S97.5 2 63.54 2zM46.44 11.82a5.57 5.57 0 110 11.16 5.57 5.57 0 010-11.16z"
-          fill="url(#py-a)"
-        />
-        <path
-          d="M64.46 126c32.5 0 30.47-14.09 30.47-14.09l-.04-14.6H63.88v-4.38h43.33S128 95.29 128 62.5s-18.15-31.62-18.15-31.62h-10.83v15.21s.58 18.15-17.86 18.15H50.41s-17.28-.28-17.28 16.7v26.28S30.5 126 64.46 126zm17.1-9.82a5.57 5.57 0 110-11.16 5.57 5.57 0 010 11.16z"
-          fill="url(#py-b)"
-        />
-        <defs>
-          <linearGradient id="py-a" x1="12" y1="12" x2="70" y2="70" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#387eb8" />
-            <stop offset="1" stopColor="#366994" />
-          </linearGradient>
-          <linearGradient id="py-b" x1="56" y1="56" x2="114" y2="114" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#ffe052" />
-            <stop offset="1" stopColor="#ffc331" />
-          </linearGradient>
-        </defs>
-      </svg>
-    );
-  }
-
-  // ChatGPT / OpenAI — Official Rosette in High Contrast Black & White
-  if (n.includes("chatgpt") || (n.includes("openai") && !n.includes("codex"))) {
-    return (
-      <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 8.737a4.485 4.485 0 0 1 2.366-1.973V12.4a.766.766 0 0 0 .388.677l5.815 3.355-2.02 1.169a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 8.737zm16.599 3.93-5.839-3.37 2.019-1.168a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.405-.68zm2.01-4.423-.14-.085-4.773-2.782a.776.776 0 0 0-.785 0L9.409 8.75V6.417a.08.08 0 0 1 .033-.061l4.838-2.793a4.5 4.5 0 0 1 6.67 4.683zM8.096 13.856l2.365-1.365 2.365 1.365v2.729l-2.365 1.365-2.365-1.365zm6.541-4.29-2.02-1.169v-2.33a.076.076 0 0 1 .038-.066l4.835-2.791a4.494 4.494 0 0 1 4.502 4.498 4.485 4.485 0 0 1-2.367 1.973V12.4a.766.766 0 0 0-.388-.677zm-4.73 1.365 2.02 1.169v2.73l-2.02 1.169-2.02-1.169v-2.73z" />
-      </svg>
-    );
-  }
-
-  // Claude / Anthropic
-  if (n.includes("claude") || n.includes("anthropic")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 16v96M16 64h96M30 30l68 68M30 98l68-68" stroke="#D97757" strokeWidth="16" strokeLinecap="round" />
-      </svg>
-    );
-  }
-
-  // Gemini (Google DeepMind)
-  if (n.includes("gemini")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path
-          d="M64 12C64 40.7 40.7 64 12 64c28.7 0 52 23.3 52 52 0-28.7 23.3-52 52-52-28.7 0-52-23.3-52-52z"
-          fill="url(#gemini-grad)"
-        />
-        <defs>
-          <linearGradient id="gemini-grad" x1="12" y1="12" x2="116" y2="116" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#38BDF8" />
-            <stop offset="0.5" stopColor="#818CF8" />
-            <stop offset="1" stopColor="#EC4899" />
-          </linearGradient>
-        </defs>
-      </svg>
-    );
-  }
-
-  // Manus AI
-  if (n.includes("manus")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path
-          d="M34 84c-8-20 2-44 22-54 18-9 38-3 46 14 4 9 3 19-3 28L76 100l-18-8 15-18c-15 13-30 20-39 10z"
-          fill="url(#manus-grad1)"
-        />
-        <path
-          d="M94 84c8-20-2-44-22-54-18-9-38-3-46 14-4 9-3 19 3 28L52 100l18-8-15-18c15 13 30 20 39 10z"
-          fill="url(#manus-grad2)"
-          opacity="0.85"
-        />
-        <defs>
-          <linearGradient id="manus-grad1" x1="34" y1="30" x2="86" y2="100" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#A855F7" />
-            <stop offset="1" stopColor="#6366F1" />
-          </linearGradient>
-          <linearGradient id="manus-grad2" x1="94" y1="30" x2="42" y2="100" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#38BDF8" />
-            <stop offset="1" stopColor="#818CF8" />
-          </linearGradient>
-        </defs>
-      </svg>
-    );
-  }
-
-  // DeepSeek
-  if (n.includes("deepseek")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M22 80c12-26 38-40 66-40 22 0 38 10 48 24-16-12-34-15-50-10-16 5-28 17-42 32-7 7-14 7-22-6z" fill="#1E40AF" />
-        <path d="M38 78c10-20 32-32 54-32 18 0 30 8 38 18-12-9-26-11-40-7-12 4-22 14-32 26-6 6-12 6-20-5z" fill="#3B82F6" />
-        <circle cx="52" cy="56" r="7" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // Cursor (Official Isometric 3D Cube)
-  if (n === "cursor") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <polygon points="64 16 112 44 64 72 16 44" fill="currentColor" opacity="0.95" />
-        <polygon points="16 44 64 72 64 120 16 92" fill="currentColor" opacity="0.75" />
-        <polygon points="64 72 112 44 112 92 64 120" fill="currentColor" opacity="0.6" />
-      </svg>
-    );
-  }
-
-  // GitHub Copilot
-  if (n.includes("copilot")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M24 52C24 30 42 20 64 20s40 10 40 32v28c0 22-18 32-40 32s-40-10-40-32V52z" fill="url(#copilot-grad)" />
-        <circle cx="44" cy="62" r="10" fill="#fff" />
-        <circle cx="84" cy="62" r="10" fill="#fff" />
-        <circle cx="44" cy="62" r="5" fill="#1E1B4B" />
-        <circle cx="84" cy="62" r="5" fill="#1E1B4B" />
-        <path d="M44 86c10 8 30 8 40 0" stroke="#fff" strokeWidth="6" strokeLinecap="round" />
-        <defs>
-          <linearGradient id="copilot-grad" x1="24" y1="20" x2="104" y2="112" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#6E40C9" />
-            <stop offset="1" stopColor="#9E6CE6" />
-          </linearGradient>
-        </defs>
-      </svg>
-    );
-  }
-
-  // Antigravity (Rainbow Chevron)
-  if (n.includes("antigravity")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 16L116 108H88L64 56L40 108H12L64 16z" fill="url(#agy-grad)" />
-        <defs>
-          <linearGradient id="agy-grad" x1="12" y1="16" x2="116" y2="108" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#38BDF8" />
-            <stop offset="0.33" stopColor="#818CF8" />
-            <stop offset="0.66" stopColor="#EC4899" />
-            <stop offset="1" stopColor="#F59E0B" />
-          </linearGradient>
-        </defs>
-      </svg>
-    );
-  }
-
-  // OpenAI Codex
-  if (n.includes("codex")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M44 38L20 64l24 26M84 38l24 26-24 26" stroke="#10A37F" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M74 26L54 102" stroke="currentColor" strokeWidth="10" strokeLinecap="round" />
-      </svg>
-    );
-  }
-
-  // LangChain (Official Parrot / Linked Symbol)
-  if (n === "langchain") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M40 32c14-16 38-16 52 0 7 8 7 20 0 28L68 84c-7 7-18 7-25 0s-7-18 0-25l16-16" stroke="#00A67E" strokeWidth="11" strokeLinecap="round" />
-        <circle cx="58" cy="40" r="8" fill="#FFE17D" />
-        <circle cx="61" cy="40" r="3.5" fill="#1C3C3C" />
-        <path d="M72 62l22 22c7 7 7 18 0 25s-18 7-25 0L58 98" stroke="#14B8A6" strokeWidth="11" strokeLinecap="round" />
-      </svg>
-    );
-  }
-
-  // LangGraph (Official Multi-Node Graph Network)
-  if (n.includes("langgraph")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <line x1="36" y1="38" x2="92" y2="38" stroke="#14B8A6" strokeWidth="8" strokeLinecap="round" />
-        <line x1="36" y1="38" x2="64" y2="92" stroke="#0D9488" strokeWidth="8" strokeLinecap="round" />
-        <line x1="92" y1="38" x2="64" y2="92" stroke="#00A67E" strokeWidth="8" strokeLinecap="round" />
-        <circle cx="36" cy="38" r="18" fill="#0A2222" stroke="#14B8A6" strokeWidth="5" />
-        <circle cx="92" cy="38" r="18" fill="#0A2222" stroke="#2DD4BF" strokeWidth="5" />
-        <circle cx="64" cy="92" r="20" fill="#00A67E" stroke="#5EEAD4" strokeWidth="5" />
-        <circle cx="36" cy="38" r="6" fill="#2DD4BF" />
-        <circle cx="92" cy="38" r="6" fill="#5EEAD4" />
-        <circle cx="64" cy="92" r="7" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // Google Colab
-  if (n.includes("colab")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M42 44a20 20 0 0 0-20 20 20 20 0 0 0 20 20c14 0 20-14 24-20-4-6-10-20-24-20z" stroke="#F9AB00" strokeWidth="12" fill="none" />
-        <path d="M86 44a20 20 0 0 1 20 20 20 20 0 0 1-20 20c-14 0-20-14-24-20 4-6 10-20 24-20z" stroke="#E37400" strokeWidth="12" fill="none" />
-      </svg>
-    );
-  }
-
-  // Git (Official Red-Orange Branching Diamond)
-  if (n === "git") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path
-          d="M125.7 57.5L70.5 2.3c-3.1-3.1-8.1-3.1-11.2 0L47.7 13.9l14.2 14.2c3.3-1.1 7.1-.3 9.7 2.3 2.6 2.6 3.4 6.4 2.3 9.7l13.7 13.7c3.3-1.1 7.1-.3 9.7 2.3 3.7 3.7 3.7 9.7 0 13.4s-9.7 3.7-13.4 0c-2.8-2.8-3.5-6.9-2.1-10.4L68.7 46.1v34.4c1 .6 2 1.4 2.7 2.2 3.7 3.7 3.7 9.7 0 13.4s-9.7 3.7-13.4 0c-3.7-3.7-3.7-9.7 0-13.4.9-.9 2-1.7 3.2-2.3V45.8c-1.2-.6-2.3-1.4-3.2-2.3-2.8-2.8-3.5-7-2.1-10.5L42 19.3 2.3 59c-3.1 3.1-3.1 8.1 0 11.2l55.2 55.2c3.1 3.1 8.1 3.1 11.2 0l57-56.7c3.1-3.1 3.1-8.1 0-11.2z"
-          fill="#F05032"
-        />
-      </svg>
-    );
-  }
-
-  // GitHub (Official Octocat Badge)
-  if (n === "github") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="64" cy="64" r="56" fill="#181717" />
-        <path
-          d="M64 28a36 36 0 00-11 70c2 .3 2-.8 2-1.8v-6.4c-10 2.2-12-4.8-12-4.8-1.6-4.2-4-5.3-4-5.3-3.3-2.2.2-2.2.2-2.2 3.6.3 5.5 3.7 5.5 3.7 3.2 5.5 8.5 3.9 10.6 3 0.3-2.3 1.3-3.9 2.3-4.8-8-0.9-16.4-4-16.4-17.8 0-3.9 1.4-7.1 3.7-9.6-0.4-0.9-1.6-4.6 0.3-9.5 0 0 3-1 9.9 3.7a34.4 34.4 0 0118 0c6.9-4.7 9.9-3.7 9.9-3.7 1.9 4.9.7 8.6.4 9.5 2.3 2.5 3.7 5.7 3.7 9.6 0 13.8-8.4 16.9-16.5 17.8 1.3 1.1 2.5 3.3 2.5 6.7v9.9c0 1 .1 2.1 2 1.8A36 36 0 0064 28z"
-          fill="#fff"
-        />
-      </svg>
-    );
-  }
-
-  // Jupyter Notebook
-  if (n.includes("jupyter")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <ellipse cx="64" cy="64" rx="48" ry="18" stroke="#767677" strokeWidth="8" fill="none" transform="rotate(-25 64 64)" />
-        <circle cx="64" cy="64" r="26" fill="#F37626" />
-        <circle cx="34" cy="38" r="8" fill="#767677" />
-        <circle cx="94" cy="90" r="8" fill="#767677" />
-      </svg>
-    );
-  }
-
-  // Jira (Atlassian Jira)
-  if (n === "jira") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 20a24 24 0 00-24 24v12a24 24 0 0024 24h12V20H64z" fill="#0052CC" />
-        <path d="M64 56a24 24 0 00-24 24v12a24 24 0 0024 24h12V56H64z" fill="#2684FF" />
-        <path d="M92 56a24 24 0 00-24-24H56v64h12a24 24 0 0024-24v-16z" fill="#2684FF" opacity="0.6" />
-      </svg>
-    );
-  }
-
-  // Atlassian
-  if (n.includes("atlassian")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M52 106c-20-9-26-34-26-60 0-4 1-9 3-13 6 22 20 42 41 53l-18 20z" fill="#0052CC" />
-        <path d="M76 22c20 9 26 34 26 60 0 4-1 9-3 13-6-22-20-42-41-53l18-20z" fill="#2684FF" />
-      </svg>
-    );
-  }
-
-  // C++
-  if (n === "c++" || n.includes("cpp")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <polygon points="64 6 114 35 114 93 64 122 14 93 14 35" fill="#00599C" />
-        <polygon points="64 14 107 39 107 89 64 114 21 89 21 39" fill="#004482" />
-        <path d="M48 42c-12 0-20 9-20 22s8 22 20 22c8 0 14-4 17-10l-9-5c-2 4-5 6-8 6-7 0-11-5-11-13s4-13 11-13c3 0 6 2 8 6l9-5c-3-6-9-10-17-10z" fill="#fff" />
-        <path d="M68 60h6v-6h4v6h6v4h-6v6h-4v-6h-6v-4zM88 60h6v-6h4v6h6v4h-6v6h-4v-6h-6v-4z" fill="#659AD2" />
-      </svg>
-    );
-  }
-
-  // C#
-  if (n === "c#" || n.includes("csharp")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <polygon points="64 6 114 35 114 93 64 122 14 93 14 35" fill="#239120" />
-        <polygon points="64 14 107 39 107 89 64 114 21 89 21 39" fill="#1B7A18" />
-        <path d="M48 42c-12 0-20 9-20 22s8 22 20 22c8 0 14-4 17-10l-9-5c-2 4-5 6-8 6-7 0-11-5-11-13s4-13 11-13c3 0 6 2 8 6l9-5c-3-6-9-10-17-10z" fill="#fff" />
-        <path d="M74 54h14v4h-14v12h14v4h-14v8h-4v-8h-8v8h-4v-8h-6v-4h6v-12h-6v-4h6v-8h4v8h8v-8h4v8zm-4 4h-8v12h8v-12z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // C (plain)
-  if (n === "c") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <polygon points="64 6 114 35 114 93 64 122 14 93 14 35" fill="#A8B9CC" />
-        <polygon points="64 14 107 39 107 89 64 114 21 89 21 39" fill="#283593" />
-        <path d="M68 38c-15 0-26 11-26 26s11 26 26 26c11 0 19-6 23-14l-11-6c-2 5-6 8-12 8-8 0-14-6-14-14s6-14 14-14c6 0 10 3 12 8l11-6c-4-8-12-14-23-14z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // Java
-  if (n === "java") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M46 98c18 4 36 4 54-2-5 3-17 6-27 6-12 0-21-2-27-4z" fill="#EA2D2E" />
-        <path d="M38 88c24 6 52 6 74-2-9 4-25 7-38 7-18 0-29-3-36-5z" fill="#EA2D2E" />
-        <path d="M74 62c6 7 4 13-10 22 18-4 28-12 18-22-3-4-5-4-8 0z" fill="#5382A1" />
-        <path d="M52 38c-4 12 2 18 16 26-12-6-14-14-6-26h-10z" fill="#5382A1" />
-        <path d="M84 76c12-3 18-8 18-14 0-4-3-8-8-8 2 2 3 4 1 6-4 4-11 5-18 6 3 3 5 6 7 10z" fill="#007396" />
-        <path d="M32 108c32 8 68 8 96-2-32 5-66 5-96 2z" fill="#EA2D2E" />
-      </svg>
-    );
-  }
-
-  // Go / Golang
-  if (n === "go" || n === "golang") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M12 64c0-28 22-50 50-50 20 0 38 12 46 30l-18 8c-6-13-16-20-28-20-18 0-32 14-32 32s14 32 32 32c14 0 24-8 28-20H58v-18h48v36c-10 18-26 28-44 28-28 0-50-22-50-50z" fill="#00ADD8" />
-        <circle cx="106" cy="36" r="6" fill="#00ADD8" />
-      </svg>
-    );
-  }
-
-  // Dart
-  if (n === "dart") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 12L24 52l16 48 64-12 12-48L64 12z" fill="#0175C2" />
-        <path d="M24 52l40 40 40-40L64 12 24 52z" fill="#02569B" opacity="0.3" />
-        <path d="M24 52l16 48 48 16 28-28-40-40L24 52z" fill="#00B4AB" />
-        <path d="M40 100l48 16 28-28-16-16-60 28z" fill="#29B6F6" />
-      </svg>
-    );
-  }
-
-  // Flutter
-  if (n === "flutter") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M78 12L24 66l18 18 72-72H78z" fill="#42A5F5" />
-        <path d="M78 72L50 100l18 18 46-46H78z" fill="#0D47A1" />
-        <path d="M50 100l22-22 24 24-16 16L50 100z" fill="#42A5F5" />
-        <path d="M72 78l12-12 18 18-12 12-18-18z" fill="#01579B" />
-      </svg>
-    );
-  }
-
-  // HTML5
-  if (n === "html5" || n === "html") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M19 12l9 100 36 10 36-10 9-100H19z" fill="#E44D26" />
-        <path d="M64 21v91l28-8 7-83H64z" fill="#F16529" />
-        <path d="M64 42H44l2 18h18v-18zm0 30H48l2 20 14 4v-24z" fill="#EBEBEB" />
-        <path d="M64 42h20l-2 18H64v-18zm0 30h16l-2 20-14 4v-24z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // CSS3
-  if (n === "css3" || n === "css") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M19 12l9 100 36 10 36-10 9-100H19z" fill="#1572B6" />
-        <path d="M64 21v91l28-8 7-83H64z" fill="#33A9DC" />
-        <path d="M64 42H44l2 18h18v-18zm0 30H48l2 20 14 4v-24z" fill="#EBEBEB" />
-        <path d="M64 42h20l-2 18H64v-18zm0 30h16l-2 20-14 4v-24z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // Bootstrap
-  if (n === "bootstrap") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="14" y="14" width="100" height="100" rx="22" fill="#7952B3" />
-        <path d="M46 38h20c10 0 16 5 16 12 0 5-3 9-8 11 7 2 10 7 10 13 0 8-7 14-18 14H46V38zm12 18h8c5 0 8-2 8-6s-3-6-8-6h-8v12zm0 20h9c5 0 9-2 9-7s-4-7-9-7h-9v14z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // Express
-  if (n.includes("express")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="14" y="14" width="100" height="100" rx="16" fill="#000" />
-        <text x="64" y="78" fill="#fff" fontSize="46" fontWeight="bold" fontFamily="system-ui" textAnchor="middle">ex</text>
-      </svg>
-    );
-  }
-
-  // TensorFlow
-  if (n.includes("tensor")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 12l44 26v48L64 64V12z" fill="#FF6F00" />
-        <path d="M64 12L20 38v48l44-22V12z" fill="#FFA800" />
-        <path d="M64 64l44 22-44 26-44-26 44-22z" fill="#FF8F00" />
-        <path d="M64 64v48l44-24V40L64 64z" fill="#E65100" opacity="0.3" />
-      </svg>
-    );
-  }
-
-  // Keras
-  if (n === "keras") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="14" y="14" width="100" height="100" rx="16" fill="#D00000" />
-        <path d="M42 34v60h14V68l22 26h18L68 62l26-28H76L56 56V34H42z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // PyTorch
-  if (n.includes("torch")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 18c-24 0-44 20-44 44 0 18 11 34 27 40l-3-12c-10-5-16-16-16-28 0-18 16-34 36-34s34 16 34 34c0 12-6 23-16 28l-3 12c16-6 27-22 27-40 0-24-20-44-42-44z" fill="#EE4C2C" />
-        <circle cx="82" cy="38" r="6" fill="#EE4C2C" />
-      </svg>
-    );
-  }
-
-  // OpenCV
-  if (n.includes("opencv")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="64" cy="40" r="24" stroke="#EA212D" strokeWidth="12" fill="none" />
-        <circle cx="44" cy="84" r="24" stroke="#5C9A31" strokeWidth="12" fill="none" />
-        <circle cx="84" cy="84" r="24" stroke="#255799" strokeWidth="12" fill="none" />
-      </svg>
-    );
-  }
-
-  // MongoDB
-  if (n.includes("mongo")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 12c-2 0-24 24-24 54 0 24 16 40 24 50 8-10 24-26 24-50 0-30-22-54-24-54z" fill="#47A248" />
-        <path d="M64 14c-1 4-12 28-12 50 0 18 8 32 12 40V14z" fill="#499D4A" />
-        <path d="M64 104v14c2-1 4-3 5-5l-5-9z" fill="#3FA037" />
-      </svg>
-    );
-  }
-
-  // Firebase
-  if (n.includes("firebase")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M26 94l18-72 16 32-34 40z" fill="#FFA000" />
-        <path d="M78 40L60 14 26 94l52-54z" fill="#F57C00" />
-        <path d="M102 94L86 32 26 94l38 22 38-22z" fill="#FFCA28" />
-      </svg>
-    );
-  }
-
-  // Google Cloud / GCP
-  if (n.includes("google cloud") || n === "gcp") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M88 52c-2-14-14-24-28-24-11 0-21 6-25 16-2 0-3-.3-5-.3-14 0-26 11-26 25 0 2 .2 4 .6 6H92c10 0 18-8 18-18 0-9-7-17-16-17z" fill="#4285F4" />
-        <path d="M64 78l18 18 18-18H64z" fill="#34A853" />
-        <path d="M46 78l18 18V60L46 78z" fill="#FBBC05" />
-        <path d="M28 78l18 18 18-18H28z" fill="#EA4335" />
-      </svg>
-    );
-  }
-
-  // Kubernetes
-  if (n.includes("kubenetes") || n === "k8s" || n.includes("kubernetes")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <polygon points="64 12 114 41 114 99 64 128 14 99 14 41" fill="#326CE5" />
-        <circle cx="64" cy="70" r="22" stroke="#fff" strokeWidth="8" fill="none" />
-        <path d="M64 48v44M42 70h44M48 54l32 32M48 86l32-32" stroke="#fff" strokeWidth="6" strokeLinecap="round" />
-      </svg>
-    );
-  }
-
-  // Vercel
-  if (n === "vercel") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="14" y="14" width="100" height="100" rx="22" fill="#000" />
-        <polygon points="64 30 102 96 26 96" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // Postman
-  if (n === "postman") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="64" cy="64" r="52" fill="#FF6C37" />
-        <path d="M46 54c0-6 5-10 10-10s10 4 10 10-5 10-10 10-10-4-10-10zM34 86l44-32-12-6-32 38z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // GitLab
-  if (n.includes("gitlab")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 116l28-86H36l28 86z" fill="#E24329" />
-        <path d="M64 116L36 30 14 74l50 42z" fill="#FCA326" />
-        <path d="M14 74L36 30 22 14 14 74z" fill="#E24329" />
-        <path d="M64 116l28-86 22 44-50 42z" fill="#FCA326" />
-        <path d="M114 74L92 30l14-16 8 60z" fill="#E24329" />
-      </svg>
-    );
-  }
-
-  // Slack
-  if (n === "slack") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="14" y="14" width="100" height="100" rx="22" fill="#fff" />
-        <circle cx="44" cy="44" r="8" fill="#ECB22E" />
-        <rect x="36" y="56" width="16" height="28" rx="8" fill="#36C5F0" />
-        <rect x="56" y="36" width="28" height="16" rx="8" fill="#2EB67D" />
-        <circle cx="84" cy="84" r="8" fill="#E01E5A" />
-      </svg>
-    );
-  }
-
-  // Pandas
-  if (n === "pandas") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="22" y="16" width="16" height="42" rx="4" fill="#130754" />
-        <rect x="46" y="38" width="16" height="52" rx="4" fill="#FFD43B" />
-        <rect x="70" y="24" width="16" height="66" rx="4" fill="#E70488" />
-        <rect x="94" y="58" width="16" height="42" rx="4" fill="#00A3E0" />
-      </svg>
-    );
-  }
-
-  // Scikit-learn
-  if (n.includes("scikit")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="64" cy="64" r="54" fill="#F89939" opacity="0.15" />
-        <path d="M42 36l30 28-30 28V36z" fill="#3499CD" />
-        <path d="M86 36L56 64l30 28V36z" fill="#F89939" />
-        <circle cx="64" cy="64" r="14" fill="#fff" />
-        <circle cx="64" cy="64" r="8" fill="#18567F" />
-      </svg>
-    );
-  }
-
-  // NumPy
-  if (n === "numpy") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 12l48 28v48L64 116 16 88V40L64 12z" fill="#4DABCF" />
-        <path d="M64 12l48 28-48 28-48-28 48-28z" fill="#013243" opacity="0.3" />
-        <path d="M16 40l48 28v48L16 88V40z" fill="#459DB5" />
-        <path d="M64 68l48-28v48L64 116V68z" fill="#4DABCF" />
-        <path d="M42 48v32l22-18v-28L42 48z" fill="#fff" />
-        <path d="M64 62l22 18V48L64 34v28z" fill="#fff" opacity="0.8" />
-      </svg>
-    );
-  }
-
-  // Streamlit
-  if (n === "streamlit") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 22l48 76H16L64 22z" fill="#FF4B4B" />
-        <path d="M64 22l24 76H16L64 22z" fill="#FF2B2B" opacity="0.3" />
-        <path d="M64 54l20 44H44L64 54z" fill="#fff" opacity="0.25" />
-      </svg>
-    );
-  }
-
-  // Power BI
-  if (n.includes("power bi")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="74" y="20" width="28" height="88" rx="6" fill="#F2C811" />
-        <rect x="50" y="44" width="28" height="64" rx="6" fill="#E6AD10" />
-        <rect x="26" y="68" width="28" height="40" rx="6" fill="#D3960E" />
-      </svg>
-    );
-  }
-
-  // SQL / Generic database
-  if (n === "sql") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <ellipse cx="64" cy="28" rx="44" ry="16" fill="#00758F" />
-        <path d="M20 28v24c0 9 20 16 44 16s44-7 44-16V28" stroke="#00758F" strokeWidth="12" fill="none" />
-        <path d="M20 56v24c0 9 20 16 44 16s44-7 44-16V56" stroke="#00758F" strokeWidth="12" fill="none" />
-        <path d="M20 84v16c0 9 20 16 44 16s44-7 44-16V84" stroke="#00758F" strokeWidth="12" fill="none" />
-      </svg>
-    );
-  }
-
-  // Google Looker / Looker Studio
-  if (n.includes("looker")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="42" cy="42" r="18" fill="#4285F4" />
-        <circle cx="86" cy="42" r="18" fill="#EA4335" />
-        <circle cx="42" cy="86" r="18" fill="#FBBC04" />
-        <circle cx="86" cy="86" r="18" fill="#34A853" />
-        <path d="M42 42h44v44H42z" stroke="#4285F4" strokeWidth="8" fill="none" />
-      </svg>
-    );
-  }
-
-  // Tableau
-  if (n.includes("tableau")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 16v96M16 64h96M40 40l48 48M40 88l48-48" stroke="#E97627" strokeWidth="12" strokeLinecap="round" />
-        <circle cx="64" cy="64" r="12" fill="#2A5788" />
-      </svg>
-    );
-  }
-
-  // Google Colab
-  if (n.includes("colab")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M38 40a24 24 0 000 48 24 24 0 0026-24A24 24 0 0038 40zm52 0a24 24 0 00-26 24 24 24 0 0026 24 24 24 0 000-48z" stroke="#F9AB00" strokeWidth="12" fill="none" />
-      </svg>
-    );
-  }
-
-  // React / React Native
-  if (n.includes("react")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <ellipse cx="64" cy="64" rx="48" ry="18" stroke="#61DAFB" strokeWidth="6" />
-        <ellipse cx="64" cy="64" rx="48" ry="18" stroke="#61DAFB" strokeWidth="6" transform="rotate(60 64 64)" />
-        <ellipse cx="64" cy="64" rx="48" ry="18" stroke="#61DAFB" strokeWidth="6" transform="rotate(120 64 64)" />
-        <circle cx="64" cy="64" r="8" fill="#61DAFB" />
-      </svg>
-    );
-  }
-
-  // TypeScript
-  if (n.includes("typescript")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect width="128" height="128" rx="16" fill="#3178C6" />
-        <path d="M36 50h32v12H58v42H46V62H36V50zm36 28c3-2 8-4 14-4 8 0 13 4 13 11v1c-2-1-6-2-10-2-12 0-19 6-19 14 0 8 6 13 15 13 6 0 11-3 14-7v6h11V83c0-14-9-21-23-21-7 0-13 2-17 5l2 11z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // JavaScript
-  if (n.includes("javascript")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect width="128" height="128" rx="16" fill="#F7DF1E" />
-        <path d="M42 98c4 3 8 4 13 4 8 0 13-5 13-14V46H56v42c0 3-1 5-4 5s-5-2-7-4l-3 9zm36-2c5 4 12 6 20 6 14 0 23-8 23-20 0-11-7-16-17-21-7-3-11-6-11-10s4-7 10-7c5 0 9 2 13 5l4-9c-5-3-10-5-17-5-13 0-21 8-21 18 0 10 7 15 17 20 8 4 12 7 12 12s-4 8-11 8c-6 0-12-3-16-7l-5 9z" fill="#000" />
-      </svg>
-    );
-  }
-
-  // PHP
-  if (n === "php") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <ellipse cx="64" cy="64" rx="58" ry="34" fill="#777BB4" />
-        <path d="M38 52h14c6 0 10 3 10 8s-4 8-10 8H42l-4 16H28l10-32zm8 10l-2 8h4c2 0 4-1 4-4s-2-4-4-4h-2zm32-10h14c6 0 10 3 10 8s-4 8-10 8H82l-4 16H68l10-32zm8 10l-2 8h4c2 0 4-1 4-4s-2-4-4-4h-2zm-30 0h12l-5 18h-12l5-18z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // Laravel
-  if (n.includes("laravel")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 16L18 42v44l46 26 46-26V42L64 16z" fill="#FF2D20" />
-        <path d="M64 16l46 26-46 26-46-26 46-26z" fill="#E02518" opacity="0.4" />
-        <path d="M64 68l46-26v44l-46 26V68z" fill="#B31B10" opacity="0.3" />
-        <path d="M38 52l26 15 26-15" stroke="#fff" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      </svg>
-    );
-  }
-
-  // FastAPI
-  if (n.includes("fastapi")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="64" cy="64" r="56" fill="#009688" />
-        <path d="M68 24L38 72h24l-4 32 32-48H66l4-32z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // Next.js
-  if (n.includes("next")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="64" cy="64" r="56" fill="#000" />
-        <path d="M46 42h10v44H46V42zm36 0h10v44H82V42z" fill="#fff" />
-        <path d="M54 42l34 44h-8L46 42h8z" fill="url(#next-grad)" />
-        <defs>
-          <linearGradient id="next-grad" x1="50" y1="42" x2="88" y2="86" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#fff" />
-            <stop offset="1" stopColor="#fff" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-      </svg>
-    );
-  }
-
-  // Vue.js
-  if (n.includes("vue")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <polygon points="64 116 116 26 94 26 64 78 34 26 12 26" fill="#42B883" />
-        <polygon points="64 78 94 26 76 26 64 47 52 26 34 26" fill="#35495E" />
-      </svg>
-    );
-  }
-
-  // Tailwind CSS
-  if (n.includes("tailwind")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path
-          d="M64 44c-14 0-23 7-27 21 5-7 11-10 18-9 4 1 7 4 11 8 6 6 13 14 27 14 14 0 23-7 27-21-5 7-11 10-18 9-4-1-7-4-11-8-6-6-13-14-27-14zM35 68c-14 0-23 7-27 21 5-7 11-10 18-9 4 1 7 4 11 8 6 6 13 14 27 14 14 0 23-7 27-21-5 7-11 10-18 9-4-1-7-4-11-8-6-6-13-14-27-14z"
-          fill="#38BDF8"
-        />
-      </svg>
-    );
-  }
-
-  // Node.js
-  if (n.includes("node")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <polygon points="64 14 112 42 112 98 64 126 16 98 16 42" fill="#339933" />
-        <path d="M64 42v44M42 54l22 14 22-14" stroke="#fff" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-
-  // Docker
-  if (n === "docker") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M120 64c-3-2-8-3-12-1 1-4 0-8-3-11l-5-5-3 3c-4 4-5 9-3 14H68V52h12V40H68V28H56v24H44V40H32v12H20v12H6c-2 6 0 14 4 20 12 18 32 28 54 28 34 0 62-22 66-54 0-1 0-3-.1-4h-9.9z" fill="#2496ED" />
-        <rect x="32" y="52" width="8" height="8" fill="#fff" />
-        <rect x="44" y="52" width="8" height="8" fill="#fff" />
-        <rect x="56" y="52" width="8" height="8" fill="#fff" />
-        <rect x="44" y="40" width="8" height="8" fill="#fff" />
-        <rect x="56" y="40" width="8" height="8" fill="#fff" />
-        <rect x="56" y="28" width="8" height="8" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // PostgreSQL
-  if (n.includes("postgres")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="64" cy="64" r="54" fill="#336791" />
-        <path d="M64 24c-16 0-28 12-28 28 0 12 7 22 17 26v22l11-8v-14c12-1 22-11 22-24 0-16-10-30-22-30z" fill="#fff" />
-        <circle cx="54" cy="46" r="4" fill="#336791" />
-      </svg>
-    );
-  }
-
-  // MySQL
-  if (n.includes("mysql")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M110 68c-14-16-36-24-60-20 6-6 14-10 22-12-18-2-36 6-48 20 10 4 20 6 30 6-12 8-20 20-22 34 16-6 32-16 44-28 12 12 24 18 34 0z" fill="#00758F" />
-        <circle cx="44" cy="54" r="3" fill="#F29111" />
-      </svg>
-    );
-  }
-
-  // Supabase
-  if (n.includes("supabase")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M68 12L24 74h36l-8 42 44-62H60l8-42z" fill="#3ECF8E" />
-      </svg>
-    );
-  }
-
-  // Redis
-  if (n === "redis") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 16l48 24-48 24-48-24 48-24z" fill="#D82C20" />
-        <path d="M16 40l48 24v48L16 88V40z" fill="#A41E11" />
-        <path d="M64 64l48-24v48L64 112V64z" fill="#C6281E" />
-      </svg>
-    );
-  }
-
-  // AWS
-  if (n.includes("aws")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect width="128" height="128" rx="16" fill="#232F3E" />
-        <path d="M38 78c18 10 38 10 52 0-3 3-14 8-26 8s-21-4-26-8z" fill="#FF9900" />
-        <path d="M86 74l6 5-8 1 2-6z" fill="#FF9900" />
-        <text x="64" y="62" fill="#fff" fontSize="28" fontWeight="bold" fontFamily="system-ui" textAnchor="middle">AWS</text>
-      </svg>
-    );
-  }
-
-  // Figma
-  if (n === "figma") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="34" y="16" width="30" height="30" rx="15" fill="#F24E1E" />
-        <rect x="64" y="16" width="30" height="30" rx="15" fill="#FF7262" />
-        <rect x="34" y="46" width="30" height="30" rx="15" fill="#A259FF" />
-        <circle cx="79" cy="61" r="15" fill="#1ABCFE" />
-        <rect x="34" y="76" width="30" height="30" rx="15" fill="#0ACF83" />
-      </svg>
-    );
-  }
-
-  // VS Code
-  if (n.includes("vs code") || n === "vscode") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M96 12L24 64l72 52 24-12V24L96 12z" fill="#007ACC" />
-        <path d="M96 12L52 50l44 38V12z" fill="#1F9CF0" />
-        <path d="M24 64l72-52v104L24 64z" fill="#0065A9" opacity="0.3" />
-      </svg>
-    );
-  }
-
-  // Nginx
-  if (n === "nginx") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M64 12l48 26v52L64 116 16 90V38L64 12z" fill="#009639" />
-        <path d="M44 40v48l40-48v48" stroke="#fff" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-
-  // Cloudflare
-  if (n.includes("cloudflare")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M96 52c-2-14-14-24-28-24-11 0-21 6-25 16-2 0-3-.3-5-.3-14 0-26 11-26 25 0 2 .2 4 .6 6H104c10 0 18-8 18-18 0-9-7-17-16-17-.6 0-1.3 0-2 .2l-8-7.9z" fill="#F38020" />
-        <path d="M96 75H38c-1 0-2-.8-2-1.8 0-1 .8-1.8 1.8-1.8H96c1 0 2 .8 2 1.8 0 1-.8 1.8-2 1.8z" fill="#FAAE40" />
-      </svg>
-    );
-  }
-
-  // SQLite
-  if (n === "sqlite") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M30 14h50c8 0 14 6 14 14v72c0 8-6 14-14 14H30c-8 0-14-6-14-14V28c0-8 6-14 14-14z" fill="#0F80CC" />
-        <path d="M30 14h50c8 0 14 6 14 14v8H16v-8c0-8 6-14 14-14z" fill="#0B6BAA" />
-        <path d="M94 36c0 40-18 70-42 78h28c8 0 14-6 14-14V36z" fill="#003B57" opacity="0.55" />
-        <path d="M40 58h30M40 74h24M40 90h30" stroke="#fff" strokeWidth="6" strokeLinecap="round" />
-      </svg>
-    );
-  }
-
-  // ChromaDB
-  if (n.includes("chroma")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <circle cx="46" cy="50" r="30" fill="#FFDE2D" />
-        <circle cx="82" cy="50" r="30" fill="#FF6446" opacity="0.92" />
-        <circle cx="64" cy="82" r="30" fill="#327EFF" opacity="0.92" />
-      </svg>
-    );
-  }
-
-  // GitHub Actions
-  if (n.includes("github actions")) {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect x="8" y="30" width="112" height="68" rx="34" fill="#2088FF" />
-        <circle cx="38" cy="64" r="9" fill="#fff" />
-        <circle cx="90" cy="64" r="9" fill="#fff" opacity="0.55" />
-        <path d="M47 64h34" stroke="#fff" strokeWidth="5" />
-        <path d="M60 52l16 12-16 12z" fill="#fff" />
-      </svg>
-    );
-  }
-
-  // IBM Granite
-  if (n.includes("granite") || n === "ibm") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect width="128" height="128" rx="16" fill="#0F62FE" />
-        <path d="M24 40h80M24 52h80M24 76h80M24 88h80" stroke="#fff" strokeWidth="6" />
-        <path d="M40 40v48M60 40v48M80 40v48M96 40v48" stroke="#fff" strokeWidth="6" opacity="0.35" />
-      </svg>
-    );
-  }
-
-  // Flask
-  if (n === "flask") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <path d="M50 14h28M56 14v36L26 100c-5 9 1 16 10 16h56c9 0 15-7 10-16L72 50V14" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M40 84h48l12 20c3 6 0 8-6 8H34c-6 0-9-2-6-8l12-20z" fill="currentColor" opacity="0.8" />
-      </svg>
-    );
-  }
-
-  // REST API
-  if (n === "rest api" || n === "rest") {
-    return (
-      <svg className={className} viewBox="0 0 128 128" fill="none">
-        <rect width="128" height="128" rx="20" fill="#0EA5E9" />
-        <path d="M46 34c-10 0-12 6-12 14v6c0 6-4 10-10 10 6 0 10 4 10 10v6c0 8 2 14 12 14M82 34c10 0 12 6 12 14v6c0 6 4 10 10 10-6 0-10 4-10 10v6c0 8-2 14-12 14" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="64" cy="64" r="5" fill="#fff" />
-      </svg>
+interface SvgDef {
+  viewBox: string;
+  inner: string;
+}
+
+const ICONS: Record<string, SvgDef> = {
+  "typescript": {
+    "viewBox": "0 0 256 256",
+    "inner": "<path d=\"M20 0h216c11.046 0 20 8.954 20 20v216c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20V20C0 8.954 8.954 0 20 0Z\" fill=\"#3178C6\"></path><path d=\"M150.518 200.475v27.62c4.492 2.302 9.805 4.028 15.938 5.179 6.133 1.151 12.597 1.726 19.393 1.726 6.622 0 12.914-.633 18.874-1.899 5.96-1.266 11.187-3.352 15.678-6.257 4.492-2.906 8.048-6.704 10.669-11.394 2.62-4.689 3.93-10.486 3.93-17.391 0-5.006-.749-9.394-2.246-13.163a30.748 30.748 0 0 0-6.479-10.055c-2.821-2.935-6.205-5.567-10.149-7.898-3.945-2.33-8.394-4.531-13.347-6.602-3.628-1.497-6.881-2.949-9.761-4.359-2.879-1.41-5.327-2.848-7.342-4.316-2.016-1.467-3.571-3.021-4.665-4.661-1.094-1.64-1.641-3.495-1.641-5.567 0-1.899.489-3.61 1.468-5.135s2.362-2.834 4.147-3.927c1.785-1.094 3.973-1.942 6.565-2.547 2.591-.604 5.471-.906 8.638-.906 2.304 0 4.737.173 7.299.518 2.563.345 5.14.877 7.732 1.597a53.669 53.669 0 0 1 7.558 2.719 41.7 41.7 0 0 1 6.781 3.797v-25.807c-4.204-1.611-8.797-2.805-13.778-3.582-4.981-.777-10.697-1.165-17.147-1.165-6.565 0-12.784.705-18.658 2.115-5.874 1.409-11.043 3.61-15.506 6.602-4.463 2.993-7.99 6.805-10.582 11.437-2.591 4.632-3.887 10.17-3.887 16.615 0 8.228 2.375 15.248 7.127 21.06 4.751 5.811 11.963 10.731 21.638 14.759a291.458 291.458 0 0 1 10.625 4.575c3.283 1.496 6.119 3.049 8.509 4.66 2.39 1.611 4.276 3.366 5.658 5.265 1.382 1.899 2.073 4.057 2.073 6.474a9.901 9.901 0 0 1-1.296 4.963c-.863 1.524-2.174 2.848-3.93 3.97-1.756 1.122-3.945 1.999-6.565 2.632-2.62.633-5.687.95-9.2.95-5.989 0-11.92-1.05-17.794-3.151-5.875-2.1-11.317-5.25-16.327-9.451Zm-46.036-68.733H140V109H41v22.742h35.345V233h28.137V131.742Z\" fill=\"#FFF\"></path>"
+  },
+  "javascript": {
+    "viewBox": "0 0 1052 1052",
+    "inner": "<path fill=\"#f0db4f\" d=\"M0 0h1052v1052H0z\"></path><path d=\"M965.9 801.1c-7.7-48-39-88.3-131.7-125.9-32.2-14.8-68.1-25.399-78.8-49.8-3.8-14.2-4.3-22.2-1.9-30.8 6.9-27.9 40.2-36.6 66.6-28.6 17 5.7 33.1 18.801 42.8 39.7 45.4-29.399 45.3-29.2 77-49.399-11.6-18-17.8-26.301-25.4-34-27.3-30.5-64.5-46.2-124-45-10.3 1.3-20.699 2.699-31 4-29.699 7.5-58 23.1-74.6 44-49.8 56.5-35.6 155.399 25 196.1 59.7 44.8 147.4 55 158.6 96.9 10.9 51.3-37.699 67.899-86 62-35.6-7.4-55.399-25.5-76.8-58.4-39.399 22.8-39.399 22.8-79.899 46.1 9.6 21 19.699 30.5 35.8 48.7 76.2 77.3 266.899 73.5 301.1-43.5 1.399-4.001 10.6-30.801 3.199-72.101zm-394-317.6h-98.4c0 85-.399 169.4-.399 254.4 0 54.1 2.8 103.7-6 118.9-14.4 29.899-51.7 26.2-68.7 20.399-17.3-8.5-26.1-20.6-36.3-37.699-2.8-4.9-4.9-8.7-5.601-9-26.699 16.3-53.3 32.699-80 49 13.301 27.3 32.9 51 58 66.399 37.5 22.5 87.9 29.4 140.601 17.3 34.3-10 63.899-30.699 79.399-62.199 22.4-41.3 17.6-91.3 17.4-146.6.5-90.2 0-180.4 0-270.9z\" fill=\"#323330\"></path>"
+  },
+  "html5": {
+    "viewBox": "0 0 452 520",
+    "inner": "<path fill=\"#e34f26\" d=\"M41 460L0 0h451l-41 460-185 52\"></path><path fill=\"#ef652a\" d=\"M226 472l149-41 35-394H226\"></path><path fill=\"#ecedee\" d=\"M226 208h-75l-5-58h80V94H84l15 171h127zm0 147l-64-17-4-45h-56l7 89 117 32z\"></path><path fill=\"#fff\" d=\"M226 265h69l-7 73-62 17v59l115-32 16-174H226zm0-171v56h136l5-56z\"></path>"
+  },
+  "css3": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#1572B6\" d=\"M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z\"></path><path fill=\"#33A9DC\" d=\"M64.001 117.062l36.559-10.136 8.601-96.354h-45.16v106.49z\"></path><path fill=\"#fff\" d=\"M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114h-30.95V51.429z\"></path><path fill=\"#EBEBEB\" d=\"M64.083 87.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018v-14.39z\"></path><path fill=\"#fff\" d=\"M81.127 64.675l-1.666 18.522-15.426 4.164v14.39l28.354-7.858.208-2.337 2.406-26.881H81.127z\"></path><path fill=\"#EBEBEB\" d=\"M64.048 23.435v13.831H30.64l-.277-3.108-.63-7.012-.331-3.711h34.646zm-.047 27.996v13.831H48.792l-.277-3.108-.631-7.012-.33-3.711h16.447z\"></path>"
+  },
+  "tailwind css": {
+    "viewBox": "0 0 54 33",
+    "inner": "<g clipPath=\"url(#tsvgR172ptbtb-a)\"><path fill=\"#38bdf8\" fillRule=\"evenodd\" d=\"M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z\" clipRule=\"evenodd\"></path></g><defs><clipPath id=\"tsvgR172ptbtb-a\"><path fill=\"#fff\" d=\"M0 0h54v32.4H0z\"></path></clipPath></defs>"
+  },
+  "react.js": {
+    "viewBox": "0 0 569 512",
+    "inner": "<g fill=\"none\" fillRule=\"evenodd\"><g transform=\"translate(-227, -256)\" fill=\"#58C4DC\" fillRule=\"nonzero\"><g transform=\"translate(227, 256)\"><path d=\"M285.5,201 C255.400481,201 231,225.400481 231,255.5 C231,285.599519 255.400481,310 285.5,310 C315.599519,310 340,285.599519 340,255.5 C340,225.400481 315.599519,201 285.5,201\" id=\"tsvgR1d2ptbtb-Path\"></path><path d=\"M568.959856,255.99437 C568.959856,213.207656 529.337802,175.68144 466.251623,150.985214 C467.094645,145.423543 467.85738,139.922107 468.399323,134.521063 C474.621631,73.0415145 459.808523,28.6686204 426.709856,9.5541429 C389.677085,-11.8291748 337.36955,3.69129898 284.479928,46.0162134 C231.590306,3.69129898 179.282771,-11.8291748 142.25,9.5541429 C109.151333,28.6686204 94.3382249,73.0415145 100.560533,134.521063 C101.102476,139.922107 101.845139,145.443621 102.708233,151.02537 C97.4493791,153.033193 92.2908847,155.161486 87.3331099,157.39017 C31.0111824,182.708821 0,217.765415 0,255.99437 C0,298.781084 39.6220545,336.307301 102.708233,361.003527 C101.845139,366.565197 101.102476,372.066633 100.560533,377.467678 C94.3382249,438.947226 109.151333,483.32012 142.25,502.434597 C153.629683,508.887578 166.52439,512.186771 179.603923,511.991836 C210.956328,511.991836 247.567589,495.487529 284.479928,465.972527 C321.372196,495.487529 358.003528,511.991836 389.396077,511.991836 C402.475265,512.183856 415.36922,508.884856 426.75,502.434597 C459.848667,483.32012 474.661775,438.947226 468.439467,377.467678 C467.897524,372.066633 467.134789,366.565197 466.291767,361.003527 C529.377946,336.347457 569,298.761006 569,255.99437 M389.155214,27.1025182 C397.565154,26.899606 405.877839,28.9368502 413.241569,33.0055186 C436.223966,46.2772304 446.540955,82.2775015 441.522965,131.770345 C441.181741,135.143488 440.780302,138.556788 440.298575,141.990165 C414.066922,134.08804 387.205771,128.452154 360.010724,125.144528 C343.525021,103.224055 325.192524,82.7564475 305.214266,63.9661533 C336.586743,39.7116483 366.032313,27.1025182 389.135142,27.1025182 M378.356498,310.205598 C368.204912,327.830733 357.150626,344.919965 345.237759,361.405091 C325.045049,363.479997 304.758818,364.51205 284.459856,364.497299 C264.167589,364.51136 243.888075,363.479308 223.702025,361.405091 C211.820914,344.919381 200.80007,327.83006 190.683646,310.205598 C180.532593,292.629285 171.306974,274.534187 163.044553,255.99437 C171.306974,237.454554 180.532593,219.359455 190.683646,201.783142 C200.784121,184.229367 211.770999,167.201087 223.601665,150.764353 C243.824636,148.63809 264.145559,147.579168 284.479928,147.591877 C304.772146,147.579725 325.051559,148.611772 345.237759,150.68404 C357.109048,167.14607 368.136094,184.201112 378.27621,201.783142 C388.419418,219.363718 397.644825,237.458403 405.915303,255.99437 C397.644825,274.530337 388.419418,292.625022 378.27621,310.205598 M419.724813,290.127366 C426.09516,307.503536 431.324985,325.277083 435.380944,343.334682 C417.779633,348.823635 399.836793,353.149774 381.668372,356.285142 C388.573127,345.871232 395.263781,335.035679 401.740334,323.778483 C408.143291,312.655143 414.144807,301.431411 419.805101,290.207679 M246.363271,390.377981 C258.848032,391.140954 271.593728,391.582675 284.5,391.582675 C297.406272,391.582675 310.232256,391.140954 322.737089,390.377981 C310.880643,404.583418 298.10766,417.997563 284.5,430.534446 C270.921643,417.999548 258.18192,404.585125 246.363271,390.377981 Z M187.311556,356.244986 C169.137286,353.123646 151.187726,348.810918 133.578912,343.334682 C137.618549,325.305649 142.828222,307.559058 149.174827,290.207679 C154.754833,301.431411 160.736278,312.655143 167.239594,323.778483 C173.74291,334.901824 180.467017,345.864539 187.311556,356.285142 M149.174827,221.760984 C142.850954,204.473938 137.654787,186.794745 133.619056,168.834762 C151.18418,163.352378 169.085653,159.013101 187.211197,155.844146 C180.346585,166.224592 173.622478,176.986525 167.139234,188.210257 C160.65599,199.433989 154.734761,210.517173 149.074467,221.760984 M322.616657,121.590681 C310.131896,120.827708 297.3862,120.385987 284.379568,120.385987 C271.479987,120.385987 258.767744,120.787552 246.242839,121.590681 C258.061488,107.383537 270.801211,93.9691137 284.379568,81.4342157 C297.99241,93.9658277 310.765727,107.380324 322.616657,121.590681 Z M401.70019,188.210257 C395.196875,176.939676 388.472767,166.09743 381.527868,155.68352 C399.744224,158.819049 417.734224,163.151949 435.380944,168.654058 C431.331963,186.680673 426.122466,204.426664 419.785029,221.781062 C414.205023,210.55733 408.203506,199.333598 401.720262,188.230335 M127.517179,131.790423 C122.438973,82.3176579 132.816178,46.2973086 155.778503,33.0255968 C163.144699,28.9632474 171.455651,26.9264282 179.864858,27.1225964 C202.967687,27.1225964 232.413257,39.7317265 263.785734,63.9862316 C243.794133,82.7898734 225.448298,103.270812 208.949132,125.204763 C181.761691,128.528025 154.90355,134.14313 128.661281,141.990165 C128.199626,138.556788 127.778115,135.163566 127.456963,131.790423 M98.4529773,182.106474 C101.54406,180.767925 104.695358,179.429376 107.906872,178.090828 C114.220532,204.735668 122.781793,230.7969 133.498624,255.99437 C122.761529,281.241316 114.193296,307.357063 107.8868,334.058539 C56.7434387,313.076786 27.0971497,284.003505 27.0971497,255.99437 C27.0971497,229.450947 53.1907013,202.526037 98.4529773,182.106474 Z M155.778503,478.963143 C132.816178,465.691432 122.438973,429.671082 127.517179,380.198317 C127.838331,376.825174 128.259842,373.431953 128.721497,369.978497 C154.953686,377.878517 181.814655,383.514365 209.009348,386.824134 C225.500295,408.752719 243.832321,429.233234 263.805806,448.042665 C220.069,481.834331 180.105722,492.97775 155.838719,478.963143 M441.502893,380.198317 C446.520883,429.691161 436.203894,465.691432 413.221497,478.963143 C388.974566,493.017906 348.991216,481.834331 305.274481,448.042665 C325.241364,429.232737 343.566681,408.752215 360.050868,386.824134 C387.245915,383.516508 414.107066,377.880622 440.338719,369.978497 C440.820446,373.431953 441.221885,376.825174 441.563109,380.198317 M461.193488,334.018382 C454.869166,307.332523 446.294494,281.231049 435.561592,255.99437 C446.289797,230.744081 454.857778,204.629101 461.173416,177.930202 C512.216417,198.911955 541.942994,227.985236 541.942994,255.99437 C541.942994,284.003505 512.296705,313.076786 461.153344,334.058539\" id=\"tsvgR1d2ptbtb-Shape\"></path></g></g></g>"
+  },
+  "react": {
+    "viewBox": "0 0 569 512",
+    "inner": "<g fill=\"none\" fillRule=\"evenodd\"><g transform=\"translate(-227, -256)\" fill=\"#58C4DC\" fillRule=\"nonzero\"><g transform=\"translate(227, 256)\"><path d=\"M285.5,201 C255.400481,201 231,225.400481 231,255.5 C231,285.599519 255.400481,310 285.5,310 C315.599519,310 340,285.599519 340,255.5 C340,225.400481 315.599519,201 285.5,201\" id=\"tsvgR1d2ptbtb-Path\"></path><path d=\"M568.959856,255.99437 C568.959856,213.207656 529.337802,175.68144 466.251623,150.985214 C467.094645,145.423543 467.85738,139.922107 468.399323,134.521063 C474.621631,73.0415145 459.808523,28.6686204 426.709856,9.5541429 C389.677085,-11.8291748 337.36955,3.69129898 284.479928,46.0162134 C231.590306,3.69129898 179.282771,-11.8291748 142.25,9.5541429 C109.151333,28.6686204 94.3382249,73.0415145 100.560533,134.521063 C101.102476,139.922107 101.845139,145.443621 102.708233,151.02537 C97.4493791,153.033193 92.2908847,155.161486 87.3331099,157.39017 C31.0111824,182.708821 0,217.765415 0,255.99437 C0,298.781084 39.6220545,336.307301 102.708233,361.003527 C101.845139,366.565197 101.102476,372.066633 100.560533,377.467678 C94.3382249,438.947226 109.151333,483.32012 142.25,502.434597 C153.629683,508.887578 166.52439,512.186771 179.603923,511.991836 C210.956328,511.991836 247.567589,495.487529 284.479928,465.972527 C321.372196,495.487529 358.003528,511.991836 389.396077,511.991836 C402.475265,512.183856 415.36922,508.884856 426.75,502.434597 C459.848667,483.32012 474.661775,438.947226 468.439467,377.467678 C467.897524,372.066633 467.134789,366.565197 466.291767,361.003527 C529.377946,336.347457 569,298.761006 569,255.99437 M389.155214,27.1025182 C397.565154,26.899606 405.877839,28.9368502 413.241569,33.0055186 C436.223966,46.2772304 446.540955,82.2775015 441.522965,131.770345 C441.181741,135.143488 440.780302,138.556788 440.298575,141.990165 C414.066922,134.08804 387.205771,128.452154 360.010724,125.144528 C343.525021,103.224055 325.192524,82.7564475 305.214266,63.9661533 C336.586743,39.7116483 366.032313,27.1025182 389.135142,27.1025182 M378.356498,310.205598 C368.204912,327.830733 357.150626,344.919965 345.237759,361.405091 C325.045049,363.479997 304.758818,364.51205 284.459856,364.497299 C264.167589,364.51136 243.888075,363.479308 223.702025,361.405091 C211.820914,344.919381 200.80007,327.83006 190.683646,310.205598 C180.532593,292.629285 171.306974,274.534187 163.044553,255.99437 C171.306974,237.454554 180.532593,219.359455 190.683646,201.783142 C200.784121,184.229367 211.770999,167.201087 223.601665,150.764353 C243.824636,148.63809 264.145559,147.579168 284.479928,147.591877 C304.772146,147.579725 325.051559,148.611772 345.237759,150.68404 C357.109048,167.14607 368.136094,184.201112 378.27621,201.783142 C388.419418,219.363718 397.644825,237.458403 405.915303,255.99437 C397.644825,274.530337 388.419418,292.625022 378.27621,310.205598 M419.724813,290.127366 C426.09516,307.503536 431.324985,325.277083 435.380944,343.334682 C417.779633,348.823635 399.836793,353.149774 381.668372,356.285142 C388.573127,345.871232 395.263781,335.035679 401.740334,323.778483 C408.143291,312.655143 414.144807,301.431411 419.805101,290.207679 M246.363271,390.377981 C258.848032,391.140954 271.593728,391.582675 284.5,391.582675 C297.406272,391.582675 310.232256,391.140954 322.737089,390.377981 C310.880643,404.583418 298.10766,417.997563 284.5,430.534446 C270.921643,417.999548 258.18192,404.585125 246.363271,390.377981 Z M187.311556,356.244986 C169.137286,353.123646 151.187726,348.810918 133.578912,343.334682 C137.618549,325.305649 142.828222,307.559058 149.174827,290.207679 C154.754833,301.431411 160.736278,312.655143 167.239594,323.778483 C173.74291,334.901824 180.467017,345.864539 187.311556,356.285142 M149.174827,221.760984 C142.850954,204.473938 137.654787,186.794745 133.619056,168.834762 C151.18418,163.352378 169.085653,159.013101 187.211197,155.844146 C180.346585,166.224592 173.622478,176.986525 167.139234,188.210257 C160.65599,199.433989 154.734761,210.517173 149.074467,221.760984 M322.616657,121.590681 C310.131896,120.827708 297.3862,120.385987 284.379568,120.385987 C271.479987,120.385987 258.767744,120.787552 246.242839,121.590681 C258.061488,107.383537 270.801211,93.9691137 284.379568,81.4342157 C297.99241,93.9658277 310.765727,107.380324 322.616657,121.590681 Z M401.70019,188.210257 C395.196875,176.939676 388.472767,166.09743 381.527868,155.68352 C399.744224,158.819049 417.734224,163.151949 435.380944,168.654058 C431.331963,186.680673 426.122466,204.426664 419.785029,221.781062 C414.205023,210.55733 408.203506,199.333598 401.720262,188.230335 M127.517179,131.790423 C122.438973,82.3176579 132.816178,46.2973086 155.778503,33.0255968 C163.144699,28.9632474 171.455651,26.9264282 179.864858,27.1225964 C202.967687,27.1225964 232.413257,39.7317265 263.785734,63.9862316 C243.794133,82.7898734 225.448298,103.270812 208.949132,125.204763 C181.761691,128.528025 154.90355,134.14313 128.661281,141.990165 C128.199626,138.556788 127.778115,135.163566 127.456963,131.790423 M98.4529773,182.106474 C101.54406,180.767925 104.695358,179.429376 107.906872,178.090828 C114.220532,204.735668 122.781793,230.7969 133.498624,255.99437 C122.761529,281.241316 114.193296,307.357063 107.8868,334.058539 C56.7434387,313.076786 27.0971497,284.003505 27.0971497,255.99437 C27.0971497,229.450947 53.1907013,202.526037 98.4529773,182.106474 Z M155.778503,478.963143 C132.816178,465.691432 122.438973,429.671082 127.517179,380.198317 C127.838331,376.825174 128.259842,373.431953 128.721497,369.978497 C154.953686,377.878517 181.814655,383.514365 209.009348,386.824134 C225.500295,408.752719 243.832321,429.233234 263.805806,448.042665 C220.069,481.834331 180.105722,492.97775 155.838719,478.963143 M441.502893,380.198317 C446.520883,429.691161 436.203894,465.691432 413.221497,478.963143 C388.974566,493.017906 348.991216,481.834331 305.274481,448.042665 C325.241364,429.232737 343.566681,408.752215 360.050868,386.824134 C387.245915,383.516508 414.107066,377.880622 440.338719,369.978497 C440.820446,373.431953 441.221885,376.825174 441.563109,380.198317 M461.193488,334.018382 C454.869166,307.332523 446.294494,281.231049 435.561592,255.99437 C446.289797,230.744081 454.857778,204.629101 461.173416,177.930202 C512.216417,198.911955 541.942994,227.985236 541.942994,255.99437 C541.942994,284.003505 512.296705,313.076786 461.153344,334.058539\" id=\"tsvgR1d2ptbtb-Shape\"></path></g></g></g>"
+  },
+  "vue.js": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>Vue.js</title><path d=\"M24,1.61H14.06L12,5.16,9.94,1.61H0L12,22.39ZM12,14.08,5.16,2.23H9.59L12,6.41l2.41-4.18h4.43Z\"></path>"
+  },
+  "flutter": {
+    "viewBox": "0 0 256 317",
+    "inner": "<defs><linearGradient x1=\"4%\" y1=\"27%\" x2=\"75.9%\" y2=\"52.9%\" id=\"tsvgR1n2ptbtb-a\"><stop offset=\"0%\"></stop><stop stopOpacity=\"0\" offset=\"100%\"></stop></linearGradient></defs><path fill=\"#47C5FB\" d=\"M158 0 0 158l49 48L255 0zM157 145l-85 85 49 50 49-49 85-86z\"></path><path fill=\"#00569E\" d=\"m121 280 37 37h97l-85-86z\"></path><path fill=\"#00B5F8\" d=\"m72 230 48-48 50 49-49 49z\"></path><path fill-opacity=\".8\" fill=\"url(#tsvgR1n2ptbtb-a)\" d=\"m121 280 41-14 4-31z\"></path>"
+  },
+  "python": {
+    "viewBox": "16 16 32 32",
+    "inner": "<path fill=\"url(#tsvgR233ptbtb-a)\" d=\"M31.885 16c-8.124 0-7.617 3.523-7.617 3.523l.01 3.65h7.752v1.095H21.197S16 23.678 16 31.876c0 8.196 4.537 7.906 4.537 7.906h2.708v-3.804s-.146-4.537 4.465-4.537h7.688s4.32.07 4.32-4.175v-7.019S40.374 16 31.885 16zm-4.275 2.454a1.394 1.394 0 1 1 0 2.79 1.393 1.393 0 0 1-1.395-1.395c0-.771.624-1.395 1.395-1.395z\"></path><path fill=\"url(#tsvgR233ptbtb-b)\" d=\"M32.115 47.833c8.124 0 7.617-3.523 7.617-3.523l-.01-3.65H31.97v-1.095h10.832S48 40.155 48 31.958c0-8.197-4.537-7.906-4.537-7.906h-2.708v3.803s.146 4.537-4.465 4.537h-7.688s-4.32-.07-4.32 4.175v7.019s-.656 4.247 7.833 4.247zm4.275-2.454a1.393 1.393 0 0 1-1.395-1.395 1.394 1.394 0 1 1 1.395 1.395z\"></path><defs><linearGradient id=\"tsvgR233ptbtb-a\" x1=\"19.075\" x2=\"34.898\" y1=\"18.782\" y2=\"34.658\" gradientUnits=\"userSpaceOnUse\"><stop stopColor=\"#387EB8\"></stop><stop offset=\"1\" stopColor=\"#366994\"></stop></linearGradient><linearGradient id=\"tsvgR233ptbtb-b\" x1=\"28.809\" x2=\"45.803\" y1=\"28.882\" y2=\"45.163\" gradientUnits=\"userSpaceOnUse\"><stop stopColor=\"#FFE052\"></stop><stop offset=\"1\" stopColor=\"#FFC331\"></stop></linearGradient></defs>"
+  },
+  "java": {
+    "viewBox": "0 0 256 346",
+    "inner": "<path d=\"M83 267s-14 8 9 11c27 3 41 2 71-3 0 0 8 5 19 9-67 29-153-2-99-17M74 230s-15 11 8 13c29 3 52 3 92-4 0 0 6 5 15 8-82 24-173 2-115-17\" fill=\"#5382A1\"></path><path d=\"M144 166c17 19-4 36-4 36s42-22 22-49c-18-26-32-38 44-82 0 0-119 29-62 95\" fill=\"#E76F00\"></path><path d=\"M233 295s10 8-10 15c-39 12-163 15-197 0-12-5 11-13 18-14l12-2c-14-9-89 19-38 28 138 22 251-10 215-27M89 190s-63 15-22 21c17 2 51 2 83-1 26-2 52-7 52-7l-16 9c-64 16-187 8-151-9 30-14 54-13 54-13M202 253c64-33 34-66 13-61l-7 2s2-3 6-5c41-14 73 43-14 66l2-2\" fill=\"#5382A1\"></path><path d=\"M162 0s36 36-34 91c-56 45-12 70 0 99-32-30-56-56-40-80 23-35 89-53 74-110\" fill=\"#E76F00\"></path><path d=\"M95 345c62 4 158-3 160-32 0 0-4 11-51 20-53 10-119 9-158 2 0 0 8 7 49 10\" fill=\"#5382A1\"></path>"
+  },
+  "c": {
+    "viewBox": "0 0 306 345",
+    "inner": "<g clipPath=\"url(#tsvgR171ptbtb-a)\"><path fill=\"#00599C\" d=\"M302.107 258.262c2.401-4.159 3.893-8.845 3.893-13.053V99.139c0-4.207-1.49-8.892-3.892-13.051L153 172.175l149.107 86.087Z\"></path><path fill=\"#004482\" d=\"m166.25 341.193 126.5-73.034c3.644-2.104 6.956-5.737 9.357-9.897L153 172.175 3.893 258.263c2.4 4.159 5.714 7.793 9.357 9.896l126.5 73.034c7.287 4.208 19.213 4.208 26.5 0Z\"></path><path fill=\"#659AD2\" d=\"M302.108 86.087c-2.402-4.16-5.715-7.793-9.358-9.897L166.25 3.156c-7.287-4.208-19.213-4.208-26.5 0L13.25 76.19C5.962 80.397 0 90.725 0 99.14v146.069c0 4.208 1.491 8.894 3.893 13.053L153 172.175l149.108-86.088Z\"></path><path fill=\"#fff\" d=\"M153 274.175c-56.243 0-102-45.757-102-102s45.757-102 102-102c36.292 0 70.139 19.53 88.331 50.968l-44.143 25.544c-9.105-15.736-26.038-25.512-44.188-25.512-28.122 0-51 22.878-51 51 0 28.121 22.878 51 51 51 18.152 0 35.085-9.776 44.191-25.515l44.143 25.543c-18.192 31.441-52.04 50.972-88.334 50.972Z\"></path></g><defs><clipPath id=\"tsvgR171ptbtb-a\"><path fill=\"#fff\" d=\"M0 0h306v344.35H0z\"></path></clipPath></defs>"
+  },
+  "c++": {
+    "viewBox": "0 0 256 288",
+    "inner": "<path fill=\"#649AD2\" d=\"M255.987 84.59c-.002-4.837-1.037-9.112-3.13-12.781-2.054-3.608-5.133-6.632-9.261-9.023-34.08-19.651-68.195-39.242-102.264-58.913-9.185-5.303-18.09-5.11-27.208.27-13.565 8-81.48 46.91-101.719 58.632C4.071 67.6.015 74.984.013 84.58 0 124.101.013 163.62 0 203.141c0 4.73.993 8.923 2.993 12.537 2.056 3.717 5.177 6.824 9.401 9.269 20.24 11.722 88.164 50.63 101.726 58.631 9.121 5.382 18.027 5.575 27.215.27 34.07-19.672 68.186-39.262 102.272-58.913 4.224-2.444 7.345-5.553 9.401-9.267 1.997-3.614 2.992-7.806 2.992-12.539 0 0 0-79.018-.013-118.539\"></path><path fill=\"#004482\" d=\"m128.392 143.476-125.4 72.202c2.057 3.717 5.178 6.824 9.402 9.269 20.24 11.722 88.164 50.63 101.726 58.631 9.121 5.382 18.027 5.575 27.215.27 34.07-19.672 68.186-39.262 102.272-58.913 4.224-2.444 7.345-5.553 9.401-9.267l-124.616-72.192\"></path><path fill=\"#1A4674\" d=\"M91.25 164.863c7.297 12.738 21.014 21.33 36.75 21.33 15.833 0 29.628-8.7 36.888-21.576l-36.496-21.141-37.142 21.387\"></path><path fill=\"#01589C\" d=\"M255.987 84.59c-.002-4.837-1.037-9.112-3.13-12.781l-124.465 71.667 124.616 72.192c1.997-3.614 2.99-7.806 2.992-12.539 0 0 0-79.018-.013-118.539\"></path><path fill=\"#FFF\" d=\"M249.135 148.636h-9.738v9.74h-9.74v-9.74h-9.737V138.9h9.737v-9.738h9.74v9.738h9.738v9.737ZM128 58.847c31.135 0 58.358 16.74 73.17 41.709l.444.759-37.001 21.307c-7.333-12.609-20.978-21.094-36.613-21.094-23.38 0-42.333 18.953-42.333 42.332a42.13 42.13 0 0 0 5.583 21.003c7.297 12.738 21.014 21.33 36.75 21.33 15.659 0 29.325-8.51 36.647-21.153l.241-.423 36.947 21.406c-14.65 25.597-42.228 42.851-73.835 42.851-31.549 0-59.084-17.185-73.754-42.707-7.162-12.459-11.26-26.904-11.26-42.307 0-46.95 38.061-85.013 85.014-85.013Zm75.865 70.314v9.738h9.737v9.737h-9.737v9.74h-9.738v-9.74h-9.738V138.9h9.738v-9.738h9.738Z\"></path>"
+  },
+  "c#": {
+    "viewBox": "0 -1.43 255.58 290.11",
+    "inner": "<path fill=\"#a179dc\" d=\"M255.57 84.45c0-4.83-1.04-9.1-3.13-12.76a24.4 24.4 0 0 0-9.24-9C209.17 43.05 175.1 23.5 141.1 3.86c-9.17-5.3-18.06-5.1-27.16.27-13.54 7.98-81.35 46.83-101.55 58.53C4.06 67.5.02 74.87 0 84.44v118.37c0 4.72 1 8.9 2.99 12.51 2.05 3.72 5.17 6.82 9.38 9.26 20.21 11.7 88.02 50.55 101.56 58.53 9.11 5.38 18 5.57 27.17.27 34.02-19.64 68.08-39.2 102.1-58.81a24.33 24.33 0 0 0 9.4-9.25c1.99-3.61 2.98-7.8 2.98-12.52l-.01-118.35\"></path><path fill=\"#280068\" d=\"M128.18 143.24 2.98 215.33c2.06 3.7 5.18 6.8 9.4 9.25 20.2 11.7 88.01 50.55 101.55 58.53 9.11 5.38 18 5.57 27.17.27 34.02-19.64 68.08-39.2 102.1-58.81a24.33 24.33 0 0 0 9.4-9.25z\"></path><path fill=\"#390091\" d=\"M255.57 84.45c0-4.83-1.04-9.1-3.13-12.76l-124.26 71.55 124.41 72.07c2-3.6 2.99-7.79 3-12.51 0 0 0-78.9-.02-118.35\"></path><g fill=\"#fff\"><path d=\"M201.9 116.3v13.47h13.47v-13.48h6.73v13.48h13.48v6.73H222.1v13.48h13.48v6.74H222.1v13.47h-6.73V156.7h-13.48v13.48h-6.73V156.7h-13.48v-6.73h13.47V136.5h-13.47v-6.74h13.47v-13.48zm13.47 20.2h-13.48v13.48h13.48z\"></path><path d=\"M128.46 48.63a94.96 94.96 0 0 1 82.26 47.45l-.16-.27-41.35 23.8A47.28 47.28 0 0 0 129 96.33h-.54a47.3 47.3 0 0 0-47.3 47.3 47.08 47.08 0 0 0 6.23 23.47 47.28 47.28 0 0 0 82.29-.27l-.2.35 41.29 23.91a94.97 94.97 0 0 1-81.25 47.54h-1.06a94.96 94.96 0 0 1-95-95 95 95 0 0 1 95-95z\"></path></g>"
+  },
+  "go": {
+    "viewBox": "0 0 207 78",
+    "inner": "<g fill=\"#fff\" fillRule=\"evenodd\"><path d=\"m16.2 24.1c-.4 0-.5-.2-.3-.5l2.1-2.7c.2-.3.7-.5 1.1-.5h35.7c.4 0 .5.3.3.6l-1.7 2.6c-.2.3-.7.6-1 .6z\"></path><path d=\"m1.1 33.3c-.4 0-.5-.2-.3-.5l2.1-2.7c.2-.3.7-.5 1.1-.5h45.6c.4 0 .6.3.5.6l-.8 2.4c-.1.4-.5.6-.9.6z\"></path><path d=\"m25.3 42.5c-.4 0-.5-.3-.3-.6l1.4-2.5c.2-.3.6-.6 1-.6h20c.4 0 .6.3.6.7l-.2 2.4c0 .4-.4.7-.7.7z\"></path><g transform=\"translate(55)\"><path d=\"m74.1 22.3c-6.3 1.6-10.6 2.8-16.8 4.4-1.5.4-1.6.5-2.9-1-1.5-1.7-2.6-2.8-4.7-3.8-6.3-3.1-12.4-2.2-18.1 1.5-6.8 4.4-10.3 10.9-10.2 19 .1 8 5.6 14.6 13.5 15.7 6.8.9 12.5-1.5 17-6.6.9-1.1 1.7-2.3 2.7-3.7-3.6 0-8.1 0-19.3 0-2.1 0-2.6-1.3-1.9-3 1.3-3.1 3.7-8.3 5.1-10.9.3-.6 1-1.6 2.5-1.6h36.4c-.2 2.7-.2 5.4-.6 8.1-1.1 7.2-3.8 13.8-8.2 19.6-7.2 9.5-16.6 15.4-28.5 17-9.8 1.3-18.9-.6-26.9-6.6-7.4-5.6-11.6-13-12.7-22.2-1.3-10.9 1.9-20.7 8.5-29.3 7.1-9.3 16.5-15.2 28-17.3 9.4-1.7 18.4-.6 26.5 4.9 5.3 3.5 9.1 8.3 11.6 14.1.6.9.2 1.4-1 1.7z\"></path><path d=\"m107.2 77.6c-9.1-.2-17.4-2.8-24.4-8.8-5.9-5.1-9.6-11.6-10.8-19.3-1.8-11.3 1.3-21.3 8.1-30.2 7.3-9.6 16.1-14.6 28-16.7 10.2-1.8 19.8-.8 28.5 5.1 7.9 5.4 12.8 12.7 14.1 22.3 1.7 13.5-2.2 24.5-11.5 33.9-6.6 6.7-14.7 10.9-24 12.8-2.7.5-5.4.6-8 .9zm23.8-40.4c-.1-1.3-.1-2.3-.3-3.3-1.8-9.9-10.9-15.5-20.4-13.3-9.3 2.1-15.3 8-17.5 17.4-1.8 7.8 2 15.7 9.2 18.9 5.5 2.4 11 2.1 16.3-.6 7.9-4.1 12.2-10.5 12.7-19.1z\" fillRule=\"nonzero\"></path></g></g>"
+  },
+  "dart": {
+    "viewBox": "0 0 256 256",
+    "inner": "<defs><radialGradient id=\"tsvgR1n1ptbtb-a\" cx=\"50%\" cy=\"50.002%\" r=\"50.004%\" fx=\"50%\" fy=\"50.002%\" gradientTransform=\"matrix(1 0 0 .99985 0 0)\"><stop offset=\"0%\" stopColor=\"#FFF\" stopOpacity=\".1\"></stop><stop offset=\"100%\" stopColor=\"#FFF\" stopOpacity=\"0\"></stop></radialGradient></defs><path fill=\"#01579B\" d=\"M52.209 203.791 8.413 159.995C3.218 154.67 0 147.141 0 139.782c0-3.407 1.92-8.733 3.369-11.782l40.427-84.204 8.413 159.995Z\"></path><path fill=\"#40C4FF\" d=\"M202.116 52.209 158.32 8.413C154.5 4.573 146.538 0 139.8 0c-5.796 0-11.48 1.167-15.15 3.369L43.815 43.796l158.301 8.413ZM104.418 256h106.111v-45.471l-79.16-25.276-72.422 25.276z\"></path><path fill=\"#29B6F6\" d=\"M43.796 180.209c0 13.513 1.694 16.826 8.413 23.582l6.738 6.738h151.582l-74.097-84.204-92.636-82.53V180.21Z\"></path><path fill=\"#01579B\" d=\"M178.534 43.777H43.796L210.529 210.51H256V106.093L202.097 52.19c-7.566-7.585-14.285-8.413-23.563-8.413Z\"></path><path fill=\"#FFF\" d=\"M53.903 205.466c-6.738-6.756-8.413-13.419-8.413-25.257V45.47l-1.675-1.675v136.413c-.02 11.838-.02 15.113 10.088 25.257l5.044 5.044-5.044-5.044Z\" opacity=\".2\"></path><path fill=\"#263238\" d=\"M254.325 104.418v104.417h-45.471l1.675 1.694H256V106.093z\" opacity=\".2\"></path><path fill=\"#FFF\" d=\"M202.116 52.209c-8.356-8.357-15.188-8.413-25.257-8.413H43.815l1.675 1.675h131.369c5.025 0 17.71-.847 25.257 6.738Z\" opacity=\".2\"></path><path fill=\"url(#tsvgR1n1ptbtb-a)\" d=\"m254.325 104.418-52.209-52.21L158.32 8.414C154.5 4.573 146.538 0 139.8 0c-5.796 0-11.48 1.167-15.15 3.369L43.815 43.796 3.388 128c-1.45 3.068-3.37 8.394-3.37 11.782 0 7.359 3.238 14.868 8.414 20.213l40.351 40.07c.96 1.185 2.09 2.39 3.426 3.726l1.675 1.675 5.044 5.044 43.796 43.796 1.675 1.675H210.49v-45.47h45.471V106.092l-1.637-1.675Z\" opacity=\".2\"></path>"
+  },
+  "sql": {
+    "viewBox": "0 0 24 24",
+    "inner": "<ellipse cx=\"12\" cy=\"5\" rx=\"9\" ry=\"3\"></ellipse><path d=\"M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"1.5\"></path><path d=\"M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"1.5\"></path>"
+  },
+  "laravel": {
+    "viewBox": "0 0 256 264",
+    "inner": "<path d=\"m255.9 59.6.1 1.1v56.6c0 1.4-.8 2.8-2 3.5l-47.6 27.4v54.2c0 1.4-.7 2.8-2 3.5l-99.1 57-.7.4-.3.1c-.7.2-1.4.2-2.1 0l-.4-.1-.6-.3L2 206c-1.3-.8-2.1-2.2-2.1-3.6V32.7l.1-1.1.2-.4.3-.6.2-.4.4-.5.4-.3c.2 0 .3-.2.5-.3L51.6.6c1.3-.8 2.9-.8 4.1 0L105.3 29c.2 0 .3.2.4.3l.5.3c0 .2.2.4.3.5l.3.4.3.6.1.4.2 1v106l41.2-23.7V60.7c0-.4 0-.7.2-1l.1-.4.3-.7.3-.3.3-.5.5-.3.4-.4 49.6-28.5c1.2-.7 2.8-.7 4 0L254 57l.5.4.4.3.4.5.2.3c.2.2.2.5.3.7l.2.3Zm-8.2 55.3v-47l-17.3 10-24 13.7v47l41.3-23.7Zm-49.5 85v-47l-23.6 13.5-67.2 38.4v47.5l90.8-52.3ZM8.2 39.9V200l90.9 52.3v-47.5l-47.5-26.9-.4-.4c-.2 0-.3-.1-.4-.3l-.4-.4-.3-.4-.2-.5-.2-.5v-.6l-.2-.5V63.6L25.6 49.8l-17.3-10Zm45.5-31L12.4 32.8l41.3 23.7 41.2-23.7L53.7 8.9ZM75 157.3l24-13.8V39.8l-17.3 10-24 13.8v103.6l17.3-10ZM202.3 36.9 161 60.7l41.3 23.8 41.3-23.8-41.3-23.8Zm-4.1 54.7-24-13.8-17.3-10v47l24 13.9 17.3 10v-47Zm-95 106 60.6-34.5 30.2-17.3-41.2-23.8-47.5 27.4L62 174.3l41.2 23.3Z\" fill=\"#FF2D20\"></path>"
+  },
+  "node.js": {
+    "viewBox": "0 0 256 292",
+    "inner": "<defs><linearGradient id=\"tsvgR2h3ptbtb-a\" x1=\"68.188%\" x2=\"27.823%\" y1=\"17.487%\" y2=\"89.755%\"><stop offset=\"0%\" stopColor=\"#41873F\"></stop><stop offset=\"32.88%\" stopColor=\"#418B3D\"></stop><stop offset=\"63.52%\" stopColor=\"#419637\"></stop><stop offset=\"93.19%\" stopColor=\"#3FA92D\"></stop><stop offset=\"100%\" stopColor=\"#3FAE2A\"></stop></linearGradient><linearGradient id=\"tsvgR2h3ptbtb-c\" x1=\"43.277%\" x2=\"159.245%\" y1=\"55.169%\" y2=\"-18.306%\"><stop offset=\"13.76%\" stopColor=\"#41873F\"></stop><stop offset=\"40.32%\" stopColor=\"#54A044\"></stop><stop offset=\"71.36%\" stopColor=\"#66B848\"></stop><stop offset=\"90.81%\" stopColor=\"#6CC04A\"></stop></linearGradient><linearGradient id=\"tsvgR2h3ptbtb-f\" x1=\"-4.389%\" x2=\"101.499%\" y1=\"49.997%\" y2=\"49.997%\"><stop offset=\"9.192%\" stopColor=\"#6CC04A\"></stop><stop offset=\"28.64%\" stopColor=\"#66B848\"></stop><stop offset=\"59.68%\" stopColor=\"#54A044\"></stop><stop offset=\"86.24%\" stopColor=\"#41873F\"></stop></linearGradient><path id=\"tsvgR2h3ptbtb-b\" d=\"M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944L134.923 1.832Z\"></path><path id=\"tsvgR2h3ptbtb-e\" d=\"M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944L134.923 1.832Z\"></path></defs><path fill=\"url(#tsvgR2h3ptbtb-a)\" d=\"M134.923 1.832c-4.344-2.443-9.502-2.443-13.846 0L6.787 67.801C2.443 70.244 0 74.859 0 79.745v132.208c0 4.887 2.715 9.502 6.787 11.945l114.29 65.968c4.344 2.444 9.502 2.444 13.846 0l114.29-65.968c4.344-2.443 6.787-7.058 6.787-11.945V79.745c0-4.886-2.715-9.501-6.787-11.944L134.923 1.832Z\"></path><mask id=\"tsvgR2h3ptbtb-d\" fill=\"#fff\"><use href=\"#tsvgR2h3ptbtb-b\"></use></mask><path fill=\"url(#tsvgR2h3ptbtb-c)\" d=\"M249.485 67.8 134.65 1.833c-1.086-.542-2.443-1.085-3.529-1.357L2.443 220.912c1.086 1.357 2.444 2.443 3.8 3.258l114.834 65.968c3.258 1.9 7.059 2.443 10.588 1.357L252.47 70.515c-.815-1.086-1.9-1.9-2.986-2.714Z\" mask=\"url(#tsvgR2h3ptbtb-d)\"></path><mask id=\"tsvgR2h3ptbtb-g\" fill=\"#fff\"><use href=\"#tsvgR2h3ptbtb-e\"></use></mask><path fill=\"url(#tsvgR2h3ptbtb-f)\" d=\"M249.756 223.898c3.258-1.9 5.701-5.158 6.787-8.687L130.579.204c-3.258-.543-6.787-.272-9.773 1.628L6.786 67.53l122.979 224.238c1.628-.272 3.529-.815 5.158-1.63l114.833-66.239Z\" mask=\"url(#tsvgR2h3ptbtb-g)\"></path>"
+  },
+  "express": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>Express</title><path d=\"M24 18.588a1.529 1.529 0 01-1.895-.72l-3.45-4.771-.5-.667-4.003 5.444a1.466 1.466 0 01-1.802.708l5.158-6.92-4.798-6.251a1.595 1.595 0 011.9.666l3.576 4.83 3.596-4.81a1.435 1.435 0 011.788-.668L21.708 7.9l-2.522 3.283a.666.666 0 000 .994l4.804 6.412zM.002 11.576l.42-2.075c1.154-4.103 5.858-5.81 9.094-3.27 1.895 1.489 2.368 3.597 2.275 5.973H1.116C.943 16.447 4.005 19.009 7.92 17.7a4.078 4.078 0 002.582-2.876c.207-.666.548-.78 1.174-.588a5.417 5.417 0 01-2.589 3.957 6.272 6.272 0 01-7.306-.933 6.575 6.575 0 01-1.64-3.858c0-.235-.08-.455-.134-.666A88.33 88.33 0 010 11.577zm1.127-.286h9.654c-.06-3.076-2.001-5.258-4.59-5.278-2.882-.04-4.944 2.094-5.071 5.264z\"></path>"
+  },
+  "supabase": {
+    "viewBox": "0 0 109 113",
+    "inner": "<path d=\"M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z\" fill=\"url(#tsvgR1f6ptbtb-paint0_linear)\"></path><path d=\"M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z\" fill=\"url(#tsvgR1f6ptbtb-paint1_linear)\" fill-opacity=\"0.2\"></path><path d=\"M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z\" fill=\"#3ECF8E\"></path><defs><linearGradient id=\"tsvgR1f6ptbtb-paint0_linear\" x1=\"53.9738\" y1=\"54.974\" x2=\"94.1635\" y2=\"71.8295\" gradientUnits=\"userSpaceOnUse\"><stop stopColor=\"#249361\"></stop><stop offset=\"1\" stopColor=\"#3ECF8E\"></stop></linearGradient><linearGradient id=\"tsvgR1f6ptbtb-paint1_linear\" x1=\"36.1558\" y1=\"30.578\" x2=\"54.4844\" y2=\"65.0806\" gradientUnits=\"userSpaceOnUse\"><stop></stop><stop offset=\"1\" stopOpacity=\"0\"></stop></linearGradient></defs>"
+  },
+  "scikit-learn": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>scikit-learn</title><path d=\"M15.601 5.53c-1.91.035-3.981.91-5.63 2.56-2.93 2.93-2.083 8.53-1.088 9.525.805.804 6.595 1.843 9.526-1.088a9.74 9.74 0 0 0 .584-.643c.043-.292.205-.66.489-1.106a1.848 1.848 0 0 1-.537.176c-.144.265-.37.55-.676.855-.354.335-.607.554-.76.656a.795.795 0 0 1-.437.152c-.35 0-.514-.308-.494-.924-.22.316-.425.549-.612.7a.914.914 0 0 1-.578.224c-.194 0-.36-.09-.496-.273a1.03 1.03 0 0 1-.193-.507 4.016 4.016 0 0 1-.726.583c-.224.132-.47.197-.74.197-.3 0-.543-.096-.727-.288a.978.978 0 0 1-.257-.524v.004c-.3.276-.564.48-.79.611a1.295 1.295 0 0 1-.649.197.693.693 0 0 1-.571-.275c-.145-.183-.218-.43-.218-.739 0-.464.101-1.02.302-1.67.201-.65.445-1.25.733-1.797l.842-.312a.21.21 0 0 1 .06-.013c.063 0 .116.047.157.14.04.095.061.221.061.38 0 .451-.104.888-.312 1.31-.207.422-.532.873-.974 1.352-.018.23-.027.388-.027.474 0 .193.036.345.106.458.071.113.165.169.282.169a.71.71 0 0 0 .382-.13c.132-.084.333-.26.602-.523.028-.418.187-.798.482-1.142.324-.38.685-.569 1.08-.569.206 0 .37.054.494.16a.524.524 0 0 1 .186.417c0 .458-.486.829-1.459 1.114.088.43.32.646.693.646a.807.807 0 0 0 .417-.117c.129-.076.321-.243.575-.497.032-.252.118-.495.259-.728.182-.3.416-.544.701-.73.285-.185.537-.278.756-.278.276 0 .47.127.58.381l.677-.374h.186l-.292.971c-.15.488-.226.823-.226 1.004 0 .19.067.285.202.285.086 0 .181-.045.285-.137.104-.092.25-.232.437-.42v.001c.143-.155.274-.32.392-.494-.19-.084-.285-.21-.285-.375 0-.17.058-.352.174-.545.116-.194.275-.29.479-.29.172 0 .258.088.258.265 0 .139-.05.338-.149.596.367-.04.687-.32.961-.842l.228-.01c1.059-2.438.828-5.075-.83-6.732-1.019-1.02-2.408-1.5-3.895-1.471zm4.725 8.203a8.938 8.938 0 0 1-1.333 2.151 1.09 1.09 0 0 0-.012.147c0 .168.047.309.14.423.092.113.206.17.34.17.296 0 .714-.264 1.254-.787-.001.04-.003.08-.003.121 0 .146.012.368.036.666l.733-.172c0-.2.003-.357.01-.474.01-.157.033-.33.066-.517.02-.11.07-.216.152-.315l.186-.216a5.276 5.276 0 0 1 .378-.397c.062-.055.116-.099.162-.13a.26.26 0 0 1 .123-.046c.055 0 .083.035.083.106 0 .07-.052.236-.156.497-.194.486-.292.848-.292 1.084 0 .175.046.314.136.418a.45.45 0 0 0 .358.155c.365 0 .803-.269 1.313-.808v-.381c-.361.426-.623.64-.784.64-.109 0-.163-.067-.163-.2 0-.1.065-.316.195-.65.19-.486.285-.836.285-1.048a.464.464 0 0 0-.112-.319.36.36 0 0 0-.282-.127c-.165 0-.354.077-.567.233-.213.156-.5.436-.863.84.053-.262.165-.622.335-1.08l-.809.156a6.54 6.54 0 0 0-.399 1.074c-.04.156-.07.316-.092.48a7.447 7.447 0 0 1-.49.45.38.38 0 0 1-.229.08.208.208 0 0 1-.174-.082.352.352 0 0 1-.064-.222c0-.1.019-.214.056-.343.038-.13.12-.373.249-.731l.308-.849zm-17.21-2.927c-.863-.016-1.67.263-2.261.854-1.352 1.352-1.07 3.827.631 5.527 1.7 1.701 4.95 1.21 5.527.632.467-.466 1.07-3.827-.631-5.527-.957-.957-2.158-1.465-3.267-1.486zm12.285.358h.166v.21H15.4zm.427 0h.166v.865l.46-.455h.195l-.364.362.428.684h-.198l-.357-.575-.164.166v.41h-.166zm1.016 0h.166v.21h-.166zm.481.122h.166v.288h.172v.135h-.172v.717c0 .037.006.062.02.075.012.013.037.02.074.02a.23.23 0 0 0 .078-.01v.141a.802.802 0 0 1-.136.014.23.23 0 0 1-.15-.043.15.15 0 0 1-.052-.123v-.79h-.141v-.136h.141zm-3.562.258c.081 0 .15.012.207.038.057.024.1.061.13.11s.045.106.045.173h-.176c-.006-.111-.075-.167-.208-.167a.285.285 0 0 0-.164.041.134.134 0 0 0-.06.117c0 .035.015.065.045.088.03.024.08.044.15.06l.16.039a.47.47 0 0 1 .224.105c.047.046.07.108.07.186a.3.3 0 0 1-.052.175.327.327 0 0 1-.152.116.585.585 0 0 1-.226.041c-.136 0-.24-.03-.309-.088-.069-.059-.105-.149-.109-.269h.176c.004.037.01.065.017.084a.166.166 0 0 0 .034.054c.044.043.112.065.204.065a.31.31 0 0 0 .177-.045.139.139 0 0 0 .067-.119.116.116 0 0 0-.038-.09.287.287 0 0 0-.124-.055l-.156-.038a1.248 1.248 0 0 1-.159-.05.359.359 0 0 1-.098-.061.22.22 0 0 1-.058-.083.32.32 0 0 1-.016-.108c0-.096.036-.174.109-.232a.45.45 0 0 1 .29-.087zm1.035 0a.46.46 0 0 1 .202.043.351.351 0 0 1 .187.212.577.577 0 0 1 .023.126h-.168a.256.256 0 0 0-.078-.168.242.242 0 0 0-.17-.06.248.248 0 0 0-.155.05.306.306 0 0 0-.1.144.662.662 0 0 0-.034.224.58.58 0 0 0 .035.214.299.299 0 0 0 .101.135.261.261 0 0 0 .157.048c.142 0 .227-.084.256-.252h.167a.519.519 0 0 1-.065.22.35.35 0 0 1-.146.138.464.464 0 0 1-.216.048.448.448 0 0 1-.246-.066.441.441 0 0 1-.161-.192.703.703 0 0 1-.057-.293c0-.085.01-.163.032-.233a.522.522 0 0 1 .095-.182.403.403 0 0 1 .15-.117.453.453 0 0 1 .191-.04zm.603.03h.166v1.046H15.4zm1.443 0h.166v1.046h-.166zm-5.05.618c-.08 0-.2.204-.356.611-.155.407-.308.977-.459 1.71.281-.312.509-.662.683-1.05.175-.387.262-.72.262-.999a.455.455 0 0 0-.036-.197c-.025-.05-.056-.075-.093-.075zm4.662 1.797c-.221 0-.431.188-.629.563-.197.376-.296.722-.296 1.038 0 .12.029.216.088.29a.273.273 0 0 0 .223.111c.221 0 .43-.188.625-.565.196-.377.294-.725.294-1.043a.457.457 0 0 0-.083-.29.269.269 0 0 0-.222-.104zm-2.848.007c-.146 0-.285.11-.417.333-.133.222-.2.51-.2.866.566-.159.849-.452.849-.881 0-.212-.077-.318-.232-.318Z\"></path>"
+  },
+  "tensorflow": {
+    "viewBox": "0 0 266.79 269.02",
+    "inner": "<defs><clipPath id=\"tf-brand-clip-1\"><polygon fill=\"none\" points=\"200.76 95.86 136.29 59.02 136.29 210 162.05 195.04 162.05 152.57 181.5 163.82 181.39 134.77 162.05 123.72 162.05 106.85 200.85 129.27 200.76 95.86\"></polygon></clipPath><linearGradient id=\"tf-brand-gradient-1\" x1=\"60.08\" y1=\"134.33\" x2=\"218.39\" y2=\"134.33\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stopColor=\"#ff6f00\"></stop><stop offset=\"1\" stopColor=\"#ffa800\"></stop></linearGradient><clipPath id=\"tf-brand-clip-2\"><polygon fill=\"none\" points=\"66.03 95.86 130.5 59.02 130.5 210 104.74 195.04 104.74 106.85 65.94 129.27 66.03 95.86\"></polygon></clipPath><linearGradient id=\"tf-brand-gradient-2\" x1=\"59\" y1=\"134.33\" x2=\"217.32\" y2=\"134.33\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stopColor=\"#ff6f00\"></stop><stop offset=\"1\" stopColor=\"#ffa800\"></stop></linearGradient></defs><g clipPath=\"url(#tf-brand-clip-1)\"><rect fill=\"url(#tf-brand-gradient-1)\" x=\"60.08\" y=\"58.47\" width=\"158.31\" height=\"151.72\"></rect></g><g clipPath=\"url(#tf-brand-clip-2)\"><rect fill=\"url(#tf-brand-gradient-2)\" x=\"59\" y=\"58.47\" width=\"158.31\" height=\"151.72\"></rect></g>"
+  },
+  "keras": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>Keras</title><path d=\"M24 0H0v24h24V0zM8.45 5.16l.2.17v6.24l6.46-6.45h1.96l.2.4-5.14 5.1 5.47 7.94-.2.3h-1.94l-4.65-6.88-2.16 2.08v4.6l-.19.2H7l-.2-.2V5.33l.17-.17h1.48z\"></path>"
+  },
+  "jupyter": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>Jupyter</title><path d=\"M7.157 22.201A1.784 1.799 0 0 1 5.374 24a1.784 1.799 0 0 1-1.784-1.799 1.784 1.799 0 0 1 1.784-1.799 1.784 1.799 0 0 1 1.783 1.799zM20.582 1.427a1.415 1.427 0 0 1-1.415 1.428 1.415 1.427 0 0 1-1.416-1.428A1.415 1.427 0 0 1 19.167 0a1.415 1.427 0 0 1 1.415 1.427zM4.992 3.336A1.047 1.056 0 0 1 3.946 4.39a1.047 1.056 0 0 1-1.047-1.055A1.047 1.056 0 0 1 3.946 2.28a1.047 1.056 0 0 1 1.046 1.056zm7.336 1.517c3.769 0 7.06 1.38 8.768 3.424a9.363 9.363 0 0 0-3.393-4.547 9.238 9.238 0 0 0-5.377-1.728A9.238 9.238 0 0 0 6.95 3.73a9.363 9.363 0 0 0-3.394 4.547c1.713-2.04 5.004-3.424 8.772-3.424zm.001 13.295c-3.768 0-7.06-1.381-8.768-3.425a9.363 9.363 0 0 0 3.394 4.547A9.238 9.238 0 0 0 12.33 21a9.238 9.238 0 0 0 5.377-1.729 9.363 9.363 0 0 0 3.393-4.547c-1.712 2.044-5.003 3.425-8.772 3.425Z\"></path>"
+  },
+  "chatgpt": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>OpenAI (ChatGPT)</title><path d=\"M9.205 8.658v-2.26c0-.19.072-.333.238-.428l4.543-2.616c.619-.357 1.356-.523 2.117-.523 2.854 0 4.662 2.212 4.662 4.566 0 .167 0 .357-.024.547l-4.71-2.759a.797.797 0 00-.856 0l-5.97 3.473zm10.609 8.8V12.06c0-.333-.143-.57-.429-.737l-5.97-3.473 1.95-1.118a.433.433 0 01.476 0l4.543 2.617c1.309.76 2.189 2.378 2.189 3.948 0 1.808-1.07 3.473-2.76 4.163zM7.802 12.703l-1.95-1.142c-.167-.095-.239-.238-.239-.428V5.899c0-2.545 1.95-4.472 4.591-4.472 1 0 1.927.333 2.712.928L8.23 5.067c-.285.166-.428.404-.428.737v6.898zM12 15.128l-2.795-1.57v-3.33L12 8.658l2.795 1.57v3.33L12 15.128zm1.796 7.23c-1 0-1.927-.332-2.712-.927l4.686-2.712c.285-.166.428-.404.428-.737v-6.898l1.974 1.142c.167.095.238.238.238.428v5.233c0 2.545-1.974 4.472-4.614 4.472zm-5.637-5.303l-4.544-2.617c-1.308-.761-2.188-2.378-2.188-3.948A4.482 4.482 0 014.21 6.327v5.423c0 .333.143.571.428.738l5.947 3.449-1.95 1.118a.432.432 0 01-.476 0zm-.262 3.9c-2.688 0-4.662-2.021-4.662-4.519 0-.19.024-.38.047-.57l4.686 2.71c.286.167.571.167.856 0l5.97-3.448v2.26c0 .19-.07.333-.237.428l-4.543 2.616c-.619.357-1.356.523-2.117.523zm5.899 2.83a5.947 5.947 0 005.827-4.756C22.287 18.339 24 15.84 24 13.296c0-1.665-.713-3.282-1.998-4.448.119-.5.19-.999.19-1.498 0-3.401-2.759-5.947-5.946-5.947-.642 0-1.26.095-1.88.31A5.962 5.962 0 0010.205 0a5.947 5.947 0 00-5.827 4.757C1.713 5.447 0 7.945 0 10.49c0 1.666.713 3.283 1.998 4.448-.119.5-.19 1-.19 1.499 0 3.401 2.759 5.946 5.946 5.946.642 0 1.26-.095 1.88-.309a5.96 5.96 0 004.162 1.713z\"></path>"
+  },
+  "claude": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>Claude</title><path d=\"m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z\"></path>"
+  },
+  "gemini": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>Google Gemini</title><path d=\"M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81\"></path>"
+  },
+  "deepseek": {
+    "viewBox": "0 0 24 24",
+    "inner": "<path fill=\"#4D6BFE\" d=\"M23.748 4.482c-.254-.124-.364.113-.512.234-.051.039-.094.09-.137.136-.372.397-.806.657-1.373.626-.829-.046-1.537.214-2.163.848-.133-.782-.575-1.248-1.247-1.548-.352-.156-.708-.311-.955-.65-.172-.241-.219-.51-.305-.774-.055-.16-.11-.323-.293-.35-.2-.031-.278.136-.356.276-.313.572-.434 1.202-.422 1.84.027 1.436.633 2.58 1.838 3.393.137.093.172.187.129.323-.082.28-.18.552-.266.833-.055.179-.137.217-.329.14a5.526 5.526 0 0 1-1.736-1.18c-.857-.828-1.631-1.742-2.597-2.458a11.365 11.365 0 0 0-.689-.471c-.985-.957.13-1.743.388-1.836.27-.098.093-.432-.779-.428-.872.004-1.67.295-2.687.684a3.055 3.055 0 0 1-.465.137 9.597 9.597 0 0 0-2.883-.102c-1.885.21-3.39 1.102-4.497 2.623C.082 8.606-.231 10.684.152 12.85c.403 2.284 1.569 4.175 3.36 5.653 1.858 1.533 3.997 2.284 6.438 2.14 1.482-.085 3.133-.284 4.994-1.86.47.234.962.327 1.78.397.63.059 1.236-.03 1.705-.128.735-.156.684-.837.419-.961-2.155-1.004-1.682-.595-2.113-.926 1.096-1.296 2.746-2.642 3.392-7.003.05-.347.007-.565 0-.845-.004-.17.035-.237.23-.256a4.173 4.173 0 0 0 1.545-.475c1.396-.763 1.96-2.015 2.093-3.517.02-.23-.004-.467-.247-.588zM11.581 18c-2.089-1.642-3.102-2.183-3.52-2.16-.392.024-.321.471-.235.763.09.288.207.486.371.739.114.167.192.416-.113.603-.673.416-1.842-.14-1.897-.167-1.361-.802-2.5-1.86-3.301-3.307-.774-1.393-1.224-2.887-1.298-4.482-.02-.386.093-.522.477-.592a4.696 4.696 0 0 1 1.529-.039c2.132.312 3.946 1.265 5.468 2.774.868.86 1.525 1.887 2.202 2.891.72 1.066 1.494 2.082 2.48 2.914.348.292.625.514.891.677-.802.09-2.14.11-3.054-.614zm1-6.44a.306.306 0 0 1 .415-.287.302.302 0 0 1 .2.288.306.306 0 0 1-.31.307.303.303 0 0 1-.304-.308zm3.11 1.596c-.2.081-.399.151-.59.16a1.245 1.245 0 0 1-.798-.254c-.274-.23-.47-.358-.552-.758a1.73 1.73 0 0 1 .016-.588c.07-.327-.008-.537-.239-.727-.187-.156-.426-.199-.688-.199a.559.559 0 0 1-.254-.078.253.253 0 0 1-.114-.358c.028-.054.16-.186.192-.21.356-.202.767-.136 1.146.016.352.144.618.408 1.001.782.391.451.462.576.685.914.176.265.336.537.445.848.067.195-.019.354-.25.452z\"></path>"
+  },
+  "cursor": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>Cursor</title><path d=\"M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23\"></path>"
+  },
+  "github copilot": {
+    "viewBox": "0 0 256 208",
+    "inner": "<path fill=\"#fff\" d=\"M205.3 31.4c14 14.8 20 35.2 22.5 63.6 6.6 0 12.8 1.5 17 7.2l7.8 10.6c2.2 3 3.4 6.6 3.4 10.4v28.7a12 12 0 0 1-4.8 9.5C215.9 187.2 172.3 208 128 208c-49 0-98.2-28.3-123.2-46.6a12 12 0 0 1-4.8-9.5v-28.7c0-3.8 1.2-7.4 3.4-10.5l7.8-10.5c4.2-5.7 10.4-7.2 17-7.2 2.5-28.4 8.4-48.8 22.5-63.6C77.3 3.2 112.6 0 127.6 0h.4c14.7 0 50.4 2.9 77.3 31.4ZM128 78.7c-3 0-6.5.2-10.3.6a27.1 27.1 0 0 1-6 12.1 45 45 0 0 1-32 13c-6.8 0-13.9-1.5-19.7-5.2-5.5 1.9-10.8 4.5-11.2 11-.5 12.2-.6 24.5-.6 36.8 0 6.1 0 12.3-.2 18.5 0 3.6 2.2 6.9 5.5 8.4C79.9 185.9 105 192 128 192s48-6 74.5-18.1a9.4 9.4 0 0 0 5.5-8.4c.3-18.4 0-37-.8-55.3-.4-6.6-5.7-9.1-11.2-11-5.8 3.7-13 5.1-19.7 5.1a45 45 0 0 1-32-12.9 27.1 27.1 0 0 1-6-12.1c-3.4-.4-6.9-.5-10.3-.6Zm-27 44c5.8 0 10.5 4.6 10.5 10.4v19.2a10.4 10.4 0 0 1-20.8 0V133c0-5.8 4.6-10.4 10.4-10.4Zm53.4 0c5.8 0 10.4 4.6 10.4 10.4v19.2a10.4 10.4 0 0 1-20.8 0V133c0-5.8 4.7-10.4 10.4-10.4Zm-73-94.4c-11.2 1.1-20.6 4.8-25.4 10-10.4 11.3-8.2 40.1-2.2 46.2A31.2 31.2 0 0 0 75 91.7c6.8 0 19.6-1.5 30.1-12.2 4.7-4.5 7.5-15.7 7.2-27-.3-9.1-2.9-16.7-6.7-19.9-4.2-3.6-13.6-5.2-24.2-4.3Zm69 4.3c-3.8 3.2-6.4 10.8-6.7 19.9-.3 11.3 2.5 22.5 7.2 27a41.7 41.7 0 0 0 30 12.2c8.9 0 17-2.9 21.3-7.2 6-6.1 8.2-34.9-2.2-46.3-4.8-5-14.2-8.8-25.4-9.9-10.6-1-20 .7-24.2 4.3ZM128 56c-2.6 0-5.6.2-9 .5.4 1.7.5 3.7.7 5.7 0 1.5 0 3-.2 4.5 3.2-.3 6-.3 8.5-.3 2.6 0 5.3 0 8.5.3-.2-1.6-.2-3-.2-4.5.2-2 .3-4 .7-5.7-3.4-.3-6.4-.5-9-.5Z\"></path>"
+  },
+  "antigravity": {
+    "viewBox": "0 0 16 15",
+    "inner": "<mask id=\"ag-brand-mask\" style=\"mask-type:alpha\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"16\" height=\"15\"><path d=\"M14.0777 13.984C14.945 14.6345 16.2458 14.2008 15.0533 13.0084C11.476 9.53949 12.2349 0 7.79033 0C3.34579 0 4.10461 9.53949 0.527295 13.0084C-0.773543 14.3092 0.635692 14.6345 1.50293 13.984C4.86344 11.7076 4.64663 7.69664 7.79033 7.69664C10.934 7.69664 10.7172 11.7076 14.0777 13.984Z\" fill=\"black\"></path></mask><g mask=\"url(#ag-brand-mask)\"><g filter=\"url(#ag-brand-filter-0)\"><path d=\"M-0.658907 -3.2306C-0.922679 -0.906781 1.07986 1.22861 3.81388 1.53894C6.54791 1.84927 8.97811 0.217009 9.24188 -2.10681C9.50565 -4.43063 7.50312 -6.56602 4.76909 -6.87635C2.03506 -7.18667 -0.395135 -5.55442 -0.658907 -3.2306Z\" fill=\"#FFE432\"></path></g><g filter=\"url(#ag-brand-filter-1)\"><path d=\"M9.88233 4.36642C10.5673 7.31568 13.566 9.13902 16.5801 8.43896C19.5942 7.73891 21.4823 4.78056 20.7973 1.83131C20.1123 -1.11795 17.1136 -2.94128 14.0995 -2.24123C11.0854 -1.54118 9.19733 1.41717 9.88233 4.36642Z\" fill=\"#FC413D\"></path></g><g filter=\"url(#ag-brand-filter-2)\"><path d=\"M-8.05291 6.34512C-7.18736 9.38883 -3.28925 10.9473 0.653774 9.82598C4.5968 8.7047 7.09158 5.32829 6.22603 2.28458C5.36048 -0.759142 1.46236 -2.31758 -2.48066 -1.19629C-6.42368 -0.0750048 -8.91846 3.3014 -8.05291 6.34512Z\" fill=\"#00B95C\"></path></g><g filter=\"url(#ag-brand-filter-3)\"><path d=\"M-8.05291 6.34512C-7.18736 9.38883 -3.28925 10.9473 0.653774 9.82598C4.5968 8.7047 7.09158 5.32829 6.22603 2.28458C5.36048 -0.759142 1.46236 -2.31758 -2.48066 -1.19629C-6.42368 -0.0750048 -8.91846 3.3014 -8.05291 6.34512Z\" fill=\"#00B95C\"></path></g><g filter=\"url(#ag-brand-filter-4)\"><path d=\"M-4.92402 8.86746C-2.75421 11.0837 0.982691 10.9438 3.42257 8.55507C5.86246 6.1663 6.08139 2.43321 3.91158 0.216963C1.74177 -1.99928 -1.99513 -1.85942 -4.43501 0.529349C-6.87489 2.91812 -7.09383 6.65122 -4.92402 8.86746Z\" fill=\"#00B95C\"></path></g><g filter=\"url(#ag-brand-filter-5)\"><path d=\"M6.42819 17.2263C7.10197 20.1273 9.91278 21.953 12.7063 21.3042C15.4998 20.6553 17.2182 17.7777 16.5444 14.8767C15.8707 11.9757 13.0599 10.15 10.2663 10.7988C7.47281 11.4477 5.75441 14.3253 6.42819 17.2263Z\" fill=\"#3186FF\"></path></g><g filter=\"url(#ag-brand-filter-6)\"><path d=\"M1.66508 -5.94539C0.254213 -2.80254 1.7978 0.951609 5.11277 2.43973C8.42774 3.92785 12.2588 2.58642 13.6696 -0.556431C15.0805 -3.69928 13.5369 -7.45343 10.222 -8.94155C6.90699 -10.4297 3.07594 -9.08824 1.66508 -5.94539Z\" fill=\"#FBBC04\"></path></g><g filter=\"url(#ag-brand-filter-7)\"><path d=\"M-2.11428 24.3903C-5.52984 23.0496 0.307266 12.0177 1.75874 8.32038C3.21024 4.62304 7.15576 2.71272 10.5713 4.05357C13.9869 5.39442 18.0354 12.7796 16.5838 16.477C15.1323 20.1743 1.30129 25.7311 -2.11428 24.3903Z\" fill=\"#3186FF\"></path></g><g filter=\"url(#ag-brand-filter-8)\"><path d=\"M18.5814 10.6598C17.6669 11.727 15.2806 11.1828 13.2514 9.44417C11.2222 7.70556 10.3185 5.43097 11.2329 4.3637C12.1473 3.29646 14.5336 3.84069 16.5628 5.57928C18.592 7.31789 19.4958 9.59249 18.5814 10.6598Z\" fill=\"#749BFF\"></path></g><g filter=\"url(#ag-brand-filter-9)\"><path d=\"M11.7552 5.22715C15.5162 7.77124 19.8471 7.93838 21.4286 5.60045C23.0101 3.26253 21.2433 -0.695128 17.4823 -3.23922C13.7213 -5.78331 9.39044 -5.95044 7.80896 -3.61252C6.22747 -1.27459 7.99428 2.68306 11.7552 5.22715Z\" fill=\"#FC413D\"></path></g><g filter=\"url(#ag-brand-filter-10)\"><path d=\"M-0.592149 1.08896C-1.5239 3.33663 -1.21959 5.59799 0.0875457 6.13985C1.39468 6.68171 3.20966 5.29888 4.14141 3.05121C5.07316 0.803541 4.76885 -1.45782 3.46171 -1.99968C2.15458 -2.54154 0.339602 -1.15871 -0.592149 1.08896Z\" fill=\"#FFEE48\"></path></g></g><defs><filter id=\"ag-brand-filter-0\" x=\"-2.12817\" y=\"-8.35998\" width=\"12.8393\" height=\"11.383\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"0.722959\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-1\" x=\"2.75168\" y=\"-9.38089\" width=\"25.1763\" height=\"24.96\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"3.49513\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-2\" x=\"-14.1669\" y=\"-7.50196\" width=\"26.5068\" height=\"23.6338\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"2.97119\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-3\" x=\"-14.1669\" y=\"-7.50196\" width=\"26.5068\" height=\"23.6338\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"2.97119\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-4\" x=\"-12.3607\" y=\"-7.29981\" width=\"23.709\" height=\"23.6846\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"2.97119\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-5\" x=\"0.634962\" y=\"5.02095\" width=\"21.7027\" height=\"22.0616\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"2.82351\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-6\" x=\"-3.97547\" y=\"-14.6666\" width=\"23.2857\" height=\"22.8313\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"2.5589\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-7\" x=\"-7.7407\" y=\"-0.945408\" width=\"29.1982\" height=\"30.1105\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"2.2852\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-8\" x=\"6.78641\" y=\"-0.27231\" width=\"16.2415\" height=\"15.5681\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"2.04485\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-9\" x=\"3.77526\" y=\"-8.71693\" width=\"21.687\" height=\"19.4212\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"1.72712\"></feGaussianBlur></filter><filter id=\"ag-brand-filter-10\" x=\"-5.40727\" y=\"-6.39238\" width=\"14.3639\" height=\"16.9254\" filterUnits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feBlend in=\"SourceGraphic\" in2=\"BackgroundImageFix\" mode=\"normal\" result=\"shape\"></feBlend><feGaussianBlur result=\"effect1_foregroundBlur\" stdDeviation=\"2.1376\"></feGaussianBlur></filter></defs>"
+  },
+  "openai codex": {
+    "viewBox": "0 0 24 24",
+    "inner": "<title>Codex (OpenAI)</title><path clipRule=\"evenodd\" d=\"M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z\"></path>"
+  },
+  "postgresql": {
+    "viewBox": "0 0 432.071 445.383",
+    "inner": "<g fillRule=\"nonzero\" clipRule=\"nonzero\" fill=\"none\" stroke=\"#fff\" strokeWidth=\"12.4651\" strokeLinecap=\"round\" strokeLinejoin=\"round\" stroke-miterlimit=\"4\"><path d=\"M323.205 324.227c2.833-23.601 1.984-27.062 19.563-23.239l4.463.392c13.517.615 31.199-2.174 41.587-7 22.362-10.376 35.622-27.7 13.572-23.148-50.297 10.376-53.755-6.655-53.755-6.655 53.111-78.803 75.313-178.836 56.149-203.322-52.27-66.789-142.748-35.206-144.262-34.386l-.482.089c-9.938-2.062-21.06-3.294-33.554-3.496-22.761-.374-40.032 5.967-53.133 15.904 0 0-161.408-66.498-153.899 83.628 1.597 31.936 45.777 241.655 98.47 178.31 19.259-23.163 37.871-42.748 37.871-42.748 9.242 6.14 20.307 9.272 31.912 8.147l.897-.765c-.281 2.876-.157 5.689.359 9.019-13.572 15.167-9.584 17.83-36.723 23.416-27.457 5.659-11.326 15.734-.797 18.367 12.768 3.193 42.305 7.716 62.268-20.224l-.795 3.188c5.325 4.26 4.965 30.619 5.72 49.452.756 18.834 2.017 36.409 5.856 46.771 3.839 10.36 8.369 37.05 44.036 29.406 29.809-6.388 52.6-15.582 54.677-101.107\" fill=\"#000\" stroke=\"#000\" strokeWidth=\"37.3953\" strokeLinecap=\"butt\" strokeLinejoin=\"miter\"></path><path stroke=\"none\" fill=\"#336791\" d=\"M402.395 271.23c-50.302 10.376-53.76-6.655-53.76-6.655 53.111-78.808 75.313-178.843 56.153-203.326-52.27-66.785-142.752-35.2-144.262-34.38l-.486.087c-9.938-2.063-21.06-3.292-33.56-3.496-22.761-.373-40.026 5.967-53.127 15.902 0 0-161.411-66.495-153.904 83.63 1.597 31.938 45.776 241.657 98.471 178.312 19.26-23.163 37.869-42.748 37.869-42.748 9.243 6.14 20.308 9.272 31.908 8.147l.901-.765c-.28 2.876-.152 5.689.361 9.019-13.575 15.167-9.586 17.83-36.723 23.416-27.459 5.659-11.328 15.734-.796 18.367 12.768 3.193 42.307 7.716 62.266-20.224l-.796 3.188c5.319 4.26 9.054 27.711 8.428 48.969-.626 21.259-1.044 35.854 3.147 47.254 4.191 11.4 8.368 37.05 44.042 29.406 29.809-6.388 45.256-22.942 47.405-50.555 1.525-19.631 4.976-16.729 5.194-34.28l2.768-8.309c3.192-26.611.507-35.196 18.872-31.203l4.463.392c13.517.615 31.208-2.174 41.591-7 22.358-10.376 35.618-27.7 13.573-23.148z\"></path><path d=\"M215.866 286.484c-1.385 49.516.348 99.377 5.193 111.495 4.848 12.118 15.223 35.688 50.9 28.045 29.806-6.39 40.651-18.756 45.357-46.051 3.466-20.082 10.148-75.854 11.005-87.281M173.104 38.256S11.583-27.76 19.092 122.365c1.597 31.938 45.779 241.664 98.473 178.316 19.256-23.166 36.671-41.335 36.671-41.335M260.349 26.207c-5.591 1.753 89.848-34.889 144.087 34.417 19.159 24.484-3.043 124.519-56.153 203.329\"></path><path strokeLinejoin=\"bevel\" d=\"M348.282 263.953s3.461 17.036 53.764 6.653c22.04-4.552 8.776 12.774-13.577 23.155-18.345 8.514-59.474 10.696-60.146-1.069-1.729-30.355 21.647-21.133 19.96-28.739-1.525-6.85-11.979-13.573-18.894-30.338-6.037-14.633-82.796-126.849 21.287-110.183 3.813-.789-27.146-99.002-124.553-100.599-97.385-1.597-94.19 119.762-94.19 119.762\"></path><path d=\"M188.604 274.334c-13.577 15.166-9.584 17.829-36.723 23.417-27.459 5.66-11.326 15.733-.797 18.365 12.768 3.195 42.307 7.718 62.266-20.229 6.078-8.509-.036-22.086-8.385-25.547-4.034-1.671-9.428-3.765-16.361 3.994z\"></path><path d=\"M187.715 274.069c-1.368-8.917 2.93-19.528 7.536-31.942 6.922-18.626 22.893-37.255 10.117-96.339-9.523-44.029-73.396-9.163-73.436-3.193-.039 5.968 2.889 30.26-1.067 58.548-5.162 36.913 23.488 68.132 56.479 64.938\"></path><path fill=\"#fff\" strokeWidth=\"4.155\" strokeLinecap=\"butt\" strokeLinejoin=\"miter\" d=\"M172.517 141.7c-.288 2.039 3.733 7.48 8.976 8.207 5.234.73 9.714-3.522 9.998-5.559.284-2.039-3.732-4.285-8.977-5.015-5.237-.731-9.719.333-9.996 2.367z\"></path><path fill=\"#fff\" strokeWidth=\"2.0775\" strokeLinecap=\"butt\" strokeLinejoin=\"miter\" d=\"M331.941 137.543c.284 2.039-3.732 7.48-8.976 8.207-5.238.73-9.718-3.522-10.005-5.559-.277-2.039 3.74-4.285 8.979-5.015 5.239-.73 9.718.333 10.002 2.368z\"></path><path d=\"M350.676 123.432c.863 15.994-3.445 26.888-3.988 43.914-.804 24.748 11.799 53.074-7.191 81.435\"></path></g>"
+  },
+  "mysql": {
+    "viewBox": "0 0 256 252",
+    "inner": "<path fill=\"#FFF\" d=\"M236 194c-14 0-25 1-34 5-3 1-7 1-7 4l3 6c2 3 5 8 9 11l11 8 21 10 11 9 6 4-3-6-5-5c-5-7-11-13-18-18-6-3-18-9-20-15h-1l12-3 18-3 8-2v-2l-9-10c-8-8-18-15-28-22l-18-8c-2-1-6-2-7-4l-7-13-15-30-8-20c-18-30-38-48-68-65-6-4-14-5-22-7l-13-1-8-6C34 5 8-9 1 9c-5 11 7 22 11 28l9 13 3 9c3 8 5 17 9 24l6 10c2 2 4 3 5 6-3 4-3 9-4 13-7 20-4 44 5 59 2 4 9 14 18 10 8-3 6-13 8-22l1-4 8 14c5 9 14 18 22 24 4 3 8 8 13 10l-4-4-9-10c-8-10-14-21-20-32l-7-17-3-6c-3 4-7 7-9 12-3 7-3 17-4 26h-1c-6-1-8-7-10-12-5-12-6-32-1-46 1-4 6-15 4-19-1-3-4-5-6-7l-7-12-10-30-9-13c-3-5-7-8-10-14-1-2-2-5 0-7l2-2c2-2 9 0 11 1 6 3 12 5 17 9l8 6h4c6 1 12 0 17 2 9 3 18 7 25 12 23 14 42 35 54 59 3 4 3 8 5 12l12 26c4 8 7 16 12 23 3 4 14 6 18 8l12 4 18 12c2 2 11 7 12 10Z\"></path><path fill=\"#FFF\" d=\"m58 43-7 1 6 7 4 9v-1c3-1 4-4 4-8l-2-4-5-4Z\"></path>"
+  },
+  "sqlite": {
+    "viewBox": "0 0 512 228",
+    "inner": "<defs><linearGradient x1=\"57.7%\" y1=\"2%\" x2=\"57.7%\" y2=\"94.4%\" id=\"tsvgR1b6ptbtb-a\"><stop stopColor=\"#97D9F6\" offset=\"0%\"></stop><stop stopColor=\"#0F80CC\" offset=\"92%\"></stop><stop stopColor=\"#0F80CC\" offset=\"100%\"></stop></linearGradient></defs><path d=\"M194.5 112c-6.8 0-12.3 2-16.6 6.1-4.3 4-6.4 9.3-6.4 15.8a23.3 23.3 0 0 0 6.5 17c2.2 2.4 6.6 5.6 13.2 9.7 8 5 13.4 9 16 12 2.5 3.2 3.7 6.4 3.7 9.9 0 4.5-1.5 8.2-4.6 11a18 18 0 0 1-12.4 4 20.1 20.1 0 0 1-20.3-20.8h-2.5v22.9h2.5c.8-2.2 1.8-3.3 3.2-3.3.7 0 2.3.4 4.7 1.3 6 2.1 10.9 3.2 14.7 3.2a23 23 0 0 0 17-7 23.2 23.2 0 0 0 2.4-30.8c-3-4-9-8.6-18-14a59.5 59.5 0 0 1-15-11.3c-2.3-3-3.5-6.1-3.5-9.7 0-3.8 1.5-7 4.2-9.2 2.8-2.3 6.5-3.5 11-3.5 5.2 0 9.5 1.5 12.9 4.6 3.3 3 5.3 7.4 5.9 12.8h2.5V113h-2.3a6 6 0 0 1-.8 2c-.3.3-.7.4-1.4.4a17 17 0 0 1-4.3-1 38.6 38.6 0 0 0-12.3-2.3Zm82.4 0a44.6 44.6 0 0 0-39 22.2 43.5 43.5 0 0 0 4.5 50.2c7 8.2 15.3 13.3 25 15.3 2.1 1.1 5.3 4.1 9.4 9 4.7 5.3 8.6 9.3 11.9 11.6A35.6 35.6 0 0 0 311 227c5.3 0 10-.9 14-2.7l-.9-2.3a20.1 20.1 0 0 1-18.7-2.3c-3.6-2.5-8.3-7.1-13.8-14a47.6 47.6 0 0 0-5.4-6.1c10.6-2 19.3-7.2 26-15.4a42.8 42.8 0 0 0 10.2-28 42 42 0 0 0-13.2-31.4 44.8 44.8 0 0 0-32.4-12.9Zm51.4 0 .1 2.7c5.5 0 8.6 1.7 9.3 5 .3 1.1.4 3.3.4 6.4v59.6c0 4.5-.7 7.3-2 8.6-1.1 1.2-3.2 2-6.2 2.3l-.1 2.6h55.1l1.4-13.5h-2.5c-.7 3.7-2.3 6.3-5 7.8a30.5 30.5 0 0 1-14 2.3h-5.2c-6 0-9.5-2.2-10.5-6.6-.2-.9-.2-1.8-.2-2.8l.2-60.3c0-4.4.5-7.4 1.7-8.9 1.2-1.4 3.3-2.3 6.4-2.5l-.2-2.7h-28.7Zm-50.6 3.3a28 28 0 0 1 23 11.2 48 48 0 0 1 8.8 30.5c0 12.3-3 22.1-8.9 29.5a29 29 0 0 1-23.7 11c-9.5 0-17.2-3.8-23-11.4a47.1 47.1 0 0 1-8.9-29.6c0-12.5 3-22.5 9-30 5.9-7.5 13.8-11.2 23.7-11.2Zm126.9 12.8c-1.3 0-2.4.5-3.1 1.4-.8 1-1 2-.8 3.4a6 6 0 0 0 2.2 3.4c1.1 1 2.4 1.4 3.7 1.4 1.3 0 2.3-.5 3-1.4.7-1 1-2.1.7-3.4-.3-1.4-1-2.5-2-3.4a5.6 5.6 0 0 0-3.7-1.4Zm36.4 9.2c-2.3 8.8-7.3 13.5-14.9 14.3l.1 2.5h8.9l-.2 29.8c0 5.1.2 8.5.5 10.2 1 4.2 3.6 6.3 8.1 6.3 6.6 0 13.4-4 20.6-12l-2.2-1.8c-5.2 5.2-9.7 7.8-13.7 7.8-2.5 0-4-1.4-4.6-4.2l-.2-2.4v-33.7h13.7l-.2-4h-13.4v-12.8H441Zm52.4 11.2c-7.6 0-13.7 3.7-18.5 11a31.3 31.3 0 0 0-4.4 24.4 21 21 0 0 0 6.7 12.2 19 19 0 0 0 12.7 4.3c4.7 0 11.4-1.2 14.1-3.7 2.8-2.4 5.4-6.3 7.8-11.7l-2-2a20.6 20.6 0 0 1-17.1 10.5c-8 0-12.8-4.3-14.6-13l-.5-3.5a46 46 0 0 0 21.4-8c4.8-3.8 9.6-7.9 8.7-12.1a9.9 9.9 0 0 0-3.9-6c-2-1.6-7.4-2.4-10.4-2.4Zm-83 .3-16.3 3.8v2.9l5.7-.7c2.7 0 4.3 1.2 4.8 3.7.2.8.3 2 .4 3.4l-.2 26.8c0 3.7-.5 5.8-1.3 6.5-.8.6-3 1-6.6 1v2.5h25.9v-2.5c-3.7 0-6-.3-7-.9-1-.5-1.8-1.5-2.1-3-.2-1.2-.3-3.1-.4-5.7l.1-37.8h-3Zm78.9 5c1.6 0 3 .6 4.6 1.8a7 7 0 0 1 2.8 4c1.4 7-4.9 12-19 14.7a25 25 0 0 1 2.7-14.1c2.3-4.3 5.3-6.4 8.9-6.4Z\" fill=\"#003B57\"></path><path d=\"M157.9 10H17C7.7 10 0 17.7 0 27v155.2c0 9.4 7.7 17.2 17.1 17.2h92.7c-1-46.2 14.7-135.7 48-189.5Z\" fill=\"#0F80CC\"></path><path d=\"M152.8 15H17C10.5 15 5 20.4 5 27V171c30.7-11.8 76.8-22 108.7-21.5a989.7 989.7 0 0 1 39-134.5Z\" fill=\"url(#tsvgR1b6ptbtb-a)\"></path><path d=\"M190.7 4.9c-9.6-8.6-21.3-5.2-32.8 5a81.4 81.4 0 0 0-5.1 5c-19.7 21-38 59.7-43.7 89.2a81.5 81.5 0 0 1 5.8 17.7l.8 3.5-.9-2.8a173.8 173.8 0 0 0-.8-2 172 172 0 0 0-6.4-12.1l-3.5 11c4.5 8.2 7.3 22.4 7.3 22.4l-1.4-4.1c-1-2.9-6-11.7-7.2-13.7-2 7.5-2.8 12.6-2.1 13.8 1.4 2.4 2.7 6.5 4 11a257.6 257.6 0 0 1 4.6 25c-.3 8.6-.1 17.6.5 25.7a91 91 0 0 0 4.7 24.8l1.5-.8a111 111 0 0 1-3.9-37c.9-22.5 6-49.5 15.6-77.7 16-42.5 38.4-76.6 58.8-93-18.6 17-43.8 71.4-51.4 91.6a365.7 365.7 0 0 0-18 64c6.2-19 26.4-27.2 26.4-27.2s9.8-12.2 21.4-29.6a210 210 0 0 0-22.1 6l-7.1 3s18.1-11 33.7-16C191 73.8 214.2 25.9 190.7 4.9\" fill=\"#003B57\"></path>"
+  },
+  "mongodb": {
+    "viewBox": "0 0 120 257",
+    "inner": "<path fill=\"#00ED64\" d=\"M82.323 28.55C71.537 15.795 62.249 2.84 60.35.15c-.2-.2-.5-.2-.7 0-1.897 2.69-11.185 15.645-21.971 28.4C-54.902 146.238 52.26 225.661 52.26 225.661l.9.597c.798 12.258 2.795 29.896 2.795 29.896h7.99s1.998-17.539 2.797-29.896l.899-.697c.1 0 107.263-79.323 14.68-197.01ZM59.95 223.867s-4.793-4.086-6.092-6.179v-.199l5.793-128.151c0-.4.6-.4.6 0l5.792 128.151v.199c-1.299 2.093-6.093 6.179-6.093 6.179Z\"></path>"
+  },
+  "redis": {
+    "viewBox": "0 0 256 220",
+    "inner": "<path d=\"M246 169c-13.7 7-84.5 36.2-99.5 44-15.1 7.9-23.5 7.8-35.4 2.1C99.2 209.4 24 179 10.3 172.5 3.6 169.3 0 166.5 0 164v-26s98-21.3 113.9-27c15.8-5.6 21.3-5.8 34.8-.9 13.4 5 94 19.5 107.3 24.3V160c0 2.5-3 5.3-10 9\" fill=\"#912626\"></path><path d=\"M246 143.2c-13.7 7.1-84.5 36.2-99.5 44-15.1 8-23.5 7.9-35.4 2.2-11.9-5.7-87.2-36.1-100.8-42.6-13.5-6.5-13.8-11-.5-16.2 13.4-5.2 88.2-34.6 104-40.3 16-5.6 21.4-5.8 34.9-1 13.4 5 83.8 33 97.1 37.9 13.3 4.9 13.8 8.9.2 16\" fill=\"#C6302B\"></path><path d=\"M246 127c-13.7 7.2-84.5 36.3-99.5 44.2-15.1 7.8-23.5 7.7-35.4 2-11.9-5.6-87.2-36-100.8-42.6-6.7-3.2-10.3-6-10.3-8.5V96.2s98-21.3 113.9-27c15.8-5.7 21.3-5.9 34.8-1 13.4 5 94 19.5 107.3 24.4V118c0 2.5-3 5.4-10 9\" fill=\"#912626\"></path><path d=\"M246 101.4c-13.7 7-84.5 36.2-99.5 44-15.1 7.9-23.5 7.8-35.4 2.1C99.2 141.8 24 111.4 10.3 105c-13.5-6.5-13.8-11-.5-16.1C23.2 83.5 98 54 113.8 48.5c16-5.7 21.4-6 34.9-1 13.4 5 83.8 33 97.1 37.8 13.3 5 13.8 9 .2 16\" fill=\"#C6302B\"></path><path d=\"M246 83.7c-13.7 7-84.5 36.2-99.5 44-15.1 7.9-23.5 7.8-35.4 2.1C99.2 124.1 24 93.7 10.3 87.2 3.6 84 0 81.2 0 78.7v-26s98-21.3 113.9-27c15.8-5.6 21.3-5.8 34.8-.9 13.4 5 94 19.5 107.3 24.4v25.5c0 2.5-3 5.3-10 9\" fill=\"#912626\"></path><path d=\"M246 58c-13.7 7-84.5 36.1-99.5 44-15.1 7.9-23.5 7.8-35.4 2C99.2 98.5 24 68 10.3 61.6c-13.5-6.5-13.8-11-.5-16.2C23.2 40.1 98 10.7 113.8 5c16-5.6 21.4-5.8 34.9-.9 13.4 5 83.8 33 97.1 37.8 13.3 4.9 13.8 9 .2 16\" fill=\"#C6302B\"></path><path d=\"m159.3 32.8-22 2.2-5 11.9-8-13.2L99 31.4l19-6.9-5.8-10.5 17.8 7 16.7-5.5-4.5 10.9 17 6.4M131 90.3l-41-17 58.8-9.1-17.8 26M74 39.3c17.5 0 31.5 5.5 31.5 12.2 0 6.8-14 12.2-31.4 12.2s-31.5-5.4-31.5-12.2c0-6.7 14.1-12.2 31.5-12.2\" fill=\"#FFF\"></path><path d=\"M185.3 36 220 49.8l-34.8 13.7V36\" fill=\"#621B1C\"></path><path d=\"M146.8 51.2 185.3 36v27.5l-3.8 1.5-34.7-13.8\" fill=\"#9A2928\"></path>"
+  },
+  "firebase": {
+    "viewBox": "0 0 600 600",
+    "inner": "<path fill=\"#FF9100\" d=\"M213.918 560.499c23.248 9.357 48.469 14.909 74.952 15.834 35.84 1.252 69.922-6.158 100.391-20.234-36.537-14.355-69.627-35.348-97.869-61.448-18.306 29.31-45.382 52.462-77.474 65.848Z\"></path><path fill=\"#FFC400\" d=\"M291.389 494.66c-64.466-59.622-103.574-145.917-100.269-240.568.108-3.073.27-6.145.46-9.216a166.993 166.993 0 0 0-36.004-5.241 167.001 167.001 0 0 0-51.183 6.153c-17.21 30.145-27.594 64.733-28.888 101.781-3.339 95.611 54.522 179.154 138.409 212.939 32.093-13.387 59.168-36.51 77.475-65.848Z\"></path><path fill=\"#FF9100\" d=\"M291.39 494.657c14.988-23.986 24.075-52.106 25.133-82.403 2.783-79.695-50.792-148.251-124.942-167.381-.19 3.071-.352 6.143-.46 9.216-3.305 94.651 35.803 180.946 100.269 240.568Z\"></path><path fill=\"#DD2C00\" d=\"M308.231 20.858C266 54.691 232.652 99.302 212.475 150.693c-11.551 29.436-18.81 61.055-20.929 94.2 74.15 19.13 127.726 87.686 124.943 167.38-1.058 30.297-10.172 58.39-25.134 82.404 28.24 26.127 61.331 47.093 97.868 61.447 73.337-33.9 125.37-106.846 128.383-193.127 1.952-55.901-19.526-105.724-49.875-147.778-32.051-44.477-159.5-194.36-159.5-194.36Z\"></path>"
+  },
+  "aws": {
+    "viewBox": "0 0 304 182",
+    "inner": "<path fill=\"#ffffff\" d=\"m86 66 2 9c0 3 1 5 3 8v2l-1 3-7 4-2 1-3-1-4-5-3-6c-8 9-18 14-29 14-9 0-16-3-20-8-5-4-8-11-8-19s3-15 9-20c6-6 14-8 25-8a79 79 0 0 1 22 3v-7c0-8-2-13-5-16-3-4-8-5-16-5l-11 1a80 80 0 0 0-14 5h-2c-1 0-2-1-2-3v-5l1-3c0-1 1-2 3-2l12-5 16-2c12 0 20 3 26 8 5 6 8 14 8 25v32zM46 82l10-2c4-1 7-4 10-7l3-6 1-9v-4a84 84 0 0 0-19-2c-6 0-11 1-15 4-3 2-4 6-4 11s1 8 3 11c3 2 6 4 11 4zm80 10-4-1-2-3-23-78-1-4 2-2h10l4 1 2 4 17 66 15-66 2-4 4-1h8l4 1 2 4 16 67 17-67 2-4 4-1h9c2 0 3 1 3 2v2l-1 2-24 78-2 4-4 1h-9l-4-1-1-4-16-65-15 64-2 4-4 1h-9zm129 3a66 66 0 0 1-27-6l-3-3-1-2v-5c0-2 1-3 2-3h2l3 1a54 54 0 0 0 23 5c6 0 11-2 14-4 4-2 5-5 5-9l-2-7-10-5-15-5c-7-2-13-6-16-10a24 24 0 0 1 5-34l10-5a44 44 0 0 1 20-2 110 110 0 0 1 12 3l4 2 3 2 1 4v4c0 3-1 4-2 4l-4-2c-6-2-12-3-19-3-6 0-11 0-14 2s-4 5-4 9c0 3 1 5 3 7s5 4 11 6l14 4c7 3 12 6 15 10s5 9 5 14l-3 12-7 8c-3 3-7 5-11 6l-14 2z\"></path><path d=\"M274 144A220 220 0 0 1 4 124c-4-3-1-6 2-4a300 300 0 0 0 263 16c5-2 10 4 5 8z\" fill=\"#f90\"></path><path d=\"M287 128c-4-5-28-3-38-1-4 0-4-3-1-5 19-13 50-9 53-5 4 5-1 36-18 51-3 2-6 1-5-2 5-10 13-33 9-38z\" fill=\"#f90\"></path>"
+  },
+  "google cloud": {
+    "viewBox": "0 -25 256 256",
+    "inner": "<path fill=\"#EA4335\" d=\"m170.252 56.819 22.253-22.253 1.483-9.37C153.437-11.677 88.976-7.496 52.42 33.92 42.267 45.423 34.734 59.764 30.717 74.573l7.97-1.123 44.505-7.34 3.436-3.513c19.797-21.742 53.27-24.667 76.128-6.168l7.496.39Z\"></path><path fill=\"#4285F4\" d=\"M224.205 73.918a100.249 100.249 0 0 0-30.217-48.722l-31.232 31.232a55.515 55.515 0 0 1 20.379 44.037v5.544c15.35 0 27.797 12.445 27.797 27.796 0 15.352-12.446 27.485-27.797 27.485h-55.671l-5.466 5.934v33.34l5.466 5.231h55.67c39.93.311 72.553-31.494 72.864-71.424a72.303 72.303 0 0 0-31.793-60.453\"></path><path fill=\"#34A853\" d=\"M71.87 205.796h55.593V161.29H71.87a27.275 27.275 0 0 1-11.399-2.498l-7.887 2.42-22.409 22.253-1.952 7.574c12.567 9.489 27.9 14.825 43.647 14.757\"></path><path fill=\"#FBBC05\" d=\"M71.87 61.425C31.94 61.664-.237 94.228.001 134.159a72.301 72.301 0 0 0 28.222 56.88l32.248-32.246c-13.99-6.322-20.208-22.786-13.887-36.776 6.32-13.99 22.786-20.208 36.775-13.888a27.796 27.796 0 0 1 13.887 13.888l32.248-32.248A72.224 72.224 0 0 0 71.87 61.425\"></path>"
+  },
+  "docker": {
+    "viewBox": "0 0 24 24",
+    "inner": "<path d=\"M13.98 11.08h2.12a.19.19 0 0 0 .19-.19V9.01a.19.19 0 0 0-.19-.19h-2.12a.18.18 0 0 0-.18.18v1.9c0 .1.08.18.18.18m-2.95-5.43h2.12a.19.19 0 0 0 .18-.19V3.57a.19.19 0 0 0-.18-.18h-2.12a.18.18 0 0 0-.19.18v1.9c0 .1.09.18.19.18m0 2.71h2.12a.19.19 0 0 0 .18-.18V6.29a.19.19 0 0 0-.18-.18h-2.12a.18.18 0 0 0-.19.18v1.89c0 .1.09.18.19.18m-2.93 0h2.12a.19.19 0 0 0 .18-.18V6.29a.18.18 0 0 0-.18-.18H8.1a.18.18 0 0 0-.18.18v1.89c0 .1.08.18.18.18m-2.96 0h2.11a.19.19 0 0 0 .19-.18V6.29a.18.18 0 0 0-.19-.18H5.14a.19.19 0 0 0-.19.18v1.89c0 .1.08.18.19.18m5.89 2.72h2.12a.19.19 0 0 0 .18-.19V9.01a.19.19 0 0 0-.18-.19h-2.12a.18.18 0 0 0-.19.18v1.9c0 .1.09.18.19.18m-2.93 0h2.12a.18.18 0 0 0 .18-.19V9.01a.18.18 0 0 0-.18-.19H8.1a.18.18 0 0 0-.18.18v1.9c0 .1.08.18.18.18m-2.96 0h2.11a.18.18 0 0 0 .19-.19V9.01a.18.18 0 0 0-.18-.19H5.14a.19.19 0 0 0-.19.19v1.88c0 .1.08.19.19.19m-2.92 0h2.12a.18.18 0 0 0 .18-.19V9.01a.18.18 0 0 0-.18-.19H2.22a.18.18 0 0 0-.19.18v1.9c0 .1.08.18.19.18m21.54-1.19c-.06-.05-.67-.51-1.95-.51-.34 0-.68.03-1.01.09a3.77 3.77 0 0 0-1.72-2.57l-.34-.2-.23.33a4.6 4.6 0 0 0-.6 1.43c-.24.97-.1 1.88.4 2.66a4.7 4.7 0 0 1-1.75.42H.76a.75.75 0 0 0-.76.75 11.38 11.38 0 0 0 .7 4.06 6.03 6.03 0 0 0 2.4 3.12c1.18.73 3.1 1.14 5.28 1.14.98 0 1.96-.08 2.93-.26a12.25 12.25 0 0 0 3.82-1.4 10.5 10.5 0 0 0 2.61-2.13c1.25-1.42 2-3 2.55-4.4h.23c1.37 0 2.21-.55 2.68-1 .3-.3.55-.66.7-1.06l.1-.28Z\"></path>"
+  },
+  "kubernetes": {
+    "viewBox": "0 0 722.8 702",
+    "inner": "<path style=\"fill:#326ce5;fill-opacity:1;stroke:#fff;stroke-width:0;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none\" d=\"M365 185a47 46 0 0 0-18 4L103 306a47 46 0 0 0-25 32L18 600a47 46 0 0 0 6 35 47 46 0 0 0 3 4l169 210a47 46 0 0 0 36 18h271a47 46 0 0 0 37-18l169-210a47 46 0 0 0 9-39l-60-263a47 46 0 0 0-26-31L388 189a47 46 0 0 0-23-4z\" transform=\"translate(-6 -175)\"></path><path d=\"M368 274c-8 0-15 7-15 16v4l2 14 2 27c-1 3-3 6-5 7v7a190 190 0 0 0-122 58l-6-3c-2 0-5 1-8-1l-20-18-10-10-3-3c-3-2-7-4-10-4-5 0-9 2-12 5-5 7-3 16 4 22l3 3 12 7 22 15c2 2 3 7 3 8l5 5c-26 37-37 84-30 131l-6 2c-2 2-4 6-7 7l-26 4-14 1-4 1c-9 2-14 10-13 18 2 8 11 12 19 11h1v-1h4l13-5c9-4 17-7 25-8l9 3 6-1c15 45 45 82 84 105l-2 7c1 2 2 5 1 8l-13 24-8 11-2 4c-4 8-1 18 6 21 8 4 17 0 20-8l2-4 5-13c3-10 6-20 11-27l6-3 3-6a189 189 0 0 0 135 1l4 5c2 1 5 2 7 5l10 24 4 14 2 4c4 8 13 11 20 8 8-4 10-13 7-21l-2-4-8-12c-6-8-10-15-13-23-1-4 0-6 1-8l-2-6c40-24 70-62 84-106l6 1c2-2 4-4 8-3 8 1 16 4 26 7l13 5 4 1c9 2 17-3 19-10 2-8-4-16-12-18l-5-1-14-1c-10-1-18-2-26-5-3-1-5-5-6-6l-6-2a189 189 0 0 0-31-131l6-5c0-3 0-5 2-8 6-6 13-10 22-16l12-7 4-2c7-6 8-16 3-22s-15-7-22-1l-3 2-10 11c-7 7-13 13-19 17-3 2-7 2-9 1l-6 4c-31-33-75-54-121-58v-7c-2-2-5-3-5-7-1-8 0-16 1-27l2-14v-4c0-9-6-16-14-16zm-19 113-4 77a13 13 0 0 1-21 10l-63-44a151 151 0 0 1 88-43zm37 0c33 5 64 20 88 43l-63 44a13 13 0 0 1-21-10zm-148 71 58 52a13 13 0 0 1-5 22l-74 22c-4-35 4-68 21-96zm259 0a153 153 0 0 1 22 95l-74-21a13 13 0 0 1-5-22h-1l58-52zm-141 56h23l15 18-5 23-21 10-21-10-6-23zm75 62h3l77 13c-12 32-33 59-61 77l-30-72a13 13 0 0 1 11-18zm-128 1a13 13 0 0 1 12 18l-29 71c-27-18-49-44-61-77l76-12h2zm64 31c2-1 4 0 6 1 3 1 5 3 6 5l38 68a154 154 0 0 1-98-1l37-67c3-4 7-6 11-6z\" style=\"font-size:medium;font-style:normal;font-variant:normal;font-weight:400;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000;fill:#fff;fill-opacity:1;stroke:#fff;stroke-width:.25;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans\" transform=\"translate(-6 -175)\"></path>"
+  },
+  "git": {
+    "viewBox": "0 0 256 256",
+    "inner": "<path d=\"M251.17 116.6 139.4 4.82a16.49 16.49 0 0 0-23.31 0l-23.21 23.2 29.44 29.45a19.57 19.57 0 0 1 24.8 24.96l28.37 28.38a19.61 19.61 0 1 1-11.75 11.06L137.28 95.4v69.64a19.62 19.62 0 1 1-16.13-.57V94.2a19.61 19.61 0 0 1-10.65-25.73L81.46 39.44 4.83 116.08a16.49 16.49 0 0 0 0 23.32L116.6 251.17a16.49 16.49 0 0 0 23.32 0l111.25-111.25a16.5 16.5 0 0 0 0-23.33\" fill=\"#DE4C36\"></path>"
+  },
+  "github": {
+    "viewBox": "0 0 1024 1024",
+    "inner": "<path fillRule=\"evenodd\" clipRule=\"evenodd\" d=\"M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z\" transform=\"scale(64)\" fill=\"#ffffff\"></path>"
+  },
+  "gitlab": {
+    "viewBox": "0 0 32 32",
+    "inner": "<path d=\"m31.46 12.78-.04-.12-4.35-11.35A1.14 1.14 0 0 0 25.94.6c-.24 0-.47.1-.66.24-.19.15-.33.36-.39.6l-2.94 9h-11.9l-2.94-9A1.14 1.14 0 0 0 6.07.58a1.15 1.15 0 0 0-1.14.72L.58 12.68l-.05.11a8.1 8.1 0 0 0 2.68 9.34l.02.01.04.03 6.63 4.97 3.28 2.48 2 1.52a1.35 1.35 0 0 0 1.62 0l2-1.52 3.28-2.48 6.67-5h.02a8.09 8.09 0 0 0 2.7-9.36Z\" fill=\"#E24329\"></path><path d=\"m31.46 12.78-.04-.12a14.75 14.75 0 0 0-5.86 2.64l-9.55 7.24 6.09 4.6 6.67-5h.02a8.09 8.09 0 0 0 2.67-9.36Z\" fill=\"#FC6D26\"></path><path d=\"m9.9 27.14 3.28 2.48 2 1.52a1.35 1.35 0 0 0 1.62 0l2-1.52 3.28-2.48-6.1-4.6-6.07 4.6Z\" fill=\"#FCA326\"></path><path d=\"M6.44 15.3a14.71 14.71 0 0 0-5.86-2.63l-.05.12a8.1 8.1 0 0 0 2.68 9.34l.02.01.04.03 6.63 4.97 6.1-4.6-9.56-7.24Z\" fill=\"#FC6D26\"></path>"
+  },
+  "vs code": {
+    "viewBox": "0 0 100 100",
+    "inner": "<mask id=\"tsvgR1v8ptbtb-a\" width=\"100\" height=\"100\" x=\"0\" y=\"0\" mask-type=\"alpha\" maskUnits=\"userSpaceOnUse\"><path fill=\"#fff\" fillRule=\"evenodd\" d=\"M70.912 99.317a6.223 6.223 0 0 0 4.96-.19l20.589-9.907A6.25 6.25 0 0 0 100 83.587V16.413a6.25 6.25 0 0 0-3.54-5.632L75.874.874a6.226 6.226 0 0 0-7.104 1.21L29.355 38.04 12.187 25.01a4.162 4.162 0 0 0-5.318.236l-5.506 5.009a4.168 4.168 0 0 0-.004 6.162L16.247 50 1.36 63.583a4.168 4.168 0 0 0 .004 6.162l5.506 5.01a4.162 4.162 0 0 0 5.318.236l17.168-13.032L68.77 97.917a6.217 6.217 0 0 0 2.143 1.4ZM75.015 27.3 45.11 50l29.906 22.701V27.3Z\" clipRule=\"evenodd\"></path></mask><g mask=\"url(#tsvgR1v8ptbtb-a)\"><path fill=\"#0065A9\" d=\"M96.461 10.796 75.857.876a6.23 6.23 0 0 0-7.107 1.207l-67.451 61.5a4.167 4.167 0 0 0 .004 6.162l5.51 5.009a4.167 4.167 0 0 0 5.32.236l81.228-61.62c2.725-2.067 6.639-.124 6.639 3.297v-.24a6.25 6.25 0 0 0-3.539-5.63Z\"></path><g filter=\"url(#tsvgR1v8ptbtb-b)\"><path fill=\"#007ACC\" d=\"m96.461 89.204-20.604 9.92a6.229 6.229 0 0 1-7.107-1.207l-67.451-61.5a4.167 4.167 0 0 1 .004-6.162l5.51-5.009a4.167 4.167 0 0 1 5.32-.236l81.228 61.62c2.725 2.067 6.639.124 6.639-3.297v.24a6.25 6.25 0 0 1-3.539 5.63Z\"></path></g><g filter=\"url(#tsvgR1v8ptbtb-c)\"><path fill=\"#1F9CF0\" d=\"M75.858 99.126a6.232 6.232 0 0 1-7.108-1.21c2.306 2.307 6.25.674 6.25-2.588V4.672c0-3.262-3.944-4.895-6.25-2.589a6.232 6.232 0 0 1 7.108-1.21l20.6 9.908A6.25 6.25 0 0 1 100 16.413v67.174a6.25 6.25 0 0 1-3.541 5.633l-20.601 9.906Z\"></path></g><path fill=\"url(#tsvgR1v8ptbtb-d)\" fillRule=\"evenodd\" d=\"M70.851 99.317a6.224 6.224 0 0 0 4.96-.19L96.4 89.22a6.25 6.25 0 0 0 3.54-5.633V16.413a6.25 6.25 0 0 0-3.54-5.632L75.812.874a6.226 6.226 0 0 0-7.104 1.21L29.294 38.04 12.126 25.01a4.162 4.162 0 0 0-5.317.236l-5.507 5.009a4.168 4.168 0 0 0-.004 6.162L16.186 50 1.298 63.583a4.168 4.168 0 0 0 .004 6.162l5.507 5.009a4.162 4.162 0 0 0 5.317.236L29.294 61.96l39.414 35.958a6.218 6.218 0 0 0 2.143 1.4ZM74.954 27.3 45.048 50l29.906 22.701V27.3Z\" clipRule=\"evenodd\" opacity=\".25\" style=\"mix-blend-mode:overlay\"></path></g><defs><filter id=\"tsvgR1v8ptbtb-b\" width=\"116.727\" height=\"92.246\" x=\"-8.394\" y=\"15.829\" color-interpolation-filters=\"sRGB\" filterUnits=\"userSpaceOnUse\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feColorMatrix in=\"SourceAlpha\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\"></feColorMatrix><feOffset></feOffset><feGaussianBlur stdDeviation=\"4.167\"></feGaussianBlur><feColorMatrix values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\"></feColorMatrix><feBlend in2=\"BackgroundImageFix\" mode=\"overlay\" result=\"effect1_dropShadow\"></feBlend><feBlend in=\"SourceGraphic\" in2=\"effect1_dropShadow\" result=\"shape\"></feBlend></filter><filter id=\"tsvgR1v8ptbtb-c\" width=\"47.917\" height=\"116.151\" x=\"60.417\" y=\"-8.076\" color-interpolation-filters=\"sRGB\" filterUnits=\"userSpaceOnUse\"><feFlood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feFlood><feColorMatrix in=\"SourceAlpha\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\"></feColorMatrix><feOffset></feOffset><feGaussianBlur stdDeviation=\"4.167\"></feGaussianBlur><feColorMatrix values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0\"></feColorMatrix><feBlend in2=\"BackgroundImageFix\" mode=\"overlay\" result=\"effect1_dropShadow\"></feBlend><feBlend in=\"SourceGraphic\" in2=\"effect1_dropShadow\" result=\"shape\"></feBlend></filter><linearGradient id=\"tsvgR1v8ptbtb-d\" x1=\"49.939\" x2=\"49.939\" y1=\".258\" y2=\"99.742\" gradientUnits=\"userSpaceOnUse\"><stop stopColor=\"#fff\"></stop><stop offset=\"1\" stopColor=\"#fff\" stopOpacity=\"0\"></stop></linearGradient></defs>"
+  },
+  "postman": {
+    "viewBox": "0 0 256 256",
+    "inner": "<path d=\"M254.953 144.253c8.959-70.131-40.569-134.248-110.572-143.206C74.378-7.912 10.005 41.616 1.047 111.619c-8.959 70.003 40.569 134.248 110.572 143.334 70.131 8.959 134.248-40.569 143.334-110.7Z\" fill=\"#FF6C37\"></path><path d=\"m174.2 82.184-54.007 54.007-15.229-15.23c53.11-53.11 58.358-48.503 69.236-38.777Z\" fill=\"#FFF\"></path><path d=\"M120.193 137.47c-.384 0-.64-.128-.895-.384l-15.358-15.229a1.237 1.237 0 0 1 0-1.792c54.007-54.006 59.638-48.887 71.028-38.649.255.256.383.512.383.896s-.128.64-.383.896l-54.007 53.878c-.128.256-.512.384-.768.384Zm-13.437-16.509 13.437 13.438 52.087-52.087c-9.47-8.446-15.87-11.006-65.524 38.65Z\" fill=\"#FF6C37\"></path><path d=\"m135.679 151.676-14.718-14.718 54.007-54.006c14.46 14.59-7.167 38.265-39.29 68.724Z\" fill=\"#FFF\"></path><path d=\"M135.679 152.956c-.384 0-.64-.128-.896-.384l-14.718-14.718c-.256-.256-.256-.512-.256-.896s.128-.64.384-.895L174.2 82.056a1.237 1.237 0 0 1 1.791 0 15.58 15.58 0 0 1 4.991 11.902c-.256 14.206-16.38 32.25-44.28 58.614-.383.256-.767.384-1.023.384Zm-12.926-15.998c8.19 8.319 11.646 11.646 12.926 12.926 21.5-20.476 42.36-41.464 42.488-55.926.128-3.327-1.152-6.655-3.327-9.214l-52.087 52.214Z\" fill=\"#FF6C37\"></path><path d=\"m105.22 121.345 10.878 10.878c.256.256.256.512 0 .768-.128.128-.128.128-.256.128l-22.524 4.863c-1.152.128-2.175-.64-2.431-1.791-.128-.64.128-1.28.512-1.664l13.053-13.054c.256-.256.64-.384.768-.128Z\" fill=\"#FFF\"></path><path d=\"M92.934 139.262c-1.92 0-3.327-1.536-3.327-3.455 0-.896.384-1.792 1.024-2.432l13.053-13.054c.768-.64 1.792-.64 2.56 0l10.878 10.878c.768.64.768 1.792 0 2.56-.256.256-.512.384-.896.512l-22.524 4.863c-.256 0-.512.128-.768.128Zm11.902-16.51-12.542 12.543c-.256.256-.383.64-.128 1.024.128.383.512.511.896.383l21.116-4.607-9.342-9.342Z\" fill=\"#FF6C37\"></path><path d=\"M202.739 52.238c-8.191-7.935-21.373-7.679-29.307.64-7.935 8.318-7.679 21.372.64 29.306A20.678 20.678 0 0 0 199.155 85l-14.59-14.59 18.174-18.172Z\" fill=\"#FFF\"></path><path d=\"M188.405 89.223c-12.158 0-22.012-9.854-22.012-22.012 0-12.158 9.854-22.012 22.012-22.012 5.631 0 11.134 2.176 15.23 6.143.255.256.383.512.383.896s-.128.64-.384.895L186.357 70.41l13.566 13.566c.512.512.512 1.28 0 1.792l-.256.256c-3.327 2.047-7.295 3.199-11.262 3.199Zm0-41.337c-10.75 0-19.452 8.703-19.324 19.453 0 10.75 8.702 19.452 19.452 19.324 2.944 0 5.887-.64 8.575-2.047l-13.438-13.31c-.256-.256-.384-.512-.384-.896s.128-.64.384-.895l17.149-17.15c-3.456-2.943-7.807-4.479-12.414-4.479Z\" fill=\"#FF6C37\"></path><path d=\"m203.122 52.622-.255-.256-18.301 18.044 14.461 14.462c1.408-.896 2.816-1.92 3.967-3.072a20.51 20.51 0 0 0 .128-29.178Z\" fill=\"#FFF\"></path><path d=\"M199.155 86.28c-.384 0-.64-.128-.896-.384l-14.589-14.59c-.256-.256-.384-.512-.384-.896s.128-.64.384-.895l18.173-18.173a1.237 1.237 0 0 1 1.791 0l.384.256c8.575 8.574 8.575 22.396.128 31.098-1.28 1.28-2.687 2.432-4.223 3.328-.384.128-.64.256-.768.256Zm-12.798-15.87 12.926 12.926c1.024-.64 2.048-1.536 2.816-2.304 7.294-7.294 7.678-19.196.64-26.875L186.357 70.41Z\" fill=\"#FF6C37\"></path><path d=\"M176.375 84.488a7.879 7.879 0 0 0-11.134 0l-48.247 48.247 8.063 8.063 51.062-44.792c3.328-2.816 3.584-7.807.768-11.134-.256-.128-.384-.256-.512-.384Z\" fill=\"#FFF\"></path><path d=\"M124.929 142.077c-.384 0-.64-.128-.896-.383l-8.063-8.063a1.237 1.237 0 0 1 0-1.792l48.247-48.247a9.115 9.115 0 0 1 12.926 0 9.115 9.115 0 0 1 0 12.926l-.384.384-51.063 44.792c-.128.255-.384.383-.767.383Zm-6.143-9.342 6.27 6.271 50.167-44.024c2.816-2.304 3.072-6.527.768-9.342-2.303-2.816-6.526-3.072-9.342-.768-.128.128-.256.256-.512.384l-47.351 47.48Z\" fill=\"#FF6C37\"></path><path d=\"M80.009 187.637c-.512.256-.768.768-.64 1.28l2.175 9.214c.512 1.28-.256 2.816-1.663 3.2-1.024.384-2.176 0-2.816-.768l-14.077-13.95 45.943-45.943 15.87.256 10.75 10.75c-2.56 2.175-18.045 17.149-55.542 35.961Z\" fill=\"#FFF\"></path><path d=\"M78.985 202.61c-1.024 0-2.048-.383-2.688-1.151l-13.95-13.95c-.255-.256-.383-.512-.383-.896 0-.383.128-.64.384-.895l45.944-45.944c.256-.256.64-.384.895-.384l15.87.256c.383 0 .64.128.895.384l10.75 10.75c.256.256.384.64.384 1.024s-.128.64-.512.896l-.895.767c-13.566 11.902-31.995 23.804-54.902 35.194l2.175 9.086c.384 1.664-.384 3.456-1.92 4.352-.767.384-1.407.512-2.047.512Zm-14.078-15.997 13.182 13.054c.384.64 1.152.896 1.792.512.64-.384.896-1.152.512-1.792l-2.176-9.214c-.256-1.152.256-2.176 1.28-2.688 22.652-11.39 40.952-23.163 54.39-34.81l-9.47-9.47-14.718-.256-44.792 44.664Z\" fill=\"#FF6C37\"></path><path d=\"m52.11 197.62 11.006-11.007 16.38 16.381-26.107-1.791c-1.151-.128-1.92-1.152-1.791-2.304 0-.512.128-1.024.512-1.28Z\" fill=\"#FFF\"></path><path d=\"m79.497 204.146-26.236-1.791c-1.92-.128-3.199-1.792-3.071-3.712.128-.768.384-1.535 1.024-2.047L62.22 185.59a1.237 1.237 0 0 1 1.792 0l16.38 16.38c.385.385.512.897.257 1.408-.256.512-.64.768-1.152.768Zm-16.381-15.74-10.11 10.11c-.384.255-.384.895 0 1.151.127.128.255.256.511.256l22.652 1.536-13.053-13.054ZM104.452 146.557c-.768 0-1.28-.64-1.28-1.28 0-.384.128-.64.384-.896l12.414-12.414a1.237 1.237 0 0 1 1.792 0l8.062 8.063c.384.384.512.768.384 1.28-.128.384-.512.767-1.023.895l-20.477 4.352h-.256Zm12.414-11.902-8.446 8.446 13.821-2.943-5.375-5.503Z\" fill=\"#FF6C37\"></path><path d=\"m124.8 140.926-14.077 3.071c-1.024.256-2.048-.384-2.303-1.408-.128-.64 0-1.28.511-1.791l7.807-7.807 8.063 7.935Z\" fill=\"#FFF\"></path><path d=\"M110.467 145.277a3.168 3.168 0 0 1-3.2-3.2c0-.895.385-1.663.897-2.303l7.806-7.807a1.237 1.237 0 0 1 1.792 0l8.062 8.063c.384.384.512.768.384 1.28-.128.384-.512.767-1.023.895l-14.078 3.072h-.64Zm6.399-10.622-6.91 6.91c-.257.257-.257.512-.129.768s.384.384.768.384l11.774-2.56-5.503-5.502ZM203.25 64.907c-.256-.767-1.151-1.151-1.92-.895-.767.255-1.151 1.151-.895 1.92 0 .127.128.255.128.383.768 1.536.512 3.455-.512 4.863-.512.64-.384 1.536.128 2.048.64.512 1.536.384 2.048-.256 1.92-2.432 2.303-5.503 1.023-8.063Z\" fill=\"#FF6C37\"></path>"
+  },
+  "figma": {
+    "viewBox": "0 0 54 80",
+    "inner": "<g clipPath=\"url(#tsvgR1f8ptbtb-clip0_912_3)\"><path d=\"M13.3333 80.0002C20.6933 80.0002 26.6667 74.0268 26.6667 66.6668V53.3335H13.3333C5.97333 53.3335 0 59.3068 0 66.6668C0 74.0268 5.97333 80.0002 13.3333 80.0002Z\" fill=\"#0ACF83\"></path><path d=\"M0 39.9998C0 32.6398 5.97333 26.6665 13.3333 26.6665H26.6667V53.3332H13.3333C5.97333 53.3332 0 47.3598 0 39.9998Z\" fill=\"#A259FF\"></path><path d=\"M0 13.3333C0 5.97333 5.97333 0 13.3333 0H26.6667V26.6667H13.3333C5.97333 26.6667 0 20.6933 0 13.3333Z\" fill=\"#F24E1E\"></path><path d=\"M26.6667 0H40.0001C47.3601 0 53.3334 5.97333 53.3334 13.3333C53.3334 20.6933 47.3601 26.6667 40.0001 26.6667H26.6667V0Z\" fill=\"#FF7262\"></path><path d=\"M53.3334 39.9998C53.3334 47.3598 47.3601 53.3332 40.0001 53.3332C32.6401 53.3332 26.6667 47.3598 26.6667 39.9998C26.6667 32.6398 32.6401 26.6665 40.0001 26.6665C47.3601 26.6665 53.3334 32.6398 53.3334 39.9998Z\" fill=\"#1ABCFE\"></path></g><defs><clipPath id=\"tsvgR1f8ptbtb-clip0_912_3\"><rect width=\"53.3333\" height=\"80\" fill=\"white\"></rect></clipPath></defs>"
+  },
+  "slack": {
+    "viewBox": "0 0 2447.6 2452.5",
+    "inner": "<g clipRule=\"evenodd\" fillRule=\"evenodd\"><path d=\"m897.4 0c-135.3.1-244.8 109.9-244.7 245.2-.1 135.3 109.5 245.1 244.8 245.2h244.8v-245.1c.1-135.3-109.5-245.1-244.9-245.3.1 0 .1 0 0 0m0 654h-652.6c-135.3.1-244.9 109.9-244.8 245.2-.2 135.3 109.4 245.1 244.7 245.3h652.7c135.3-.1 244.9-109.9 244.8-245.2.1-135.4-109.5-245.2-244.8-245.3z\" fill=\"#36c5f0\"></path><path d=\"m2447.6 899.2c.1-135.3-109.5-245.1-244.8-245.2-135.3.1-244.9 109.9-244.8 245.2v245.3h244.8c135.3-.1 244.9-109.9 244.8-245.3zm-652.7 0v-654c.1-135.2-109.4-245-244.7-245.2-135.3.1-244.9 109.9-244.8 245.2v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.3z\" fill=\"#2eb67d\"></path><path d=\"m1550.1 2452.5c135.3-.1 244.9-109.9 244.8-245.2.1-135.3-109.5-245.1-244.8-245.2h-244.8v245.2c-.1 135.2 109.5 245 244.8 245.2zm0-654.1h652.7c135.3-.1 244.9-109.9 244.8-245.2.2-135.3-109.4-245.1-244.7-245.3h-652.7c-135.3.1-244.9 109.9-244.8 245.2-.1 135.4 109.4 245.2 244.7 245.3z\" fill=\"#ecb22e\"></path><path d=\"m0 1553.2c-.1 135.3 109.5 245.1 244.8 245.2 135.3-.1 244.9-109.9 244.8-245.2v-245.2h-244.8c-135.3.1-244.9 109.9-244.8 245.2zm652.7 0v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.2v-653.9c.2-135.3-109.4-245.1-244.7-245.3-135.4 0-244.9 109.8-244.8 245.1 0 0 0 .1 0 0\" fill=\"#e01e5a\"></path></g>"
+  },
+  "vercel": {
+    "viewBox": "0 0 256 222",
+    "inner": "<path fill=\"#fff\" d=\"m128 0 128 221.705H0z\"></path>"
+  },
+  "php": {
+    "viewBox": "0 0 100 50",
+    "inner": "<ellipse cx=\"50\" cy=\"25\" rx=\"48\" ry=\"24\" fill=\"#777BB4\"/><path fill=\"#FFF\" d=\"M7.579 10.123h14.204c4.169.035 7.19 1.237 9.063 3.604 1.873 2.367 2.491 5.6 1.855 9.699-.247 1.873-.795 3.71-1.643 5.512a16.385 16.385 0 01-3.392 4.876c-1.767 1.837-3.657 3.003-5.671 3.498a26.11 26.11 0 01-6.254.742h-6.36l-2.014 10.07H0l7.579-38.001m6.201 6.042l-3.18 15.9c.212.035.424.053.636.053h.742c3.392.035 6.219-.3 8.48-1.007 2.261-.742 3.781-3.321 4.558-7.738.636-3.71 0-5.848-1.908-6.413-1.873-.565-4.222-.83-7.049-.795-.424.035-.83.053-1.219.053h-1.113l.053-.053M41.093 0h7.314L46.34 10.123h6.572c3.604.071 6.289.813 8.056 2.226 1.802 1.413 2.332 4.099 1.59 8.056l-3.551 17.649h-7.42L54.979 21.2c.353-1.767.247-3.021-.318-3.763s-1.784-1.113-3.657-1.113l-5.883-.053-4.346 21.783h-7.314L41.093 0M70.412 10.123h14.204c4.169.035 7.19 1.237 9.063 3.604 1.873 2.367 2.491 5.6 1.855 9.699-.247 1.873-.795 3.71-1.643 5.512a16.385 16.385 0 01-3.392 4.876c-1.767 1.837-3.657 3.003-5.671 3.498a26.11 26.11 0 01-6.254.742h-6.36L70.2 48.124h-7.367l7.579-38.001m6.201 6.042l-3.18 15.9c.212.035.424.053.636.053h.742c3.392.035 6.219-.3 8.48-1.007 2.261-.742 3.781-3.321 4.558-7.738.636-3.71 0-5.848-1.908-6.413-1.873-.565-4.222-.83-7.049-.795-.424.035-.83.053-1.219.053H76.56l.053-.053\"/>"
+  },
+  "next.js": {
+    "viewBox": "0 0 394 80",
+    "inner": "<rect width=\"394\" height=\"80\" rx=\"14\" fill=\"#000\"/><path d=\"M261.919 0.033H330.547V12.7H303.323V79.339H289.71V12.7H261.919V0.033Z\" fill=\"#FFF\"/><path d=\"M149.052 0.033V12.7H94.042V33.077H138.281V45.744H94.042V66.672H149.052V79.339H80.43V12.7H80.424V0.033H149.052Z\" fill=\"#FFF\"/><path d=\"M183.32 0.066H165.506L229.312 79.372H247.178L215.271 39.746L247.127 0.127L229.312 0.154L206.352 28.67L183.32 0.066Z\" fill=\"#FFF\"/><path d=\"M201.6 56.715L192.679 45.623L165.455 79.433H183.32L201.6 56.715Z\" fill=\"#FFF\"/><path fillRule=\"evenodd\" clipRule=\"evenodd\" d=\"M80.907 79.339L17.015 0H0V79.306H13.612V16.952L63.807 79.339H80.907Z\" fill=\"#FFF\"/><path d=\"M333.607 78.855c-1 0-1.845-.345-2.555-1.036-.71-.69-1.061-1.527-1.052-2.517-.01-.964.341-1.791 1.052-2.482.71-.69 1.558-1.036 2.555-1.036.96 0 1.798.345 2.508 1.036.72.691 1.079 1.518 1.089 2.482-.01.654-.176 1.254-.508 1.79-.341.546-.774.973-1.319 1.282-.535.319-1.125.481-1.77.481z\" fill=\"#FFF\"/><path d=\"M356.84 45.445H362.872V68.685c-.009 2.135-.471 3.962-1.374 5.498-.913 1.536-2.177 2.709-3.8 3.536-1.614.818-3.505 1.236-5.654 1.236-1.965 0-3.726-.354-5.294-1.045-1.568-.69-2.813-1.727-3.726-3.09-.923-1.363-1.375-3.063-1.375-5.099H347.69c.009.89.213 1.663.6 2.308.387.646.922 1.136 1.605 1.482.691.345 1.485.518 2.379.518.969 0 1.799-.2 2.472-.609.673-.4 1.19-.999 1.55-1.799.35-.791.535-1.772.544-2.936V45.445z\" fill=\"#FFF\"/><path d=\"M387.691 54.534c-.147-1.409-.793-2.508-1.918-3.29-1.135-.79-2.601-1.181-4.4-1.181-1.263 0-2.351.191-3.255.564-.904.381-1.605.89-2.085 1.535-.479.645-.719 1.381-.738 2.208 0 .691.166 1.291.489 1.791.323.509.756.936 1.319 1.282.553.354 1.171.645 1.845.881.682.236 1.365.436 2.047.6l3.145.772c1.264.291 2.491.682 3.662 1.182 1.171.491 2.232 1.118 3.163 1.872.932.755 1.67 1.663 2.214 2.727.544 1.063.821 2.308.821 3.744 0 1.936-.498 3.635-1.504 5.108-1.005 1.463-2.453 2.608-4.353 3.435-1.891.818-4.178 1.236-6.871 1.236-2.601 0-4.87-.4-6.779-1.2-1.918-.79-3.413-1.954-4.492-3.481-1.079-1.527-1.66-3.39-1.743-5.58h5.977c.083 1.145.452 2.099 1.079 2.871.636.764 1.466 1.327 2.481 1.709 1.024.372 2.167.564 3.431.564 1.319 0 2.481-.2 3.486-.591.996-.39 1.78-.936 2.343-1.645.572-.7.858-1.527.867-2.472-.009-.864-.268-1.582-.766-2.145-.507-.564-1.208-1.036-2.103-1.418-.903-.382-1.955-.727-3.154-1.027l-3.818-.963c-2.758-.7-4.944-1.763-6.54-3.19-1.604-1.427-2.398-3.317-2.398-5.69 0-1.944.535-3.653 1.615-5.116 1.069-1.463 2.536-2.599 4.39-3.408 1.863-.818 3.966-1.218 6.308-1.218 2.38 0 4.464.4 6.263 1.218 1.798.809 3.21 1.936 4.233 3.372 1.024 1.436 1.559 3.081 1.587 4.944H387.691z\" fill=\"#FFF\"/>"
+  },
+  "bootstrap": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#7952B3\" d=\"M12.77 0h102.46C122.28 0 128 5.72 128 12.77v102.46c0 7.05-5.72 12.77-12.77 12.77H12.77C5.72 128 0 122.28 0 115.23V12.77C0 5.72 5.72 0 12.77 0z\"/><path fill=\"#FFF\" d=\"M41 33.6h27.4c12.2 0 19.8 6.4 19.8 16.5 0 8.3-5.2 13.9-12.8 15.5 9.4 1.7 15.6 7.8 15.6 17.5 0 11.5-8.8 18.9-22.6 18.9H41V33.6zm15.4 27h11.2c5.6 0 9-3.1 9-8s-3.4-8-9-8H56.4v16zm0 28.8h12.6c6.2 0 10.1-3.3 10.1-8.6 0-5.4-3.9-8.7-10.1-8.7H56.4v17.3z\"/>"
+  },
+  "fastapi": {
+    "viewBox": "0 0 128 128",
+    "inner": "<circle cx=\"64\" cy=\"64\" r=\"64\" fill=\"#009688\"/><path fill=\"#FFF\" d=\"M60.6 115.3v-40.1H38.3L70.4 12.7v40.2h21.5L60.6 115.3z\"/>"
+  },
+  "flask": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path d=\"M50 14h28M56 14v36L26 100c-5 9 1 16 10 16h56c9 0 15-7 10-16L72 50V14\" stroke=\"#000\" strokeWidth=\"8\" strokeLinecap=\"round\" strokeLinejoin=\"round\" fill=\"none\"/><path d=\"M40 84h48l12 20c3 6 0 8-6 8H34c-6 0-9-2-6-8l12-20z\" fill=\"#000\" opacity=\"0.8\"/>"
+  },
+  "rest api": {
+    "viewBox": "0 0 128 128",
+    "inner": "<rect width=\"128\" height=\"128\" rx=\"20\" fill=\"#0EA5E9\"/><path d=\"M46 34c-10 0-12 6-12 14v6c0 6-4 10-10 10 6 0 10 4 10 10v6c0 8 2 14 12 14M82 34c10 0 12 6 12 14v6c0 6 4 10 10 10-6 0-10 4-10 10v6c0 8-2 14-12 14\" stroke=\"#FFF\" strokeWidth=\"7\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/><circle cx=\"64\" cy=\"64\" r=\"5\" fill=\"#FFF\"/>"
+  },
+  "pandas": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#150458\" d=\"M23 16h20v96H23zM54 48h20v64H54zM85 72h20v40H85z\"/><circle cx=\"64\" cy=\"28\" r=\"10\" fill=\"#E70488\"/><circle cx=\"95\" cy=\"52\" r=\"10\" fill=\"#FFCA00\"/>"
+  },
+  "numpy": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#013243\" d=\"M64 12L12 38v52l52 26 52-26V38L64 12zm0 16l36 18-36 18-36-18 36-18zm-40 32l32 16v32L24 92V60zm48 48V76l32-16v32l-32 16z\"/><path fill=\"#4DABCF\" d=\"M64 28l36 18-36 18-36-18 36-18z\"/>"
+  },
+  "pytorch": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#EE4C2C\" d=\"M64 12l-5.6 5.6 20.4 20.4H64a38 38 0 1 0 38 38v-8h-8v8a30 30 0 1 1-30-30h14.8L58.4 25.6 64 12z\"/><circle cx=\"92\" cy=\"36\" r=\"6\" fill=\"#EE4C2C\"/>"
+  },
+  "streamlit": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#FF4B4B\" d=\"M89 60l36-19c1.2-.7 2.9.6 2.3 2L109 91H89V60zm-45-1l18 32-18 36c-.9 1.8-3 .7-2.4-1.2L55 91H44V59zm79-37L67 2c-1.4-.8-2.7-.8-4.1 0L5 34c-1.4.8-2 2.7-1 4.1L64 121c1.1 1.7 2.8 1.7 3.9 0l60-83c1-1.4.4-3.3-1-4.1l-3-1.7z\"/>"
+  },
+  "power bi": {
+    "viewBox": "0 0 128 128",
+    "inner": "<rect x=\"16\" y=\"56\" width=\"22\" height=\"56\" rx=\"4\" fill=\"#F2C811\"/><rect x=\"46\" y=\"36\" width=\"22\" height=\"76\" rx=\"4\" fill=\"#E6AD10\"/><rect x=\"76\" y=\"16\" width=\"22\" height=\"96\" rx=\"4\" fill=\"#B78207\"/><rect x=\"46\" y=\"36\" width=\"22\" height=\"76\" rx=\"4\" fill=\"#E6AD10\" opacity=\"0.85\"/>"
+  },
+  "google looker": {
+    "viewBox": "0 0 128 128",
+    "inner": "<circle cx=\"64\" cy=\"64\" r=\"64\" fill=\"#4285F4\"/><circle cx=\"64\" cy=\"40\" r=\"16\" fill=\"#FFF\"/><circle cx=\"44\" cy=\"80\" r=\"14\" fill=\"#FFF\"/><circle cx=\"84\" cy=\"80\" r=\"14\" fill=\"#FFF\"/><path d=\"M64 40L44 80M64 40L84 80\" stroke=\"#FFF\" strokeWidth=\"6\"/>"
+  },
+  "tableau": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#E97627\" d=\"M61 14h6v18h-6zM61 96h6v18h-6zM55 20h18v6H55zM55 102h18v6H55z\"/><path fill=\"#E8762D\" d=\"M61 46h6v36h-6zM46 61h36v6H46z\"/><path fill=\"#4E79A7\" d=\"M26 49h6v30h-6zM14 61h30v6H14zM96 49h6v30h-6zM84 61h30v6H84z\"/><path fill=\"#59A14F\" d=\"M37 28h6v18h-6zM31 34h18v6H31zM91 82h6v18h-6zM85 88h18v6H85z\"/><path fill=\"#EDC948\" d=\"M91 28h6v18h-6zM85 34h18v6H85zM37 82h6v18h-6zM31 88h18v6H31z\"/>"
+  },
+  "opencv": {
+    "viewBox": "0 0 128 128",
+    "inner": "<circle cx=\"64\" cy=\"40\" r=\"24\" fill=\"none\" stroke=\"#EE3524\" strokeWidth=\"14\"/><circle cx=\"40\" cy=\"82\" r=\"24\" fill=\"none\" stroke=\"#00A651\" strokeWidth=\"14\"/><circle cx=\"88\" cy=\"82\" r=\"24\" fill=\"none\" stroke=\"#2E3192\" strokeWidth=\"14\"/>"
+  },
+  "manus ai": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#A855F7\" d=\"M64 10l50 28v54l-50 28-50-28V38l50-28zm0 18l-34 19v38l34 19 34-19V47L64 28z\"/><circle cx=\"64\" cy=\"64\" r=\"14\" fill=\"#C084FC\"/>"
+  },
+  "langchain": {
+    "viewBox": "0 0 128 128",
+    "inner": "<circle cx=\"64\" cy=\"64\" r=\"64\" fill=\"#1C3C3C\"/><path fill=\"#2E7D32\" d=\"M64 20c-14 0-26 12-26 26 0 8 4 15 10 20l-16 28h24l8-14h16l8 14h24L96 66c6-5 10-12 10-20 0-14-12-26-26-26z\"/><circle cx=\"56\" cy=\"42\" r=\"5\" fill=\"#FFF\"/><circle cx=\"56\" cy=\"42\" r=\"2\" fill=\"#000\"/><path d=\"M72 44l16 8-16 8z\" fill=\"#F57C00\"/>"
+  },
+  "langgraph": {
+    "viewBox": "0 0 128 128",
+    "inner": "<circle cx=\"64\" cy=\"32\" r=\"16\" fill=\"#00A67E\"/><circle cx=\"32\" cy=\"88\" r=\"16\" fill=\"#00A67E\"/><circle cx=\"96\" cy=\"88\" r=\"16\" fill=\"#00A67E\"/><path d=\"M64 32L32 88M64 32L96 88M32 88L96 88\" stroke=\"#00A67E\" strokeWidth=\"8\"/>"
+  },
+  "google colab": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#F9AB00\" d=\"M90.3 26.5a37.5 37.5 0 0 0-26.3 11 37.5 37.5 0 0 0-.7 52.3l12.5-12.5a19.7 19.7 0 0 1 14.4-33.2c5.6 0 10.6 2.3 13.6 5.8a19.8 19.8 0 0 1 3.5 22.8l12.6 12.6A37.7 37.7 0 0 0 90.3 26.5z\"/><path fill=\"#E8710A\" d=\"M37.7 26.5a37.7 37.7 0 0 0-29.8 58.7l12.6-12.6a19.8 19.8 0 0 1 3.5-22.8c3-3.5 8-5.8 13.6-5.8 7.8 0 14.5 4.5 17.6 11.1l12.5-12.5A37.5 37.5 0 0 0 37.7 26.5z\"/>"
+  },
+  "chromadb": {
+    "viewBox": "0 0 128 128",
+    "inner": "<circle cx=\"48\" cy=\"50\" r=\"28\" fill=\"#FFDE2D\"/><circle cx=\"80\" cy=\"50\" r=\"28\" fill=\"#FF6446\" opacity=\"0.9\"/><circle cx=\"64\" cy=\"82\" r=\"28\" fill=\"#327EFF\" opacity=\"0.9\"/>"
+  },
+  "github actions": {
+    "viewBox": "0 0 128 128",
+    "inner": "<rect x=\"8\" y=\"30\" width=\"112\" height=\"68\" rx=\"34\" fill=\"#2088FF\"/><circle cx=\"38\" cy=\"64\" r=\"10\" fill=\"#FFF\"/><circle cx=\"90\" cy=\"64\" r=\"10\" fill=\"#FFF\" opacity=\"0.6\"/><path d=\"M48 64h32\" stroke=\"#FFF\" strokeWidth=\"6\"/><path d=\"M62 52l14 12-14 12z\" fill=\"#FFF\"/>"
+  },
+  "nginx": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path d=\"M64 12l48 26v52L64 116 16 90V38L64 12z\" fill=\"#009639\"/><path d=\"M44 40v48l40-48v48\" stroke=\"#FFF\" strokeWidth=\"12\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>"
+  },
+  "cloudflare": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path d=\"M96 52c-2-14-14-24-28-24-11 0-21 6-25 16-2 0-3-.3-5-.3-14 0-26 11-26 25 0 2 .2 4 .6 6H104c10 0 18-8 18-18 0-9-7-17-16-17-.6 0-1.3 0-2 .2l-8-7.9z\" fill=\"#F38020\"/><path d=\"M96 75H38c-1 0-2-.8-2-1.8 0-1 .8-1.8 1.8-1.8H96c1 0 2 .8 2 1.8 0 1-.8 1.8-2 1.8z\" fill=\"#FAAE40\"/>"
+  },
+  "jira": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#0052CC\" d=\"M61.7 61.4H0C0 44.5 13.9 30.7 30.8 30.7h11.2V19.9C42 8.9 50.9 0 61.9 0v61.4zm30.5-30.7H30.8C30.8 13.8 44.7 0 61.6 0h11.2v10.9c0 10.9 8.9 19.8 19.4 19.8v-.01zm30.6-30.7H61.4C61.4-16.9 75.3-30.7 92.2-30.7h11.2v10.8c0 11 8.9 19.9 19.4 19.9z\" transform=\"translate(2.6, 2)\"/>"
+  },
+  "atlassian": {
+    "viewBox": "0 0 128 128",
+    "inner": "<path fill=\"#0052CC\" d=\"M38 59.1a3.6 3.6 0 0 0-6.2.7L.4 122.5A3.7 3.7 0 0 0 3.8 128h43.7a3.6 3.6 0 0 0 3.3-2.1c9.5-19.5 3.7-49.1-12.8-66.8zM61 2a82.7 82.7 0 0 0-4.8 81.7l21.1 42.1a3.7 3.7 0 0 0 3.3 2.1h43.7a3.7 3.7 0 0 0 3.4-5.4L67.4 2a3.5 3.5 0 0 0-6.4 0z\"/>"
+  }
+};
+
+const ALIASES: Record<string, string> = {
+  "c sharp": "c#",
+  "csharp": "c#",
+  "c plus plus": "c++",
+  "cplusplus": "c++",
+  "golang": "go",
+  "go lang": "go",
+  "tailwindcss": "tailwind css",
+  "tailwind": "tailwind css",
+  "react": "react.js",
+  "reactjs": "react.js",
+  "nextjs": "next.js",
+  "next": "next.js",
+  "vuejs": "vue.js",
+  "vue": "vue.js",
+  "nodejs": "node.js",
+  "node": "node.js",
+  "scikit learn": "scikit-learn",
+  "scikitlearn": "scikit-learn",
+  "powerbi": "power bi",
+  "power-bi": "power bi",
+  "microsoft power bi": "power bi",
+  "looker": "google looker",
+  "google looker studio": "google looker",
+  "looker studio": "google looker",
+  "githubactions": "github actions",
+  "gcp": "google cloud",
+  "google cloud platform": "google cloud",
+  "amazon web services": "aws",
+  "vscode": "vs code",
+  "visual studio code": "vs code",
+  "openai": "chatgpt",
+  "anthropic": "claude",
+  "copilot": "github copilot",
+  "colab": "google colab",
+  "rest": "rest api",
+  "chroma": "chromadb",
+  "chroma db": "chromadb",
+  "langraph": "langgraph",
+  "codex": "openai codex",
+};
+
+export function getTechSvg(name: string): SvgDef | null {
+  if (!name) return null;
+  const raw = name.trim().toLowerCase();
+  if (ICONS[raw]) return ICONS[raw];
+  const aliased = ALIASES[raw] || ALIASES[raw.replace(/[.\s-]+/g, " ")];
+  if (aliased && ICONS[aliased]) return ICONS[aliased];
+  return null;
+}
+
+export function TechIcon({
+  name,
+  className = "h-[60%] w-[60%] shrink-0",
+  style,
+}: TechIconProps) {
+  const icon = getTechSvg(name);
+
+  if (!icon) {
+    const letter = name ? name.trim().charAt(0).toUpperCase() : "?";
+    return (
+      <span
+        className={`${className} inline-flex items-center justify-center rounded bg-neutral-200 dark:bg-neutral-800 text-[0.65em] font-bold text-neutral-800 dark:text-neutral-200 select-none`}
+        aria-hidden="true"
+        style={style}
+      >
+        {letter}
+      </span>
     );
   }
 
-  // Default fallback smart icon
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="12 2 2 7 12 12 22 7 12 2" />
-      <polyline points="2 17 12 22 22 17" />
-      <polyline points="2 12 12 17 22 12" />
-    </svg>
+    <svg
+      className={className}
+      viewBox={icon.viewBox}
+      aria-hidden="true"
+      style={style}
+      xmlns="http://www.w3.org/2000/svg"
+      dangerouslySetInnerHTML={{ __html: icon.inner }}
+    />
   );
 }

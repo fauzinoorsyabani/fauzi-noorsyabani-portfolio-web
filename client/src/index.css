@@ -447,8 +447,10 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
 /* ── Red dot browser mockup circles — keep them vivid ────────────────────── */
 .dark .theme-root .bg-red-400 { background-color: #f87171 !important; }
 .dark .theme-root .bg-amber-400 { background-color: #fbbf24 !important; }
-.dark .theme-root .bg-emerald-400 { background-color: #34d399 !important; }
-.network-dialog { animation: network-dialog-in 360ms var(--motion-snap) both; }
+.network-dialog {
+  animation: network-dialog-in 360ms var(--motion-snap) both;
+  max-height: calc(100dvh - 2.5rem) !important;
+}
 .portrait-dossier::before { content: ""; position: absolute; inset: 12% 8% auto auto; z-index: 2; height: 9rem; width: 9rem; border-top: 1px solid rgba(0,0,0,.08); border-right: 1px solid rgba(0,0,0,.08); opacity: .75; pointer-events: none; }
 .portrait-dossier::after { content: ""; position: absolute; inset: auto auto 13% 7%; z-index: 2; height: 6rem; width: 6rem; border-left: 1px solid rgba(0,0,0,.08); border-bottom: 1px solid rgba(0,0,0,.08); pointer-events: none; }
 .portrait-dossier-rule { animation: portrait-rule-trace 5.8s var(--motion-curve) infinite alternate; }
