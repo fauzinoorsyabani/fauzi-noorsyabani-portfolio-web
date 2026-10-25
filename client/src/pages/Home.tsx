@@ -1059,34 +1059,8 @@ export default function Home() {
                 decoding="async"
                 className="hero-portrait relative z-10 h-[360px] w-full max-w-[570px] rounded-2xl border border-neutral-300 object-cover object-center shadow-xl shadow-neutral-900/10 sm:h-[480px] lg:h-[530px]"
               />
-              <div className="hero-evidence absolute bottom-0 left-0 z-20 w-[210px] rounded-xl border border-neutral-300 bg-white/95 p-3.5 shadow-xl backdrop-blur-md sm:w-[244px] sm:-left-4 sm:bottom-5 sm:p-4">
-                <div className="flex items-center gap-2">
-                  <img src={assetUrls.logo} alt="" aria-hidden="true" className="h-8 w-8" />
-                  <p className="mono-type text-[0.58rem] font-bold uppercase tracking-[0.14em] text-neutral-950">
-                    FN / Evidence field
-                  </p>
-                </div>
-                <div className="mt-4 space-y-2 border-t border-neutral-200 pt-3 mono-type text-[0.58rem] leading-5 tracking-[0.08em] text-neutral-700">
-                  <p>
-                    <span className="mr-2 font-bold text-neutral-950">F-01</span>DATA PRODUCTS
-                  </p>
-                  <p>
-                    <span className="mr-2 font-bold text-neutral-950">F-02</span>AI SYSTEMS
-                  </p>
-                  <p>
-                    <span className="mr-2 font-bold text-neutral-950">F-03</span>DELIVERY
-                  </p>
-                </div>
-              </div>
               <div className="hero-artifact absolute right-2 top-2 z-20 rounded-md border border-neutral-300 bg-white/95 px-3 py-1.5 mono-type text-[0.6rem] font-bold uppercase tracking-[0.13em] text-neutral-900 shadow-sm backdrop-blur-md sm:top-0">
                 Data & AI · 2026
-              </div>
-              <div className="hero-signal-tag absolute -right-3 bottom-20 z-20 hidden rounded-md border border-neutral-300 bg-white/95 p-3 text-center shadow-sm sm:block">
-                <span className="mono-type text-[0.58rem] font-bold leading-4 tracking-[0.1em] text-neutral-900">
-                  DATA<br />
-                  MODEL<br />
-                  DEPLOY
-                </span>
               </div>
             </div>
           </div>
