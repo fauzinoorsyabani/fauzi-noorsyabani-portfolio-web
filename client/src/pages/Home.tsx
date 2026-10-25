@@ -1663,7 +1663,7 @@ export default function Home() {
               copy={t.credentials.copy}
             />
           </div>
-          <div className="mt-12 reveal">
+          <div className="mt-8 sm:mt-12 -mx-4 sm:mx-0 reveal">
             <CertificateCoverflow items={certifications} viewLabel={t.credentials.viewBtn} />
           </div>
         </section>
