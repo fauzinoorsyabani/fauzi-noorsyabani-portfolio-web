@@ -465,6 +465,15 @@ export const certifications = [
     credential: "/certificates/gemini-certified-student.webp",
   },
   {
+    name: "AWS Educate: Introduction to Generative AI",
+    issuer: "Amazon Web Services (AWS)",
+    date: "Oct 2026",
+    tag: "AWS / AI",
+    description:
+      "Official AWS training badge validating fundamental understanding of generative AI concepts, foundation models, and enterprise use cases. Verified on Credly.",
+    credential: "/certificates/aws-educate-generative-ai.webp",
+  },
+  {
     name: "AWS Cloud Practitioner Essentials",
     issuer: "Dicoding Indonesia",
     date: "2024",

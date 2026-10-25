@@ -148,7 +148,7 @@ export const translations = {
     credentials: {
       kicker: "CERTIFICATIONS",
       title: "Certifications, Training, and Programs",
-      copy: "Certificates from BNSP, Microsoft, Google, IBM, Dicoding, and Anthropic, plus program and event participation. Use the arrows or swipe to browse.",
+      copy: "Certificates from BNSP, AWS, Google, Microsoft, IBM, Dicoding, and Anthropic, plus program and event participation. Use the arrows or swipe to browse.",
       viewBtn: "View Certificate",
     },
     contact: {
@@ -334,7 +334,7 @@ export const translations = {
     credentials: {
       kicker: "SERTIFIKASI",
       title: "Sertifikasi, Pelatihan, dan Program",
-      copy: "Sertifikat dari BNSP, Microsoft, Google, IBM, Dicoding, dan Anthropic, plus partisipasi program dan acara. Gunakan panah atau geser untuk menjelajah.",
+      copy: "Sertifikat dari BNSP, AWS, Google, Microsoft, IBM, Dicoding, dan Anthropic, plus partisipasi program dan acara. Gunakan panah atau geser untuk menjelajah.",
       viewBtn: "Lihat Sertifikat",
     },
     contact: {
