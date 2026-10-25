@@ -475,6 +475,46 @@ export const certifications = [
     verifyUrl: "https://www.credly.com/badges/d804b257-b110-4cfd-b27c-90a4a084c420/public_url",
   },
   {
+    name: "Build Real World AI Applications with Gemini & Imagen",
+    issuer: "Google Cloud",
+    date: "Jan 2026",
+    tag: "Google Cloud / AI",
+    description:
+      "Validates hands-on proficiency deploying production multimodal generative AI applications with Gemini and Imagen on Vertex AI. Verified on Credly.",
+    credential: "",
+    verifyUrl: "https://www.credly.com/users/fauzi-noor-syabani",
+  },
+  {
+    name: "Create ML Models with BigQuery ML",
+    issuer: "Google Cloud",
+    date: "Feb 2026",
+    tag: "Google Cloud / ML",
+    description:
+      "Validates competency in building, training, evaluating, and deploying SQL-based predictive machine learning models in BigQuery. Verified on Credly.",
+    credential: "",
+    verifyUrl: "https://www.credly.com/users/fauzi-noor-syabani",
+  },
+  {
+    name: "Prompt Design in Vertex AI",
+    issuer: "Google Cloud",
+    date: "Jan 2026",
+    tag: "Google Cloud / AI",
+    description:
+      "Validates advanced prompt engineering techniques, multimodal prompt design, and system parameter tuning with Vertex AI Gemini. Verified on Credly.",
+    credential: "",
+    verifyUrl: "https://www.credly.com/users/fauzi-noor-syabani",
+  },
+  {
+    name: "Build Serverless Applications with Cloud Run",
+    issuer: "Google Cloud",
+    date: "Jan 2026",
+    tag: "Google Cloud / Serverless",
+    description:
+      "Validates containerized microservices architecture, event-driven integrations, and auto-scaling serverless deployments on Cloud Run. Verified on Credly.",
+    credential: "",
+    verifyUrl: "https://www.credly.com/users/fauzi-noor-syabani",
+  },
+  {
     name: "AWS Cloud Practitioner Essentials",
     issuer: "Dicoding Indonesia",
     date: "2024",

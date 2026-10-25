@@ -1700,6 +1700,33 @@ export default function Home() {
           <div className="mt-8 sm:mt-12 -mx-4 sm:mx-0 reveal">
             <CertificateCoverflow items={certifications} viewLabel={t.credentials.viewBtn} />
           </div>
+
+          {/* Credly Verified Badge Wallet Callout */}
+          <div className="mx-auto mt-10 max-w-2xl px-4 text-center reveal">
+            <div className="inline-flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/60 p-4 sm:px-6 sm:py-3.5 backdrop-blur-md shadow-xs w-full">
+              <div className="flex items-center gap-3 text-left">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-600 text-white font-bold text-sm shadow-xs">
+                  C
+                </span>
+                <div>
+                  <p className="text-xs sm:text-sm font-bold text-neutral-950 dark:text-white">
+                    {language === "en" ? "Credly Verified Badge Wallet" : "Dompet Lencana Terverifikasi Credly"}
+                  </p>
+                  <p className="mono-type text-[0.62rem] text-neutral-500 dark:text-neutral-400">
+                    {language === "en" ? "18 Verified Badges · Google Cloud, AWS, IBM & Microsoft" : "18 Lencana Terverifikasi · Google Cloud, AWS, IBM & Microsoft"}
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://www.credly.com/users/fauzi-noor-syabani"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-neutral-950 dark:bg-white px-4 py-2 text-xs font-bold text-white dark:text-neutral-950 shadow-xs transition hover:bg-neutral-800 dark:hover:bg-neutral-200"
+              >
+                {language === "en" ? "View All 18 Badges on Credly" : "Lihat Semua 18 Lencana di Credly"} <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
         </section>
 
         {/* Section 07: Contact / Let's Connect — Gede Arya watermark inspired */}
