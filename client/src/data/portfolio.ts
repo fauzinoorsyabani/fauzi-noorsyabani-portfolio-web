@@ -414,6 +414,32 @@ export const awards = [
 
 export const certifications = [
   {
+    name: "ICT Project Manager",
+    issuer: "BNSP Indonesia",
+    date: "Valid Sep 2024 — Sep 2027",
+    tag: "Professional",
+    description:
+      "National competency certification covering project integration, scope, time, cost, quality, risk, procurement, and stakeholders.",
+    credential: "/certificates/cert-bnsp-ict-pm.webp",
+  },
+  {
+    name: "Google Student Ambassador — Certificate of Graduation",
+    issuer: "Google Student Ambassador Program",
+    date: "Class of 2025",
+    tag: "Google / Leadership",
+    description:
+      "Certificate of graduation awarded in recognition of successful participation as Google Student Ambassador, selected from 12,000 students nationwide, championing Google AI adoption across campus.",
+    credential: "/certificates/cert-google-student-ambassador.webp",
+  },
+  {
+    name: "Microsoft Office Specialist: Excel Associate",
+    issuer: "Microsoft",
+    date: "Dec 2024",
+    tag: "Professional",
+    description: "Excel proficiency covering workbooks, data visualization, formulas, formatting, and professional data management.",
+    credential: "/certificates/cert-mos-excel.webp",
+  },
+  {
     name: "Dicoding Pijak Full Graduate · AI Capstone",
     issuer: "Yayasan Dicoding Indonesia × IBM SkillsBuild",
     date: "2026",
@@ -432,47 +458,14 @@ export const certifications = [
     credential: "/certificates/Data_sains_Sertifikat_magang_Batch_2.webp",
   },
   {
-    name: "ICT Project Manager",
-    issuer: "BNSP Indonesia",
-    date: "Valid Sep 2024 — Sep 2027",
-    tag: "Professional",
+    name: "Create ML Models with BigQuery ML",
+    issuer: "Google Cloud",
+    date: "Feb 2026",
+    tag: "Google Cloud / ML",
     description:
-      "National competency certification covering project integration, scope, time, cost, quality, risk, procurement, and stakeholders.",
-    credential: "/certificates/cert-bnsp-ict-pm.webp",
-  },
-  {
-    name: "Microsoft Office Specialist: Excel Associate",
-    issuer: "Microsoft",
-    date: "Dec 2024",
-    tag: "Professional",
-    description: "Excel proficiency covering workbooks, data visualization, formulas, formatting, and professional data management.",
-    credential: "/certificates/cert-mos-excel.webp",
-  },
-  {
-    name: "AI Prompting Skills for Professionals",
-    issuer: "VINIX7 Soft-skill Training",
-    date: "Feb 2025",
-    tag: "Training",
-    description: "Soft-skill training on practical AI prompting techniques for professional workflows, held during the MSIB program.",
-    credential: "/certificates/1_Sertifikat_softskill.webp",
-  },
-  {
-    name: "Gemini Certified Student (University)",
-    issuer: "Google for Education",
-    date: "2025",
-    tag: "Google",
-    description: "Certified for the knowledge, skills, and basic competencies needed to use Google AI. Valid Oct 2025 — Oct 2028.",
-    credential: "/certificates/gemini-certified-student.webp",
-  },
-  {
-    name: "AWS Educate: Introduction to Generative AI",
-    issuer: "Amazon Web Services (AWS)",
-    date: "Oct 2026",
-    tag: "AWS / AI",
-    description:
-      "Official AWS training badge validating fundamental understanding of generative AI concepts, foundation models, and enterprise use cases. Verified on Credly.",
-    credential: "/certificates/aws-educate-generative-ai.webp",
-    verifyUrl: "https://www.credly.com/badges/d804b257-b110-4cfd-b27c-90a4a084c420/public_url",
+      "Validates competency in building, training, evaluating, and deploying SQL-based predictive machine learning models in BigQuery. Verified on Credly.",
+    credential: "/certificates/google-cloud-bigquery-ml.webp",
+    verifyUrl: "https://www.credly.com/badges/2dc26caa-8fc7-4b9e-9031-85df4dde45d9/public_url",
   },
   {
     name: "Build Real World AI Applications with Gemini & Imagen",
@@ -483,16 +476,6 @@ export const certifications = [
       "Validates hands-on proficiency deploying production multimodal generative AI applications with Gemini and Imagen on Vertex AI. Verified on Credly.",
     credential: "/certificates/google-cloud-gemini-imagen.webp",
     verifyUrl: "https://www.credly.com/badges/91ebe91c-cd6f-46a3-810e-7ad60a8d3d8d/public_url",
-  },
-  {
-    name: "Create ML Models with BigQuery ML",
-    issuer: "Google Cloud",
-    date: "Feb 2026",
-    tag: "Google Cloud / ML",
-    description:
-      "Validates competency in building, training, evaluating, and deploying SQL-based predictive machine learning models in BigQuery. Verified on Credly.",
-    credential: "/certificates/google-cloud-bigquery-ml.webp",
-    verifyUrl: "https://www.credly.com/badges/2dc26caa-8fc7-4b9e-9031-85df4dde45d9/public_url",
   },
   {
     name: "Prompt Design in Vertex AI",
@@ -515,33 +498,14 @@ export const certifications = [
     verifyUrl: "https://www.credly.com/badges/97690e11-79dc-48ab-8282-400556a08db0/public_url",
   },
   {
-    name: "AWS Cloud Practitioner Essentials",
-    issuer: "Dicoding Indonesia",
-    date: "Apr 2024",
-    tag: "Cloud / AWS",
+    name: "AWS Educate: Introduction to Generative AI",
+    issuer: "Amazon Web Services (AWS)",
+    date: "Oct 2026",
+    tag: "AWS / AI",
     description:
-      "Foundational AWS cloud knowledge across global infrastructure, security, storage, pricing, and architecture. Certified by Dicoding Indonesia (MRZMEGO23PYQ).",
-    credential: "/certificates/cert-dicoding-aws-cloud.webp",
-    verifyUrl: "https://dicoding.com/certificates/MRZMEGO23PYQ",
-  },
-  {
-    name: "Belajar Dasar AI (AI Fundamentals)",
-    issuer: "Dicoding Indonesia",
-    date: "Oct 2025",
-    tag: "AI / ML",
-    description:
-      "Official Dicoding certificate of competence in artificial intelligence fundamentals, machine learning principles, and modern AI algorithms. Valid Oct 2025 — Oct 2028 (KEXL2YGVWZG2).",
-    credential: "/certificates/cert-dicoding-belajar-dasar-ai.webp",
-    verifyUrl: "https://dicoding.com/certificates/KEXL2YGVWZG2",
-  },
-  {
-    name: "Google Student Ambassador — Certificate of Graduation",
-    issuer: "Google Student Ambassador Program",
-    date: "Class of 2025",
-    tag: "Google / Leadership",
-    description:
-      "Certificate of graduation awarded in recognition of successful participation as Google Student Ambassador, selected from 12,000 students nationwide, championing Google AI adoption across campus.",
-    credential: "/certificates/cert-google-student-ambassador.webp",
+      "Official AWS training badge validating fundamental understanding of generative AI concepts, foundation models, and enterprise use cases. Verified on Credly.",
+    credential: "/certificates/aws-educate-generative-ai.webp",
+    verifyUrl: "https://www.credly.com/badges/d804b257-b110-4cfd-b27c-90a4a084c420/public_url",
   },
   {
     name: "Membangun Sistem Machine Learning",
@@ -564,16 +528,6 @@ export const certifications = [
     verifyUrl: "https://dicoding.com/certificates/1OP8RRY62ZQK",
   },
   {
-    name: "Prompt Engineering untuk Software Developer",
-    issuer: "Dicoding Indonesia",
-    date: "Dec 2025",
-    tag: "AI / Prompting",
-    description:
-      "Practical prompt engineering certification covering LLM reasoning patterns, few-shot prompting, and AI-assisted software engineering workflows (1OP8JMQRLPQK).",
-    credential: "/certificates/cert-dicoding-prompt-eng.webp",
-    verifyUrl: "https://dicoding.com/certificates/1OP8JMQRLPQK",
-  },
-  {
     name: "Spec-Driven Development dengan Kiro",
     issuer: "Dicoding Indonesia",
     date: "Aug 2026",
@@ -584,57 +538,42 @@ export const certifications = [
     verifyUrl: "https://dicoding.com/certificates/N9ZO0EM4YXG5",
   },
   {
-    name: "MTI Consulting ITB Case Competition (M3C)",
-    issuer: "MTI Institut Teknologi Bandung (ITB)",
+    name: "Prompt Engineering untuk Software Developer",
+    issuer: "Dicoding Indonesia",
+    date: "Dec 2025",
+    tag: "AI / Prompting",
+    description:
+      "Practical prompt engineering certification covering LLM reasoning patterns, few-shot prompting, and AI-assisted software engineering workflows (1OP8JMQRLPQK).",
+    credential: "/certificates/cert-dicoding-prompt-eng.webp",
+    verifyUrl: "https://dicoding.com/certificates/1OP8JMQRLPQK",
+  },
+  {
+    name: "AWS Cloud Practitioner Essentials",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2024",
+    tag: "Cloud / AWS",
+    description:
+      "Foundational AWS cloud knowledge across global infrastructure, security, storage, pricing, and architecture. Certified by Dicoding Indonesia (MRZMEGO23PYQ).",
+    credential: "/certificates/cert-dicoding-aws-cloud.webp",
+    verifyUrl: "https://dicoding.com/certificates/MRZMEGO23PYQ",
+  },
+  {
+    name: "Gemini Certified Student (University)",
+    issuer: "Google for Education",
     date: "2025",
-    tag: "Consulting / Case",
-    description:
-      "Certificate of appreciation for competing in MTI Consulting ITB Case Competition 2025: Transforming Industries through Circular Economy.",
-    credential: "/certificates/cert-m3c-itb-2025.webp",
+    tag: "Google",
+    description: "Certified for the knowledge, skills, and basic competencies needed to use Google AI. Valid Oct 2025 — Oct 2028.",
+    credential: "/certificates/gemini-certified-student.webp",
   },
   {
-    name: "Dicoding Developer Conference 2026",
-    issuer: "Dicoding Indonesia & EKRAF",
-    date: "Apr 2026",
-    tag: "Conference",
+    name: "Belajar Dasar AI (AI Fundamentals)",
+    issuer: "Dicoding Indonesia",
+    date: "Oct 2025",
+    tag: "AI / ML",
     description:
-      "Official certificate of attendance for DDC 2026 in Bandung, supported by Kemenparekraf, DBS Foundation, IBM SkillsBuild, Lintasarta, and Indosat.",
-    credential: "/certificates/cert-ddc-2026.webp",
-  },
-  {
-    name: "Anthropic Academy",
-    issuer: "Anthropic",
-    date: "Sep — Oct 2026",
-    tag: "AI / LLM",
-    description:
-      "Five courses: Claude Code in Action, Introduction to MCP, MCP Advanced Topics, AI Fluency, and Claude Platform 101.",
-    credential: "",
-  },
-  {
-    name: "ICONIC IT Participant",
-    issuer: "HMIF Universitas Siliwangi",
-    date: "Sep 2024",
-    tag: "Event",
-    description: "Participant in the Innovative Competition and National Informatics Conference on digital transformation through technology.",
-    credential: "/certificates/Sertifikat_Peserta_ICONIC_IT_Fauzi_Noorsyabani.webp",
-  },
-  {
-    name: "Badan EKRAF Developer Day 2025",
-    issuer: "Kemenparekraf / Baparekraf & Dicoding",
-    date: "Nov 2025",
-    tag: "Event / Ecosystem",
-    description:
-      "Official certificate of attendance for the offline Badan EKRAF Developer Day 2025 in Bandung, organized by the Ministry of Tourism & Creative Economy / EKRAF Agency with Dicoding Indonesia.",
-    credential: "/certificates/cert-bdd-ekraf-2025.webp",
-  },
-  {
-    name: "Finalis LKTI Nasional (SMEFU XIV)",
-    issuer: "HMIF Universitas Siliwangi",
-    date: "Oct 2023",
-    tag: "Competition / Paper",
-    description:
-      "Finalist in the National Scientific Writing Competition (LKTI Nasional) at SMEFU PARTY XIV (HARMONY), organized by the Informatics Engineering Student Association of Universitas Siliwangi (No. 031/UN58.13.14/SERT/PAN.SMEFU/X/2023).",
-    credential: "/certificates/cert-finalist-lkti-unsil.webp",
+      "Official Dicoding certificate of competence in artificial intelligence fundamentals, machine learning principles, and modern AI algorithms. Valid Oct 2025 — Oct 2028 (KEXL2YGVWZG2).",
+    credential: "/certificates/cert-dicoding-belajar-dasar-ai.webp",
+    verifyUrl: "https://dicoding.com/certificates/KEXL2YGVWZG2",
   },
   {
     name: "IBM Granite Learning Path",
@@ -646,6 +585,24 @@ export const certifications = [
     credential: "/certificates/ibm-granite-learning-path.webp",
   },
   {
+    name: "Finalis LKTI Nasional (SMEFU XIV)",
+    issuer: "HMIF Universitas Siliwangi",
+    date: "Oct 2023",
+    tag: "Competition / Paper",
+    description:
+      "Finalist in the National Scientific Writing Competition (LKTI Nasional) at SMEFU PARTY XIV (HARMONY), organized by the Informatics Engineering Student Association of Universitas Siliwangi (No. 031/UN58.13.14/SERT/PAN.SMEFU/X/2023).",
+    credential: "/certificates/cert-finalist-lkti-unsil.webp",
+  },
+  {
+    name: "MTI Consulting ITB Case Competition (M3C)",
+    issuer: "MTI Institut Teknologi Bandung (ITB)",
+    date: "2025",
+    tag: "Consulting / Case",
+    description:
+      "Certificate of appreciation for competing in MTI Consulting ITB Case Competition 2025: Transforming Industries through Circular Economy.",
+    credential: "/certificates/cert-m3c-itb-2025.webp",
+  },
+  {
     name: "Liga Bisnis Sosial Siliwangi (LIBSOS)",
     issuer: "UPT Kewirausahaan Mahasiswa, Universitas Siliwangi",
     date: "Feb 2023",
@@ -653,6 +610,49 @@ export const certifications = [
     description:
       "Participated in a 5-day social-business league (17-21 Feb 2023) run in Selamanik Village, Ciamis, with CV Cakrawala Sarwa.",
     credential: "/certificates/libsos-siliwangi.webp",
+  },
+  {
+    name: "Badan EKRAF Developer Day 2025",
+    issuer: "Kemenparekraf / Baparekraf & Dicoding",
+    date: "Nov 2025",
+    tag: "Event / Ecosystem",
+    description:
+      "Official certificate of attendance for the offline Badan EKRAF Developer Day 2025 in Bandung, organized by the Ministry of Tourism & Creative Economy / EKRAF Agency with Dicoding Indonesia.",
+    credential: "/certificates/cert-bdd-ekraf-2025.webp",
+  },
+  {
+    name: "Dicoding Developer Conference 2026",
+    issuer: "Dicoding Indonesia & EKRAF",
+    date: "Apr 2026",
+    tag: "Conference",
+    description:
+      "Official certificate of attendance for DDC 2026 in Bandung, supported by Kemenparekraf, DBS Foundation, IBM SkillsBuild, Lintasarta, and Indosat.",
+    credential: "/certificates/cert-ddc-2026.webp",
+  },
+  {
+    name: "AI Prompting Skills for Professionals",
+    issuer: "VINIX7 Soft-skill Training",
+    date: "Feb 2025",
+    tag: "Training",
+    description: "Soft-skill training on practical AI prompting techniques for professional workflows, held during the MSIB program.",
+    credential: "/certificates/1_Sertifikat_softskill.webp",
+  },
+  {
+    name: "ICONIC IT Participant",
+    issuer: "HMIF Universitas Siliwangi",
+    date: "Sep 2024",
+    tag: "Event",
+    description: "Participant in the Innovative Competition and National Informatics Conference on digital transformation through technology.",
+    credential: "/certificates/Sertifikat_Peserta_ICONIC_IT_Fauzi_Noorsyabani.webp",
+  },
+  {
+    name: "Anthropic Academy",
+    issuer: "Anthropic",
+    date: "Sep — Oct 2026",
+    tag: "AI / LLM",
+    description:
+      "Five courses: Claude Code in Action, Introduction to MCP, MCP Advanced Topics, AI Fluency, and Claude Platform 101.",
+    credential: "",
   },
 ] as const;
 
