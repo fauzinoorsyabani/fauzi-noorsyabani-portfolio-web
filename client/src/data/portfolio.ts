@@ -561,6 +561,24 @@ export const certifications = [
     credential: "/certificates/Sertifikat_Peserta_ICONIC_IT_Fauzi_Noorsyabani.webp",
   },
   {
+    name: "Badan EKRAF Developer Day 2025",
+    issuer: "Kemenparekraf / Baparekraf & Dicoding",
+    date: "Nov 2025",
+    tag: "Event / Ecosystem",
+    description:
+      "Official certificate of attendance for the offline Badan EKRAF Developer Day 2025 in Bandung, organized by the Ministry of Tourism & Creative Economy / EKRAF Agency with Dicoding Indonesia.",
+    credential: "/certificates/cert-bdd-ekraf-2025.webp",
+  },
+  {
+    name: "Finalis LKTI Nasional (SMEFU XIV)",
+    issuer: "HMIF Universitas Siliwangi",
+    date: "Oct 2023",
+    tag: "Competition / Paper",
+    description:
+      "Finalist in the National Scientific Writing Competition (LKTI Nasional) at SMEFU PARTY XIV (HARMONY), organized by the Informatics Engineering Student Association of Universitas Siliwangi (No. 031/UN58.13.14/SERT/PAN.SMEFU/X/2023).",
+    credential: "/certificates/cert-finalist-lkti-unsil.webp",
+  },
+  {
     name: "IBM Granite Learning Path",
     issuer: "IBM SkillsBuild",
     date: "Jul 2025",
