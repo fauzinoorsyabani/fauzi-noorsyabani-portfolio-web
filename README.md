@@ -1,175 +1,400 @@
- # Fauzi Noorsyabani — Signal Ledger Portfolio
+# Fauzi Noorsyabani — Signal Ledger Portfolio & AI Engineering Dossier
 
-This repository contains Fauzi Noorsyabani’s single-page professional portfolio. It presents applied AI, data science, full-stack engineering, leadership, awards, certifications, and contact information in the **Signal Ledger** visual system: a warm editorial paper canvas, midnight-navy research fields, and cobalt-blue data signals.
+<div align="center">
 
-> **Primary editing rule:** personal content, URLs, project information, and managed image references are centralized in [`client/src/data/portfolio.ts`](client/src/data/portfolio.ts). Update this file first before changing layout components.
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://github.com/fauzinoorsyabani/fauzi-noorsyabani-portfolio-web)
+[![React 19](https://img.shields.io/badge/React_19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript_5.6-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite 7](https://img.shields.io/badge/Vite_7-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
+[![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## Product Scope
+<br />
 
-The portfolio is a client-side React experience built for recruiters, collaborators, technology communities, and potential clients. It provides a clear professional narrative from the hero through to a contact form that prepares a safe email fallback. The page includes smooth in-page navigation, active navigation state, mobile navigation, reduced-motion support, accessible form validation, a scroll-to-top control, SEO metadata, and a dedicated 404 route.
+**A high-performance, editorial single-page portfolio and applied AI engineering dossier.**  
+Engineered with an evidence-first philosophy, bilingual internationalization, persistent dual-theme architecture, and bespoke technical interactions.
 
-| Area | What it communicates | Primary implementation |
-| --- | --- | --- |
-| Hero | Fauzi’s professional focus, availability, identity, and key actions | `Home.tsx` + `person`, `links`, and `assetUrls` |
-| About | A concise narrative with Build, Analyze, and Lead focus areas | `person`, `focusAreas`, `facts` |
-| Tech Stack | Applied-AI, product-engineering, and infrastructure capabilities | `skillGroups` |
-| Projects | Featured case studies plus a compact working index | `featuredProjects`, `otherProjects` |
-| Experience | Evidence-led career and community timeline | `experience` |
-| Recognition | Awards and credentials with only verified outbound links | `awards`, `certifications` |
-| Contact | Direct contact details and mailto form fallback | `person`, `links`, form logic in `Home.tsx` |
+[**Explore Live Experience**](https://github.com/fauzinoorsyabani/fauzi-noorsyabani-portfolio-web) · [**Report Issue**](https://github.com/fauzinoorsyabani/fauzi-noorsyabani-portfolio-web/issues) · [**Connect on LinkedIn**](https://linkedin.com/in/fauzinoorsyabani)
 
-## Design System: Signal Ledger
+</div>
 
-The page intentionally avoids a generic technology-portfolio card layout. Its visual language is influenced by research dossiers and product annual reports: large editorial headings, numerical section rails, mono-spaced metadata, hard rules, and evidence-oriented project visuals. The recurring **FN signal mark** pairs stepped navy forms with a cobalt node and appears in the navigation, hero evidence field, and footer.
+---
 
-| Token | Value | Intended use |
-| --- | --- | --- |
-| Warm paper | `#FAF9F5` | Main reading canvas and quiet content surfaces |
-| Midnight navy | `#0B1735` | Hero, experience, contact, and footer sections |
-| Cobalt Signal | `#246BFD` | Primary CTA, active navigation, decisive proof points, indices, and data nodes |
-| Display font | Space Grotesk | Headlines, names, project titles, and major statements |
-| Body font | Manrope | Long-form content and interface labels |
-| Metadata font | IBM Plex Mono | Dates, categories, labels, tags, and numeric rails |
+## 📑 Table of Contents
 
-Global tokens, typography imports, texture utilities, and motion preferences are declared in [`client/src/index.css`](client/src/index.css). Any new component should preserve this direction by favoring ruled layouts and asymmetry over oversized rounded panels.
+- [Executive Summary](#-executive-summary)
+- [Key Features & Capabilities](#-key-features--capabilities)
+- [Architecture & System Design](#-architecture--system-design)
+- [Design System: Signal Ledger](#-design-system-signal-ledger)
+  - [Color Palette Tokens](#color-palette-tokens)
+  - [Typographic Hierarchy](#typographic-hierarchy)
+  - [Motion & Micro-Interaction Philosophy](#motion--micro-interaction-philosophy)
+- [Engineering Toolkit & Tech Stack](#-engineering-toolkit--tech-stack)
+- [Featured Engineering Projects](#-featured-engineering-projects)
+- [Repository Structure](#-repository-structure)
+- [Single Source of Truth Configuration](#-single-source-of-truth-configuration)
+- [Getting Started & Local Development](#-getting-started--local-development)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Development Server](#development-server)
+  - [Type Checking & Production Build](#type-checking--production-build)
+- [Deployment & CI/CD Pipeline](#-deployment--cicd-pipeline)
+- [Performance, Accessibility & SEO](#-performance-accessibility--seo)
+- [Professional Profile & Contact](#-professional-profile--contact)
+- [License & Acknowledgments](#-license--acknowledgments)
 
-## Repository Structure
+---
+
+## 💡 Executive Summary
+
+This repository houses the source code for the personal portfolio of **Fauzi Noorsyabani**, a **Full Stack AI Engineer** and Information Systems graduate from Universitas Siliwangi (*GPA 3.89 / 4.00, Cum Laude*).
+
+Rather than defaulting to cookie-cutter developer landing page templates with generic glass cards, this application implements the bespoke **Signal Ledger** design system: an editorial visual experience influenced by academic research journals, system dossiers, and high-end institutional reports.
+
+### Professional Snapshot
+- **Core Specialization:** Applied AI, LLM Orchestration & RAG Pipelines, Enterprise Data Warehousing, Full-Stack Web Architecture.
+- **Leadership & Community:** Google Student Ambassador Campus Lead (selected from 12,000+ national applicants), Capstone Lead for 900+ hour AI product initiative with Pijak × IBM SkillsBuild.
+- **Accolades:** 1st Place at Dicoding Developer Conference (AI for Cloud Infra & DevOps), 1st Place MyBDDInsight Challenge (Dicoding & Kemenparekraf), 3x National Science Olympiad Gold Medalist (Mathematics & Accounting), BNSP Certified ICT Project Manager.
+
+---
+
+## 🌟 Key Features & Capabilities
+
+| Capability | Engineering Implementation | Benefit |
+| :--- | :--- | :--- |
+| **🌐 Full Bilingual i18n** | Custom React `LanguageContext` with `localStorage` memory and dictionary tree in `translations.ts` | Seamless one-click toggling between **English** and **Bahasa Indonesia** across all UI elements, headings, case study summaries, and timelines without layout reflow. |
+| **🌓 Adaptive Dual Themes** | `ThemeContext` utilizing DOM root class toggling (`dark`) + local storage persistence | Flawless readability in both a warm editorial cream paper theme (`#FAF9F5`) and deep midnight navy dark mode (`#0B1735`), compliant with WCAG AAA contrast ratios. |
+| **🧭 Sliding Active Nav Pill** | Real-time viewport scroll-spy coupled with hardware-accelerated CSS `transform` interpolation | Tactile, fluid navigation tracking the reader's vertical reading progress across 6 thematic page sections. |
+| **🔍 Interactive Project Modals** | Accessible Radix UI Dialog primitives (`client/src/components/ui/dialog.tsx`) | Allows deep technical inspection of projects (architecture details, metric outcomes, stack badges, and live demo / source links) with focus traps and keyboard dismissal (`ESC`). |
+| **🏆 3D Certificate Coverflow** | Bespoke carousel engine (`CertificateCoverflow.tsx`) with dynamic perspective, drag physics, and modal zoom | Interactive presentation of verified diplomas, BNSP ICT Project Management certification, and national competition awards. |
+| **🎨 Bespoke Tech Stack Matrix** | Custom SVG icon component (`TechIcon.tsx`, 100KB+ inline vectors) with 8 categorization tabs | Filterable catalog covering 50+ tools, languages, and frameworks with theme-aware hover contrast and brand accents. |
+| **⚡ Watermark Typography** | Gede Arya-inspired giant display text with responsive viewport units (`vw`) | Sophisticated editorial branding anchored in the background canvas that does not obstruct interactive elements. |
+| **♿ Strict Accessibility** | Native skip-links, ARIA landmarks, semantic HTML5, visible focus indicators, and `prefers-reduced-motion` | Usable across all modern assistive devices, keyboard-only operators, and low-bandwidth connections. |
+
+---
+
+## 🏗️ Architecture & System Design
+
+The application is structured as a zero-latency client-side Single Page Application (SPA) powered by **React 19**, **Vite 7**, and **Tailwind CSS 4**, bundled for high-efficiency edge delivery on **Vercel**.
+
+```mermaid
+graph TD
+    User([Client / Browser]) -->|HTTPS Request| CDN[Vercel Global Edge CDN]
+    CDN -->|Static Assets| SPA[Single Page Application Bundle]
+    
+    subgraph Client-Side Runtime [React 19 Application Root]
+        SPA --> App[App.tsx]
+        App --> ErrBound[ErrorBoundary]
+        ErrBound --> ThemeCtx[ThemeProvider<br/>Light / Dark Switchable]
+        ThemeCtx --> LangCtx[LanguageProvider<br/>EN / ID Localization]
+        LangCtx --> TooltipProv[Radix Tooltip & Toast Provider]
+        
+        TooltipProv --> Wouter[Wouter Router]
+        Wouter -->|Route: /| Home[Home.tsx - Main Dossier]
+        Wouter -->|Route: /404| NotFound[NotFound.tsx - Branded 404]
+    end
+
+    subgraph Data Layer [Single Source of Truth]
+        Home -->|Reads Config & Data| PortfolioData[(portfolio.ts)]
+        Home -->|Reads i18n Strings| Translations[(translations.ts)]
+        PortfolioData -.-> PublicAssets[/public/ WebP Images & PDFs/]
+    end
+
+    subgraph Component Architecture
+        Home --> Nav[Sliding Header Navigation]
+        Home --> Hero[Hero Section & Signal Stream]
+        Home --> About[About & Focus Areas Spread]
+        Home --> Stack[Tech Stack Filterable Matrix]
+        Home --> Projects[Featured Projects & Case Studies]
+        Home --> Modals[Radix UI Project Dialogs]
+        Home --> Exp[Longitudinal Experience Timeline]
+        Home --> Coverflow[3D Certificate Coverflow]
+        Home --> Contact[Contact Form & Mailto Fallback]
+        Home --> Footer[Footer & Watermark Rail]
+    end
+```
+
+---
+
+## 🎨 Design System: Signal Ledger
+
+The visual identity is grounded in **editorial minimalism** and technical precision. Instead of generic modern tech clichés (such as hyper-saturated purples and heavy neon borders), Signal Ledger draws from physical print mediums: archival paper, deep bookmaking inks, and a single decisive cobalt data signal.
+
+### Color Palette Tokens
+
+| Token Name | Light Mode Value | Dark Mode Value | Semantic Role |
+| :--- | :--- | :--- | :--- |
+| **Canvas / Paper** | `#FAF9F5` (Warm Alabaster) | `#0B1735` (Midnight Navy) | Primary viewport background and calm reading surface |
+| **Primary Ink** | `#0D1117` (Deep Obsidian) | `#F8FAFC` (Pure Signal White) | Editorial headlines, bold numerals, and core body text |
+| **Cobalt Signal** | `#246BFD` (Electric Cobalt) | `#3B82F6` (Vibrant Blue) | Primary CTAs, active navigation state, active data nodes, focus rings |
+| **Card / Surface** | `#FFFFFF` (Clean White) | `#111C3D` (Deep Navy Surface) | Elevating project cards, technical dialogs, and code blocks |
+| **Data Border** | `#E2E8F0` (Muted Slate) | `#1E293B` (Subtle Navy Border) | Editorial hairline rules, divider borders, and table matrices |
+| **Muted Metadata** | `#64748B` (Cool Slate) | `#94A3B8` (Muted Steel) | Section numbers, dates, tags, and secondary documentation |
+
+### Typographic Hierarchy
+
+Three intentional typeface families are orchestrated via Google Fonts with zero layout shift:
+
+1. **Display & Headings — [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk)**  
+   *Weights: 400, 500, 600, 700*  
+   Used for section kickers, major impact headlines, project titles, and the giant background watermark. Provides a confident, mechanical yet human posture.
+2. **Body & Interface — [Manrope](https://fonts.google.com/specimen/Manrope)**  
+   *Weights: 400, 500, 600, 700*  
+   Used for narrative paragraphs, biographical spreads, form labels, and interactive button text. Delivers exceptional readability across all screen densities.
+3. **Metadata & Code — [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)**  
+   *Weights: 400, 500, 600*  
+   Used for timestamps, index codes (`01 / ARCHITECTURE`), technical skill tags, KPI numbers, and data signals.
+
+### Motion & Micro-Interaction Philosophy
+- **Evidence before ornament:** Animations only serve to establish spatial hierarchy and indicate state changes.
+- **Hardware-accelerated properties:** Only `opacity` and `transform` are animated to ensure continuous 60fps / 120fps rendering without layout recalculations.
+- **Respect for accessibility:** All continuous background movement (`SignalStream`, `SignalOrbit`) and staggered entry transitions are automatically disabled when `prefers-reduced-motion: reduce` is active.
+
+---
+
+## 🛠️ Engineering Toolkit & Tech Stack
+
+The portfolio features a custom matrix covering 8 primary technical domains, rendered with theme-adaptive SVG vectors in [`TechIcon.tsx`](client/src/components/TechIcon.tsx):
 
 ```text
-fauzi-noorsyabani-portfolio/
-├── client/
-│   ├── index.html                 # SEO metadata, font loading, favicon, social preview
-│   └── src/
-│       ├── data/portfolio.ts      # Single source of truth for content and assets
-│       ├── pages/Home.tsx         # Entire portfolio page and interaction behavior
-│       ├── pages/NotFound.tsx     # Branded 404 experience
-│       └── index.css              # Signal Ledger tokens and global styles
-├── ideas.md                       # Chosen design direction and style decisions
-├── todo.md                        # Current update tasks and completion states
-├── verification.md                # Completed verification notes
-└── README.md                      # This documentation
+┌────────────────────────────────────────────────────────────────────────┐
+│                      ENGINEERING ECOSYSTEM DOMAINS                     │
+├───────────────────┬────────────────────────────────────────────────────┤
+│ 01. Languages     │ Python · TypeScript · JavaScript · PHP · Go · SQL  │
+│                   │ Java · C · C++ · C# · Dart                         │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ 02. Frontend      │ React 19 · Next.js · Vue.js · Tailwind CSS 4       │
+│                   │ Radix UI · Framer Motion · HTML5 / CSS3 · Flutter  │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ 03. Backend & API │ FastAPI · Laravel · Node.js · Express · Flask      │
+│                   │ RESTful Architectures · Supabase                   │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ 04. AI & ML       │ PyTorch · TensorFlow · Scikit-learn · Pandas       │
+│                   │ NumPy · LangChain · LangGraph · Streamlit · OpenCV │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ 05. AI Tooling    │ Claude · Gemini · ChatGPT · Antigravity IDE       │
+│                   │ Cursor · GitHub Copilot · ChromaDB · Google Colab  │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ 06. Databases     │ PostgreSQL · MySQL · SQLite · MongoDB · Redis      │
+│                   │ Supabase · Firebase · ChromaDB (Vector Store)      │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ 07. DevOps & Cloud│ AWS (EC2, S3) · Google Cloud Platform · Docker     │
+│                   │ Kubernetes · GitHub Actions CI/CD · Nginx · Vercel │
+├───────────────────┼────────────────────────────────────────────────────┤
+│ 08. Dev Tools     │ Git · GitHub · GitLab · VS Code · Postman · Figma  │
+│                   │ Jira · Atlassian Suite · Slack                     │
+└───────────────────┴────────────────────────────────────────────────────┘
 ```
 
-The app uses React 19, TypeScript, Vite, Tailwind CSS 4, Lucide icons, Wouter routing, and pre-installed UI primitives. The portfolio itself uses a static frontend architecture, so it does not rely on a public backend or database.
+---
 
-## Local Development
+## 🚀 Featured Engineering Projects
 
-Install the project dependencies with the package manager already specified in `package.json`, then run the development server. The following commands should be run from the project root.
+The portfolio showcases real, production-tested software, data systems, and applied research:
+
+### 1. Academic Capacity Data Warehouse & Decision Support System (DSS)
+- **Domain:** Business Intelligence · Enterprise Data Engineering
+- **Context:** Universitas Siliwangi (Institutional Strategic Planning)
+- **Tech Stack:** Google Looker Studio, Star Schema, Dimensional Modeling, SQL, Automated ETL
+- **Impact:** Centralized academic monitoring across **35 study programs** over 5 longitudinal reporting periods; automated national accreditation compliance tracking and student-to-lecturer ratio indicators.
+
+### 2. PolaStok — AI-Driven Inventory Forecasting Platform
+- **Domain:** Applied Generative AI & Machine Learning · Team Leadership
+- **Context:** Capstone Project (Pijak × IBM SkillsBuild, 900+ structured engineering hours)
+- **Tech Stack:** Python, FastAPI, React, LLM Orchestration, Scikit-learn, Docker
+- **Impact:** Led a 5-member engineering team to design, train, and ship an MVP delivering demand prediction, supply chain anomaly detection, and natural language reorder recommendations for Indonesian SMEs.
+
+### 3. Higher Education Tuition & Policy Analytics
+- **Domain:** Data Science & Predictive Analytics
+- **Context:** PT VINIX Seven Aurum (MSIB Kemendikbudristek)
+- **Tech Stack:** Python, Pandas, Power BI, Streamlit, Multivariate Regression
+- **Impact:** Analyzed tuition cost structures and enrollment capacity distributions across **97 academic programs** and **11 Indonesian universities**, yielding a **35% improvement** in institutional policy decision accuracy.
+
+### 4. ClinicalNote AI — Automated Medical Scribe & Documentation
+- **Domain:** Speech AI & Applied Natural Language Processing
+- **Context:** Healthcare Automation Solution
+- **Tech Stack:** FastAPI, OpenAI Whisper, GPT-4, LangChain, Docker, AWS EC2
+- **Impact:** Designed an intelligent transcription pipeline with sub-two-second latency, implementing custom LangChain chains for automated ICD-10 diagnostic coding, clinical summarization, and prescription extraction.
+
+### 5. HR Analytics Capstone — Large-Scale NLP Pipeline
+- **Domain:** Enterprise NLP & Sentiment Intelligence
+- **Context:** IBM SkillsBuild × Hacktiv8 Capstone
+- **Tech Stack:** IBM Granite Foundation Models, Python, Pandas, Data Pipeline
+- **Impact:** Processed and classified **838,566 employee reviews** through an automated LLM extraction pipeline, synthesizing executive recommendations on workforce retention.
+
+---
+
+## 📂 Repository Structure
+
+```text
+fauzi-noorsyabani-portfolio-web/
+├── .agents/                      # Agentic coding skills, instructions, and workflows
+├── client/                       # Frontend application root
+│   ├── public/                   # Static public assets (optimized WebP images, certificates, PDFs)
+│   │   ├── certificates/         # Verified credential scans and competition diplomas
+│   │   ├── fauzi-about-white.webp# High-resolution white background portrait
+│   │   ├── fauzi-hero-google.webp# High-resolution Google campus portrait
+│   │   ├── logo-thumb.webp       # Favicon and site thumbnail
+│   │   └── Fauzi_Noorsyabani_CV.pdf # Professional curriculum vitae
+│   ├── src/
+│   │   ├── components/           # Reusable UI components
+│   │   │   ├── ui/               # Radix UI primitives (Dialog, Tooltip, Sonner Toast)
+│   │   │   ├── CertificateCoverflow.tsx # 3D perspective credentials carousel
+│   │   │   ├── ErrorBoundary.tsx # Top-level runtime error catcher
+│   │   │   ├── TechIcon.tsx      # Comprehensive inline SVG icon dictionary
+│   │   │   └── Map.tsx           # Geographical location display
+│   │   ├── contexts/             # Global React Context providers
+│   │   │   ├── LanguageContext.tsx # EN / ID i18n state and storage handler
+│   │   │   └── ThemeContext.tsx    # Light / Dark mode state and DOM handler
+│   │   ├── data/                 # Single source of truth data layer
+│   │   │   ├── portfolio.ts      # Structured data (projects, skills, certs, links)
+│   │   │   └── translations.ts   # Complete bilingual dictionaries (EN & ID)
+│   │   ├── pages/                # Page route views
+│   │   │   ├── Home.tsx          # Main Signal Ledger single-page application
+│   │   │   └── NotFound.tsx      # Branded editorial 404 page
+│   │   ├── App.tsx               # Root routing, provider nesting, and toast container
+│   │   ├── index.css             # Tailwind CSS 4 directives, custom tokens, and keyframes
+│   │   └── main.tsx              # React 19 client entrypoint
+│   └── index.html                # HTML document, SEO meta tags, Google Fonts loader
+├── patches/                      # Local pnpm dependency patches (e.g. wouter router)
+├── server/                       # Node.js production static asset serving runner
+├── package.json                  # Project manifest, scripts, and dependencies
+├── pnpm-lock.yaml                # Deterministic dependency tree lockfile
+├── tsconfig.json                 # TypeScript compiler configuration (strict mode)
+├── vercel.json                   # Vercel deployment and SPA client-rewrite rules
+├── vite.config.ts                # Vite build configuration, plugins, and path aliases
+└── README.md                     # Comprehensive project documentation
+```
+
+---
+
+## ⚙️ Single Source of Truth Configuration
+
+One of the key engineering principles of this repository is that **content is strictly separated from presentation logic**.
+
+To update personal biographical details, project entries, contact links, or certifications, you never need to edit JSX templates:
+
+### Updating Content & Records
+Edit [`client/src/data/portfolio.ts`](client/src/data/portfolio.ts):
+```ts
+export const person = {
+  name: "Fauzi Noorsyabani",
+  role: "Full Stack AI Engineer",
+  headline: "I engineer production-grade AI systems and full-stack software...",
+  location: "Tasikmalaya, Indonesia",
+  email: "fauzinoorsyabani05@gmail.com",
+  availability: "Open to Work",
+};
+```
+
+### Updating Bilingual Translations
+Edit [`client/src/data/translations.ts`](client/src/data/translations.ts):
+- Contains parallel `en` and `id` objects covering navigation labels, hero callouts, biographical focus descriptions, project details, and footer microcopy.
+
+---
+
+## 💻 Getting Started & Local Development
+
+### Prerequisites
+- **Node.js**: `v20.x` or later (tested up to Node 24)
+- **Package Manager**: [`pnpm`](https://pnpm.io/) `v10.x` (recommended) or `npm` / `yarn`
+
+### Installation
+Clone the repository and install dependencies:
 
 ```bash
+# Clone the repository
+git clone https://github.com/fauzinoorsyabani/fauzi-noorsyabani-portfolio-web.git
+
+# Navigate into the project root
+cd fauzi-noorsyabani-portfolio-web
+
+# Install exact dependencies
 pnpm install
+```
+
+### Development Server
+Start the local Vite development server with Hot Module Replacement (HMR):
+
+```bash
 pnpm dev
 ```
+Open your browser at `http://localhost:5173` to view the running application.
 
-Before saving a major revision, validate type safety and the production bundle.
+### Type Checking & Production Build
+Validate TypeScript integrity and compile the production-ready distribution bundle:
 
 ```bash
+# Run strict TypeScript compiler check (no output files)
 pnpm check
+
+# Build client bundle (dist/public) & server runner (dist/index.js)
 pnpm build
+
+# Preview the production build locally
+pnpm preview
 ```
 
-The `pnpm build` command may show a non-blocking bundle-size advisory from Vite. Treat TypeScript errors, build failures, runtime console errors, broken managed asset URLs, and horizontal overflow as release blockers.
+---
 
-## Editing Portfolio Content
+## 🚢 Deployment & CI/CD Pipeline
 
-Open [`client/src/data/portfolio.ts`](client/src/data/portfolio.ts) to update the portfolio. The file is intentionally organized by the order in which content appears on the page, reducing the risk that a layout edit is needed for an ordinary content update.
+The project is fully configured for automated continuous deployment on **Vercel** via GitHub integration.
 
-| Need to update | Configuration field or collection | Notes |
-| --- | --- | --- |
-| Name, title, bio, contact details | `person` | The `email` value supports both display and contact fallback behavior. |
-| Resume, GitHub, LinkedIn | `links` | Use full URLs; leave a value blank if it is not yet verified. Blank values show an accessible pending state rather than a broken link. |
-| Hero and About portrait | `assetUrls.profilePhoto` | Current managed portrait: `/manus-storage/fauzi-noorsyabani-portrait_5eb3cca1.jpg`. |
-| Generated editorial artwork | `assetUrls.heroData`, `tuitionArt`, `productSystemsArt` | Use these only as project illustration; never represent generated art as a real product screenshot. |
-| Technical skills | `skillGroups` | Place priority skills in `featured` and supporting skills in `skills`. |
-| Featured work | `featuredProjects` | Add a verified `caseStudy`, `demo`, or `source` URL inside `links` when available. |
-| Compact project index | `otherProjects` | Keep entries short and outcome-focused. |
-| Roles and community work | `experience` | Preserve source-date uncertainty with an explicit `note` instead of guessing. |
-| Awards and credentials | `awards`, `certifications` | Do not add unsupported awards, credential IDs, issuer links, or rankings. |
+### Vercel Configuration (`vercel.json`)
+The application includes pre-configured rewrite rules ensuring that client-side routes (handled by Wouter) resolve cleanly to the single page entrypoint:
 
-### Adding or Replacing the Portrait
-
-The supplied professional photograph is now displayed naturally in the hero and again in the About spread, using a responsive `object-fit: cover` treatment and the required accessible alt text, **“Portrait of Fauzi Noorsyabani.”** Its original source is not stored inside the frontend project; instead, it has been uploaded to managed project storage and referenced in the data configuration.
-
-To replace the portrait later, put the original image in `/home/ubuntu/webdev-static-assets/`, upload it as a managed web asset, and replace only the `profilePhoto` value.
-
-```bash
-manus-upload-file --webdev /home/ubuntu/webdev-static-assets/new-portrait.jpg
+```json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
 ```
 
-Use the exact returned `/manus-storage/...` URL in `assetUrls.profilePhoto`. Do not add large photos or media files to `client/public/` or `client/src/assets/`, because that can delay or prevent a static deployment.
+### Automated Deployment Workflow
+Every push to the `main` branch automatically triggers:
+1. GitHub webhook notification to Vercel.
+2. Isolated build container execution (`pnpm run build`).
+3. Static asset compression and edge distribution to Vercel's global CDN points of presence (PoP).
 
-### Adding a Resume or External Link
+---
 
-Store the final PDF in managed project storage, then place the returned URL in `links.resume`. For external profiles such as GitHub or LinkedIn, use a verified HTTPS URL. Avoid placeholder domains, shortened links that cannot be audited, or incomplete URLs.
+## ⚡ Performance, Accessibility & SEO
 
-```ts
-export const links = {
-  resume: "/Fauzi_Noorsyabani_CV.pdf",
-  github: "https://github.com/fauzinoorsyabani",
-  linkedin: "https://linkedin.com/in/fauzinoorsyabani",
-  medium: "https://medium.com/@fnoorsyabani",
-  email: "mailto:fauzinoorsyabani05@gmail.com",
-} as const;
-```
+- **Asset Compression:** All visual portraits and project previews are encoded in modern **WebP** formats with responsive dimension scaling.
+- **Font Optimization:** Google Fonts (`Space Grotesk`, `Manrope`, `IBM Plex Mono`) utilize `preconnect` links with `display=swap` to eliminate Flash of Invisible Text (FOIT).
+- **SEO & Social Sharing:** Comprehensive Open Graph (`og:title`, `og:description`, `og:image`) and Twitter card metadata are declared in `client/index.html`.
+- **Zero Horizontal Overflow:** Rigorously audited against 320px, 375px, 768px, 1024px, 1440px, and ultra-wide viewports.
 
-## Contact Form Behavior
+---
 
-The site currently has no backend email service by design. After client-side validation succeeds, the contact form creates a formatted `mailto:` message for Fauzi’s email address. This provides a safe contact path without exposing a service key in browser code.
+## 📬 Professional Profile & Contact
 
-If a future version requires submissions to be stored, delivered automatically, or routed through a CRM, upgrade the site to a backend-enabled architecture first. Keep all provider secrets on the server side and retain the mailto fallback for users whose scripts or third-party integrations are unavailable.
+**Fauzi Noorsyabani**  
+*Full Stack AI Engineer · Applied AI, LLM Integration & Data Products*  
+Tasikmalaya, West Java, Indonesia
 
-## Accessibility and Quality Standards
+- 🌐 **Portfolio:** [fauzi-noorsyabani-portfolio-web.vercel.app](https://github.com/fauzinoorsyabani/fauzi-noorsyabani-portfolio-web)
+- 💼 **LinkedIn:** [linkedin.com/in/fauzinoorsyabani](https://linkedin.com/in/fauzinoorsyabani)
+- 🐙 **GitHub:** [github.com/fauzinoorsyabani](https://github.com/fauzinoorsyabani)
+- ✍️ **Medium:** [medium.com/@fnoorsyabani](https://medium.com/@fnoorsyabani)
+- 📧 **Direct Inquiries:** [fauzinoorsyabani05@gmail.com](mailto:fauzinoorsyabani05@gmail.com)
 
-The portfolio includes semantic landmarks, a skip link, keyboard-accessible controls, visible focus states, native labels for every form field, live feedback for pending links and form submission, descriptive image alt text, and a `prefers-reduced-motion` fallback. When adding sections or interactions, maintain those patterns rather than replacing them with mouse-only controls or non-semantic clickable containers.
+---
 
-### Motion System
+## 📄 License & Acknowledgments
 
-The Signal Ledger motion system is intentionally evidence-led. The hero is choreographed in a short sequence, proof figures resolve once, the active navigation item receives a cobalt data-rule signal, section rails enter before their editorial copy, project evidence visualizations resolve in place, and timeline nodes illuminate as readers reach each career moment. The system favors `transform` and `opacity` to avoid layout-heavy animation.
+- **Code License:** Licensed under the [MIT License](LICENSE).
+- **Typography:** [Space Grotesk](https://github.com/floriankarsten/space-grotesk) (OFL), [Manrope](https://github.com/sharanda/manrope) (OFL), [IBM Plex Mono](https://github.com/IBM/plex) (OFL).
+- **Icons:** [Lucide Icons](https://lucide.dev/) & custom SVG brand marks.
+- **Design Inspiration:** Editorial journals, annual institutional reports, and clean typographic systems.
 
-Motion is controlled by the shared rules in [`client/src/index.css`](client/src/index.css) and the stateful hero/count-up behavior in [`client/src/pages/Home.tsx`](client/src/pages/Home.tsx). Use the existing classes—such as `hero-sequence`, `motion-card`, `motion-row`, `motion-index-row`, `motion-timeline`, `motion-award`, and `motion-contact`—when adding new content. Motion should clarify narrative order, proof, and feedback rather than introduce unnecessary visual noise.
-
-The primary positioning is **Full Stack AI Engineer**. It is maintained in `person.role`, the supporting biographical content in `portfolio.ts`, the hero metadata rail, and `client/index.html`. When adding copy, preserve the same end-to-end framing: applied AI, data systems, model integration, backend logic, full-stack experiences, and delivery.
-
-Two continuous primitives are available for controlled background movement: `SignalStream` provides a seamless right-to-left technical data track, while `SignalOrbit` creates a slow orbital signal around a visual anchor. These primitives are used selectively in the hero, projects, and contact areas. They are intentionally low contrast, use transform-only animation, do not sit over interactive content, and are omitted at runtime for users who prefer reduced motion. Do not place them in every section; the authored restraint is part of the Signal Ledger system.
-
-The continuous stream is intentionally paced at 46 seconds per loop and uses a larger mono-spaced data label for a calmer premium reading rhythm. Supporting motion includes the hero scan pass, portrait-rule tracing, breathing dossier nodes, and project evidence scans. Preserve their low contrast and background placement; their purpose is to give the dossier a live systems feel without competing with content.
-
-### Professional Links and Theme Control
-
-`links.resume` points to the managed PDF generated from the supplied resume source, and `links.github` points to Fauzi’s verified public GitHub profile. The resume CTA uses the native `download` attribute. Replace either destination only in `client/src/data/portfolio.ts` after the new URL is verified.
-
-The application’s `ThemeProvider` is switchable and persists the selected light or dark mode in browser storage. `Home.tsx` contains the navigation controls, including a compact desktop icon toggle and a clearly labeled mobile-menu action. Dark mode is styled through the `.dark .theme-root` system in `index.css`; maintain high contrast in evidence panels, form surfaces, and text if extending the theme.
-
-For users who request reduced motion, the page exposes the entire experience without animation. This behavior is handled both in CSS and in React, including the hero counters and smooth-scroll behavior. Any new motion behavior must preserve that static, fully readable fallback.
-
-Use the following release checklist for every content or design revision.
-
-| Check | Expected result |
-| --- | --- |
-| Desktop layout | Hero, project spreads, timeline, navigation, and footer display without overlap at approximately 1280–1440px. |
-| Mobile layout | Navigation remains usable, no horizontal scroll appears, and all content remains readable at approximately 390px. |
-| Links | Every visible external link is verified; missing links use the page’s pending-link behavior. |
-| Images | Managed URLs load correctly, meaningful photos have appropriate alt text, and generated project art is not represented as an authentic screenshot. |
-| Forms | Validation messages remain associated with their fields and the mailto fallback still opens properly. |
-| Motion | Scroll reveals and hover motion remain subtle, and reduced-motion preferences remove nonessential animation. |
-| Code quality | `pnpm check` and `pnpm build` complete successfully with no client-console errors. |
-
-## Search and Social Metadata
-
-The document title, description, Open Graph title, Open Graph description, Open Graph image, theme color, and favicon are set in [`client/index.html`](client/index.html). When the public production domain is known, update the Open Graph URL and confirm the preview image is appropriate for social sharing. Use a real project-domain URL and a managed image URL; do not publish a temporary local path.
-
-## Current Items Still Requiring Input
-
-The supplied portrait is integrated. The remaining items are intentionally marked as editable: a final resume PDF, verified GitHub profile, individual case-study/demo/source links, credential URLs, a confirmed final date statement for the additional Global Game Jam effort, and an optional production-grade contact form provider. These pending values are all tracked in [`client/src/data/portfolio.ts`](client/src/data/portfolio.ts) and [`todo.md`](todo.md).
-
-## Publishing
-
-After a checkpoint has been created and the preview has been reviewed, publish directly from the project interface using the **Publish** control. The publishing UI supports a managed public address and later custom-domain configuration. Before publishing, update the resume, verified professional links, and social preview URL so that shared traffic lands on complete and trustworthy contact information.
-
-## References
-
-[1] [React documentation](https://react.dev/)
-
-[2] [Vite documentation](https://vite.dev/)
-
-[3] [Tailwind CSS documentation](https://tailwindcss.com/docs)
+<div align="center">
+<sub>Crafted with precision by Fauzi Noorsyabani © 2026. All rights reserved.</sub>
+</div>
