@@ -535,13 +535,71 @@ export const certifications = [
     verifyUrl: "https://dicoding.com/certificates/KEXL2YGVWZG2",
   },
   {
-    name: "Dicoding AI/ML Learning Path",
+    name: "Google Student Ambassador — Certificate of Graduation",
+    issuer: "Google Student Ambassador Program",
+    date: "Class of 2025",
+    tag: "Google / Leadership",
+    description:
+      "Certificate of graduation awarded in recognition of successful participation as Google Student Ambassador, selected from 12,000 students nationwide, championing Google AI adoption across campus.",
+    credential: "/certificates/cert-google-student-ambassador.webp",
+  },
+  {
+    name: "Membangun Sistem Machine Learning",
     issuer: "Dicoding Indonesia",
-    date: "2025 — 2026",
+    date: "May 2026",
     tag: "AI / ML",
     description:
-      "Four courses: AI Fundamentals, Machine Learning for Beginners, Deep Learning Fundamentals, and Building Machine Learning Systems.",
-    credential: "",
+      "Advanced machine learning systems certification covering end-to-end ML lifecycle, pipeline orchestration, model serving, and CI/CD for ML (0LZ0YMO5NX65).",
+    credential: "/certificates/cert-dicoding-membangun-sistem-ml.webp",
+    verifyUrl: "https://dicoding.com/certificates/0LZ0YMO5NX65",
+  },
+  {
+    name: "Belajar Fundamental Deep Learning",
+    issuer: "Dicoding Indonesia",
+    date: "May 2026",
+    tag: "AI / Deep Learning",
+    description:
+      "Comprehensive deep learning certification covering neural networks with TensorFlow and Keras, computer vision, NLP, and time series modeling (1OP8RRY62ZQK).",
+    credential: "/certificates/cert-dicoding-deep-learning.webp",
+    verifyUrl: "https://dicoding.com/certificates/1OP8RRY62ZQK",
+  },
+  {
+    name: "Prompt Engineering untuk Software Developer",
+    issuer: "Dicoding Indonesia",
+    date: "Dec 2025",
+    tag: "AI / Prompting",
+    description:
+      "Practical prompt engineering certification covering LLM reasoning patterns, few-shot prompting, and AI-assisted software engineering workflows (1OP8JMQRLPQK).",
+    credential: "/certificates/cert-dicoding-prompt-eng.webp",
+    verifyUrl: "https://dicoding.com/certificates/1OP8JMQRLPQK",
+  },
+  {
+    name: "Spec-Driven Development dengan Kiro",
+    issuer: "Dicoding Indonesia",
+    date: "Aug 2026",
+    tag: "AI / Engineering",
+    description:
+      "Certification in Spec-Driven Development (SDD) using Kiro, standardizing AI-assisted workflows from specifications and design to automated task implementation (N9ZO0EM4YXG5).",
+    credential: "/certificates/cert-dicoding-spec-driven-dev.webp",
+    verifyUrl: "https://dicoding.com/certificates/N9ZO0EM4YXG5",
+  },
+  {
+    name: "MTI Consulting ITB Case Competition (M3C)",
+    issuer: "MTI Institut Teknologi Bandung (ITB)",
+    date: "2025",
+    tag: "Consulting / Case",
+    description:
+      "Certificate of appreciation for competing in MTI Consulting ITB Case Competition 2025: Transforming Industries through Circular Economy.",
+    credential: "/certificates/cert-m3c-itb-2025.webp",
+  },
+  {
+    name: "Dicoding Developer Conference 2026",
+    issuer: "Dicoding Indonesia & EKRAF",
+    date: "Apr 2026",
+    tag: "Conference",
+    description:
+      "Official certificate of attendance for DDC 2026 in Bandung, supported by Kemenparekraf, DBS Foundation, IBM SkillsBuild, Lintasarta, and Indosat.",
+    credential: "/certificates/cert-ddc-2026.webp",
   },
   {
     name: "Anthropic Academy",
