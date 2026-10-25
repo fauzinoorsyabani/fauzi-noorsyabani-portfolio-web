@@ -213,18 +213,20 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Core surface & text ─────────────────────────────────────────────────── */
-.dark .theme-root { background: #09090b; color: #f4f4f5; }
-.dark .theme-root .paper-grain { background-color: #09090b; background-image: none; }
+.dark .theme-root { background: #09090b !important; color: #f4f4f5; }
+.dark .theme-root .paper-grain { background-color: #09090b !important; background-image: none; }
+.dark .theme-root section { background-color: #09090b; }
+.dark .theme-root #documentation { background-color: #09090b !important; }
 
 /* ── Background inversions ───────────────────────────────────────────────── */
-.dark .theme-root :is(.bg-white, .bg-neutral-50, .bg-\[\#faf9f5\], .bg-\[\#f1f4fb\], .bg-\[\#eff3fb\]) { background-color: #121214 !important; }
-.dark .theme-root :is(.bg-\[\#f5f7fb\], .bg-\[\#edf4f2\], .bg-\[\#eef2e8\]) { background-color: #18181b !important; }
-.dark .theme-root :is(.bg-neutral-100, .bg-neutral-100\/90, .bg-neutral-100\/50) { background-color: #18181b !important; }
-.dark .theme-root .bg-neutral-50\/70 { background-color: #0f0f11 !important; }
+.dark .theme-root :is(.bg-white, .bg-neutral-50, .bg-\[\#faf9f5\], .bg-\[\#f1f4fb\], .bg-\[\#eff3fb\]) { background-color: #09090b !important; }
+.dark .theme-root :is(.bg-neutral-50\/50, .bg-neutral-50\/60, .bg-neutral-50\/70) { background-color: #09090b !important; }
+.dark .theme-root :is(.bg-\[\#f5f7fb\], .bg-\[\#edf4f2\], .bg-\[\#eef2e8\]) { background-color: #121214 !important; }
+.dark .theme-root :is(.bg-neutral-100, .bg-neutral-100\/90, .bg-neutral-100\/50, .bg-neutral-100\/70) { background-color: #121214 !important; }
+.dark .theme-root :is(article.bg-white, .motion-card, .motion-timeline, [role="article"]) { background-color: #121214 !important; }
 .dark .theme-root .bg-white\/95 { background-color: rgba(18,18,20,.95) !important; }
 .dark .theme-root .bg-white\/90 { background-color: rgba(18,18,20,.92) !important; }
 .dark .theme-root .bg-white\/70 { background-color: rgba(18,18,20,.7) !important; }
-.dark .theme-root .bg-neutral-50\/50 { background-color: rgba(15,15,17,.5) !important; }
 
 /* ── Text inversions — complete coverage ─────────────────────────────────── */
 .dark .theme-root :is(.text-neutral-950, .text-black, .text-\[\#101c3d\], .text-\[\#182650\]) { color: #f4f4f5 !important; }

@@ -121,24 +121,24 @@ function SectionHeading({
   dark?: boolean;
 }) {
   return (
-    <div className="section-heading grid gap-6 border-t border-neutral-300 pt-6 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-10">
-      <div className="dossier-rail mono-type text-xs font-semibold tracking-[0.15em] text-neutral-900">
+    <div className="section-heading grid gap-6 border-t border-neutral-300 dark:border-neutral-800 pt-6 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-10">
+      <div className="dossier-rail mono-type text-xs font-semibold tracking-[0.15em] text-neutral-900 dark:text-neutral-400">
         <div className="flex items-center gap-2">
           <span>{index}</span>
-          <span className="h-px w-5 bg-neutral-900" />
+          <span className="h-px w-5 bg-neutral-900 dark:bg-neutral-600" />
         </div>
-        <div className="relative mt-5 flex h-12 w-12 items-center justify-center rounded-md border border-neutral-300 bg-white shadow-xs">
-          <img src={assetUrls.logo} alt="" aria-hidden="true" loading="lazy" decoding="async" width={40} height={40} className="h-10 w-10 object-contain" />
-          <i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-white bg-neutral-900" />
+        <div className="relative mt-5 flex h-12 w-12 items-center justify-center rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 shadow-xs">
+          <img src={assetUrls.logo} alt="" aria-hidden="true" loading="lazy" decoding="async" width={40} height={40} className="h-10 w-10 object-contain dark:invert" />
+          <i className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-white dark:border-neutral-900 bg-neutral-900 dark:bg-neutral-100" />
         </div>
-        <span className="dossier-node mt-2 block h-1.5 w-1.5 rounded-full bg-neutral-900" aria-hidden="true" />
+        <span className="dossier-node mt-2 block h-1.5 w-1.5 rounded-full bg-neutral-900 dark:bg-neutral-400" aria-hidden="true" />
       </div>
       <div className="section-heading-copy">
-        <p className="section-kicker">{kicker}</p>
-        <h2 className="display-type mt-4 max-w-3xl text-2xl font-bold leading-[1.12] tracking-[-0.04em] text-neutral-950 sm:text-4xl lg:text-[2.75rem]">
+        <p className="section-kicker dark:text-neutral-400">{kicker}</p>
+        <h2 className="display-type mt-4 max-w-3xl text-2xl font-bold leading-[1.12] tracking-[-0.04em] text-neutral-950 dark:text-white sm:text-4xl lg:text-[2.75rem]">
           {title}
         </h2>
-        {copy ? <p className="mt-5 max-w-2xl text-base leading-8 text-neutral-700">{copy}</p> : null}
+        {copy ? <p className="mt-5 max-w-2xl text-base leading-8 text-neutral-700 dark:text-neutral-300">{copy}</p> : null}
       </div>
     </div>
   );
@@ -407,10 +407,10 @@ function DocumentationShowcase({
   return (
     <section
       id="documentation"
-      className="scroll-mt-28 bg-neutral-50/60 border-b border-neutral-300 py-16 sm:py-20 text-neutral-950 overflow-hidden"
+      className="scroll-mt-28 bg-neutral-50/60 dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 py-16 sm:py-20 text-neutral-950 dark:text-neutral-50 overflow-hidden"
     >
       <div className="mx-auto max-w-4xl lg:max-w-[1200px] px-4 sm:px-6 lg:px-8 mb-8 reveal">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-300 pb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-300 dark:border-neutral-800 pb-6">
           <div>
             <SectionHeading
               index="03.5"
@@ -427,7 +427,7 @@ function DocumentationShowcase({
                   trackRef.current.scrollBy({ left: -300, behavior: "smooth" });
                 }
               }}
-              className="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 bg-white text-neutral-800 shadow-xs hover:bg-neutral-100 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 shadow-xs hover:bg-neutral-100 dark:hover:bg-neutral-800 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-neutral-400"
               aria-label="Scroll left"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -439,15 +439,15 @@ function DocumentationShowcase({
                   trackRef.current.scrollBy({ left: 300, behavior: "smooth" });
                 }
               }}
-              className="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 bg-white text-neutral-800 shadow-xs hover:bg-neutral-100 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900"
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 shadow-xs hover:bg-neutral-100 dark:hover:bg-neutral-800 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-neutral-400"
               aria-label="Scroll right"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
         </div>
-        <p className="mt-2.5 mono-type text-[0.6rem] text-neutral-500 flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 animate-pulse" />
+        <p className="mt-2.5 mono-type text-[0.6rem] text-neutral-500 dark:text-neutral-400 flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
           {t.documentation.autoSlideHint}
         </p>
       </div>
@@ -470,10 +470,10 @@ function DocumentationShowcase({
           <article
             key={`${item.id}-${idx}`}
             onClick={() => !isDragging.current && setSelectedItem(item)}
-            className="group relative flex w-[240px] sm:w-[290px] flex-col overflow-hidden rounded-xl border border-neutral-300 bg-white shadow-xs hover:shadow-xl hover:border-neutral-950 transition-all duration-300 shrink-0 cursor-pointer text-left"
+            className="group relative flex w-[240px] sm:w-[290px] flex-col overflow-hidden rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-xs hover:shadow-xl hover:border-neutral-950 dark:hover:border-neutral-600 transition-all duration-300 shrink-0 cursor-pointer text-left"
           >
             {/* Image Preview Box */}
-            <div className="relative h-36 sm:h-40 w-full overflow-hidden border-b border-neutral-300 bg-neutral-100 flex items-center justify-center p-2">
+            <div className="relative h-36 sm:h-40 w-full overflow-hidden border-b border-neutral-300 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-950 flex items-center justify-center p-2">
               <img
                 src={item.image}
                 alt={item.title[language]}
@@ -483,12 +483,12 @@ function DocumentationShowcase({
                 className="max-h-full max-w-full object-contain rounded transition duration-500 group-hover:scale-[1.03]"
               />
               <div className="absolute top-2 left-2">
-                <span className="mono-type rounded border border-neutral-300 bg-white/95 px-1.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-[0.1em] text-neutral-900 shadow-2xs backdrop-blur-xs">
+                <span className="mono-type rounded border border-neutral-300 dark:border-neutral-700 bg-white/95 dark:bg-neutral-900/95 px-1.5 py-0.5 text-[0.55rem] font-bold uppercase tracking-[0.1em] text-neutral-900 dark:text-neutral-100 shadow-2xs backdrop-blur-xs">
                   {item.tag}
                 </span>
               </div>
               <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition duration-200">
-                <span className="flex h-6 w-6 items-center justify-center rounded-md border border-neutral-300 bg-white/95 text-neutral-950 shadow-xs">
+                <span className="flex h-6 w-6 items-center justify-center rounded-md border border-neutral-300 dark:border-neutral-700 bg-white/95 dark:bg-neutral-900/95 text-neutral-950 dark:text-neutral-100 shadow-xs">
                   <Maximize2 className="h-3 w-3" />
                 </span>
               </div>
@@ -497,21 +497,21 @@ function DocumentationShowcase({
             {/* Card Body */}
             <div className="p-3.5 flex flex-col flex-1">
               <div className="flex items-center justify-between gap-2">
-                <span className="mono-type text-[0.55rem] font-bold uppercase tracking-[0.12em] text-neutral-500">
+                <span className="mono-type text-[0.55rem] font-bold uppercase tracking-[0.12em] text-neutral-500 dark:text-neutral-400">
                   {item.category[language]}
                 </span>
-                <span className="mono-type text-[0.55rem] font-medium text-neutral-400">
+                <span className="mono-type text-[0.55rem] font-medium text-neutral-400 dark:text-neutral-500">
                   {item.date}
                 </span>
               </div>
-              <h4 className="display-type mt-1.5 text-sm font-bold text-neutral-950 leading-snug line-clamp-2 group-hover:text-black">
+              <h4 className="display-type mt-1.5 text-sm font-bold text-neutral-950 dark:text-white leading-snug line-clamp-2 group-hover:text-black dark:group-hover:text-neutral-200">
                 {item.title[language]}
               </h4>
-              <p className="mt-1.5 text-[0.72rem] leading-relaxed text-neutral-600 line-clamp-2 flex-1">
+              <p className="mt-1.5 text-[0.72rem] leading-relaxed text-neutral-600 dark:text-neutral-400 line-clamp-2 flex-1">
                 {item.description[language]}
               </p>
-              <div className="mt-3 pt-2.5 border-t border-neutral-200 flex items-center justify-between">
-                <span className="mono-type text-[0.57rem] font-bold text-neutral-900 group-hover:underline inline-flex items-center gap-1">
+              <div className="mt-3 pt-2.5 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+                <span className="mono-type text-[0.57rem] font-bold text-neutral-900 dark:text-neutral-200 group-hover:underline inline-flex items-center gap-1">
                   {t.documentation.inspectBtn} <ExternalLink className="h-2.5 w-2.5" />
                 </span>
               </div>
@@ -850,7 +850,7 @@ export default function Home() {
   };
 
   return (
-    <div className="theme-root min-h-screen overflow-x-hidden bg-white text-neutral-950">
+    <div className="theme-root min-h-screen overflow-x-hidden bg-white dark:bg-neutral-950 text-neutral-950 dark:text-neutral-50">
       <a
         href="#main-content"
         className="sr-only z-[100] rounded-md bg-neutral-950 px-4 py-2 font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
@@ -1047,7 +1047,7 @@ export default function Home() {
         {/* Hero Section — Clean, Rich Atmospheric Gradient & Editorial Typography */}
         <section
           id="top"
-          className={`hero-stage relative isolate overflow-hidden bg-white border-b border-neutral-300 pt-24 sm:pt-32 text-neutral-950 ${
+          className={`hero-stage relative isolate overflow-hidden bg-white dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 pt-24 sm:pt-32 text-neutral-950 dark:text-neutral-50 ${
             heroReady && !prefersReducedMotion ? "motion-ready" : ""
           }`}
         >
@@ -1191,7 +1191,7 @@ export default function Home() {
         ) : null}
 
         {/* Section 01: About */}
-        <section id="about" className="scroll-mt-28 bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+        <section id="about" className="scroll-mt-28 bg-neutral-50/50 dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50">
           <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="01"
@@ -1360,7 +1360,7 @@ export default function Home() {
         {/* Section 03: Projects with Dashboard Screenshot Showcase */}
         <section
           id="projects"
-          className="relative scroll-mt-28 overflow-hidden bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28"
+          className="relative scroll-mt-28 overflow-hidden bg-neutral-50/50 dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50"
         >
           {/* Ambient backdrop gradient */}
           <div className="pointer-events-none absolute left-1/2 top-1/4 h-[36rem] w-[50rem] -translate-x-1/2 rounded-full bg-gradient-to-b from-indigo-100/40 via-sky-100/25 to-transparent blur-3xl opacity-75" aria-hidden="true" />
@@ -1586,7 +1586,7 @@ export default function Home() {
         {/* Section 04: Experience & Leadership */}
         <section
           id="experience"
-          className="scroll-mt-28 bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950"
+          className="scroll-mt-28 bg-white dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50"
         >
           <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
@@ -1632,7 +1632,7 @@ export default function Home() {
         </section>
 
         {/* Section 05: Awards & Recognition */}
-        <section id="awards" className="scroll-mt-28 bg-neutral-50/50 border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+        <section id="awards" className="scroll-mt-28 bg-neutral-50/50 dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50">
           <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="05"
@@ -1680,7 +1680,7 @@ export default function Home() {
         </section>
 
         {/* Section 06: Credentials */}
-        <section id="credentials" className="scroll-mt-28 overflow-hidden bg-white border-b border-neutral-300 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+        <section id="credentials" className="scroll-mt-28 overflow-hidden bg-white dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50">
           <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
               index="06"
