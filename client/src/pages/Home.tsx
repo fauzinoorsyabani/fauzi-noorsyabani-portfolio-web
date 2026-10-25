@@ -1241,7 +1241,7 @@ export default function Home() {
                             tabIndex={0}
                             role="img"
                             aria-label={skill}
-                            className="group relative flex aspect-square items-center justify-center rounded-2xl border border-neutral-300/80 bg-neutral-50/80 p-2 sm:p-2.5 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:border-neutral-950 hover:bg-white hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/60 dark:hover:border-neutral-300 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 cursor-pointer"
+                            className="group relative flex aspect-square items-center justify-center rounded-2xl border border-neutral-200 bg-neutral-100/90 p-2 sm:p-2.5 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:border-neutral-950 hover:bg-white hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/90 dark:hover:border-neutral-400 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 cursor-pointer"
                           >
                             {/* Standardized SVG filling 60% of square tile */}
                             <TechIcon
@@ -1396,7 +1396,7 @@ export default function Home() {
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-neutral-50 px-2.5 py-1 mono-type text-[0.58rem] font-semibold text-neutral-800 shadow-2xs"
+                            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-neutral-100 px-2.5 py-1 mono-type text-[0.58rem] font-semibold text-neutral-900 shadow-2xs dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
                           >
                             <TechIcon name={tech} className="h-3 w-3 shrink-0" />
                             <span>{tech}</span>
