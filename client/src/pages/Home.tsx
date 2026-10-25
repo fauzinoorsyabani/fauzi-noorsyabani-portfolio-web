@@ -675,7 +675,6 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
-  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [selectedTechCategory, setSelectedTechCategory] = useState<string>("all");
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
@@ -800,7 +799,6 @@ export default function Home() {
   };
   const scrollTo = (id: string) => {
     setActiveSection(id);
-    setHoveredNav(null);
     document.getElementById(id)?.scrollIntoView({
       behavior: prefersReducedMotion ? "auto" : "smooth",
       block: "start",
@@ -870,28 +868,26 @@ export default function Home() {
             </span>
           </button>
 
-          {/* Desktop Nav Links in pill container with dynamic gliding active background pill */}
+          {/* Desktop Nav Links in pill container with active background pill moving only on click/scroll */}
           <nav
             aria-label="Primary"
-            onMouseLeave={() => setHoveredNav(null)}
             className="hidden items-center gap-1 rounded-full bg-neutral-900/[0.04] p-1 dark:bg-white/[0.08] lg:flex border border-neutral-900/[0.05] dark:border-white/10 backdrop-blur-md"
           >
             {navItems.map(([label, id]) => {
-              const isHighlighted = (hoveredNav ?? activeSection) === id;
+              const isActive = activeSection === id;
               return (
                 <button
                   key={id}
                   onClick={() => scrollTo(id)}
-                  onMouseEnter={() => setHoveredNav(id)}
                   type="button"
-                  aria-current={activeSection === id ? "page" : undefined}
+                  aria-current={isActive ? "page" : undefined}
                   className={`relative rounded-full px-3.5 py-1.5 text-[0.7rem] font-bold tracking-[0.08em] uppercase transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
-                    isHighlighted
+                    isActive
                       ? "text-white dark:text-neutral-950"
                       : "text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white"
                   }`}
                 >
-                  {isHighlighted && (
+                  {isActive && (
                     <motion.span
                       layoutId="activeNavPill"
                       className="absolute inset-0 z-0 rounded-full bg-neutral-950 shadow-xs dark:bg-white"
