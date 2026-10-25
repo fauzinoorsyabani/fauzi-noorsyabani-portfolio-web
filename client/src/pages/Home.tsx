@@ -645,21 +645,18 @@ function HeroRoleTicker({
   }, [displayedText, isDeleting, fullTitle, prefersReducedMotion]);
 
   return (
-    <div className="hero-sequence hero-sequence--4 mt-7 flex h-10 items-center gap-2.5 sm:gap-3 text-neutral-900 dark:text-neutral-100 overflow-hidden whitespace-nowrap">
+    <div className="hero-sequence hero-sequence--4 mt-8 flex h-7 items-center gap-2.5 sm:gap-3 text-neutral-900 dark:text-neutral-100 overflow-hidden whitespace-nowrap">
       <span className="h-px w-6 sm:w-10 bg-neutral-900 dark:bg-white shrink-0" aria-hidden="true" />
-      <div className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-3.5 sm:px-4 py-1.5 text-white shadow-sm dark:bg-white dark:text-neutral-950 border border-neutral-800 dark:border-white/20 shrink-0">
-        <Sparkles className="h-3.5 w-3.5 text-blue-400 dark:text-blue-600 shrink-0" />
-        <span className="mono-type text-[0.78rem] sm:text-[0.88rem] md:text-[0.95rem] font-bold uppercase tracking-[0.08em] sm:tracking-[0.1em] inline-flex items-center">
+      <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 overflow-hidden whitespace-nowrap">
+        <span className="mono-type text-[0.66rem] sm:text-[0.72rem] md:text-[0.78rem] font-bold uppercase tracking-[0.12em] sm:tracking-[0.14em] text-neutral-950 dark:text-white shrink-0 inline-flex items-center">
           {displayedText}
           <span
-            className="inline-block w-0.5 h-3.5 sm:h-4 ml-1 bg-blue-500 dark:bg-blue-600 animate-pulse shrink-0"
+            className="inline-block w-0.5 h-3 sm:h-3.5 ml-1 bg-neutral-900 dark:bg-white animate-pulse shrink-0"
             aria-hidden="true"
           />
         </span>
-      </div>
-      <div className="hidden md:inline-flex items-center gap-2 min-w-0 overflow-hidden">
-        <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-xs">/</span>
-        <span className="mono-type text-[0.72rem] md:text-[0.76rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.03em] truncate max-w-[260px] transition-opacity duration-300">
+        <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-[0.7rem] sm:text-xs">/</span>
+        <span className="mono-type text-[0.6rem] sm:text-[0.66rem] md:text-[0.72rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.02em] sm:tracking-[0.04em] truncate transition-opacity duration-300">
           {currentRole.sub[language]}
         </span>
       </div>
@@ -1042,12 +1039,9 @@ export default function Home() {
 
           <div className="relative mx-auto grid max-w-4xl lg:max-w-[1000px] gap-8 px-4 py-8 sm:px-6 sm:py-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-12 lg:px-8 lg:py-16">
             <div className="flex flex-col justify-center pt-4 lg:pt-0">
-              <div className="hero-sequence hero-sequence--1 open-to-work-glow relative flex w-fit items-center gap-2.5 rounded-full border border-emerald-400/60 px-3.5 py-1.5 mono-type text-[0.64rem] sm:text-[0.68rem] font-bold uppercase tracking-[0.16em] text-emerald-950 dark:text-emerald-200">
-                <span className="relative flex h-2 w-2 shrink-0 items-center justify-center">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
-                </span>
-                <span className="relative z-10 font-bold">{t.hero.availability}</span>
+              <div className="hero-sequence hero-sequence--1 flex w-fit items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-500/20 px-3.5 py-1.5 mono-type text-[0.64rem] sm:text-[0.68rem] font-bold uppercase tracking-[0.16em] text-emerald-900 dark:text-emerald-300 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] shrink-0" aria-hidden="true" />
+                <span className="font-bold">{t.hero.availability}</span>
               </div>
               <p className="hero-sequence hero-sequence--2 mt-8 display-type text-xl font-medium tracking-[-0.035em] text-neutral-600 sm:text-2xl">
                 {t.hero.greeting}

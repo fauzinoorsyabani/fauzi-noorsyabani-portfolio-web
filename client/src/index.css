@@ -337,24 +337,6 @@ button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
   -webkit-backdrop-filter: blur(16px) !important;
 }
 
-/* ── Glowing Open to Work beacon badge ───────────────────────── */
-@keyframes green-beacon-glow {
-  0%, 100% {
-    box-shadow: 0 0 16px rgba(16, 185, 129, 0.45), 0 0 4px rgba(52, 211, 153, 0.3);
-    border-color: rgba(52, 211, 153, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 28px rgba(16, 185, 129, 0.8), 0 0 8px rgba(110, 231, 183, 0.5);
-    border-color: rgba(110, 231, 183, 0.95);
-  }
-}
-
-.open-to-work-glow {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(52, 211, 153, 0.32) 50%, rgba(13, 148, 136, 0.22) 100%) !important;
-  animation: green-beacon-glow 2.2s ease-in-out infinite;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
 
 /* ── Mobile nav in dark mode ─────────────────────────────────────────────── */
 .dark .theme-root #mobile-navigation {
