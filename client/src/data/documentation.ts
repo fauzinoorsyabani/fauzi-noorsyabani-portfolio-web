@@ -19,6 +19,24 @@ export interface DocumentationItem {
 
 export const documentationItems: readonly DocumentationItem[] = [
   {
+    id: "idx-market-intelligence",
+    category: {
+      en: "Financial Intelligence & Data Warehouse",
+      id: "Kecerdasan Finansial & Data Warehouse",
+    },
+    title: {
+      en: "IDX Market Intelligence & Dimensional Warehouse Dashboard",
+      id: "Dashboard Kecerdasan Pasar Modal IDX & Star Schema Data Warehouse",
+    },
+    description: {
+      en: "Automated end-to-end data pipeline & Kimball star-schema warehouse tracking 27,150+ records across 30 IDX equities with 8 automated data quality checks.",
+      id: "Pipeline data otomatis & warehouse star-schema Kimball memproses 27.150+ data dari 30 saham IDX30 dengan 8 aturan validasi kualitas data.",
+    },
+    image: "/idx-market-dashboard.webp",
+    date: "2026",
+    tag: "Data Warehouse",
+  },
+  {
     id: "bi-executive",
     category: {
       en: "Business Intelligence",

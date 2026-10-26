@@ -8,6 +8,7 @@ export const assetUrls = {
   heroData: "https://placehold.co/800x600?text=Project+1",
   fauziJournal: "/fauzi-journal.webp",
   geoBooster: "/geobooster.webp",
+  idxMarket: "/idx-market-dashboard.webp",
   tuitionArt: "/dashboard-kapasitas-akademik.webp",
   dashboardExecutive: "/dashboard-kapasitas-akademik.webp",
   dashboardDetail: "/dashboard-detail-prodi.webp",
@@ -174,6 +175,20 @@ export type Project = {
 };
 
 export const featuredProjects: readonly Project[] = [
+  {
+    title: "IDX Market Intelligence — Automated Star-Schema Warehouse & Pipeline",
+    date: "2026",
+    description:
+      "Architected and deployed an automated end-to-end ELT data pipeline and Kimball dimensional warehouse (Star Schema) tracking 30 core IDX30 equities, USD/IDR currency rates, and IHSG benchmark across 27,150+ historical records. Engineered fault-tolerant ingestion with idempotent upserts (INSERT ... ON CONFLICT DO UPDATE) ensuring 0% duplicate records, paired with a circuit-breaker Data Quality Gate executing 8 automated deterministic integrity rules (validating positive price bounds, foreign key constraints, and 35% ARA/ARB regulatory anomaly thresholds). Synchronized daily at 17:00 WIB via automated GitHub Actions CI/CD cron jobs with 0 server operational costs, and delivered via an interactive Streamlit & Plotly analytics dashboard alongside decoupled CSV data marts for Microsoft Power BI.",
+    result:
+      "Processed 27,150+ historical records across 30 IDX30 tickers with 0% duplication, 8 automated data quality gates, 100% pytest test suite pass rate, and automated daily synchronization at 17:00 WIB.",
+    technologies: ["Python", "PostgreSQL", "Star Schema", "ETL", "Streamlit", "Plotly", "GitHub Actions", "Power BI"],
+    category: "Data Engineering · Financial Intelligence",
+    art: assetUrls.idxMarket,
+    links: {
+      source: "https://github.com/fauzinoorsyabani/idx-market-dashboard",
+    },
+  },
   {
     title: "Geo Booster (ZiuLabs) — Digital Commerce & AI SaaS Platform",
     date: "2026",
