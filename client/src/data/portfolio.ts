@@ -6,7 +6,7 @@
 export const assetUrls = {
   logo: "/logo-thumb.webp",
   heroData: "https://placehold.co/800x600?text=Project+1",
-  fauziJournal: "/fauzi-journal.png",
+  fauziJournal: "/fauzi-journal.webp",
   tuitionArt: "/dashboard-kapasitas-akademik.webp",
   dashboardExecutive: "/dashboard-kapasitas-akademik.webp",
   dashboardDetail: "/dashboard-detail-prodi.webp",
