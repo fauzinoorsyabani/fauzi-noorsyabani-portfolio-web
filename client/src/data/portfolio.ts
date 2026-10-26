@@ -7,6 +7,7 @@ export const assetUrls = {
   logo: "/logo-thumb.webp",
   heroData: "https://placehold.co/800x600?text=Project+1",
   fauziJournal: "/fauzi-journal.webp",
+  geoBooster: "/geobooster.webp",
   tuitionArt: "/dashboard-kapasitas-akademik.webp",
   dashboardExecutive: "/dashboard-kapasitas-akademik.webp",
   dashboardDetail: "/dashboard-detail-prodi.webp",
@@ -173,6 +174,20 @@ export type Project = {
 };
 
 export const featuredProjects: readonly Project[] = [
+  {
+    title: "Geo Booster (ZiuLabs) — Digital Commerce & AI SaaS Platform",
+    date: "2026",
+    description:
+      "Architected and deployed a production-grade modular PHP digital commerce platform and AI SaaS foundation for curated digital products and AI tooling licenses. Built with a modular monolith architecture following OWASP security standards, featuring an interactive violet animated UI, automated catalog and inventory management, WhatsApp order negotiation & checkout flows, and self-hosted Cloudflare Tunnel reverse-proxy routing for the custom domain (ziulabs.biz.id).",
+    result: "Live production commerce ecosystem with sub-second page performance, zero frontend build overhead, and automated Cloudflare edge tunneling.",
+    technologies: ["PHP 8.3+", "MySQL 8", "Cloudflare Tunnel", "Modular Monolith", "JavaScript", "Tailwind CSS"],
+    category: "Product Engineering · Full-Stack",
+    art: assetUrls.geoBooster,
+    links: {
+      demo: "https://www.ziulabs.biz.id",
+      source: "https://github.com/fauzinoorsyabani/geobooster",
+    },
+  },
   {
     title: "Fauzi / Journal — Editorial Web Publishing & Studio Platform",
     date: "2026",
