@@ -6,6 +6,7 @@
 export const assetUrls = {
   logo: "/logo-thumb.webp",
   heroData: "https://placehold.co/800x600?text=Project+1",
+  fauziJournal: "/fauzi-journal.png",
   tuitionArt: "/dashboard-kapasitas-akademik.webp",
   dashboardExecutive: "/dashboard-kapasitas-akademik.webp",
   dashboardDetail: "/dashboard-detail-prodi.webp",
@@ -18,6 +19,7 @@ export const assetUrls = {
   profilePhotoGoogle: "/fauzi-hero-google.webp",
   profilePhoto: "/fauzi-about-white.webp",
 } as const;
+
 
 export const links = {
   resume: "/Fauzi_Noorsyabani_CV.pdf",
@@ -172,7 +174,22 @@ export type Project = {
 
 export const featuredProjects: readonly Project[] = [
   {
+    title: "Fauzi / Journal — Editorial Web Publishing & Studio Platform",
+    date: "2026",
+    description:
+      "Architected and deployed a production editorial publishing system and authoring studio featuring automated client-side WebP image optimization, Clerk authentication with multi-tier role authorization (Super Admin vs Author), and TiDB Cloud Serverless database. Designed an immersive, tactile typography system with a TipTap rich-text canvas, debounced LocalStorage draft recovery, custom domain integration (fauzijournal.web.id), and serverless Vercel deployment.",
+    result: "Live publication system handling automated WebP asset pipelines, sub-second edge response times, and 100% free serverless architecture.",
+    technologies: ["React", "TypeScript", "tRPC", "MySQL", "Tailwind CSS", "Vercel"],
+    category: "Product Engineering · Full-Stack",
+    art: assetUrls.fauziJournal,
+    links: {
+      demo: "https://fauzijournal.web.id",
+      source: "https://github.com/fauzinoorsyabani/fauzi-journal",
+    },
+  },
+  {
     title: "Academic Capacity Data Warehouse",
+
     date: "2025 — 2026",
     description:
       "Star-schema data warehouse and Decision Support System (DSS) developed for Universitas Siliwangi to monitor academic capacity, student-to-lecturer ratios, and accreditation compliance across 35 study programs using longitudinal PDDikti aggregate data. Built with robust ETL pipelines and interactive Google Looker Studio executive dashboards for institutional strategic decision-making.",

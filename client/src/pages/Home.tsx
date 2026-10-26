@@ -1497,7 +1497,17 @@ export default function Home() {
                       </div>
 
                       <div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4">
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
+                          {project.links?.demo ? (
+                            <a
+                              href={project.links.demo}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1.5 rounded-md border border-neutral-900 bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800"
+                            >
+                              Live Website <ArrowUpRight className="h-3.5 w-3.5" />
+                            </a>
+                          ) : null}
                           {project.links?.caseStudy ? (
                             <a
                               href={project.links.caseStudy}
@@ -1505,14 +1515,25 @@ export default function Home() {
                             >
                               {t.projects.caseStudy} <ArrowUpRight className="h-3.5 w-3.5" />
                             </a>
-                          ) : (
+                          ) : !project.links?.demo ? (
                             <PendingAction
                               label={t.projects.caseStudy}
                               onPending={notifyPending}
                               className="rounded-md border border-neutral-200 bg-neutral-50 px-3.5 py-1.5 text-xs font-bold text-neutral-600"
                             />
-                          )}
+                          ) : null}
+                          {project.links?.source ? (
+                            <a
+                              href={project.links.source}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 shadow-xs transition hover:border-neutral-900 hover:text-black hover:bg-neutral-50"
+                            >
+                              GitHub <ExternalLink className="h-3 w-3" />
+                            </a>
+                          ) : null}
                         </div>
+
                         {currentArt && (
                           <a
                             href={currentArt}
