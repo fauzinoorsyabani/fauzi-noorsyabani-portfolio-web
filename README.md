@@ -192,31 +192,55 @@ The portfolio features a custom matrix covering 8 primary technical domains, ren
 
 The portfolio showcases real, production-tested software, data systems, and applied research:
 
-### 1. Academic Capacity Data Warehouse & Decision Support System (DSS)
+### 1. Forensic Air Quality Analytics & Multi-Objective ML Pipeline
+- **Domain:** Applied Machine Learning · Environmental Intelligence
+- **Context:** Industrial & Urban Air Quality Sensor Telemetry
+- **Tech Stack:** Python, XGBoost, Random Forest, Scikit-learn, Pandas, NumPy, Matplotlib, Seaborn
+- **Impact:** Built an end-to-end multi-objective ML pipeline evaluating urban atmospheric pollutants across 500 monitoring observations. Engineered physical non-negative clipping for sensor zero-drift, atmospheric domain features (Combustion Index, Nitrogen Oxidation Ratio), and an anti-leakage dual-branch architecture. Achieved $R^2 = 0.6670$ with zero-mean normal residuals for $PM_{2.5}$ forecasting and 0.6048 Macro F1 (+30.4% vs baseline) with 0.74 recall for high-risk warning classification.
+
+### 2. IDX Market Intelligence — Automated Star-Schema Warehouse & Pipeline
+- **Domain:** Enterprise Data Engineering · Financial Intelligence
+- **Context:** Indonesia Stock Exchange (IDX30 Benchmark Analytics)
+- **Tech Stack:** Python, PostgreSQL, Kimball Star Schema, Streamlit, Plotly, GitHub Actions CI/CD, Power BI
+- **Impact:** Automated ELT pipeline processing 27,150+ historical records across 30 IDX equities, IHSG benchmark, and USD/IDR rates. Implemented 100% idempotent upserts (`INSERT ... ON CONFLICT DO UPDATE`) ensuring 0% duplicate records, paired with a circuit-breaker Data Quality Gate executing 8 automated deterministic integrity checks (price bounds, FK integrity, and 35% ARA/ARB regulatory limits) synchronized daily at 17:00 WIB via zero-cost GitHub Actions cron jobs.
+
+### 3. Geo Booster (ZiuLabs) — Digital Commerce & AI SaaS Platform
+- **Domain:** Product Engineering · Full-Stack & Systems Architecture
+- **Context:** Production Commerce & AI SaaS Licensing Ecosystem ([ziulabs.biz.id](https://www.ziulabs.biz.id))
+- **Tech Stack:** PHP 8.3+, MySQL 8, Cloudflare Tunnel Reverse Proxy, Modular Monolith, JavaScript, Tailwind CSS
+- **Impact:** Architected and deployed an OWASP-compliant modular commerce platform for curated digital products and AI tooling licenses. Features sub-second edge response times, automated catalog and inventory management, WhatsApp automated checkout flows, and self-hosted Cloudflare edge tunneling with zero frontend build overhead.
+
+### 4. Fauzi / Journal — Editorial Web Publishing & Studio Platform
+- **Domain:** Product Engineering · Full-Stack Web Architecture
+- **Context:** Editorial Publishing Studio ([fauzijournal.web.id](https://fauzijournal.web.id))
+- **Tech Stack:** React 19, TypeScript, tRPC, MySQL (TiDB Cloud Serverless), Tailwind CSS, Vercel
+- **Impact:** Live production editorial platform featuring automated client-side WebP image optimization, Clerk multi-tier role authorization (Super Admin vs Author), TipTap rich-text canvas, debounced LocalStorage draft recovery, and 100% free serverless architecture.
+
+### 5. Academic Capacity Data Warehouse & Decision Support System (DSS)
 - **Domain:** Business Intelligence · Enterprise Data Engineering
 - **Context:** Universitas Siliwangi (Institutional Strategic Planning)
 - **Tech Stack:** Google Looker Studio, Star Schema, Dimensional Modeling, SQL, Automated ETL
 - **Impact:** Centralized academic monitoring across **35 study programs** over 5 longitudinal reporting periods; automated national accreditation compliance tracking and student-to-lecturer ratio indicators.
 
-### 2. PolaStok — AI-Driven Inventory Forecasting Platform
+### 6. PolaStok — AI-Driven Inventory Forecasting Platform
 - **Domain:** Applied Generative AI & Machine Learning · Team Leadership
 - **Context:** Capstone Project (Pijak × IBM SkillsBuild, 900+ structured engineering hours)
 - **Tech Stack:** Python, FastAPI, React, LLM Orchestration, Scikit-learn, Docker
 - **Impact:** Led a 5-member engineering team to design, train, and ship an MVP delivering demand prediction, supply chain anomaly detection, and natural language reorder recommendations for Indonesian SMEs.
 
-### 3. Higher Education Tuition & Policy Analytics
+### 7. Higher Education Tuition & Policy Analytics
 - **Domain:** Data Science & Predictive Analytics
 - **Context:** PT VINIX Seven Aurum (MSIB Kemendikbudristek)
 - **Tech Stack:** Python, Pandas, Power BI, Streamlit, Multivariate Regression
 - **Impact:** Analyzed tuition cost structures and enrollment capacity distributions across **97 academic programs** and **11 Indonesian universities**, yielding a **35% improvement** in institutional policy decision accuracy.
 
-### 4. ClinicalNote AI — Automated Medical Scribe & Documentation
+### 8. ClinicalNote AI — Automated Medical Scribe & Documentation
 - **Domain:** Speech AI & Applied Natural Language Processing
 - **Context:** Healthcare Automation Solution
 - **Tech Stack:** FastAPI, OpenAI Whisper, GPT-4, LangChain, Docker, AWS EC2
 - **Impact:** Designed an intelligent transcription pipeline with sub-two-second latency, implementing custom LangChain chains for automated ICD-10 diagnostic coding, clinical summarization, and prescription extraction.
 
-### 5. HR Analytics Capstone — Large-Scale NLP Pipeline
+### 9. HR Analytics Capstone — Large-Scale NLP Pipeline
 - **Domain:** Enterprise NLP & Sentiment Intelligence
 - **Context:** IBM SkillsBuild × Hacktiv8 Capstone
 - **Tech Stack:** IBM Granite Foundation Models, Python, Pandas, Data Pipeline
