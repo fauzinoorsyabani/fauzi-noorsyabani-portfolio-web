@@ -216,31 +216,37 @@ The portfolio showcases real, production-tested software, data systems, and appl
 - **Tech Stack:** React 19, TypeScript, tRPC, MySQL (TiDB Cloud Serverless), Tailwind CSS, Vercel
 - **Impact:** Live production editorial platform featuring automated client-side WebP image optimization, Clerk multi-tier role authorization (Super Admin vs Author), TipTap rich-text canvas, debounced LocalStorage draft recovery, and 100% free serverless architecture.
 
-### 5. Academic Capacity Data Warehouse & Decision Support System (DSS)
+### 5. Wisata Jelajah Indonesia — Enterprise Travel E-Commerce & Ticketing Platform
+- **Domain:** Product Engineering · Full-Stack & Payment Gateway
+- **Context:** Tourism & Destination Ticketing Platform ([wisata-jelajah-indonesia.vercel.app](https://wisata-jelajah-indonesia.vercel.app))
+- **Tech Stack:** React 18, TypeScript, Tailwind CSS, Express.js, Midtrans Snap, TiDB Cloud, Vercel
+- **Impact:** Architected and deployed an enterprise tourism booking platform with multi-channel payment gateway (Midtrans Snap: Virtual Accounts, GoPay, QRIS), print-isolated paperless SVG e-tickets with real-time verification, multi-role authorization (User, Partner/Vendor, Admin), real-time revenue analytics dashboard, and automated serverless deployment.
+
+### 6. Academic Capacity Data Warehouse & Decision Support System (DSS)
 - **Domain:** Business Intelligence · Enterprise Data Engineering
 - **Context:** Universitas Siliwangi (Institutional Strategic Planning)
 - **Tech Stack:** Google Looker Studio, Star Schema, Dimensional Modeling, SQL, Automated ETL
 - **Impact:** Centralized academic monitoring across **35 study programs** over 5 longitudinal reporting periods; automated national accreditation compliance tracking and student-to-lecturer ratio indicators.
 
-### 6. PolaStok — AI-Driven Inventory Forecasting Platform
+### 7. PolaStok — AI-Driven Inventory Forecasting Platform
 - **Domain:** Applied Generative AI & Machine Learning · Team Leadership
 - **Context:** Capstone Project (Pijak × IBM SkillsBuild, 900+ structured engineering hours)
 - **Tech Stack:** Python, FastAPI, React, LLM Orchestration, Scikit-learn, Docker
 - **Impact:** Led a 5-member engineering team to design, train, and ship an MVP delivering demand prediction, supply chain anomaly detection, and natural language reorder recommendations for Indonesian SMEs.
 
-### 7. Higher Education Tuition & Policy Analytics
+### 8. Higher Education Tuition & Policy Analytics
 - **Domain:** Data Science & Predictive Analytics
 - **Context:** PT VINIX Seven Aurum (MSIB Kemendikbudristek)
 - **Tech Stack:** Python, Pandas, Power BI, Streamlit, Multivariate Regression
 - **Impact:** Analyzed tuition cost structures and enrollment capacity distributions across **97 academic programs** and **11 Indonesian universities**, yielding a **35% improvement** in institutional policy decision accuracy.
 
-### 8. ClinicalNote AI — Automated Medical Scribe & Documentation
+### 9. ClinicalNote AI — Automated Medical Scribe & Documentation
 - **Domain:** Speech AI & Applied Natural Language Processing
 - **Context:** Healthcare Automation Solution
 - **Tech Stack:** FastAPI, OpenAI Whisper, GPT-4, LangChain, Docker, AWS EC2
 - **Impact:** Designed an intelligent transcription pipeline with sub-two-second latency, implementing custom LangChain chains for automated ICD-10 diagnostic coding, clinical summarization, and prescription extraction.
 
-### 9. HR Analytics Capstone — Large-Scale NLP Pipeline
+### 10. HR Analytics Capstone — Large-Scale NLP Pipeline
 - **Domain:** Enterprise NLP & Sentiment Intelligence
 - **Context:** IBM SkillsBuild × Hacktiv8 Capstone
 - **Tech Stack:** IBM Granite Foundation Models, Python, Pandas, Data Pipeline

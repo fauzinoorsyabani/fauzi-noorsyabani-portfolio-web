@@ -21,6 +21,7 @@ export const assetUrls = {
   profilePhotoGoogle: "/fauzi-hero-google.webp",
   profilePhoto: "/fauzi-about-white.webp",
   airQuality: "/air-quality-intelligence.webp",
+  wisataJelajah: "/wisata-jelajah-indonesia.webp",
 } as const;
 
 
@@ -233,6 +234,21 @@ export const featuredProjects: readonly Project[] = [
     },
   },
   {
+    title: "Wisata Jelajah Indonesia — Enterprise Travel E-Commerce & Ticketing Platform",
+    date: "2026",
+    description:
+      "Architected and deployed a production-grade tourism and ticketing e-commerce platform for Tasikmalaya and national tourist destinations. Engineered end-to-end booking workflows with Midtrans Snap payment gateway integration (Virtual Accounts, GoPay, QRIS), automated digital booking code generation with client-side SVG QR code rendering, and paperless print-isolated PDF ticket generation. Built with a responsive React frontend, modular Express.js backend, multi-role authorization (User, Partner/Vendor, Admin), real-time revenue analytics dashboard, and automated serverless deployment on Vercel.",
+    result:
+      "Full-stack travel booking & ticketing platform with multi-channel payment gateway (Midtrans Snap), print-ready isolated e-tickets, vendor revenue telemetry, and 100% serverless Vercel multi-service architecture.",
+    technologies: ["React 18", "TypeScript", "Tailwind CSS", "Express.js", "Midtrans Snap", "TiDB Cloud", "Vercel"],
+    category: "Product Engineering · Full-Stack & Payment Systems",
+    art: assetUrls.wisataJelajah,
+    links: {
+      demo: "https://wisata-jelajah-indonesia.vercel.app",
+      source: "https://github.com/fauzinoorsyabani/wisata-jelajah-indonesia",
+    },
+  },
+  {
     title: "Academic Capacity Data Warehouse",
 
     date: "2025 — 2026",
@@ -274,17 +290,6 @@ export const featuredProjects: readonly Project[] = [
     result: "Designed for sub-two-second OpenAI-backed transcription latency with automated ICD-10 diagnostic coding.",
     technologies: ["FastAPI", "OpenAI API", "LangChain", "React", "Docker", "AWS EC2"],
     category: "Applied AI · Solo Development",
-    links: {},
-  },
-  {
-    title: "Wisata Indonesia — Tourism Booking Interface",
-    date: "Mar 2025 — May 2025",
-    description:
-      "Designed and engineered a modern, responsive React tourism booking interface. Integrated dynamic booking workflows, user behavioral adaptation, and real-time destination availability data with fluid micro-interactions and accessible UI patterns.",
-    result: "High-performance, mobile-first booking experience with zero layout shift and sub-100ms interaction feedback.",
-    technologies: ["React", "JavaScript", "CSS3", "REST API", "Responsive Design"],
-    category: "Product Engineering · Frontend",
-    art: assetUrls.productSystemsArt,
     links: {},
   },
   {
