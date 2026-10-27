@@ -20,6 +20,7 @@ export const assetUrls = {
   profilePhotoWhite: "/fauzi-about-white.webp",
   profilePhotoGoogle: "/fauzi-hero-google.webp",
   profilePhoto: "/fauzi-about-white.webp",
+  airQuality: "/air-quality-intelligence.webp",
 } as const;
 
 
@@ -175,6 +176,20 @@ export type Project = {
 };
 
 export const featuredProjects: readonly Project[] = [
+  {
+    title: "Air Quality Forensic Analytics & Multi-Objective ML Pipeline",
+    date: "2026",
+    description:
+      "Architected and deployed an end-to-end environmental machine learning pipeline evaluating urban air pollutant interactions (PM2.5, PM10, NOx, NO2, SO2, CO, CO2, VOCs, CH4) and meteorological dynamics across 500 monitoring observations. Engineered physical non-negative clipping for sensor baseline zero-drift, domain feature formulations (Combustion Index, Nitrogen Oxidation Ratio, and PM2.5/PM10 fine fraction indices), and an anti-leakage multi-objective modeling architecture. Benchmarked regularized linear baselines (Ridge, Multinomial Logistic) against tree ensembles (Random Forest, XGBoost) using Stratified 5-Fold Cross Validation—achieving high predictive R² with normally distributed zero-mean residuals for PM2.5 concentration estimation and robust Macro F1-scores for multi-class health severity categorization, accompanied by XAI feature importance rankings.",
+    result:
+      "Engineered automated hybrid ingestion, 8 high-DPI (300 DPI) publication-grade diagnostic artifacts, zero-leakage health risk categorization, and validated XGBoost feature drivers with zero-mean residual error.",
+    technologies: ["Python", "XGBoost", "Random Forest", "Scikit-Learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+    category: "Machine Learning · Environmental Intelligence",
+    art: assetUrls.airQuality,
+    links: {
+      source: "https://github.com/fauzinoorsyabani/air-quality",
+    },
+  },
   {
     title: "IDX Market Intelligence — Automated Star-Schema Warehouse & Pipeline",
     date: "2026",
@@ -625,6 +640,26 @@ export const certifications = [
     verifyUrl: "https://dicoding.com/certificates/1OP8RRY62ZQK",
   },
   {
+    name: "Belajar Machine Learning untuk Pemula",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2026",
+    tag: "AI / ML",
+    description:
+      "Practical machine learning certification covering data preparation, supervised/unsupervised algorithms, evaluation metrics, and model deployment (RVZK0812OZD5).",
+    credential: "/certificates/cert-dicoding-ml-pemula.webp",
+    verifyUrl: "https://dicoding.com/certificates/RVZK0812OZD5",
+  },
+  {
+    name: "Belajar Dasar AI (AI Fundamentals)",
+    issuer: "Dicoding Indonesia",
+    date: "Feb 2026",
+    tag: "AI / ML",
+    description:
+      "Official Dicoding certificate of competence in artificial intelligence fundamentals, machine learning principles, and modern AI algorithms (L4PQ94VMOPO1).",
+    credential: "/certificates/cert-dicoding-belajar-dasar-ai.webp",
+    verifyUrl: "https://dicoding.com/certificates/L4PQ94VMOPO1",
+  },
+  {
     name: "Spec-Driven Development dengan Kiro",
     issuer: "Dicoding Indonesia",
     date: "Aug 2026",
@@ -655,22 +690,82 @@ export const certifications = [
     verifyUrl: "https://dicoding.com/certificates/MRZMEGO23PYQ",
   },
   {
+    name: "Memulai Pemrograman dengan Python",
+    issuer: "Dicoding Indonesia",
+    date: "Feb 2026",
+    tag: "Programming / Python",
+    description:
+      "Core Python programming certification covering data types, control flow, object-oriented programming, data structures, and standard libraries (MEPJMKKRJP3V).",
+    credential: "/certificates/cert-dicoding-python.webp",
+    verifyUrl: "https://dicoding.com/certificates/MEPJMKKRJP3V",
+  },
+  {
+    name: "Belajar Dasar Git dengan GitHub",
+    issuer: "Dicoding Indonesia",
+    date: "Feb 2026",
+    tag: "DevOps / Git",
+    description:
+      "Professional version control certification covering Git repository workflows, branch management, merge conflict resolution, and GitHub collaboration (ERZRL9GYQZYV).",
+    credential: "/certificates/cert-dicoding-git.webp",
+    verifyUrl: "https://dicoding.com/certificates/ERZRL9GYQZYV",
+  },
+  {
+    name: "Belajar Membuat Front-End Web untuk Pemula",
+    issuer: "Dicoding Indonesia",
+    date: "Apr 2024",
+    tag: "Frontend / Web",
+    description:
+      "Modern frontend development certification covering semantic HTML5, responsive CSS3 layouts, web storage API, and DOM manipulation (2VX3RWDQJZYQ).",
+    credential: "/certificates/cert-dicoding-frontend-pemula.webp",
+    verifyUrl: "https://dicoding.com/certificates/2VX3RWDQJZYQ",
+  },
+  {
+    name: "Belajar Dasar Pemrograman JavaScript",
+    issuer: "Dicoding Indonesia",
+    date: "Oct 2024",
+    tag: "Programming / JS",
+    description:
+      "ECMAScript fundamentals certification covering data structures, asynchronous programming (Promises & async/await), OOP, and modular code architecture (EYX4JY175ZDL).",
+    credential: "/certificates/cert-dicoding-javascript.webp",
+    verifyUrl: "https://dicoding.com/certificates/EYX4JY175ZDL",
+  },
+  {
+    name: "Pengenalan ke Logika Pemrograman (Logic 101)",
+    issuer: "Dicoding Indonesia",
+    date: "Feb 2026",
+    tag: "Computer Science",
+    description:
+      "Foundational computational thinking, algorithmic flowcharts, pseudocode decomposition, sorting/searching algorithms, and logical problem solving (N9ZO0443YXG5).",
+    credential: "/certificates/cert-dicoding-logic-101.webp",
+    verifyUrl: "https://dicoding.com/certificates/N9ZO0443YXG5",
+  },
+  {
+    name: "Memulai Dasar Pemrograman Software Developer",
+    issuer: "Dicoding Indonesia",
+    date: "Jan 2026",
+    tag: "Software Engineering",
+    description:
+      "Software engineering fundamentals covering developer career paths, software engineering ethics, development methodologies (Agile/Scrum), and SDLC (L4PQW66R7PO1).",
+    credential: "/certificates/cert-dicoding-software-dev-starter.webp",
+    verifyUrl: "https://dicoding.com/certificates/L4PQW66R7PO1",
+  },
+  {
+    name: "Financial Literacy 101",
+    issuer: "Dicoding Indonesia",
+    date: "May 2025",
+    tag: "Finance / Literacy",
+    description:
+      "Personal and corporate financial literacy certification covering financial planning, investment fundamentals, cash-flow management, and risk diversification (6RPNO6635X2M).",
+    credential: "/certificates/cert-dicoding-financial-literacy.webp",
+    verifyUrl: "https://dicoding.com/certificates/6RPNO6635X2M",
+  },
+  {
     name: "Gemini Certified Student (University)",
     issuer: "Google for Education",
     date: "2025",
     tag: "Google",
     description: "Certified for the knowledge, skills, and basic competencies needed to use Google AI. Valid Oct 2025 — Oct 2028.",
     credential: "/certificates/gemini-certified-student.webp",
-  },
-  {
-    name: "Belajar Dasar AI (AI Fundamentals)",
-    issuer: "Dicoding Indonesia",
-    date: "Oct 2025",
-    tag: "AI / ML",
-    description:
-      "Official Dicoding certificate of competence in artificial intelligence fundamentals, machine learning principles, and modern AI algorithms. Valid Oct 2025 — Oct 2028 (KEXL2YGVWZG2).",
-    credential: "/certificates/cert-dicoding-belajar-dasar-ai.webp",
-    verifyUrl: "https://dicoding.com/certificates/KEXL2YGVWZG2",
   },
   {
     name: "IBM Granite Learning Path",

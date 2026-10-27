@@ -113,8 +113,11 @@ client/public/__manus__/version.json
 .project-config.json
 
 # Local raw image and document sources
-doc-fauzi/
+doc-fauzi/*
+!doc-fauzi/project/
+doc-fauzi/project/*
 !doc-fauzi/project/business intelligence/
+!doc-fauzi/project/air-quality/
 
 # Local submodules/tools
 career-ops/

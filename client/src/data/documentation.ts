@@ -19,6 +19,24 @@ export interface DocumentationItem {
 
 export const documentationItems: readonly DocumentationItem[] = [
   {
+    id: "air-quality-ml-pipeline",
+    category: {
+      en: "Machine Learning & Environmental Intelligence",
+      id: "Machine Learning & Analisis Kualitas Udara",
+    },
+    title: {
+      en: "Air Quality Forensic Analytics & Multi-Objective ML Pipeline",
+      id: "Forensik Kualitas Udara & Pipeline Machine Learning Multi-Objektif",
+    },
+    description: {
+      en: "End-to-end data science pipeline benchmarking Ridge, Random Forest, and XGBoost with Stratified 5-Fold CV for PM2.5 forecasting and health risk categorization.",
+      id: "Pipeline data science end-to-end membandingkan Ridge, Random Forest, dan XGBoost dengan Stratified 5-Fold CV untuk estimasi PM2.5 dan klasifikasi risiko kesehatan.",
+    },
+    image: "/documentation/air-quality-diagnostics.webp",
+    date: "2026",
+    tag: "Predictive AI",
+  },
+  {
     id: "idx-market-intelligence",
     category: {
       en: "Financial Intelligence & Data Warehouse",
