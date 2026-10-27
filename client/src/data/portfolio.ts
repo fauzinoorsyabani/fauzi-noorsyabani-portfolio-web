@@ -6,6 +6,7 @@
 export const assetUrls = {
   logo: "/logo-thumb.webp",
   heroData: "https://placehold.co/800x600?text=Project+1",
+  polastok: "/polastok-web.webp",
   fauziJournal: "/fauzi-journal.webp",
   geoBooster: "/geobooster.webp",
   idxMarket: "/idx-market-dashboard.webp",
@@ -276,11 +277,14 @@ export const featuredProjects: readonly Project[] = [
     date: "Feb 2026 — Jul 2026",
     description:
       "Led a five-member cross-functional team (PJK-GM041) through a 900+ hour capstone to design, build, and deploy an AI-powered inventory forecasting platform for Indonesian SMEs. Owned delivery end-to-end: data preparation, model integration, and MVP deployment; applied LLM orchestration and prompt engineering for stock prediction and reorder recommendations.",
-    result: "Demand prediction, stock anomaly detection, and AI-generated reorder recommendations for Indonesian SMEs.",
-    technologies: ["Python", "Machine Learning", "Generative AI", "Full-Stack", "FastAPI", "React"],
+    result: "913.000+ data transaksi historis dari 50 produk UMKM teranalisis, model Random Forest & LSTM (SMAPE ~18%), terintegrasi Google Gemini AI untuk rekomendasi kulakan cerdas.",
+    technologies: ["Python 3.11", "Streamlit", "Scikit-Learn", "TensorFlow (LSTM)", "Google Gemini AI", "Plotly", "Pandas"],
     category: "Applied AI · Team Lead",
-    art: assetUrls.heroData,
-    links: {},
+    art: assetUrls.polastok,
+    links: {
+      demo: "https://polastok.streamlit.app",
+      source: "https://github.com/PolaStok/polastok-web",
+    },
   },
   {
     title: "ClinicalNote AI — Clinical Documentation Platform",
