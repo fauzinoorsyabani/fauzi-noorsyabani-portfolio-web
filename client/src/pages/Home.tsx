@@ -1423,9 +1423,8 @@ export default function Home() {
                       }
                     }}
                     aria-label={`${language === "en" ? "View details for" : "Lihat detail proyek"} ${project.title}`}
-                    className="project-card motion-card group relative flex flex-col justify-between overflow-hidden rounded-xl border border-transparent bg-white text-left shadow-xs transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-neutral-900/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 dark:focus-visible:ring-white"
+                    className="motion-card group relative flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left shadow-xs transition duration-300 hover:-translate-y-1 hover:border-neutral-900 dark:hover:border-neutral-500 hover:shadow-xl hover:shadow-neutral-900/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 dark:focus-visible:ring-white"
                   >
-                    <span className="project-border-runner" aria-hidden="true" />
 
                     {/* Visual Media Header — Full-Bleed Edge-to-Edge with Hover Detail Overlay */}
                     <div className="relative border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 overflow-hidden">
