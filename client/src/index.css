@@ -828,11 +828,31 @@ button, a, input, textarea, select {
   animation: project-border-spin 6s linear infinite !important;
 }
 
-/* Ensure the smooth border runner animation is active on mobile / touch devices where hover is unavailable */
-@media (hover: none), (max-width: 640px) {
+/* Ensure the smooth border runner animation and track are active on mobile / touch devices where hover is unavailable */
+@media (hover: none), (max-width: 768px) {
+  .project-border-runner {
+    padding: 2.2px !important;
+    background: rgba(148, 163, 184, 0.28) !important;
+  }
+  .dark .theme-root .project-border-runner {
+    background: rgba(82, 82, 91, 0.35) !important;
+  }
   .project-border-runner::before {
-    opacity: 0.85 !important;
+    opacity: 0.9 !important;
     animation: project-border-spin 8s linear infinite !important;
+  }
+  .touch-hover-overlay {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  .touch-hover-shade {
+    opacity: 0.8 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-border-runner::before {
+    animation: none !important;
   }
 }
 
@@ -844,3 +864,4 @@ button, a, input, textarea, select {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+

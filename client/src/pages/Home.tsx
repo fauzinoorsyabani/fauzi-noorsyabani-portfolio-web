@@ -385,11 +385,13 @@ function DocumentationShowcase({
   };
 
   const onMouseUp = () => {
-    isDragging.current = false;
     if (trackRef.current) {
       trackRef.current.style.animationPlayState = "";
       trackRef.current.style.cursor = "grab";
     }
+    setTimeout(() => {
+      isDragging.current = false;
+    }, 120);
   };
 
   // Touch drag support
@@ -405,11 +407,17 @@ function DocumentationShowcase({
   const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!trackRef.current) return;
     const dx = touchStartX.current - e.touches[0].pageX;
+    if (Math.abs(dx) > 6) {
+      isDragging.current = true;
+    }
     trackRef.current.scrollLeft = touchScrollLeft.current + dx;
   };
 
   const onTouchEnd = () => {
     if (trackRef.current) trackRef.current.style.animationPlayState = "";
+    setTimeout(() => {
+      isDragging.current = false;
+    }, 120);
   };
 
   return (
@@ -532,7 +540,7 @@ function DocumentationShowcase({
       {selectedItem ? (
         <Dialog open={Boolean(selectedItem)} onOpenChange={(open) => !open && setSelectedItem(null)}>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto border border-neutral-300 bg-white p-4 sm:p-6 shadow-2xl dark:border-neutral-700 dark:bg-neutral-900">
-            <DialogHeader>
+            <DialogHeader className="pr-10 sm:pr-12">
               <div className="flex items-center gap-2 mb-1">
                 <span className="mono-type rounded border border-neutral-300 bg-neutral-100 px-2.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200">
                   {selectedItem.tag}
@@ -1463,8 +1471,8 @@ export default function Home() {
                               decoding="async"
                             />
                             {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button — Visible on mobile & on desktop hover */}
-                            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                            <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
+                            <div className="touch-hover-shade pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="touch-hover-overlay pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
                               <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-4 py-2 sm:px-5 sm:py-2.5 text-[0.72rem] sm:text-[0.78rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-100 sm:scale-95 sm:group-hover:scale-100">
                                 <Code2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-sky-400" />
                                 {language === "en" ? "View Details" : "Lihat Detail"}
@@ -1496,8 +1504,8 @@ export default function Home() {
                             </span>
                           </div>
                           {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button — Visible on mobile & on desktop hover */}
-                          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
+                          <div className="touch-hover-shade pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          <div className="touch-hover-overlay pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
                             <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-4 py-2 sm:px-5 sm:py-2.5 text-[0.72rem] sm:text-[0.78rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-100 sm:scale-95 sm:group-hover:scale-100">
                               <Code2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-sky-400" />
                               {language === "en" ? "View Details" : "Lihat Detail"}
@@ -1508,8 +1516,8 @@ export default function Home() {
                         <div className="relative overflow-hidden">
                           <ProjectEvidence index={index} category={project.category} />
                           {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button — Visible on mobile & on desktop hover */}
-                          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
+                          <div className="touch-hover-shade pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          <div className="touch-hover-overlay pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
                             <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-4 py-2 sm:px-5 sm:py-2.5 text-[0.72rem] sm:text-[0.78rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-100 sm:scale-95 sm:group-hover:scale-100">
                               <Code2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-sky-400" />
                               {language === "en" ? "View Details" : "Lihat Detail"}
@@ -1562,56 +1570,52 @@ export default function Home() {
 
                         {/* Card Footer Action Bar */}
                         <div
-                          className="mt-5 flex flex-wrap items-center justify-between gap-2.5 border-t border-neutral-200 dark:border-neutral-800 pt-3.5"
+                          className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border-t border-neutral-200 dark:border-neutral-800 pt-3.5"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <div className="flex flex-wrap items-center gap-2">
-                            {project.links?.demo ? (
-                              <a
-                                href={project.links.demo}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex min-h-[36px] sm:min-h-0 items-center gap-1.5 rounded-lg border border-neutral-900 bg-neutral-950 px-3.5 py-2 sm:py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 dark:border-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
-                              >
-                                {language === "en" ? "View Live Demo" : "Lihat Demo Live"} <ArrowUpRight className="h-3.5 w-3.5" />
-                              </a>
-                            ) : project.links?.source ? (
-                              <a
-                                href={project.links.source}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex min-h-[36px] sm:min-h-0 items-center gap-1.5 rounded-lg border border-neutral-900 bg-neutral-950 px-3.5 py-2 sm:py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 dark:border-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
-                              >
-                                {language === "en" ? "View Source Code" : "Kode Sumber"} <Github className="h-3.5 w-3.5" />
-                              </a>
-                            ) : (
-                              <button
-                                type="button"
-                                onClick={() => setSelectedProject(project)}
-                                className="inline-flex min-h-[36px] sm:min-h-0 items-center gap-1.5 rounded-lg border border-neutral-300 bg-neutral-100/80 px-3 py-2 sm:py-1.5 mono-type text-[0.68rem] sm:text-[0.62rem] font-bold uppercase tracking-[0.08em] text-neutral-700 transition hover:border-neutral-900 hover:bg-neutral-200/70 hover:text-neutral-950 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-500"
-                              >
-                                {language === "en" ? "Case Study Dossier" : "Dokumen Studi Kasus"}
-                              </button>
-                            )}
+                          {project.links?.demo || project.links?.source ? (
+                            <div className="flex items-center gap-2">
+                              {project.links?.demo ? (
+                                <a
+                                  href={project.links.demo}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="flex-1 sm:flex-none inline-flex min-h-[38px] sm:min-h-0 items-center justify-center gap-1.5 rounded-lg border border-neutral-900 bg-neutral-950 px-3.5 py-2 sm:py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 dark:border-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+                                >
+                                  {language === "en" ? "View Live Demo" : "Lihat Demo Live"} <ArrowUpRight className="h-3.5 w-3.5" />
+                                </a>
+                              ) : (
+                                <a
+                                  href={project.links.source}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="flex-1 sm:flex-none inline-flex min-h-[38px] sm:min-h-0 items-center justify-center gap-1.5 rounded-lg border border-neutral-900 bg-neutral-950 px-3.5 py-2 sm:py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 dark:border-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+                                >
+                                  {language === "en" ? "View Source Code" : "Kode Sumber"} <Github className="h-3.5 w-3.5" />
+                                </a>
+                              )}
 
-                            {project.links?.demo && project.links?.source ? (
-                              <a
-                                href={project.links.source}
-                                target="_blank"
-                                rel="noreferrer"
-                                title="GitHub Repository"
-                                aria-label="GitHub Repository"
-                                className="inline-flex min-h-[36px] min-w-[36px] sm:min-h-0 sm:min-w-0 items-center justify-center gap-1 rounded-lg border border-neutral-300 bg-white px-2.5 py-2 sm:py-1.5 text-xs font-semibold text-neutral-700 shadow-xs transition hover:border-neutral-900 hover:text-black dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
-                              >
-                                <Github className="h-3.5 w-3.5" />
-                              </a>
-                            ) : null}
-                          </div>
+                              {project.links?.demo && project.links?.source ? (
+                                <a
+                                  href={project.links.source}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  title="GitHub Repository"
+                                  aria-label="GitHub Repository"
+                                  className="inline-flex min-h-[38px] min-w-[38px] sm:min-h-0 sm:min-w-0 items-center justify-center gap-1 rounded-lg border border-neutral-300 bg-white px-2.5 py-2 sm:py-1.5 text-xs font-semibold text-neutral-700 shadow-xs transition hover:border-neutral-900 hover:text-black dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200 shrink-0"
+                                >
+                                  <Github className="h-3.5 w-3.5" />
+                                </a>
+                              ) : null}
+                            </div>
+                          ) : null}
 
                           <button
                             type="button"
                             onClick={() => setSelectedProject(project)}
-                            className="mono-type inline-flex min-h-[36px] sm:min-h-0 items-center gap-1.5 rounded-lg border border-neutral-300 bg-neutral-100/90 dark:bg-neutral-800 dark:border-neutral-700 px-3 py-2 sm:py-1.5 text-[0.68rem] sm:text-[0.62rem] font-bold uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100 shadow-2xs transition hover:border-neutral-950 hover:bg-neutral-950 hover:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-neutral-950"
+                            className={`mono-type inline-flex min-h-[38px] sm:min-h-0 items-center justify-center gap-1.5 rounded-lg border border-neutral-300 bg-neutral-100/90 dark:bg-neutral-800 dark:border-neutral-700 px-3 py-2 sm:py-1.5 text-[0.68rem] sm:text-[0.62rem] font-bold uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100 shadow-2xs transition hover:border-neutral-950 hover:bg-neutral-950 hover:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-neutral-950 ${
+                              !project.links?.demo && !project.links?.source ? "w-full" : "w-full sm:w-auto"
+                            }`}
                           >
                             <Code2 className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
                             {language === "en" ? "View Details" : "Lihat Detail"}
@@ -1647,7 +1651,7 @@ export default function Home() {
                     return (
                       <div className="flex flex-col">
                         {/* Modal Top Header */}
-                        <div className="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-950/60 px-4 py-4 sm:px-7 sm:py-6">
+                        <div className="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-950/60 px-4 py-4 pr-12 sm:px-7 sm:py-6 sm:pr-14">
                           <DialogHeader>
                             <div className="flex flex-wrap items-center gap-2 mb-2">
                               <span className="mono-type rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-2.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-900 dark:text-neutral-100 shadow-2xs">
@@ -1673,9 +1677,9 @@ export default function Home() {
                         {modalArt ? (
                           <div className="relative border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-950">
                             {isModalAcademicDW ? (
-                              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-neutral-900/90 px-4 py-2">
-                                <span className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-600 dark:text-neutral-400">
-                                  Looker Studio — {dashboardViews[dashboardView].title}
+                              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-neutral-900/90 px-3.5 py-2 sm:px-4">
+                                <span className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-600 dark:text-neutral-400 truncate max-w-[190px] sm:max-w-none">
+                                  Looker Studio <span className="hidden sm:inline">— {dashboardViews[dashboardView].title}</span>
                                 </span>
                                 <div className="flex items-center gap-1">
                                   {(["executive", "detail", "trend"] as const).map((key) => (
@@ -1683,7 +1687,7 @@ export default function Home() {
                                       key={key}
                                       type="button"
                                       onClick={() => setDashboardView(key)}
-                                      className={`rounded px-2.5 py-0.5 mono-type text-[0.58rem] font-bold transition ${
+                                      className={`rounded px-2.5 py-1 sm:py-0.5 mono-type text-[0.62rem] sm:text-[0.58rem] font-bold transition ${
                                         dashboardView === key
                                           ? "bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950"
                                           : "bg-white text-neutral-600 hover:bg-neutral-200/80 border border-neutral-300 dark:bg-neutral-800 dark:text-neutral-300 dark:border-neutral-700"
