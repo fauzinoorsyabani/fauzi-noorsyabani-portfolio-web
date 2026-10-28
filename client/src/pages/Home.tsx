@@ -1471,10 +1471,10 @@ export default function Home() {
                               decoding="async"
                             />
                             {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button — Visible on mobile & on desktop hover */}
-                            <div className="touch-hover-shade pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                            <div className="touch-hover-overlay pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
-                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-4 py-2 sm:px-5 sm:py-2.5 text-[0.72rem] sm:text-[0.78rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-100 sm:scale-95 sm:group-hover:scale-100">
-                                <Code2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-sky-400" />
+                            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
+                                <Code2 className="h-4 w-4 text-sky-400" />
                                 {language === "en" ? "View Details" : "Lihat Detail"}
                               </span>
                             </div>
@@ -1504,25 +1504,25 @@ export default function Home() {
                             </span>
                           </div>
                           {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button — Visible on mobile & on desktop hover */}
-                          <div className="touch-hover-shade pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                          <div className="touch-hover-overlay pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
-                            <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-4 py-2 sm:px-5 sm:py-2.5 text-[0.72rem] sm:text-[0.78rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-100 sm:scale-95 sm:group-hover:scale-100">
-                              <Code2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-sky-400" />
-                              {language === "en" ? "View Details" : "Lihat Detail"}
-                            </span>
-                          </div>
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
+                                <Code2 className="h-4 w-4 text-sky-400" />
+                                {language === "en" ? "View Details" : "Lihat Detail"}
+                              </span>
+                            </div>
                         </div>
                       ) : (
                         <div className="relative overflow-hidden">
                           <ProjectEvidence index={index} category={project.category} />
                           {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button — Visible on mobile & on desktop hover */}
-                          <div className="touch-hover-shade pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-80 sm:opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                          <div className="touch-hover-overlay pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-100 sm:opacity-0 transition-all duration-300 sm:group-hover:opacity-100">
-                            <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-4 py-2 sm:px-5 sm:py-2.5 text-[0.72rem] sm:text-[0.78rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-100 sm:scale-95 sm:group-hover:scale-100">
-                              <Code2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-sky-400" />
-                              {language === "en" ? "View Details" : "Lihat Detail"}
-                            </span>
-                          </div>
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/40 dark:border-white/30 bg-neutral-950/90 px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
+                                <Code2 className="h-4 w-4 text-sky-400" />
+                                {language === "en" ? "View Details" : "Lihat Detail"}
+                              </span>
+                            </div>
                         </div>
                       )}
                     </div>

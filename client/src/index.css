@@ -841,13 +841,6 @@ button, a, input, textarea, select {
     opacity: 0.9 !important;
     animation: project-border-spin 8s linear infinite !important;
   }
-  .touch-hover-overlay {
-    opacity: 1 !important;
-    transform: scale(1) !important;
-  }
-  .touch-hover-shade {
-    opacity: 0.8 !important;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
