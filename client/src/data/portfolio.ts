@@ -169,7 +169,9 @@ export const skillGroups = techStackCategories;
 export type Project = {
   title: string;
   date: string;
+  shortDescription: string;
   description: string;
+  highlights?: readonly string[];
   technologies: readonly string[];
   result?: string;
   category: string;
@@ -182,10 +184,19 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "Air Quality Forensic Analytics & Multi-Objective ML Pipeline",
     date: "2026",
+    shortDescription:
+      "End-to-end environmental machine learning pipeline evaluating urban air pollutant interactions and meteorological dynamics across 500 monitoring observations with anti-leakage multi-objective modeling.",
     description:
-      "Architected and deployed an end-to-end environmental machine learning pipeline evaluating urban air pollutant interactions (PM2.5, PM10, NOx, NO2, SO2, CO, CO2, VOCs, CH4) and meteorological dynamics across 500 monitoring observations. Engineered physical non-negative clipping for sensor baseline zero-drift, domain feature formulations (Combustion Index, Nitrogen Oxidation Ratio, and PM2.5/PM10 fine fraction indices), and an anti-leakage multi-objective modeling architecture. Benchmarked regularized linear baselines (Ridge, Multinomial Logistic) against tree ensembles (Random Forest, XGBoost) using Stratified 5-Fold Cross Validation—achieving high predictive R² with normally distributed zero-mean residuals for PM2.5 concentration estimation and robust Macro F1-scores for multi-class health severity categorization, accompanied by XAI feature importance rankings.",
+      "**Architected and deployed an end-to-end environmental machine learning pipeline** evaluating urban air pollutant interactions (**PM2.5, PM10, NOx, NO2, SO2, CO, CO2, VOCs, CH4**) and meteorological dynamics across **500 monitoring observations**.\n\nEngineered **physical non-negative clipping** for sensor baseline zero-drift, domain feature formulations (**Combustion Index, Nitrogen Oxidation Ratio, and PM2.5/PM10 fine fraction indices**), and an **anti-leakage multi-objective modeling architecture**.\n\nBenchmarked regularized linear baselines (**Ridge, Multinomial Logistic**) against tree ensembles (**Random Forest, XGBoost**) using **Stratified 5-Fold Cross Validation**—achieving **high predictive R² with normally distributed zero-mean residuals** for PM2.5 concentration estimation and **robust Macro F1-scores** for multi-class health severity categorization, accompanied by **XAI feature importance rankings**.",
+    highlights: [
+      "**Architected a dual-objective ML pipeline** evaluating **9 urban air pollutants** and meteorological parameters across **500 observations**.",
+      "Engineered **physical non-negative clipping** to correct sensor zero-drift alongside domain-specific atmospheric indices (**Combustion Index, Nitrogen Oxidation Ratio, PM2.5/PM10 fine fraction**).",
+      "Designed a strict **anti-leakage preprocessing** and **Stratified 5-Fold Cross-Validation** pipeline benchmarking **Ridge** and **Multinomial Logistic** against **Random Forest** and **XGBoost**.",
+      "Achieved **high predictive R² with zero-mean normally distributed residuals** for PM2.5 regression and **robust Macro F1-scores** for multi-class health risk categorization.",
+      "Generated **8 publication-grade (300 DPI) diagnostic visual artifacts** and **XAI feature importance rankings** to explain key pollution drivers.",
+    ],
     result:
-      "Engineered automated hybrid ingestion, 8 high-DPI (300 DPI) publication-grade diagnostic artifacts, zero-leakage health risk categorization, and validated XGBoost feature drivers with zero-mean residual error.",
+      "Engineered automated hybrid ingestion, **8 high-DPI (300 DPI) publication-grade diagnostic artifacts**, **zero-leakage health risk categorization**, and validated XGBoost feature drivers with **zero-mean residual error**.",
     technologies: ["Python", "XGBoost", "Random Forest", "Scikit-Learn", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
     category: "Machine Learning · Environmental Intelligence",
     art: assetUrls.airQuality,
@@ -196,10 +207,18 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "PulseAI — Student Digital Habits & Academic Impact Platform",
     date: "2026",
+    shortDescription:
+      "Predictive machine learning platform and real-time React simulation cockpit analyzing digital screen exposure, sleep displacement, and academic GPA impact across 4,500 student records.",
     description:
-      "Architected and deployed an end-to-end predictive machine learning platform and interactive simulation cockpit analyzing digital screen exposure, bedtime phone habits, and sleep displacement across a benchmark dataset of 4,500 student records (16 multidimensional features). Engineered a leak-free stratified 80/10/10 split, behavioral interaction features (Screen-to-Sleep Ratio, Sleep Deficit Index), and cost-weighted loss optimization to resolve heavy class imbalance (81.8% Beneficial vs 3.7% Negative).\n\nBenchmarked candidate architectures—selecting cost-weighted XGBoost achieving 96.22% test accuracy and 0.9225 holdout Macro F1 (with only 1.03% validation-to-test drop) alongside L2-regularized Ridge regressors (R² = 0.82, ±0.27 GPA RMSE) and K-Means behavioral clustering (4 distinct archetypes). Shipped with a sub-50ms Starlette ASGI backend, local-first SQLite persistence, and an interactive React simulation cockpit.",
+      "**Architected and deployed an end-to-end predictive machine learning platform** and interactive simulation cockpit analyzing digital screen exposure, bedtime phone habits, and sleep displacement across a benchmark dataset of **4,500 student records (16 multidimensional features)**.\n\nEngineered a **leak-free stratified 80/10/10 split**, behavioral interaction features (**Screen-to-Sleep Ratio, Sleep Deficit Index**), and **cost-weighted loss optimization** to resolve heavy class imbalance (**81.8% Beneficial vs 3.7% Negative**).\n\nBenchmarked candidate architectures—selecting **cost-weighted XGBoost achieving 96.22% test accuracy and 0.9225 holdout Macro F1** (with only **1.03% validation-to-test drop**) alongside **L2-regularized Ridge regressors (R² = 0.82, ±0.27 GPA RMSE)** and **K-Means behavioral clustering (4 distinct archetypes)**. Shipped with a **sub-50ms Starlette ASGI backend**, local-first **SQLite persistence**, and an interactive **React simulation cockpit**.",
+    highlights: [
+      "Engineered a **leak-free 80/10/10 stratified data pipeline** across **4,500 student records** and 16 behavioral features, formulating custom **Screen-to-Sleep Ratio** and **Sleep Deficit Index** metrics.",
+      "Resolved severe class imbalance (81.8% Beneficial vs 3.7% Negative) via **cost-weighted XGBoost optimization**, achieving **96.22% test accuracy** and **0.9225 holdout Macro F1**.",
+      "Built multi-task predictive models combining **L2-regularized Ridge Regression** for academic GPA estimation (**R² = 0.82, ±0.27 GPA RMSE**) and **K-Means clustering** across 4 student archetypes.",
+      "Developed a **sub-50ms Starlette ASGI inference backend** with local-first **SQLite persistence** and an interactive **React + TypeScript real-time habit simulator**.",
+    ],
     result:
-      "Engineered leak-free 80/10/10 modeling across 4,500 records; champion XGBoost achieved 96.22% test accuracy and 0.9225 holdout Macro F1; delivered sub-50ms multi-task inference and real-time habit simulation.",
+      "Engineered leak-free 80/10/10 modeling across 4,500 records; champion **XGBoost achieved 96.22% test accuracy** and **0.9225 holdout Macro F1**; delivered **sub-50ms multi-task inference** and real-time habit simulation.",
     technologies: ["Python", "XGBoost", "Scikit-Learn", "Starlette", "React", "TypeScript", "Tailwind CSS", "Chart.js", "SQLite"],
     category: "Applied AI · Machine Learning & Behavioral Intelligence",
     art: assetUrls.pulseai,
@@ -211,10 +230,19 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "IDX Market Intelligence — Automated Star-Schema Warehouse & Pipeline",
     date: "2026",
+    shortDescription:
+      "Automated end-to-end ELT data pipeline and Kimball Star-Schema warehouse tracking 30 core IDX30 equities, USD/IDR rates, and IHSG benchmark across 27,150+ historical records.",
     description:
-      "Architected and deployed an automated end-to-end ELT data pipeline and Kimball dimensional warehouse (Star Schema) tracking 30 core IDX30 equities, USD/IDR currency rates, and IHSG benchmark across 27,150+ historical records. Engineered fault-tolerant ingestion with idempotent upserts (INSERT ... ON CONFLICT DO UPDATE) ensuring 0% duplicate records, paired with a circuit-breaker Data Quality Gate executing 8 automated deterministic integrity rules (validating positive price bounds, foreign key constraints, and 35% ARA/ARB regulatory anomaly thresholds). Synchronized daily at 17:00 WIB via automated GitHub Actions CI/CD cron jobs with 0 server operational costs, and delivered via an interactive Streamlit & Plotly analytics dashboard alongside decoupled CSV data marts for Microsoft Power BI.",
+      "**Architected and deployed an automated end-to-end ELT data pipeline** and **Kimball dimensional warehouse (Star Schema)** tracking **30 core IDX30 equities**, USD/IDR currency rates, and IHSG benchmark across **27,150+ historical records**.\n\nEngineered fault-tolerant ingestion with **idempotent upserts (INSERT ... ON CONFLICT DO UPDATE)** ensuring **0% duplicate records**, paired with a circuit-breaker **Data Quality Gate executing 8 automated deterministic integrity rules** (validating positive price bounds, foreign key constraints, and **35% ARA/ARB regulatory anomaly thresholds**).\n\nSynchronized daily at 17:00 WIB via **automated GitHub Actions CI/CD cron jobs with 0 server operational costs**, and delivered via an interactive **Streamlit & Plotly analytics dashboard** alongside decoupled CSV data marts for **Microsoft Power BI**.",
+    highlights: [
+      "Designed a **Kimball dimensional Star-Schema warehouse** in PostgreSQL tracking 30 IDX30 equities, USD/IDR exchange rates, and IHSG index across **27,150+ historical rows**.",
+      "Implemented **idempotent SQL upserts (INSERT ... ON CONFLICT DO UPDATE)** guaranteeing **0% duplicate records** across incremental daily runs.",
+      "Built a circuit-breaker **Data Quality Gate enforcing 8 deterministic rules**, including positive price bounds, schema integrity, and **35% IDX ARA/ARB anomaly thresholds**.",
+      "Automated daily ingestion at 17:00 WIB after market close using **GitHub Actions cron workflows** with **100% pytest suite coverage** and **zero server cost**.",
+      "Delivered an interactive **Streamlit + Plotly market cockpit** and decoupled analytical CSV marts for **Power BI reporting**.",
+    ],
     result:
-      "Processed 27,150+ historical records across 30 IDX30 tickers with 0% duplication, 8 automated data quality gates, 100% pytest test suite pass rate, and automated daily synchronization at 17:00 WIB.",
+      "Processed **27,150+ historical records** across 30 IDX30 tickers with **0% duplication**, **8 automated data quality gates**, **100% pytest test suite pass rate**, and automated daily synchronization at 17:00 WIB.",
     technologies: ["Python", "PostgreSQL", "Star Schema", "ETL", "Streamlit", "Plotly", "GitHub Actions", "Power BI"],
     category: "Data Engineering · Financial Intelligence",
     art: assetUrls.idxMarket,
@@ -225,9 +253,17 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "Geo Booster (ZiuLabs) — Digital Commerce & AI SaaS Platform",
     date: "2026",
+    shortDescription:
+      "Production-grade modular PHP digital commerce platform and AI SaaS storefront with OWASP-hardened architecture, automated catalog management, and Cloudflare Tunnel edge routing.",
     description:
-      "Architected and deployed a production-grade modular PHP digital commerce platform and AI SaaS foundation for curated digital products and AI tooling licenses. Built with a modular monolith architecture following OWASP security standards, featuring an interactive violet animated UI, automated catalog and inventory management, WhatsApp order negotiation & checkout flows, and self-hosted Cloudflare Tunnel reverse-proxy routing for the custom domain (ziulabs.biz.id).",
-    result: "Live production commerce ecosystem with sub-second page performance, zero frontend build overhead, and automated Cloudflare edge tunneling.",
+      "**Architected and deployed a production-grade modular PHP digital commerce platform** and AI SaaS foundation for curated digital products and AI tooling licenses. Built with a **modular monolith architecture** following **OWASP security standards**, featuring an interactive violet animated UI, automated catalog and inventory management, **WhatsApp order negotiation & checkout flows**, and self-hosted **Cloudflare Tunnel reverse-proxy routing** for the custom domain (**ziulabs.biz.id**).",
+    highlights: [
+      "Architected a **modular monolith commerce platform** in **PHP 8.3+ and MySQL 8** adhering to **OWASP security best practices**.",
+      "Built dynamic SKU catalog filtering, real-time stock status tracking, and automated **WhatsApp checkout & negotiation flows**.",
+      "Engineered a responsive, interactive UI with **Tailwind CSS** and custom micro-interactions achieving **sub-second page loads**.",
+      "Configured **zero-trust Cloudflare Tunnel reverse-proxy routing** and edge caching for production deployment on **ziulabs.biz.id**.",
+    ],
+    result: "Live production commerce ecosystem with **sub-second page performance**, **zero frontend build overhead**, and automated **Cloudflare edge tunneling**.",
     technologies: ["PHP 8.3+", "MySQL 8", "Cloudflare Tunnel", "Modular Monolith", "JavaScript", "Tailwind CSS"],
     category: "Product Engineering · Full-Stack",
     art: assetUrls.geoBooster,
@@ -239,9 +275,17 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "Fauzi / Journal — Editorial Web Publishing & Studio Platform",
     date: "2026",
+    shortDescription:
+      "Production editorial publishing system and rich-text authoring studio featuring client-side WebP optimization, Clerk multi-role auth, tRPC APIs, and TiDB Cloud Serverless.",
     description:
-      "Architected and deployed a production editorial publishing system and authoring studio featuring automated client-side WebP image optimization, Clerk authentication with multi-tier role authorization (Super Admin vs Author), and TiDB Cloud Serverless database. Designed an immersive, tactile typography system with a TipTap rich-text canvas, debounced LocalStorage draft recovery, custom domain integration (fauzijournal.web.id), and serverless Vercel deployment.",
-    result: "Live publication system handling automated WebP asset pipelines, sub-second edge response times, and 100% free serverless architecture.",
+      "**Architected and deployed a production editorial publishing system** and authoring studio featuring automated **client-side WebP image optimization**, **Clerk authentication with multi-tier role authorization (Super Admin vs Author)**, and **TiDB Cloud Serverless database**.\n\nDesigned an immersive, tactile typography system with a **TipTap rich-text canvas**, debounced **LocalStorage draft recovery**, custom domain integration (**fauzijournal.web.id**), and serverless **Vercel deployment**.",
+    highlights: [
+      "Built a full-stack editorial CMS and reading platform using **React, TypeScript, tRPC**, and **TiDB Cloud Serverless (MySQL-compatible)**.",
+      "Integrated **Clerk authentication with multi-tier RBAC (Super Admin vs Author)** and protected studio publishing routes.",
+      "Engineered client-side **HTML5 Canvas WebP image compression** and a **TipTap rich-text editor** with debounced **LocalStorage draft auto-recovery**.",
+      "Deployed on **Vercel serverless edge infrastructure** with custom domain routing at **fauzijournal.web.id**.",
+    ],
+    result: "Live publication system handling **automated WebP asset pipelines**, **sub-second edge response times**, and **100% free serverless architecture**.",
     technologies: ["React", "TypeScript", "tRPC", "MySQL", "Tailwind CSS", "Vercel"],
     category: "Product Engineering · Full-Stack",
     art: assetUrls.fauziJournal,
@@ -253,10 +297,18 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "Wisata Jelajah Indonesia — Enterprise Travel E-Commerce & Ticketing Platform",
     date: "2026",
+    shortDescription:
+      "Full-stack tourism e-commerce and digital ticketing platform integrated with Midtrans Snap payments (QRIS, GoPay, VA), automated QR e-tickets, and multi-role partner analytics.",
     description:
-      "Architected and deployed a production-grade tourism and ticketing e-commerce platform for Tasikmalaya and national tourist destinations. Engineered end-to-end booking workflows with Midtrans Snap payment gateway integration (Virtual Accounts, GoPay, QRIS), automated digital booking code generation with client-side SVG QR code rendering, and paperless print-isolated PDF ticket generation. Built with a responsive React frontend, modular Express.js backend, multi-role authorization (User, Partner/Vendor, Admin), real-time revenue analytics dashboard, and automated serverless deployment on Vercel.",
+      "**Architected and deployed a production-grade tourism and ticketing e-commerce platform** for Tasikmalaya and national tourist destinations.\n\nEngineered end-to-end booking workflows with **Midtrans Snap payment gateway integration (Virtual Accounts, GoPay, QRIS)**, automated digital booking code generation with **client-side SVG QR code rendering**, and **paperless print-isolated PDF ticket generation**.\n\nBuilt with a responsive **React frontend**, modular **Express.js backend**, **multi-role authorization (User, Partner/Vendor, Admin)**, real-time revenue analytics dashboard, and automated serverless deployment on **Vercel**.",
+    highlights: [
+      "Engineered end-to-end travel booking and checkout flows integrated with **Midtrans Snap payment gateway (Virtual Accounts, GoPay, QRIS)**.",
+      "Built automated booking verification with **client-side SVG QR code generation** and **print-isolated paperless PDF e-tickets**.",
+      "Implemented **multi-role access control (Traveler, Venue Partner/Vendor, System Admin)** with real-time revenue and ticket telemetry dashboards.",
+      "Architected a modular **Express.js + TiDB Cloud backend** paired with a **React 18 + TypeScript frontend** deployed serverlessly on **Vercel**.",
+    ],
     result:
-      "Full-stack travel booking & ticketing platform with multi-channel payment gateway (Midtrans Snap), print-ready isolated e-tickets, vendor revenue telemetry, and 100% serverless Vercel multi-service architecture.",
+      "Full-stack travel booking & ticketing platform with **multi-channel payment gateway (Midtrans Snap)**, **print-ready isolated e-tickets**, **vendor revenue telemetry**, and **100% serverless Vercel multi-service architecture**.",
     technologies: ["React 18", "TypeScript", "Tailwind CSS", "Express.js", "Midtrans Snap", "TiDB Cloud", "Vercel"],
     category: "Product Engineering · Full-Stack & Payment Systems",
     art: assetUrls.wisataJelajah,
@@ -267,11 +319,18 @@ export const featuredProjects: readonly Project[] = [
   },
   {
     title: "Academic Capacity Data Warehouse",
-
     date: "2025 — 2026",
+    shortDescription:
+      "Star-schema data warehouse and Decision Support System (DSS) for Universitas Siliwangi monitoring academic capacity and accreditation ratios across 35 study programs.",
     description:
-      "Star-schema data warehouse and Decision Support System (DSS) developed for Universitas Siliwangi to monitor academic capacity, student-to-lecturer ratios, and accreditation compliance across 35 study programs using longitudinal PDDikti aggregate data. Built with robust ETL pipelines and interactive Google Looker Studio executive dashboards for institutional strategic decision-making.",
-    result: "Centralized ratio monitoring across 35 academic programs over 5 reporting periods with automated compliance threshold tracking.",
+      "**Star-schema data warehouse and Decision Support System (DSS)** developed for **Universitas Siliwangi** to monitor academic capacity, student-to-lecturer ratios, and accreditation compliance across **35 study programs** using longitudinal PDDikti aggregate data. Built with robust **ETL pipelines** and interactive **Google Looker Studio executive dashboards** for institutional strategic decision-making.",
+    highlights: [
+      "Designed a **Kimball Star-Schema Data Warehouse** modeling longitudinal PDDikti academic data across **35 study programs and 7 faculties**.",
+      "Built **automated ETL pipelines** to standardize multi-period student enrollment and lecturer capacity metrics over **5 reporting semesters**.",
+      "Developed a **3-layer interactive Google Looker Studio Decision Support System** (Executive Overview, Study Program Detail, Longitudinal Trend).",
+      "Enabled automated national accreditation compliance tracking for **Student-to-Lecturer ratios (RASDO)**.",
+    ],
+    result: "Centralized ratio monitoring across **35 academic programs over 5 reporting periods** with **automated compliance threshold tracking**.",
     technologies: ["Google Looker Studio", "Data Warehouse", "Star Schema", "ETL", "SQL", "Decision Support System"],
     category: "Business Intelligence · Data Warehouse",
     art: assetUrls.tuitionArt,
@@ -280,9 +339,16 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "Higher Education Tuition & Policy Analytics",
     date: "Feb 2025 — Jun 2025",
+    shortDescription:
+      "Multi-university regression modeling and BI analytics across 97 academic programs and 11 Indonesian universities to guide institutional tuition and capacity policy.",
     description:
-      "End-to-end data analytics and regression modeling for VINIX Seven Aurum (MSIB), analyzing higher education tuition cost structures, enrollment capacity, and student-to-lecturer distributions across 97 academic programs and 11 Indonesian universities. Delivered interactive dashboards and strategic policy recommendations to university leadership.",
-    result: "Modeled 97 academic programs across 11 universities with a 35% improvement in policy insight accuracy.",
+      "**End-to-end data analytics and regression modeling** for **VINIX Seven Aurum (MSIB)**, analyzing higher education tuition cost structures, enrollment capacity, and student-to-lecturer distributions across **97 academic programs and 11 Indonesian universities**. Delivered interactive dashboards and strategic policy recommendations to university leadership.",
+    highlights: [
+      "Conducted cross-institutional data analysis and **multivariate regression modeling across 97 study programs from 11 Indonesian universities**.",
+      "Evaluated single-tuition (UKT) cost tiers against enrollment capacity and accreditation tiers using **Python and Pandas**.",
+      "Built interactive **Power BI and Google Looker Studio executive dashboards** to surface actionable tuition policy benchmarks.",
+    ],
+    result: "Modeled **97 academic programs across 11 universities** with a **35% improvement in policy insight accuracy**.",
     technologies: ["Python", "Pandas", "Power BI", "Google Looker Studio", "Regression Models", "Data Analytics"],
     category: "Data Science · MSIB Program",
     art: assetUrls.dashboardTrend,
@@ -291,9 +357,17 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "PolaStok — AI Inventory Forecasting Platform",
     date: "Feb 2026 — Jul 2026",
+    shortDescription:
+      "AI-powered SME inventory forecasting platform combining Random Forest & LSTM time-series models (SMAPE ~18%) with Google Gemini AI reorder recommendations across 913,000+ transactions.",
     description:
-      "Led a five-member cross-functional team (PJK-GM041) through a 900+ hour capstone to design, build, and deploy an AI-powered inventory forecasting platform for Indonesian SMEs. Owned delivery end-to-end: data preparation, model integration, and MVP deployment; applied LLM orchestration and prompt engineering for stock prediction and reorder recommendations.",
-    result: "913.000+ data transaksi historis dari 50 produk UMKM teranalisis, model Random Forest & LSTM (SMAPE ~18%), terintegrasi Google Gemini AI untuk rekomendasi kulakan cerdas.",
+      "**Led a five-member cross-functional team (PJK-GM041) through a 900+ hour capstone** to design, build, and deploy an **AI-powered inventory forecasting platform for Indonesian SMEs**.\n\nOwned delivery end-to-end: data preparation, model integration, and MVP deployment; applied **LLM orchestration and prompt engineering** for stock prediction and reorder recommendations.",
+    highlights: [
+      "Led a 5-person engineering team across a **900+ hour Pijak × IBM SkillsBuild AI capstone** from problem framing to production MVP.",
+      "Processed **913,000+ historical retail transactions** across 50 SME products to train hybrid **Random Forest and TensorFlow LSTM forecasting models (achieving ~18% SMAPE)**.",
+      "Integrated **Google Gemini AI via structured prompt engineering** to synthesize actionable restock quantities and cash-flow-aware purchasing advice.",
+      "Shipped an interactive **Streamlit + Plotly analytics web application** tailored for non-technical SME owners.",
+    ],
+    result: "**913.000+ data transaksi historis dari 50 produk UMKM teranalisis**, model **Random Forest & LSTM (SMAPE ~18%)**, terintegrasi **Google Gemini AI** untuk rekomendasi kulakan cerdas.",
     technologies: ["Python 3.11", "Streamlit", "Scikit-Learn", "TensorFlow (LSTM)", "Google Gemini AI", "Plotly", "Pandas"],
     category: "Applied AI · Team Lead",
     art: assetUrls.polastok,
@@ -305,9 +379,16 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "ClinicalNote AI — Clinical Documentation Platform",
     date: "2025",
+    shortDescription:
+      "Real-time clinical documentation system integrating FastAPI, OpenAI Whisper, and GPT-4 LangChain pipelines for sub-two-second medical transcription and ICD-10 coding.",
     description:
-      "Built a clinical documentation system with a FastAPI backend integrating OpenAI Whisper and GPT-4 for sub-two-second transcription latency. Designed reusable AI Skills for automated summarization, ICD-10 code suggestion, and medication extraction as modular LangChain chains; containerized and deployed on AWS EC2.",
-    result: "Designed for sub-two-second OpenAI-backed transcription latency with automated ICD-10 diagnostic coding.",
+      "Built a clinical documentation system with a **FastAPI backend integrating OpenAI Whisper and GPT-4 for sub-two-second transcription latency**. Designed reusable **AI Skills** for automated summarization, ICD-10 code suggestion, and medication extraction as modular **LangChain chains**; containerized and deployed on **AWS EC2**.",
+    highlights: [
+      "Architected a low-latency **FastAPI backend integrating OpenAI Whisper** for medical speech-to-text transcription in **under 2 seconds**.",
+      "Built modular **LangChain AI Skills** for SOAP clinical note generation, automated **ICD-10 diagnostic code suggestion**, and prescription extraction.",
+      "Containerized the full-stack React + FastAPI application with **Docker and deployed on AWS EC2**.",
+    ],
+    result: "Designed for **sub-two-second OpenAI-backed transcription latency** with **automated ICD-10 diagnostic coding**.",
     technologies: ["FastAPI", "OpenAI API", "LangChain", "React", "Docker", "AWS EC2"],
     category: "Applied AI · Solo Development",
     links: {},
@@ -315,9 +396,16 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "NusaLadang — Smart Farming Platform",
     date: "Aug 2024 — Dec 2024",
+    shortDescription:
+      "Full-stack smart farming investment and digital land-leasing platform featuring dynamic crop pricing calculators, yield projection logic, and role-based digital contracts.",
     description:
-      "Engineered an end-to-end smart farming investment platform connecting landowners with agricultural investors. Implemented digital land leasing, dynamic crop pricing calculators, yield projection logic, and transparent digital contracts with role-based access.",
-    result: "Full-stack contract and investment workflow with dynamic pricing and land management for agricultural partners.",
+      "Engineered an end-to-end **smart farming investment platform connecting landowners with agricultural investors**. Implemented digital land leasing, **dynamic crop pricing calculators**, yield projection logic, and **transparent digital contracts with role-based access**.",
+    highlights: [
+      "Built an end-to-end agricultural investment and land-leasing platform using **PHP, Laravel, and MySQL**.",
+      "Engineered **dynamic crop pricing calculators**, **harvest yield projection algorithms**, and transparent digital contract workflows.",
+      "Implemented **role-based dashboards** for landowners, investors, and platform administrators.",
+    ],
+    result: "Full-stack contract and investment workflow with **dynamic pricing and land management for agricultural partners**.",
     technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "HTML5", "CSS3"],
     category: "Product Engineering · Full-Stack",
     art: assetUrls.productSystemsArt,
@@ -326,9 +414,16 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "AI Study Assistant — RAG Knowledge Q&A",
     date: "2025",
+    shortDescription:
+      "Retrieval-Augmented Generation (RAG) academic assistant enabling semantic search with exact page citations over 500+ pages of lecture notes using ChromaDB and FastAPI.",
     description:
-      "Engineered a Retrieval-Augmented Generation (RAG) knowledge assistant enabling semantic search over 500+ pages of academic lecture notes. Implemented vector indexing with ChromaDB, source citation, and a streaming FastAPI microservice paired with a Streamlit chat UI and conversational memory.",
-    result: "Accurate contextual retrieval with exact page citations and multi-turn conversational context.",
+      "Engineered a **Retrieval-Augmented Generation (RAG) knowledge assistant enabling semantic search over 500+ pages of academic lecture notes**. Implemented vector indexing with **ChromaDB**, source citation, and a streaming **FastAPI microservice** paired with a **Streamlit chat UI and conversational memory**.",
+    highlights: [
+      "Built an end-to-end **RAG ingestion and semantic retrieval pipeline** over **500+ pages of PDF lecture notes** using **LangChain and ChromaDB**.",
+      "Engineered grounded answer synthesis with **exact document and page-level source citations** to prevent hallucination.",
+      "Delivered a streaming **FastAPI backend** paired with a multi-turn conversational **Streamlit interface**.",
+    ],
+    result: "Accurate contextual retrieval with **exact page citations** and **multi-turn conversational context**.",
     technologies: ["LangChain", "ChromaDB", "FastAPI", "Streamlit", "Python", "RAG"],
     category: "Applied AI · Solo Development",
     links: {},
@@ -336,9 +431,16 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "HR Analytics Capstone — LLM Data Pipeline",
     date: "2025",
+    shortDescription:
+      "Enterprise NLP and LLM classification pipeline processing 838,566 employee reviews using IBM Granite for automated sentiment synthesis and executive HR recommendations.",
     description:
-      "Developed an enterprise NLP and data pipeline for IBM SkillsBuild × Hacktiv8 that processed 838,566 employee reviews. Orchestrated multi-step processing: cleaning, LLM classification using IBM Granite, automatic sentiment summarization, and executive recommendation synthesis.",
-    result: "Scaled data transformation and sentiment synthesis across 838,566 employee records.",
+      "Developed an **enterprise NLP and data pipeline for IBM SkillsBuild × Hacktiv8 that processed 838,566 employee reviews**. Orchestrated multi-step processing: cleaning, **LLM classification using IBM Granite**, automatic sentiment summarization, and executive recommendation synthesis.",
+    highlights: [
+      "Engineered a large-scale data cleaning and text normalization pipeline processing **838,566 raw employee review records**.",
+      "Orchestrated **IBM Granite LLM classification and sentiment summarization** to identify systemic organizational retention drivers.",
+      "Synthesized **data-backed executive HR recommendations** for workplace satisfaction and attrition reduction.",
+    ],
+    result: "Scaled data transformation and sentiment synthesis across **838,566 employee records**.",
     technologies: ["IBM Granite", "Data Pipeline", "Python", "Pandas", "Analytics", "NLP"],
     category: "Data Science · AI Pipeline",
     links: {},
@@ -346,9 +448,16 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "RA Al-Fathunnisa — Academic Portal & PPDB",
     date: "Feb 2024 — Jun 2024",
+    shortDescription:
+      "Production full-stack student admission (PPDB) and academic administration portal automating registration, document verification, and institutional reporting.",
     description:
-      "Built a production full-stack student admission (PPDB) and academic administration management system for an educational institution. Automated registration workflows, student records, document verification, and administrative reporting.",
-    result: "Reduced manual administrative processing time by 50% through workflow automation.",
+      "Built a **production full-stack student admission (PPDB) and academic administration management system** for an educational institution. Automated registration workflows, student records, document verification, and administrative reporting.",
+    highlights: [
+      "Developed a full-stack online student admission (PPDB) and academic record portal using **Laravel, MySQL, and Bootstrap**.",
+      "Automated applicant document verification, student roster management, and administrative reporting workflows.",
+      "Reduced manual school administrative processing time by **50% with automated CI/CD deployment via GitHub Actions**.",
+    ],
+    result: "Reduced manual administrative processing time by **50% through workflow automation**.",
     technologies: ["PHP", "Laravel", "Bootstrap", "MySQL", "Git", "GitHub Actions"],
     category: "Client Work · Full-Stack",
     links: {},
@@ -356,9 +465,16 @@ export const featuredProjects: readonly Project[] = [
   {
     title: "CV. Putra AR — CRM & Loyalty Platform",
     date: "Mar 2024 — Jun 2024",
+    shortDescription:
+      "Customer Relationship Management (CRM) and loyalty web platform for an F&B and retail client featuring automated customer feedback, catalog management, and CI/CD delivery.",
     description:
-      "Developed and shipped a CRM-focused web platform for an F&B and retail client. Features customer loyalty tracking, automated feedback collection, service catalog management, and automated CI/CD deployment pipelines.",
-    result: "Delivered production system two weeks ahead of schedule with zero-downtime deployment.",
+      "Developed and shipped a **CRM-focused web platform for an F&B and retail client**. Features customer loyalty tracking, automated feedback collection, service catalog management, and automated CI/CD deployment pipelines.",
+    highlights: [
+      "Built a custom CRM and customer loyalty tracking web application tailored for retail and F&B operations.",
+      "Implemented automated customer feedback collection, digital service catalog management, and admin analytics.",
+      "Configured **zero-downtime CI/CD deployment pipelines**, delivering the production system **two weeks ahead of schedule**.",
+    ],
+    result: "Delivered production system **two weeks ahead of schedule with zero-downtime deployment**.",
     technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "CI/CD"],
     category: "Client Work · Full-Stack",
     links: {},

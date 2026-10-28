@@ -44,6 +44,7 @@ import {
   person,
   skillGroups,
   techStackCategories,
+  type Project,
 } from "@/data/portfolio";
 import { documentationItems, type DocumentationItem } from "@/data/documentation";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -91,10 +92,17 @@ function useCountUp(end: number, enabled: boolean, reducedMotion: boolean) {
 
 function FormattedText({ text, className = "" }: { text?: string; className?: string }) {
   if (!text) return null;
-  const parts = text.split(/(\*[^*]+\*)/g);
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g);
   return (
     <span className={className}>
       {parts.map((part, index) => {
+        if (part.startsWith("**") && part.endsWith("**")) {
+          return (
+            <strong key={index} className="font-bold text-neutral-950 dark:text-white">
+              {part.slice(2, -2)}
+            </strong>
+          );
+        }
         if (part.startsWith("*") && part.endsWith("*")) {
           return (
             <em key={index} className="not-italic italic font-medium text-neutral-950 dark:text-white">
@@ -697,6 +705,7 @@ export default function Home() {
 
   // Looker Studio Dashboard views selector for the featured project
   const [dashboardView, setDashboardView] = useState<"executive" | "detail" | "trend">("executive");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const dashboardViews = {
     executive: {
@@ -1379,28 +1388,46 @@ export default function Home() {
               copy={t.projects.copy}
             />
 
-            {/* Unified 2-Column Projects Showcase */}
+            {/* Unified 2-Column Projects Showcase — Compact Cards with Interactive Detail View */}
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {featuredProjects.map((project, index) => {
                 const isAcademicDW = project.title.includes("Academic Capacity");
                 const currentArt = isAcademicDW ? dashboardViews[dashboardView].src : project.art;
+                const primaryCategory = project.category.split("·")[0]?.trim() || project.category;
+                const visibleTechs = project.technologies.slice(0, 4);
+                const extraTechCount = Math.max(0, project.technologies.length - 4);
 
                 return (
                   <article
                     key={project.title}
-                    className="motion-card group flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-300 bg-white shadow-xs transition duration-300 hover:-translate-y-1 hover:border-neutral-900 hover:shadow-xl hover:shadow-neutral-900/5"
+                    onClick={() => setSelectedProject(project)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setSelectedProject(project);
+                      }
+                    }}
+                    aria-label={`${language === "en" ? "View details for" : "Lihat detail proyek"} ${project.title}`}
+                    className="project-card motion-card group relative flex flex-col justify-between overflow-hidden rounded-xl border border-transparent bg-white text-left shadow-xs transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-neutral-900/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 dark:focus-visible:ring-white"
                   >
-                    {/* Visual Media Header — Compact & Fitted */}
-                    <div className="relative border-b border-neutral-200 bg-neutral-100 overflow-hidden">
+                    <span className="project-border-runner" aria-hidden="true" />
+
+                    {/* Visual Media Header — Full-Bleed Edge-to-Edge with Hover Detail Overlay */}
+                    <div className="relative border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 overflow-hidden">
                       {isAcademicDW ? (
                         <div className="flex flex-col">
                           {/* Mini Titlebar with View Switcher */}
-                          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 bg-neutral-100/90 px-3.5 py-2">
+                          <div
+                            className="relative z-20 flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100/95 dark:bg-neutral-900/95 px-3.5 py-2"
+                            onClick={(e) => e.stopPropagation()}
+                          >
                             <div className="flex items-center gap-1.5">
                               <span className="h-2 w-2 rounded-full bg-red-400" />
                               <span className="h-2 w-2 rounded-full bg-amber-400" />
                               <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                              <span className="mono-type ml-1 text-[0.58rem] font-bold text-neutral-700">
+                              <span className="mono-type ml-1 text-[0.58rem] font-bold text-neutral-700 dark:text-neutral-300">
                                 Looker Studio
                               </span>
                             </div>
@@ -1412,144 +1439,386 @@ export default function Home() {
                                   onClick={() => setDashboardView(key)}
                                   className={`rounded px-2 py-0.5 mono-type text-[0.55rem] font-bold transition ${
                                     dashboardView === key
-                                      ? "bg-neutral-950 text-white shadow-xs"
-                                      : "bg-white text-neutral-600 hover:bg-neutral-200/80 border border-neutral-300"
+                                      ? "bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950"
+                                      : "bg-white text-neutral-600 hover:bg-neutral-200/80 border border-neutral-300 dark:bg-neutral-800 dark:text-neutral-300 dark:border-neutral-700"
                                   }`}
                                 >
                                   {key === "executive" ? "Executive" : key === "detail" ? "Detail" : "Trend"}
                                 </button>
                               ))}
-                              <a
-                                href={currentArt}
-                                target="_blank"
-                                rel="noreferrer"
-                                title={t.projects.viewOriginal}
-                                className="ml-1 inline-flex p-1 rounded hover:bg-neutral-200 text-neutral-600 hover:text-black transition"
-                              >
-                                <Maximize2 className="h-3 w-3" />
-                              </a>
                             </div>
                           </div>
-                          {/* Screenshot Container */}
-                          <div className="flex h-44 sm:h-48 items-center justify-center p-2.5 bg-neutral-50/50">
+                          {/* Screenshot Container — Full-Bleed */}
+                          <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-white dark:bg-neutral-950">
                             <img
                               src={currentArt}
                               alt={dashboardViews[dashboardView].desc}
-                              className="block h-full w-auto max-w-full rounded border border-neutral-200/90 object-contain shadow-xs bg-white"
+                              className="block h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                               loading="lazy"
                               decoding="async"
                             />
+                            {/* Bottom-Only Soft Shade (No full-image blur) + Centered Enlarged View Details Button */}
+                            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                            <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/30 bg-neutral-950/90 px-5 py-2.5 text-xs sm:text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
+                                <Code2 className="h-4 w-4 text-sky-400" />
+                                {language === "en" ? "View Details" : "Lihat Detail"}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       ) : project.art ? (
-                        <div className="relative flex h-44 sm:h-48 w-full items-center justify-center bg-neutral-50/50 p-2.5">
+                        <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-white dark:bg-neutral-950">
                           <img
                             src={project.art}
                             alt={project.title}
-                            className="block h-full w-auto max-w-full rounded border border-neutral-200/90 object-contain shadow-xs bg-white"
+                            className={`block h-full w-full transition-transform duration-500 group-hover:scale-[1.03] ${
+                              project.art === assetUrls.airQuality ? "object-fill" : "object-cover object-top"
+                            }`}
                             loading="lazy"
                             decoding="async"
                           />
-                          <a
-                            href={project.art}
-                            target="_blank"
-                            rel="noreferrer"
-                            title={t.projects.viewOriginal}
-                            className="absolute right-2.5 top-2.5 rounded-md border border-neutral-200 bg-white/90 p-1 text-neutral-600 shadow-xs hover:bg-white hover:text-neutral-950 transition backdrop-blur-xs"
-                          >
-                            <Maximize2 className="h-3 w-3" />
-                          </a>
+                          {/* Floating Category Pill (Top-Left) */}
+                          <div className="pointer-events-none absolute left-3 top-3 z-20">
+                            <span className="mono-type inline-flex items-center rounded-md border border-neutral-300/90 dark:border-white/15 bg-white/92 dark:bg-neutral-950/88 px-2.5 py-1 text-[0.56rem] font-bold uppercase tracking-[0.12em] text-neutral-950 dark:text-white shadow-sm backdrop-blur-md">
+                              {primaryCategory}
+                            </span>
+                          </div>
+                          {/* Floating Code Badge (Top-Right) */}
+                          <div className="pointer-events-none absolute right-3 top-3 z-20">
+                            <span className="flex h-7 w-7 items-center justify-center rounded-md border border-neutral-300/90 dark:border-white/15 bg-white/92 dark:bg-neutral-950/88 text-neutral-800 dark:text-neutral-200 shadow-sm backdrop-blur-md transition-transform duration-300 group-hover:scale-105">
+                              <Code2 className="h-3.5 w-3.5" />
+                            </span>
+                          </div>
+                          {/* Bottom-Only Soft Shade (No full-image blur) + Centered Enlarged View Details Button */}
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                            <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/30 bg-neutral-950/90 px-5 py-2.5 text-xs sm:text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
+                              <Code2 className="h-4 w-4 text-sky-400" />
+                              {language === "en" ? "View Details" : "Lihat Detail"}
+                            </span>
+                          </div>
                         </div>
                       ) : (
-                        <ProjectEvidence index={index} category={project.category} />
+                        <div className="relative overflow-hidden">
+                          <ProjectEvidence index={index} category={project.category} />
+                          {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button */}
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/70 via-neutral-950/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                            <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/30 bg-neutral-950/90 px-5 py-2.5 text-xs sm:text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
+                              <Code2 className="h-4 w-4 text-sky-400" />
+                              {language === "en" ? "View Details" : "Lihat Detail"}
+                            </span>
+                          </div>
+                        </div>
                       )}
                     </div>
 
-                    {/* Card Content & Narrative */}
-                    <div className="p-6 sm:p-7 flex flex-col flex-1">
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <span className="mono-type rounded-md border border-neutral-300 bg-neutral-100/90 px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-900 shadow-2xs">
-                          {project.category}
-                        </span>
-                        <span className="mono-type text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-neutral-500">
-                          {project.date}
-                        </span>
-                      </div>
-
-                      <h3 className="display-type mt-3.5 text-xl sm:text-2xl font-bold tracking-[-0.045em] text-neutral-950 leading-tight group-hover:text-black transition">
-                        {project.title}
-                      </h3>
-
-                      <p className="mt-3 text-sm leading-7 text-neutral-700 flex-1 whitespace-pre-line">
-                        {project.description}
-                      </p>
-
-                      <div className="mt-5 flex flex-wrap gap-1.5">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-neutral-100 px-2.5 py-1 mono-type text-[0.58rem] font-semibold text-neutral-900 shadow-2xs dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
-                          >
-                            <TechIcon name={tech} className="h-3 w-3 shrink-0" />
-                            <span>{tech}</span>
+                    {/* Compact Card Content */}
+                    <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
+                      <div>
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <span className="mono-type text-[0.58rem] font-bold uppercase tracking-[0.12em] text-neutral-500 dark:text-neutral-400">
+                            {project.category}
                           </span>
-                        ))}
-                      </div>
-
-                      <div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4">
-                        <div className="flex flex-wrap items-center gap-2">
-                          {project.links?.demo ? (
-                            <a
-                              href={project.links.demo}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded-md border border-neutral-900 bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800"
-                            >
-                              Live Website <ArrowUpRight className="h-3.5 w-3.5" />
-                            </a>
-                          ) : null}
-                          {project.links?.caseStudy ? (
-                            <a
-                              href={project.links.caseStudy}
-                              className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3.5 py-1.5 text-xs font-bold text-neutral-900 shadow-xs transition hover:border-neutral-900 hover:bg-neutral-50"
-                            >
-                              {t.projects.caseStudy} <ArrowUpRight className="h-3.5 w-3.5" />
-                            </a>
-                          ) : !project.links?.demo ? (
-                            <PendingAction
-                              label={t.projects.caseStudy}
-                              onPending={notifyPending}
-                              className="rounded-md border border-neutral-200 bg-neutral-50 px-3.5 py-1.5 text-xs font-bold text-neutral-600"
-                            />
-                          ) : null}
-                          {project.links?.source ? (
-                            <a
-                              href={project.links.source}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 shadow-xs transition hover:border-neutral-900 hover:text-black hover:bg-neutral-50"
-                            >
-                              GitHub <ExternalLink className="h-3 w-3" />
-                            </a>
-                          ) : null}
+                          <span className="mono-type text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-neutral-400 dark:text-neutral-500">
+                            {project.date}
+                          </span>
                         </div>
 
-                        {currentArt && (
-                          <a
-                            href={currentArt}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mono-type inline-flex items-center gap-1.5 text-[0.62rem] font-bold text-neutral-900 hover:text-black hover:underline"
+                        <h3 className="display-type mt-2 text-lg sm:text-xl font-bold tracking-[-0.035em] text-neutral-950 dark:text-white leading-snug line-clamp-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                          {project.title}
+                        </h3>
+
+                        {/* Concise 2-Line Summary on Main Card */}
+                        <p className="mt-2.5 text-xs sm:text-[0.82rem] leading-relaxed text-neutral-600 dark:text-neutral-400 line-clamp-2">
+                          {project.shortDescription}
+                        </p>
+                      </div>
+
+                      <div>
+                        {/* Compact Tech Stack Row (First 4 + "+N more" badge) */}
+                        <div className="mt-4 flex flex-wrap items-center gap-1.5">
+                          {visibleTechs.map((tech) => (
+                            <span
+                              key={tech}
+                              className="inline-flex items-center gap-1.5 rounded-md border border-neutral-300 bg-neutral-100 px-2 py-0.5 mono-type text-[0.56rem] font-semibold text-neutral-900 shadow-2xs dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
+                            >
+                              <TechIcon name={tech} className="h-3 w-3 shrink-0" />
+                              <span>{tech}</span>
+                            </span>
+                          ))}
+                          {extraTechCount > 0 && (
+                            <span className="inline-flex items-center rounded-md border border-neutral-900/15 bg-neutral-900/8 px-2 py-0.5 mono-type text-[0.56rem] font-bold text-neutral-900 dark:border-white/15 dark:bg-white/10 dark:text-white">
+                              +{extraTechCount} {language === "en" ? "more" : "lainnya"}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Card Footer Action Bar */}
+                        <div
+                          className="mt-5 flex items-center justify-between gap-2 border-t border-neutral-200 dark:border-neutral-800 pt-3.5"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <div className="flex flex-wrap items-center gap-2">
+                            {project.links?.demo ? (
+                              <a
+                                href={project.links.demo}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-900 bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 dark:border-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+                              >
+                                {language === "en" ? "View Live Demo" : "Lihat Demo Live"} <ArrowUpRight className="h-3.5 w-3.5" />
+                              </a>
+                            ) : project.links?.source ? (
+                              <a
+                                href={project.links.source}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-900 bg-neutral-950 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs transition hover:bg-neutral-800 dark:border-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200"
+                              >
+                                {language === "en" ? "View Source Code" : "Kode Sumber"} <Github className="h-3.5 w-3.5" />
+                              </a>
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => setSelectedProject(project)}
+                                className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-300 bg-neutral-100/80 px-3 py-1.5 mono-type text-[0.62rem] font-bold uppercase tracking-[0.08em] text-neutral-700 transition hover:border-neutral-900 hover:bg-neutral-200/70 hover:text-neutral-950 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-500"
+                              >
+                                {language === "en" ? "Case Study Dossier" : "Dokumen Studi Kasus"}
+                              </button>
+                            )}
+
+                            {project.links?.demo && project.links?.source ? (
+                              <a
+                                href={project.links.source}
+                                target="_blank"
+                                rel="noreferrer"
+                                title="GitHub Repository"
+                                className="inline-flex items-center gap-1 rounded-lg border border-neutral-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-neutral-700 shadow-xs transition hover:border-neutral-900 hover:text-black dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-200"
+                              >
+                                <Github className="h-3.5 w-3.5" />
+                              </a>
+                            ) : null}
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => setSelectedProject(project)}
+                            className="mono-type inline-flex items-center gap-1 rounded-lg border border-neutral-300 bg-white px-2.5 py-1.5 text-[0.62rem] font-bold uppercase tracking-[0.08em] text-neutral-900 shadow-2xs transition hover:border-neutral-950 hover:bg-neutral-950 hover:text-white dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:border-white dark:hover:bg-white dark:hover:text-neutral-950"
                           >
-                            {t.projects.viewOriginal} <ExternalLink className="h-3 w-3" />
-                          </a>
-                        )}
+                            {language === "en" ? "Details" : "Detail"} <ArrowUpRight className="h-3 w-3" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </article>
                 );
               })}
             </div>
+
+            {/* Project Detail Dossier Modal (Opens when a project card or "View Details" is clicked) */}
+            {selectedProject ? (
+              <Dialog open={Boolean(selectedProject)} onOpenChange={(open) => !open && setSelectedProject(null)}>
+                <DialogContent className="max-w-3xl lg:max-w-4xl max-h-[88vh] overflow-y-auto rounded-2xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-0 text-neutral-950 dark:text-white shadow-2xl">
+                  {(() => {
+                    const isModalAcademicDW = selectedProject.title.includes("Academic Capacity");
+                    const modalArt = isModalAcademicDW ? dashboardViews[dashboardView].src : selectedProject.art;
+                    const statusLabel = selectedProject.links?.demo
+                      ? language === "en"
+                        ? "Live Production"
+                        : "Produksi Aktif"
+                      : selectedProject.links?.source
+                        ? language === "en"
+                          ? "Open Source"
+                          : "Sumber Terbuka"
+                        : language === "en"
+                          ? "Institutional / Private"
+                          : "Institusional / Privat";
+
+                    return (
+                      <div className="flex flex-col">
+                        {/* Modal Top Header */}
+                        <div className="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-950/60 px-5 py-5 sm:px-7 sm:py-6">
+                          <DialogHeader>
+                            <div className="flex flex-wrap items-center gap-2 mb-2">
+                              <span className="mono-type rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-2.5 py-0.5 text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-900 dark:text-neutral-100 shadow-2xs">
+                                {selectedProject.category}
+                              </span>
+                              <span className="mono-type rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[0.58rem] font-bold uppercase tracking-[0.12em] text-emerald-700 dark:text-emerald-400">
+                                ● {statusLabel}
+                              </span>
+                              <span className="mono-type text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-neutral-500 dark:text-neutral-400">
+                                {selectedProject.date}
+                              </span>
+                            </div>
+                            <DialogTitle className="display-type text-xl sm:text-2xl md:text-[1.7rem] font-bold tracking-[-0.04em] text-neutral-950 dark:text-white leading-tight text-left">
+                              {selectedProject.title}
+                            </DialogTitle>
+                            <DialogDescription className="sr-only">
+                              {selectedProject.shortDescription}
+                            </DialogDescription>
+                          </DialogHeader>
+                        </div>
+
+                        {/* Visual Preview Banner inside Modal */}
+                        {modalArt ? (
+                          <div className="relative border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-950">
+                            {isModalAcademicDW ? (
+                              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-neutral-900/90 px-4 py-2">
+                                <span className="mono-type text-[0.6rem] font-bold uppercase tracking-[0.12em] text-neutral-600 dark:text-neutral-400">
+                                  Looker Studio — {dashboardViews[dashboardView].title}
+                                </span>
+                                <div className="flex items-center gap-1">
+                                  {(["executive", "detail", "trend"] as const).map((key) => (
+                                    <button
+                                      key={key}
+                                      type="button"
+                                      onClick={() => setDashboardView(key)}
+                                      className={`rounded px-2.5 py-0.5 mono-type text-[0.58rem] font-bold transition ${
+                                        dashboardView === key
+                                          ? "bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950"
+                                          : "bg-white text-neutral-600 hover:bg-neutral-200/80 border border-neutral-300 dark:bg-neutral-800 dark:text-neutral-300 dark:border-neutral-700"
+                                      }`}
+                                    >
+                                      {key === "executive" ? "Executive" : key === "detail" ? "Detail" : "Trend"}
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            ) : null}
+                            <div className="relative max-h-[340px] w-full overflow-hidden flex items-center justify-center bg-neutral-50 dark:bg-neutral-950">
+                              <img
+                                src={modalArt}
+                                alt={selectedProject.title}
+                                className="max-h-[340px] w-full object-contain"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                              <a
+                                href={modalArt}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="mono-type absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white/95 dark:bg-neutral-900/95 px-3 py-1.5 text-[0.6rem] font-bold uppercase tracking-[0.1em] text-neutral-900 dark:text-white shadow-md backdrop-blur-md transition hover:scale-105"
+                              >
+                                {t.projects.viewOriginal} <Maximize2 className="h-3 w-3" />
+                              </a>
+                            </div>
+                          </div>
+                        ) : null}
+
+                        {/* Modal Body Content */}
+                        <div className="space-y-6 px-5 py-6 sm:px-7 sm:py-7">
+                          {/* Full Narrative Overview */}
+                          <div>
+                            <h4 className="mono-type text-[0.64rem] font-bold uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400">
+                              {language === "en" ? "// Project Overview & Architecture" : "// Ringkasan Proyek & Arsitektur"}
+                            </h4>
+                            <p className="mt-2.5 text-sm sm:text-[0.92rem] leading-7 text-neutral-700 dark:text-neutral-300 whitespace-pre-line">
+                              <FormattedText text={selectedProject.description} />
+                            </p>
+                          </div>
+
+                          {/* Key Contributions & Achievements Bullet Points */}
+                          {selectedProject.highlights && selectedProject.highlights.length > 0 ? (
+                            <div>
+                              <h4 className="mono-type text-[0.64rem] font-bold uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400">
+                                {language === "en"
+                                  ? "// Key Contributions & Achievements"
+                                  : "// Kontribusi & Pencapaian Teknis Utama"}
+                              </h4>
+                              <ul className="mt-3 space-y-2.5">
+                                {selectedProject.highlights.map((item) => (
+                                  <li
+                                    key={item}
+                                    className="flex items-start gap-3 text-xs sm:text-sm leading-6 text-neutral-700 dark:text-neutral-300"
+                                  >
+                                    <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-neutral-300 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 text-neutral-950 dark:text-white">
+                                      <Check className="h-2.5 w-2.5" />
+                                    </span>
+                                    <span>
+                                      <FormattedText text={item} />
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : null}
+
+                          {/* Measurable Impact / Result Callout */}
+                          {selectedProject.result ? (
+                            <div className="rounded-xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50/90 dark:bg-neutral-800/50 p-4 sm:p-5">
+                              <div className="flex items-center gap-2 mono-type text-[0.6rem] font-bold uppercase tracking-[0.14em] text-neutral-900 dark:text-white">
+                                <Sparkles className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
+                                {language === "en" ? "Verified Outcome & Impact" : "Hasil & Dampak Terukur"}
+                              </div>
+                              <p className="mt-1.5 text-xs sm:text-sm font-medium leading-6 text-neutral-800 dark:text-neutral-200">
+                                <FormattedText text={selectedProject.result} />
+                              </p>
+                            </div>
+                          ) : null}
+
+                          {/* Full Technologies Used List */}
+                          <div>
+                            <h4 className="mono-type text-[0.64rem] font-bold uppercase tracking-[0.15em] text-neutral-500 dark:text-neutral-400">
+                              {language === "en" ? "// Technologies Used" : "// Teknologi yang Digunakan"} (
+                              {selectedProject.technologies.length})
+                            </h4>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {selectedProject.technologies.map((tech) => (
+                                <span
+                                  key={tech}
+                                  className="inline-flex items-center gap-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-neutral-100/90 dark:bg-neutral-800 px-3 py-1.5 mono-type text-xs font-semibold text-neutral-900 dark:text-neutral-100 shadow-2xs"
+                                >
+                                  <TechIcon name={tech} className="h-3.5 w-3.5 shrink-0" />
+                                  <span>{tech}</span>
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Modal Footer Action Bar */}
+                        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50/80 dark:bg-neutral-950/60 px-5 py-4 sm:px-7">
+                          <button
+                            type="button"
+                            onClick={() => setSelectedProject(null)}
+                            className="rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-4 py-2 text-xs font-bold text-neutral-800 dark:text-neutral-200 shadow-xs transition hover:bg-neutral-100 dark:hover:bg-neutral-700"
+                          >
+                            {language === "en" ? "Close" : "Tutup"}
+                          </button>
+
+                          <div className="flex flex-wrap items-center gap-2.5">
+                            {selectedProject.links?.source ? (
+                              <a
+                                href={selectedProject.links.source}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 px-4 py-2 text-xs font-bold text-neutral-900 dark:text-white shadow-xs transition hover:border-neutral-950 dark:hover:border-neutral-400"
+                              >
+                                <Github className="h-3.5 w-3.5" />
+                                {language === "en" ? "View Source Code" : "Kode Sumber"}
+                              </a>
+                            ) : null}
+                            {selectedProject.links?.demo ? (
+                              <a
+                                href={selectedProject.links.demo}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-1.5 rounded-lg bg-neutral-950 dark:bg-white px-4 py-2 text-xs font-bold text-white dark:text-neutral-950 shadow-xs transition hover:bg-neutral-800 dark:hover:bg-neutral-200"
+                              >
+                                {language === "en" ? "View Live Demo" : "Buka Demo Live"}
+                                <ArrowUpRight className="h-3.5 w-3.5" />
+                              </a>
+                            ) : null}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </DialogContent>
+              </Dialog>
+            ) : null}
 
             {/* Other Projects Index Table (when otherProjects has entries) */}
             {otherProjects.length > 0 ? (
