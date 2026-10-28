@@ -23,6 +23,7 @@ export const assetUrls = {
   profilePhoto: "/fauzi-about-white.webp",
   airQuality: "/air-quality-intelligence.webp",
   wisataJelajah: "/wisata-jelajah-indonesia.webp",
+  pulseai: "/pulseai-digital-wellness.webp",
 } as const;
 
 
@@ -190,6 +191,21 @@ export const featuredProjects: readonly Project[] = [
     art: assetUrls.airQuality,
     links: {
       source: "https://github.com/fauzinoorsyabani/air-quality",
+    },
+  },
+  {
+    title: "PulseAI — Student Digital Habits & Academic Impact Platform",
+    date: "2026",
+    description:
+      "Architected and deployed an end-to-end predictive machine learning platform and interactive simulation cockpit analyzing digital screen exposure, bedtime phone habits, and sleep displacement across a benchmark dataset of 4,500 student records (16 multidimensional features). Engineered a leak-free stratified 80/10/10 split, behavioral interaction features (Screen-to-Sleep Ratio, Sleep Deficit Index), and cost-weighted loss optimization to resolve heavy class imbalance (81.8% Beneficial vs 3.7% Negative).\n\nBenchmarked candidate architectures—selecting cost-weighted XGBoost achieving 96.22% test accuracy and 0.9225 holdout Macro F1 (with only 1.03% validation-to-test drop) alongside L2-regularized Ridge regressors (R² = 0.82, ±0.27 GPA RMSE) and K-Means behavioral clustering (4 distinct archetypes). Shipped with a sub-50ms Starlette ASGI backend, local-first SQLite persistence, and an interactive React simulation cockpit.",
+    result:
+      "Engineered leak-free 80/10/10 modeling across 4,500 records; champion XGBoost achieved 96.22% test accuracy and 0.9225 holdout Macro F1; delivered sub-50ms multi-task inference and real-time habit simulation.",
+    technologies: ["Python", "XGBoost", "Scikit-Learn", "Starlette", "React", "TypeScript", "Tailwind CSS", "Chart.js", "SQLite"],
+    category: "Applied AI · Machine Learning & Behavioral Intelligence",
+    art: assetUrls.pulseai,
+    links: {
+      demo: "https://pulseai.my.id",
+      source: "https://github.com/fauzinoorsyabani/effect-of-social-media",
     },
   },
   {

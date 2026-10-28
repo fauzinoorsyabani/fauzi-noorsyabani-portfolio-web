@@ -19,6 +19,24 @@ export interface DocumentationItem {
 
 export const documentationItems: readonly DocumentationItem[] = [
   {
+    id: "pulseai-model-architecture",
+    category: {
+      en: "Applied AI & Behavioral Machine Learning",
+      id: "Applied AI & Machine Learning Perilaku",
+    },
+    title: {
+      en: "PulseAI Multi-Task Architecture & Holdout Benchmarks",
+      id: "Arsitektur Multi-Task & Benchmark Holdout PulseAI",
+    },
+    description: {
+      en: "Multi-class XGBoost classifier achieving 96.22% test accuracy & 0.9225 holdout Macro F1 across 4,500 benchmark student records with zero data leakage.",
+      id: "Klasifikasi XGBoost multi-kelas meraih akurasi uji 96,22% & Macro F1 holdout 0,9225 dari 4.500 data benchmark tanpa kebocoran data.",
+    },
+    image: "/documentation/pulseai-model-architecture.webp",
+    date: "2026",
+    tag: "Predictive AI",
+  },
+  {
     id: "air-quality-ml-pipeline",
     category: {
       en: "Machine Learning & Environmental Intelligence",

@@ -1480,7 +1480,7 @@ export default function Home() {
                         {project.title}
                       </h3>
 
-                      <p className="mt-3 text-sm leading-7 text-neutral-700 flex-1">
+                      <p className="mt-3 text-sm leading-7 text-neutral-700 flex-1 whitespace-pre-line">
                         {project.description}
                       </p>
 
