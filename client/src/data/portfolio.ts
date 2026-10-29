@@ -230,7 +230,7 @@ export const featuredProjects: readonly Project[] = [
     art: assetUrls.foodPrice,
     featured: true,
     links: {
-      demo: "https://harga-pangan.streamlit.app",
+      demo: "https://hargapangan.my.id",
       source: "https://github.com/fauzinoorsyabani/harga-pangan",
     },
   },
