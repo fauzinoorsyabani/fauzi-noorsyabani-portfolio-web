@@ -205,7 +205,7 @@ export const featuredProjects: readonly Project[] = [
     featured: true,
     links: {
       demo: "https://lokatravel.my.id",
-      source: "https://github.com/fauzinoorsyabani/prototype_03",
+      source: "https://github.com/fauzinoorsyabani/Loka-Travel",
     },
   },
   {
