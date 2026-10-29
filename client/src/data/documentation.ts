@@ -19,6 +19,24 @@ export interface DocumentationItem {
 
 export const documentationItems: readonly DocumentationItem[] = [
   {
+    id: "loka-travel-recsys",
+    category: {
+      en: "Applied AI & Recommendation Systems",
+      id: "Applied AI & Sistem Rekomendasi",
+    },
+    title: {
+      en: "Loka Travel Collaborative Filtering & 5-Fold Cross Validation",
+      id: "Collaborative Filtering & 5-Fold Cross Validation Loka Travel",
+    },
+    description: {
+      en: "User-Based Collaborative Filtering (Cosine Similarity) & group demographic room allocation achieving 80.63% accuracy and 0.9689 MAE across 797 curated hotels in 11 Indonesian cities.",
+      id: "User-Based Collaborative Filtering (Cosine Similarity) & alokasi kamar rombongan meraih akurasi 80,63% dan MAE 0,9689 dari 797 hotel terkurasi di 11 kota.",
+    },
+    image: "/documentation/loka-travel-recsys.webp",
+    date: "2026",
+    tag: "Recommender Systems",
+  },
+  {
     id: "pulseai-model-architecture",
     category: {
       en: "Applied AI & Behavioral Machine Learning",

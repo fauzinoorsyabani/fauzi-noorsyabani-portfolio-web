@@ -24,6 +24,7 @@ export const assetUrls = {
   airQuality: "/air-quality-intelligence.webp",
   wisataJelajah: "/wisata-jelajah-indonesia.webp",
   pulseai: "/pulseai-digital-wellness.webp",
+  lokaTravel: "/loka-travel-recommender.webp",
 } as const;
 
 
@@ -181,6 +182,32 @@ export type Project = {
 };
 
 export const featuredProjects: readonly Project[] = [
+  {
+    title: "Loka Travel — AI Recommender System & Group Allocation Platform",
+    date: "2026",
+    shortDescription:
+      "Enterprise travel package and hotel recommendation platform featuring User-Based Collaborative Filtering (Cosine Similarity), Content-Based demographic allocation, and 5-Fold Cross Validation achieving 80.63% accuracy and 0.9689 MAE.",
+    description:
+      "**Architected and deployed a production-grade travel package and hotel recommendation system** powered by hybrid **User-Based Collaborative Filtering (UBCF)** and **Content-Based demographic allocation** across a curated catalog of **797 hotels in 11 Indonesian cities**.\n\nEngineered **dynamic room allocation algorithms** factoring in traveler demographics (adults, children, seniors), budget limits, and weighted amenity vectors. Integrated **Cosine Similarity user-neighborhood modeling** benchmarked through rigorous **5-Fold Cross Validation** (achieving **80.63% mean accuracy, 0.9689 MAE**, reproducing published research benchmarks).\n\nBuilt with a responsive **React 18 + Tailwind CSS** frontend, dedicated **Super Admin & Admin operational dashboard** with role-based access control (RBAC), multi-channel **Google Gemini AI travel assistant**, and a sub-60ms **Python Flask** API engine deployed serverlessly on **Vercel** at **lokatravel.my.id**.",
+    highlights: [
+      "Engineered a **hybrid recommendation engine** combining **User-Based Collaborative Filtering (Cosine Similarity)** for tour packages with **Content-Based demographic filtering** for hotel room allocation.",
+      "Benchmarked algorithm performance across **5-Fold Cross Validation** achieving **80.63% accuracy** and **0.9689 MAE** with full empirical audit telemetry.",
+      "Designed an intelligent **Group-Based Room Allocation matrix** balancing adults, children, seniors, and multi-room configurations under budget constraints.",
+      "Built a dedicated **Full-Page Operational Dashboard (RBAC)** for Admins and Super Admins featuring live metrics, user role management, and collaborative filtering matrix inspection.",
+      "Integrated **Google Gemini AI Assistant (LokaBot)** for conversational travel itinerary planning and group vacation tips.",
+      "Deployed to production on **Vercel serverless edge infrastructure** with custom domain routing at **lokatravel.my.id**.",
+    ],
+    result:
+      "Delivered production recommender platform with **797 curated hotels across 11 cities**, **80.63% 5-Fold CV accuracy (0.9689 MAE)**, sub-60ms response latency, and dedicated operational dashboard live on **lokatravel.my.id**.",
+    technologies: ["Python", "Flask", "React 18", "TypeScript", "Tailwind CSS", "Collaborative Filtering", "Cosine Similarity", "Google Gemini AI", "Vercel"],
+    category: "Applied AI · Recommendation Systems & Full-Stack",
+    art: assetUrls.lokaTravel,
+    featured: true,
+    links: {
+      demo: "https://lokatravel.my.id",
+      source: "https://github.com/fauzinoorsyabani/prototype_03",
+    },
+  },
   {
     title: "Air Quality Forensic Analytics & Multi-Objective ML Pipeline",
     date: "2026",
