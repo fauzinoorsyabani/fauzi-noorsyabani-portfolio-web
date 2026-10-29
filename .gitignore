@@ -122,3 +122,5 @@ doc-fauzi/project/*
 # Local submodules/tools
 career-ops/
 
+.vercel
+.env*
