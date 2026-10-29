@@ -25,6 +25,7 @@ export const assetUrls = {
   wisataJelajah: "/wisata-jelajah-indonesia.webp",
   pulseai: "/pulseai-digital-wellness.webp",
   lokaTravel: "/loka-travel-recommender.webp",
+  foodPrice: "/food-price-intelligence.webp",
 } as const;
 
 
@@ -206,6 +207,31 @@ export const featuredProjects: readonly Project[] = [
     links: {
       demo: "https://lokatravel.my.id",
       source: "https://github.com/fauzinoorsyabani/Loka-Travel",
+    },
+  },
+  {
+    title: "Indonesian Food Commodity Price Intelligence Platform",
+    date: "2026",
+    shortDescription:
+      "End-to-end food price intelligence platform and interactive Streamlit analytics cockpit tracking 11 staple commodities across 2023–2025 with K-Means clustering (Silhouette 0.6038) and 2026 regression price forecasts.",
+    description:
+      "**Architected and deployed an end-to-end Indonesian food commodity price intelligence platform** analyzing national average retail prices across **11 core staple commodities** (Beras IR I/III, Cabai Rawit Merah, Cabai Merah Keriting, Bawang Merah/Putih, Daging Ayam/Sapi, Telur Ayam, Gula Pasir, Minyak Goreng) from BPS and Ministry of Trade monitoring data (2023–2025).\\n\\nEngineered automated HTML-table parsing, **Indonesian currency comma normalization**, and multi-dimensional feature formulation (**mean price, coefficient of variation, 2-year CAGR**). Mapped market structure via **K-Means Clustering** with **Silhouette Analysis (optimal K=3, score 0.6038)** and 2D PCA projection to isolate volatile horticultural items from stable livestock proteins.\\n\\nBuilt time series regression forecasting models achieving **average R² = 0.7744 and low MAPE = 2.07%** to project 2026 price trajectories, accompanied by an interactive **Streamlit + Plotly multi-filter analytics dashboard** and **8 publication-grade (300 DPI) visual diagnostic artifacts**.",
+    highlights: [
+      "Engineered automated **HTML table ingestion & cleaning** handling Indonesian comma currency formats and deterministic commodity entity normalization.",
+      "Computed **Year-over-Year (YoY) inflation** and **2-Year CAGR** identifying high-inflation pressure on Bawang Merah (+12.43% CAGR) and Minyak Goreng (+11.61% CAGR).",
+      "Applied **K-Means clustering with Silhouette Score optimization (K=3, score 0.6038)** and **PCA 2D projection** segmenting commodities into Affordable Volatile, Stable Controlled, and Premium Livestock tiers.",
+      "Trained **time series predictive regression models** achieving **0.7744 mean R² and 2.07% MAPE**, projecting 2026 price levels across all 11 commodities.",
+      "Delivered an interactive **Streamlit analytics dashboard** featuring dynamic filtering, Plotly charts, and KPI metric cards alongside **8 publication-grade (300 DPI) visual artifacts**.",
+    ],
+    result:
+      "Delivered complete intelligence pipeline with **100% unit test coverage**, **K=3 K-Means clustering (Silhouette 0.6038)**, **2.07% forecasting MAPE**, interactive Streamlit dashboard, and **Google Colab-compatible executable notebooks**.",
+    technologies: ["Python", "Pandas", "Scikit-Learn", "Streamlit", "Plotly", "Matplotlib", "Seaborn", "BeautifulSoup", "Jupyter"],
+    category: "Data Science · Food Price Intelligence",
+    art: assetUrls.foodPrice,
+    featured: true,
+    links: {
+      demo: "https://harga-pangan.streamlit.app",
+      source: "https://github.com/fauzinoorsyabani/harga-pangan",
     },
   },
   {

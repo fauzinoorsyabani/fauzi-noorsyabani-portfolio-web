@@ -19,6 +19,24 @@ export interface DocumentationItem {
 
 export const documentationItems: readonly DocumentationItem[] = [
   {
+    id: "food-price-intelligence",
+    category: {
+      en: "Data Science & Price Intelligence",
+      id: "Data Science & Kecerdasan Harga Pangan",
+    },
+    title: {
+      en: "Indonesian Food Commodity Inflation Analytics & Price Forecasting",
+      id: "Analitik Inflasi & Prediksi Harga Komoditas Pangan Indonesia",
+    },
+    description: {
+      en: "End-to-end data science pipeline analyzing 11 staple commodities (2023–2025) with K-Means clustering (Silhouette 0.6038) and 2026 time series regression forecasts.",
+      id: "Pipeline data science end-to-end menganalisis 11 komoditas pangan pokok (2023–2025) dengan K-Means clustering (Silhouette 0.6038) dan peramalan regresi harga 2026.",
+    },
+    image: "/documentation/food-price-analytics.webp",
+    date: "2026",
+    tag: "Food Analytics",
+  },
+  {
     id: "loka-travel-recsys",
     category: {
       en: "Applied AI & Recommendation Systems",
