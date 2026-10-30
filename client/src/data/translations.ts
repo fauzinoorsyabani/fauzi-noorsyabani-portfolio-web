@@ -18,7 +18,7 @@ export const translations = {
       role: "Full Stack AI Engineer | Data Analyst",
       roleSub: "Applied AI, Data Analytics & Business Intelligence",
       headline:
-        "**Full Stack AI Engineer | Data Analyst** bridging *decision-driven analytics*, *data warehousing*, and *production AI systems*. Backed by **2+ years of project engineering experience** proven across **913,000+** modelled retail transactions, BI analytics spanning **97 university programs**, and predictive dashboards tracking **30 IDX30 tickers** — selected as Google Student Ambassador Campus Lead from **12,000+** applicants.",
+        "**Full Stack AI Engineer | Data Analyst** bridging *decision-driven analytics*, *data warehousing*, and *production AI systems*. Backed by **2+ years of project engineering experience** proven across **913,000+** modelled retail transactions, BI analytics spanning **113 International Undergraduate Programs (IUP)** across 11 State Universities, and predictive dashboards tracking **30 IDX30 tickers** — selected as Google Student Ambassador Campus Lead from **12,000+** applicants.",
       exploreBtn: "Explore Projects",
       contactBtn: "Direct Contact",
     },
@@ -32,7 +32,7 @@ export const translations = {
       shortBio:
         "Turning raw data into *clear business decisions* — through analytics engineering, *BI dashboards*, and *production AI systems* grounded in real problems.",
       paragraphs: [
-        "Fresh graduate in Information Systems from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with **2+ years** of hands-on project engineering experience spanning **Data Analytics**, **Business Intelligence**, and **Applied AI** — built progressively across academic research, industry internships, and intensive engineering programs since 2023. Proven across **913,000+** modelled retail transactions, BI analytics spanning **97 university programs**, and predictive dashboards covering **30 IDX30 tickers** — delivering insights that directly support business decisions.",
+        "Fresh graduate in Information Systems from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with **2+ years** of hands-on project engineering experience spanning **Data Analytics**, **Business Intelligence**, and **Applied AI** — built progressively across academic research, industry internships, and intensive engineering programs since 2023. Proven across **913,000+** modelled retail transactions, BI analytics spanning **113 International Undergraduate Programs (IUP)** across 11 State Universities, and predictive dashboards covering **30 IDX30 tickers** — delivering insights that directly support business decisions.",
         "My core practice bridges **Data Analytics & Full Stack AI**: designing Kimball *star-schema* data warehouses, building fault-tolerant *ETL* pipelines, and delivering executive dashboards in *Looker Studio* and *Power BI* that translate complex datasets into actionable strategy. I also engineer production applications and *machine learning* pipelines — time-series forecasting, regression, and LLM orchestration — that deliver measurable utility under real-world constraints.",
         "Beyond individual contribution, I led a 5-engineer team shipping *PolaStok* through *Pijak × IBM SkillsBuild* and was selected as *Google Student Ambassador Campus Lead* from 12,000+ applicants. I bring structured analytical thinking, clear data storytelling, and a habit of connecting every metric back to the business question it answers.",
       ],
@@ -209,7 +209,7 @@ export const translations = {
       role: "Full Stack AI Engineer | Data Analyst",
       roleSub: "Rekayasa AI Terapan, Analitik Data & Business Intelligence",
       headline:
-        "**Full Stack AI Engineer | Data Analyst** yang menjembatani *analitik data berbasis keputusan*, *data warehousing*, dan *rekayasa sistem AI produksi*. Berpengalaman **2+ tahun** menangani pemodelan **913.000+** transaksi ritel, analitik BI di **97 program studi universitas**, dan dashboard prediktif **30 saham IDX30** — terpilih sebagai Google Student Ambassador Campus Lead dari **12.000+** pendaftar nasional.",
+        "**Full Stack AI Engineer | Data Analyst** yang menjembatani *analitik data berbasis keputusan*, *data warehousing*, dan *rekayasa sistem AI produksi*. Berpengalaman **2+ tahun** menangani pemodelan **913.000+** transaksi ritel, analitik BI di **113 program studi IUP** di 11 perguruan tinggi negeri, dan dashboard prediktif **30 saham IDX30** — terpilih sebagai Google Student Ambassador Campus Lead dari **12.000+** pendaftar nasional.",
       exploreBtn: "Jelajahi Proyek",
       contactBtn: "Hubungi Langsung",
     },
@@ -223,7 +223,7 @@ export const translations = {
       shortBio:
         "Mengubah data mentah menjadi *keputusan bisnis yang nyata* — melalui rekayasa analitik, *dashboard BI*, dan *sistem AI produksi* yang berakar pada permasalahan nyata.",
       paragraphs: [
-        "Fresh graduate S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan **2+ tahun** pengalaman proyek nyata di bidang **Data Analytics**, **Business Intelligence**, dan **Applied AI** — dibangun secara progresif sejak 2023 melalui riset akademik, magang industri, dan program rekayasa intensif. Terbukti melalui pemodelan **913.000+** transaksi ritel, analitik kebijakan di **97 program studi universitas**, serta dashboard prediktif yang mencakup **30 saham IDX30** — menghasilkan insight yang langsung menopang pengambilan keputusan bisnis.",
+        "Fresh graduate S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan **2+ tahun** pengalaman proyek nyata di bidang **Data Analytics**, **Business Intelligence**, dan **Applied AI** — dibangun secara progresif sejak 2023 melalui riset akademik, magang industri, dan program rekayasa intensif. Terbukti melalui pemodelan **913.000+** transaksi ritel, analitik kebijakan di **113 program studi IUP** di 11 perguruan tinggi negeri, serta dashboard prediktif yang mencakup **30 saham IDX30** — menghasilkan insight yang langsung menopang pengambilan keputusan bisnis.",
         "Fokus utama saya memadukan **Data Analytics & Full Stack AI**: merancang *data warehouse* berbasis *Kimball star-schema*, membangun pipeline *ETL* yang andal, serta menghadirkan dashboard eksekutif di *Looker Studio* dan *Power BI* yang mengubah dataset kompleks menjadi strategi yang dapat ditindaklanjuti. Saya juga mengembangkan aplikasi produksi dan pipeline *machine learning* — peramalan runtun waktu, regresi, dan orkestrasi LLM — untuk menghasilkan utilitas nyata di lingkungan produksi.",
         "Di luar kontribusi individu, saya memimpin tim 5 engineer merilis *PolaStok* melalui *Pijak × IBM SkillsBuild*, dan terpilih sebagai Campus Lead *Google Student Ambassador* dari 12.000+ mahasiswa nasional. Saya membawa pemikiran analitik terstruktur, kemampuan *data storytelling*, dan kebiasaan menghubungkan setiap metrik kembali ke pertanyaan bisnis yang relevan.",
       ],

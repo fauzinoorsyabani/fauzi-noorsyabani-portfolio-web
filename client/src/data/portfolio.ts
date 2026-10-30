@@ -42,7 +42,7 @@ export const person = {
   name: "Fauzi Noorsyabani",
   role: "Full Stack AI Engineer | Data Analyst",
   headline:
-    "Full Stack AI Engineer | Data Analyst with 2+ years of hands-on project engineering experience bridging advanced data analytics, dimensional data warehousing, and production AI web systems. Proven across 913,000+ retail transactions, institutional analytics spanning 97 university programs, and technical outreach reaching 1,000+ developers as Google Student Ambassador Campus Lead.",
+    "Full Stack AI Engineer | Data Analyst with 2+ years of hands-on project engineering experience bridging advanced data analytics, dimensional data warehousing, and production AI web systems. Proven across 913,000+ retail transactions, institutional analytics across 113 International Undergraduate Programs (IUP) at 11 State Universities, and technical outreach reaching 1,000+ developers as Google Student Ambassador Campus Lead.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",
@@ -398,16 +398,16 @@ export const featuredProjects: readonly Project[] = [
     title: "Higher Education Tuition & Policy Analytics",
     date: "Feb 2025 — Jun 2025",
     shortDescription:
-      "Multi-university regression modeling and BI analytics across 97 academic programs and 11 Indonesian universities to guide institutional tuition and capacity policy.",
+      "Cross-university statistical modeling and Looker Studio BI dashboards across 113 International Undergraduate Programs (IUP) at 11 Indonesian State Universities to evaluate tuition structures and institutional policies.",
     description:
-      "**End-to-end data analytics and regression modeling** for **VINIX Seven Aurum (MSIB)**, analyzing higher education tuition cost structures, enrollment capacity, and student-to-lecturer distributions across **97 academic programs and 11 Indonesian universities**. Delivered interactive dashboards and strategic policy recommendations to university leadership.",
+      "**End-to-end data analytics and statistical modeling** for **PT Inovasi Lentera Cipta Kreasi (VINIX7)**, analyzing higher education tuition cost structures (UKT), enrollment capacities, and accreditation distribution across **113 International Undergraduate Programs (IUP) at 11 Indonesian State Universities**. Delivered interactive Looker Studio dashboards and strategic institutional insights (scored 98/100).",
     highlights: [
-      "Conducted cross-institutional data analysis and **multivariate regression modeling across 97 study programs from 11 Indonesian universities**.",
-      "Evaluated single-tuition (UKT) cost tiers against enrollment capacity and accreditation tiers using **Python and Pandas**.",
-      "Built interactive **Power BI and Google Looker Studio executive dashboards** to surface actionable tuition policy benchmarks.",
+      "Conducted web scraping and statistical analysis across **113 IUP study programs from 11 Indonesian State Universities** using **Python, Pandas, and BeautifulSoup**.",
+      "Evaluated single-tuition (UKT) structures against institutional capacities (average UKT Rp21.77M/semester, max Rp70M) and computed Pearson correlation (r = 0.079).",
+      "Built interactive **Google Looker Studio executive dashboards** to surface actionable tuition benchmarks and academic capacity insights.",
     ],
-    result: "Modeled **97 academic programs across 11 universities** with a **35% improvement in policy insight accuracy**.",
-    technologies: ["Python", "Pandas", "Power BI", "Google Looker Studio", "Regression Models", "Data Analytics"],
+    result: "Analyzed **113 IUP study programs across 11 State Universities** with **98/100 program score** and prepared research draft for SINTA journal publication.",
+    technologies: ["Python", "Pandas", "BeautifulSoup", "Google Looker Studio", "Statistical Modeling", "Data Analytics"],
     category: "Data Analytics · Higher Education Policy",
     art: assetUrls.dashboardTrend,
     links: {},
@@ -478,13 +478,13 @@ export const experience = [
   },
   {
     type: "Work",
-    organization: "VINIX Seven Aurum · MSIB Program",
-    role: "Data Science Intern",
+    organization: "PT Inovasi Lentera Cipta Kreasi (VINIX7)",
+    role: "Junior Data Scientist Intern",
     date: "Feb 2025 — Jun 2025",
-    location: "Remote",
+    location: "Jakarta Selatan (Hybrid)",
     details: [
-      "Led an end-to-end analytics project across 97 academic programs from 11 Indonesian universities.",
-      "Built interactive dashboards with Python, Power BI, and Streamlit, then presented strategic recommendations to stakeholders.",
+      "Led an end-to-end data analytics project across 113 International Undergraduate Programs (IUP) from 11 Indonesian State Universities.",
+      "Built interactive Looker Studio executive dashboards and Python statistical models, earning a 98/100 final evaluation.",
     ],
   },
   {
@@ -500,13 +500,13 @@ export const experience = [
   },
   {
     type: "Work",
-    organization: "RA Al-Fathunnisa & CV. Putra AR",
-    role: "Full-Stack Web Developer",
+    organization: "CV. Putra AR & RA Al-Fathunnisa",
+    role: "Frontend / Web Developer",
     date: "Mar 2024 — Dec 2024",
     location: "Tasikmalaya",
     details: [
-      "Shipped production web applications solo for education and F&B clients using React, JavaScript, PHP REST APIs, and MySQL.",
-      "Set up automated CI/CD delivery workflows and helped reduce manual administrative processes by 50%.",
+      "Shipped production web applications for F&B manufacturing (CV. Putra AR) and education clients using React 19, Vite, Framer Motion, and PHP REST APIs.",
+      "Built responsive company profiles, digital product catalogs, and direct inquiry flows, modernizing client outreach.",
     ],
   },
   {
@@ -634,11 +634,11 @@ export const certifications = [
   },
   {
     name: "Internship Certificate · Data Science Division",
-    issuer: "PT VINIX Seven Aurum",
-    date: "Feb — May 2025",
+    issuer: "PT Inovasi Lentera Cipta Kreasi (VINIX7)",
+    date: "Feb — Jun 2025",
     tag: "Internship",
     description:
-      "Rated 'very good' for the MSIB Batch 2 data science internship: analytics across 97 study programs from 11 universities.",
+      "Graduated with score 98/100 (Predikat Sangat Baik) for Magang SIB Mandiri VINIX7 Batch 2: analytical modeling across 113 International Undergraduate Programs (IUP) from 11 State Universities.",
     credential: "/certificates/Data_sains_Sertifikat_magang_Batch_2.webp",
   },
   {

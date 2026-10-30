@@ -175,7 +175,7 @@ function PendingAction({
 function SignalStream({ className = "", tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
   const signals = [
     "DATA WAREHOUSE & STAR SCHEMA ARCHITECTURE",
-    "BNSP CERTIFIED DATA SCIENTIST",
+    "DATA SCIENCE & PREDICTIVE ANALYTICS",
     "MACHINE LEARNING & SEISMIC RISK PREDICTION",
     "LLM INTEGRATION & RAG PIPELINE ORCHESTRATION",
     "BUSINESS INTELLIGENCE & LOOKER STUDIO",
