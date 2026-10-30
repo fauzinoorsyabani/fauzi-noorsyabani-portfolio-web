@@ -589,29 +589,29 @@ const heroRoles = [
   {
     title: "Full Stack AI Engineer",
     sub: {
-      en: "Applied AI & Data Products",
-      id: "Produk AI Terapan & Sistem Data",
+      en: "Applied AI & LLM Systems",
+      id: "Sistem AI Terapan & Orkestrasi LLM",
     },
   },
   {
-    title: "Data Analyst",
+    title: "Data & Analytics Engineer",
     sub: {
-      en: "BI & Institutional Analytics",
-      id: "Kecerdasan Bisnis & Analitik Data",
+      en: "Star Schema & Executive BI",
+      id: "Data Warehouse & Dasbor Eksekutif",
     },
   },
   {
-    title: "Business Analyst",
+    title: "Applied ML Engineer",
     sub: {
-      en: "System Strategy & Decision Support",
-      id: "Strategi Sistem & Solusi Bisnis",
+      en: "Demand Forecasting & RecSys",
+      id: "Prediksi Runtun Waktu & Recommender",
     },
   },
   {
-    title: "IT Project Manager",
+    title: "Google Student Ambassador Lead",
     sub: {
-      en: "BNSP Certified & Agile Delivery",
-      id: "Tersertifikasi BNSP & Tata Kelola Proyek",
+      en: "AI Adoption & Tech Outreach",
+      id: "Edukasi AI & Kepemimpinan Komunitas",
     },
   },
 ] as const;

@@ -41,7 +41,7 @@ export const person = {
   name: "Fauzi Noorsyabani",
   role: "Full Stack AI Engineer",
   headline:
-    "I engineer production-grade AI systems and full-stack software—connecting model integration, data pipelines, and responsive web architecture into reliable tools that solve real problems.",
+    "Full Stack AI Engineer bridging production machine learning, LLM orchestration, and modern full-stack architecture. Proven across 913,000+ retail transactions, institutional analytics spanning 97 university programs, and technical outreach reaching 1,000+ developers as Google Student Ambassador Campus Lead.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",

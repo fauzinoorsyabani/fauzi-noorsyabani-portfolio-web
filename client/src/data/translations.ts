@@ -18,7 +18,7 @@ export const translations = {
       role: "Full Stack AI Engineer",
       roleSub: "Applied AI & Data Products",
       headline:
-        "I engineer production-grade *AI systems* and *full-stack software*—connecting model integration, data pipelines, and responsive web architecture into reliable tools that solve real problems.",
+        "Full Stack AI Engineer bridging *production machine learning*, *LLM orchestration*, and modern *full-stack architecture*. Proven across **913,000+** retail transactions, institutional analytics spanning **97 university programs**, and technical outreach reaching **1,000+ developers** as Google Student Ambassador Campus Lead.",
       exploreBtn: "Explore Projects",
       contactBtn: "Direct Contact",
     },
@@ -209,7 +209,7 @@ export const translations = {
       role: "Full Stack AI Engineer",
       roleSub: "Rekayasa AI & Pengembangan Sistem",
       headline:
-        "Saya merancang dan mengembangkan solusi *AI terapan* serta sistem web *full-stack* yang tangguh—mengintegrasikan rekayasa data, orkestrasi *LLM*, arsitektur backend, dan antarmuka responsif menjadi produk nyata yang bernilai guna tinggi.",
+        "Full Stack AI Engineer yang menjembatani *machine learning produksi*, *orkestrasi LLM*, dan *arsitektur web modern*. Terbukti melalui pemodelan **913.000+** transaksi ritel, analitik kebijakan di **97 program studi universitas**, serta kepemimpinan teknis menjangkau **1.000+ mahasiswa** sebagai Google Student Ambassador Campus Lead.",
       exploreBtn: "Jelajahi Proyek",
       contactBtn: "Hubungi Langsung",
     },
