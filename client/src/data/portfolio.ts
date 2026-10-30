@@ -26,6 +26,7 @@ export const assetUrls = {
   pulseai: "/pulseai-digital-wellness.webp",
   lokaTravel: "/loka-travel-recommender.webp",
   foodPrice: "/food-price-intelligence.webp",
+  cvPutraAR: "/cv-putra-ar.webp",
 } as const;
 
 
@@ -452,21 +453,24 @@ export const featuredProjects: readonly Project[] = [
     links: {},
   },
   {
-    title: "CV. Putra AR — CRM & Food Manufacturing Supply Platform",
+    title: "CV. Putra AR — B2B Wholesale Portal & Food Manufacturing Supply Platform",
     date: "Mar 2024 — Jun 2024",
     shortDescription:
-      "Enterprise customer relationship management and digital wholesale catalog platform for a 300+ workforce food manufacturing client featuring automated feedback loops and CI/CD delivery.",
+      "Production B2B wholesale platform, digital multi-tier SKU catalog, and cold-chain partnership portal for CV. Putra AR — a 309+ workforce food manufacturer in Ciamis producing Raja Raoz meatballs and processed foods with Japanese-standard automation for 100+ partner networks across Java.",
     description:
-      "**Developed and shipped an enterprise CRM and B2B wholesale distribution platform** for **CV. Putra AR**, a prominent food manufacturing enterprise with **300+ skilled personnel** producing frozen fish snacks, beef meatballs, and noodles across West Java.\n\nBuilt customer loyalty tracking, automated client feedback collection, digital SKU catalog management across **4 major product divisions**, and automated CI/CD deployment pipelines delivered **two weeks ahead of schedule**.",
+      "**Architected and shipped the official production web and B2B wholesale distribution platform** for **CV. Putra AR**, a food manufacturing enterprise established in 2017 in Ciamis, West Java operating with **309+ trained personnel**, Japanese-standard automated machinery, and integrated cold storage distribution.\n\nEngineered a comprehensive **digital SKU catalog across 4 core manufacturing divisions** (Bakso Sapi Super & Urat Raja Raoz, Otak-Otak Ikan Tenggiri Segar, Kwetiau Segar, and Traditional Savory Snacks/Basreng) with certified **100% Halal (MUI & BPJPH)** and lab-tested chemical preservative-free compliance documentation.\n\nDeveloped an automated **3-Tier B2B Wholesale Partnership Architecture**:\n- **Tier 1 (Reseller Resmi)**: Min. 50 packs/month, 15% wholesale discount, digital marketing kit, and guaranteed regular shipping schedule.\n- **Tier 2 (Agen Wilayah)**: Min. 250 packs/month, 25% distributor discount, sub-district territorial exclusivity, cold-chain refrigerated fleet priority, and physical outlet branding.\n- **Tier 3 (Distributor Utama)**: Min. 1,000+ packs/month, direct factory pricing, city/regency territorial exclusivity, periodic payment terms, and dedicated account management.\n\nStreamlined customer communication with direct inquiry routing to plant telephone hotlines **(0265) 5401232** and WhatsApp dispatch **+62 813-1064-1534**, backed by **zero-downtime CI/CD deployment workflows shipped two weeks ahead of schedule**.",
     highlights: [
-      "Built a custom CRM and customer loyalty web application tailored for high-volume B2B food distribution and retail partners.",
-      "Digitized a multi-tier product catalog spanning **4 core divisions (Otak-Otak Ikan, Bakso Raja Raoz, Kwetiau, and Snacks)** with automated pricing inquiry workflows.",
-      "Engineered automated customer feedback collection, distributor contact routing, and an administrative management dashboard.",
-      "Configured **zero-downtime CI/CD deployment pipelines**, shipping the production system **two weeks ahead of deadline**.",
+      "Engineered production **B2B Wholesale & Factory Supply Portal** for **CV. Putra AR** (309+ trained workforce, Japanese-standard automated machinery, 100+ partner network across Java).",
+      "Built an automated **3-Tier Wholesale Partnership Architecture** (Reseller 50+ packs/mo at 15% off, Regional Agent 250+ packs/mo at 25% off with sub-district exclusivity, and City Distributor 1,000+ packs/mo with factory pricing and credit terms).",
+      "Digitized complete multi-tier SKU catalog across **4 core manufacturing lines**: Bakso Sapi Super & Urat Raja Raoz, Otak-Otak Ikan Tenggiri Segar, Kwetiau Segar Siap Olah, and Traditional Savory Snacks (Basreng Daun Jeruk, Cimol Krispi, Stik Bawang).",
+      "Implemented food safety & quality compliance showcase documenting **100% Halal certification (MUI/BPJPH)**, lab-tested chemical preservative-free status, and integrated cold-chain distribution logistics.",
+      "Streamlined customer communication via integrated order inquiries routing directly to plant hotlines **((0265) 5401232)** and dedicated WhatsApp dispatch **(+62 813-1064-1534)**.",
+      "Configured automated **zero-downtime CI/CD deployment workflows**, shipping the complete client platform **two weeks ahead of deadline**.",
     ],
-    result: "Delivered production B2B platform supporting **300+ workforce factory distribution**, **two weeks ahead of schedule with zero-downtime deployment**.",
-    technologies: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3", "CI/CD"],
+    result: "Delivered production B2B platform supporting **309+ workforce factory operations**, **100+ partner network across Java**, automated **3-tier distributor supply workflows**, and **zero-downtime deployment delivered 2 weeks ahead of schedule**.",
+    technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "Bootstrap", "HTML5", "CSS3", "CI/CD", "REST API"],
     category: "Client Work · Full-Stack",
+    art: assetUrls.cvPutraAR,
     links: {},
   },
 ];
