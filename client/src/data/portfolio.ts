@@ -430,23 +430,6 @@ export const featuredProjects: readonly Project[] = [
     },
   },
   {
-    title: "ClinicalNote AI — Clinical Documentation Platform",
-    date: "2025",
-    shortDescription:
-      "Real-time clinical documentation system integrating FastAPI, OpenAI Whisper, and GPT-4 LangChain pipelines for sub-two-second medical transcription and ICD-10 coding.",
-    description:
-      "Built a clinical documentation system with a **FastAPI backend integrating OpenAI Whisper and GPT-4 for sub-two-second transcription latency**. Designed reusable **AI Skills** for automated summarization, ICD-10 code suggestion, and medication extraction as modular **LangChain chains**; containerized and deployed on **AWS EC2**.",
-    highlights: [
-      "Architected a low-latency **FastAPI backend integrating OpenAI Whisper** for medical speech-to-text transcription in **under 2 seconds**.",
-      "Built modular **LangChain AI Skills** for SOAP clinical note generation, automated **ICD-10 diagnostic code suggestion**, and prescription extraction.",
-      "Containerized the full-stack React + FastAPI application with **Docker and deployed on AWS EC2**.",
-    ],
-    result: "Designed for **sub-two-second OpenAI-backed transcription latency** with **automated ICD-10 diagnostic coding**.",
-    technologies: ["FastAPI", "OpenAI API", "LangChain", "React", "Docker", "AWS EC2"],
-    category: "Applied AI · Solo Development",
-    links: {},
-  },
-  {
     title: "NusaLadang — Smart Farming Platform",
     date: "Aug 2024 — Dec 2024",
     shortDescription:
@@ -462,57 +445,6 @@ export const featuredProjects: readonly Project[] = [
     technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "HTML5", "CSS3"],
     category: "Product Engineering · Full-Stack",
     art: assetUrls.productSystemsArt,
-    links: {},
-  },
-  {
-    title: "AI Study Assistant — RAG Knowledge Q&A",
-    date: "2025",
-    shortDescription:
-      "Retrieval-Augmented Generation (RAG) academic assistant enabling semantic search with exact page citations over 500+ pages of lecture notes using ChromaDB and FastAPI.",
-    description:
-      "Engineered a **Retrieval-Augmented Generation (RAG) knowledge assistant enabling semantic search over 500+ pages of academic lecture notes**. Implemented vector indexing with **ChromaDB**, source citation, and a streaming **FastAPI microservice** paired with a **Streamlit chat UI and conversational memory**.",
-    highlights: [
-      "Built an end-to-end **RAG ingestion and semantic retrieval pipeline** over **500+ pages of PDF lecture notes** using **LangChain and ChromaDB**.",
-      "Engineered grounded answer synthesis with **exact document and page-level source citations** to prevent hallucination.",
-      "Delivered a streaming **FastAPI backend** paired with a multi-turn conversational **Streamlit interface**.",
-    ],
-    result: "Accurate contextual retrieval with **exact page citations** and **multi-turn conversational context**.",
-    technologies: ["LangChain", "ChromaDB", "FastAPI", "Streamlit", "Python", "RAG"],
-    category: "Applied AI · Solo Development",
-    links: {},
-  },
-  {
-    title: "HR Analytics Capstone — LLM Data Pipeline",
-    date: "2025",
-    shortDescription:
-      "Enterprise NLP and LLM classification pipeline processing 838,566 employee reviews using IBM Granite for automated sentiment synthesis and executive HR recommendations.",
-    description:
-      "Developed an **enterprise NLP and data pipeline for IBM SkillsBuild × Hacktiv8 that processed 838,566 employee reviews**. Orchestrated multi-step processing: cleaning, **LLM classification using IBM Granite**, automatic sentiment summarization, and executive recommendation synthesis.",
-    highlights: [
-      "Engineered a large-scale data cleaning and text normalization pipeline processing **838,566 raw employee review records**.",
-      "Orchestrated **IBM Granite LLM classification and sentiment summarization** to identify systemic organizational retention drivers.",
-      "Synthesized **data-backed executive HR recommendations** for workplace satisfaction and attrition reduction.",
-    ],
-    result: "Scaled data transformation and sentiment synthesis across **838,566 employee records**.",
-    technologies: ["IBM Granite", "Data Pipeline", "Python", "Pandas", "Analytics", "NLP"],
-    category: "Data Science · AI Pipeline",
-    links: {},
-  },
-  {
-    title: "RA Al-Fathunnisa — Academic Portal & PPDB",
-    date: "Feb 2024 — Jun 2024",
-    shortDescription:
-      "Production full-stack student admission (PPDB) and academic administration portal automating registration, document verification, and institutional reporting.",
-    description:
-      "Built a **production full-stack student admission (PPDB) and academic administration management system** for an educational institution. Automated registration workflows, student records, document verification, and administrative reporting.",
-    highlights: [
-      "Developed a full-stack online student admission (PPDB) and academic record portal using **Laravel, MySQL, and Bootstrap**.",
-      "Automated applicant document verification, student roster management, and administrative reporting workflows.",
-      "Reduced manual school administrative processing time by **50% with automated CI/CD deployment via GitHub Actions**.",
-    ],
-    result: "Reduced manual administrative processing time by **50% through workflow automation**.",
-    technologies: ["PHP", "Laravel", "Bootstrap", "MySQL", "Git", "GitHub Actions"],
-    category: "Client Work · Full-Stack",
     links: {},
   },
   {
