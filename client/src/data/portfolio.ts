@@ -395,24 +395,6 @@ export const featuredProjects: readonly Project[] = [
     links: {},
   },
   {
-    title: "Higher Education Tuition & Policy Analytics",
-    date: "Feb 2025 — Jun 2025",
-    shortDescription:
-      "Cross-university statistical modeling and Looker Studio BI dashboards across 113 International Undergraduate Programs (IUP) at 11 Indonesian State Universities to evaluate tuition structures and institutional policies.",
-    description:
-      "**End-to-end data analytics and statistical modeling** for **PT Inovasi Lentera Cipta Kreasi (VINIX7)**, analyzing higher education tuition cost structures (UKT), enrollment capacities, and accreditation distribution across **113 International Undergraduate Programs (IUP) at 11 Indonesian State Universities**. Delivered interactive Looker Studio dashboards and strategic institutional insights (scored 98/100).",
-    highlights: [
-      "Conducted web scraping and statistical analysis across **113 IUP study programs from 11 Indonesian State Universities** using **Python, Pandas, and BeautifulSoup**.",
-      "Evaluated single-tuition (UKT) structures against institutional capacities (average UKT Rp21.77M/semester, max Rp70M) and computed Pearson correlation (r = 0.079).",
-      "Built interactive **Google Looker Studio executive dashboards** to surface actionable tuition benchmarks and academic capacity insights.",
-    ],
-    result: "Analyzed **113 IUP study programs across 11 State Universities** with **98/100 program score** and prepared research draft for SINTA journal publication.",
-    technologies: ["Python", "Pandas", "BeautifulSoup", "Google Looker Studio", "Statistical Modeling", "Data Analytics"],
-    category: "Data Analytics · Higher Education Policy",
-    art: assetUrls.dashboardTrend,
-    links: {},
-  },
-  {
     title: "PolaStok — AI Inventory Forecasting Platform",
     date: "Feb 2026 — Jul 2026",
     shortDescription:
