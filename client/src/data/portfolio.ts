@@ -181,6 +181,7 @@ export type Project = {
   art?: string;
   featured?: boolean;
   links?: { caseStudy?: string; demo?: string; source?: string };
+  isPrivate?: boolean;
 };
 
 export const featuredProjects: readonly Project[] = [
@@ -435,24 +436,6 @@ export const featuredProjects: readonly Project[] = [
     },
   },
   {
-    title: "NusaLadang — Smart Farming Platform",
-    date: "Aug 2024 — Dec 2024",
-    shortDescription:
-      "Full-stack smart farming investment and digital land-leasing platform featuring dynamic crop pricing calculators, yield projection logic, and role-based digital contracts.",
-    description:
-      "Engineered an end-to-end **smart farming investment platform connecting landowners with agricultural investors**. Implemented digital land leasing, **dynamic crop pricing calculators**, yield projection logic, and **transparent digital contracts with role-based access**.",
-    highlights: [
-      "Built an end-to-end agricultural investment and land-leasing platform using **PHP, Laravel, and MySQL**.",
-      "Engineered **dynamic crop pricing calculators**, **harvest yield projection algorithms**, and transparent digital contract workflows.",
-      "Implemented **role-based dashboards** for landowners, investors, and platform administrators.",
-    ],
-    result: "Full-stack contract and investment workflow with **dynamic pricing and land management for agricultural partners**.",
-    technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "HTML5", "CSS3"],
-    category: "Product Engineering · Full-Stack",
-    art: assetUrls.productSystemsArt,
-    links: {},
-  },
-  {
     title: "CV. Putra AR — B2B Wholesale Portal & Food Manufacturing Supply Platform",
     date: "Mar 2024 — Jun 2024",
     shortDescription:
@@ -472,9 +455,8 @@ export const featuredProjects: readonly Project[] = [
     technologies: ["React", "JavaScript", "PHP", "REST API", "Framer Motion", "Vite", "HTML5", "CSS3", "CI/CD"],
     category: "Client Work · Full-Stack",
     art: assetUrls.cvPutraAR,
-    links: {
-      source: "https://github.com/fauzinoorsyabani/CV.Putra-AR",
-    },
+    links: {},
+    isPrivate: true,
   },
 ];
 

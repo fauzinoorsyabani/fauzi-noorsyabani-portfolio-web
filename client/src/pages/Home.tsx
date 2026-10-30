@@ -28,6 +28,7 @@ import {
   Moon,
   X,
   Maximize2,
+  Lock,
 } from "lucide-react";
 import {
   assetUrls,
@@ -1386,6 +1387,7 @@ export default function Home() {
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               {featuredProjects.map((project, index) => {
                 const isAcademicDW = project.title.includes("Academic Capacity");
+                const isPrivate = Boolean(project.isPrivate);
                 const currentArt = isAcademicDW ? dashboardViews[dashboardView].src : project.art;
                 const primaryCategory = project.category.split("·")[0]?.trim() || project.category;
                 const visibleTechs = project.technologies.slice(0, 4);
@@ -1394,17 +1396,21 @@ export default function Home() {
                 return (
                   <article
                     key={project.title}
-                    onClick={() => setSelectedProject(project)}
-                    role="button"
-                    tabIndex={0}
+                    onClick={() => !isPrivate && setSelectedProject(project)}
+                    role={isPrivate ? undefined : "button"}
+                    tabIndex={isPrivate ? undefined : 0}
                     onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
+                      if (!isPrivate && (e.key === "Enter" || e.key === " ")) {
                         e.preventDefault();
                         setSelectedProject(project);
                       }
                     }}
-                    aria-label={`${language === "en" ? "View details for" : "Lihat detail proyek"} ${project.title}`}
-                    className="motion-card group relative flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left shadow-xs transition duration-300 hover:-translate-y-1 hover:border-neutral-900 dark:hover:border-neutral-500 hover:shadow-xl hover:shadow-neutral-900/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 dark:focus-visible:ring-white"
+                    aria-label={isPrivate ? project.title : `${language === "en" ? "View details for" : "Lihat detail proyek"} ${project.title}`}
+                    className={`motion-card group relative flex flex-col justify-between overflow-hidden rounded-xl border border-neutral-300 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-left shadow-xs transition duration-300 ${
+                      isPrivate
+                        ? "cursor-default"
+                        : "hover:-translate-y-1 hover:border-neutral-900 dark:hover:border-neutral-500 hover:shadow-xl hover:shadow-neutral-900/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 dark:focus-visible:ring-white"
+                    }`}
                   >
 
                     {/* Visual Media Header — Full-Bleed Edge-to-Edge with Hover Detail Overlay */}
@@ -1484,25 +1490,47 @@ export default function Home() {
                             </span>
                           </div>
                           {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button — Visible on mobile & on desktop hover */}
-                          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/40 via-neutral-950/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          {!isPrivate ? (
+                            <>
+                              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/40 via-neutral-950/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                              <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                                <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/30 dark:border-white/25 bg-neutral-950/50 dark:bg-black/55 px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
+                                  <Code2 className="h-4 w-4 text-sky-400" />
+                                  {language === "en" ? "View Details" : "Lihat Detail"}
+                                </span>
+                              </div>
+                            </>
+                          ) : (
                             <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
-                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/30 dark:border-white/25 bg-neutral-950/50 dark:bg-black/55 px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
-                                <Code2 className="h-4 w-4 text-sky-400" />
-                                {language === "en" ? "View Details" : "Lihat Detail"}
+                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/25 bg-neutral-950/85 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-neutral-200 shadow-xl backdrop-blur-md">
+                                <Lock className="h-3.5 w-3.5 text-neutral-300" />
+                                {language === "en" ? "Private Project" : "Proyek Privat"}
                               </span>
                             </div>
+                          )}
                         </div>
                       ) : (
                         <div className="relative overflow-hidden">
                           <ProjectEvidence index={index} category={project.category} />
                           {/* Bottom-Only Soft Shade + Centered Enlarged View Details Button — Visible on mobile & on desktop hover */}
-                          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/40 via-neutral-950/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          {!isPrivate ? (
+                            <>
+                              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-neutral-950/40 via-neutral-950/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                              <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
+                                <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/30 dark:border-white/25 bg-neutral-950/50 dark:bg-black/55 px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
+                                  <Code2 className="h-4 w-4 text-sky-400" />
+                                  {language === "en" ? "View Details" : "Lihat Detail"}
+                                </span>
+                              </div>
+                            </>
+                          ) : (
                             <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100">
-                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/30 dark:border-white/25 bg-neutral-950/50 dark:bg-black/55 px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white shadow-xl backdrop-blur-md transition-transform duration-300 scale-95 group-hover:scale-100">
-                                <Code2 className="h-4 w-4 text-sky-400" />
-                                {language === "en" ? "View Details" : "Lihat Detail"}
+                              <span className="mono-type inline-flex items-center gap-2 rounded-full border border-white/25 bg-neutral-950/85 px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-neutral-200 shadow-xl backdrop-blur-md">
+                                <Lock className="h-3.5 w-3.5 text-neutral-300" />
+                                {language === "en" ? "Private Project" : "Proyek Privat"}
                               </span>
                             </div>
+                          )}
                         </div>
                       )}
                     </div>
@@ -1590,17 +1618,24 @@ export default function Home() {
                             </div>
                           ) : null}
 
-                          <button
-                            type="button"
-                            onClick={() => setSelectedProject(project)}
-                            className={`mono-type inline-flex min-h-[38px] sm:min-h-0 items-center justify-center gap-1.5 rounded-lg border border-neutral-300 bg-neutral-100/90 dark:bg-neutral-800 dark:border-neutral-700 px-3 py-2 sm:py-1.5 text-[0.68rem] sm:text-[0.62rem] font-bold uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100 shadow-2xs transition hover:border-neutral-950 hover:bg-neutral-950 hover:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-neutral-950 ${
-                              !project.links?.demo && !project.links?.source ? "w-full" : "w-full sm:w-auto"
-                            }`}
-                          >
-                            <Code2 className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
-                            {language === "en" ? "View Details" : "Lihat Detail"}
-                            <ArrowUpRight className="h-3 w-3" />
-                          </button>
+                          {isPrivate ? (
+                            <div className="w-full flex items-center justify-center gap-2 rounded-lg border border-neutral-300/80 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-800/50 px-3.5 py-2 sm:py-1.5 mono-type text-[0.68rem] sm:text-[0.62rem] font-bold uppercase tracking-[0.08em] text-neutral-600 dark:text-neutral-400 select-none">
+                              <Lock className="h-3.5 w-3.5 text-neutral-500 dark:text-neutral-400" />
+                              <span>{language === "en" ? "Internal Enterprise · Private" : "Proyek Internal · Privat"}</span>
+                            </div>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => setSelectedProject(project)}
+                              className={`mono-type inline-flex min-h-[38px] sm:min-h-0 items-center justify-center gap-1.5 rounded-lg border border-neutral-300 bg-neutral-100/90 dark:bg-neutral-800 dark:border-neutral-700 px-3 py-2 sm:py-1.5 text-[0.68rem] sm:text-[0.62rem] font-bold uppercase tracking-[0.08em] text-neutral-900 dark:text-neutral-100 shadow-2xs transition hover:border-neutral-950 hover:bg-neutral-950 hover:text-white dark:hover:border-white dark:hover:bg-white dark:hover:text-neutral-950 ${
+                                !project.links?.demo && !project.links?.source ? "w-full" : "w-full sm:w-auto"
+                              }`}
+                            >
+                              <Code2 className="h-3.5 w-3.5 text-sky-600 dark:text-sky-400" />
+                              {language === "en" ? "View Details" : "Lihat Detail"}
+                              <ArrowUpRight className="h-3 w-3" />
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>
