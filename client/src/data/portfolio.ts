@@ -456,22 +456,25 @@ export const featuredProjects: readonly Project[] = [
     title: "CV. Putra AR — B2B Wholesale Portal & Food Manufacturing Supply Platform",
     date: "Mar 2024 — Jun 2024",
     shortDescription:
-      "Production B2B wholesale platform, digital multi-tier SKU catalog, and cold-chain partnership portal for CV. Putra AR — a 309+ workforce food manufacturer in Ciamis producing Raja Raoz meatballs and processed foods with Japanese-standard automation for 100+ partner networks across Java.",
+      "Production B2B wholesale platform, dynamic multi-tier SKU catalog, and cold-chain partnership portal for CV. Putra AR — built as a high-performance React 19 SPA with PHP REST API backend, Framer Motion cinematic visual storytelling, and automated 3-Tier wholesale distribution across Java.",
     description:
-      "**Architected and shipped the official production web and B2B wholesale distribution platform** for **CV. Putra AR**, a food manufacturing enterprise established in 2017 in Ciamis, West Java operating with **309+ trained personnel**, Japanese-standard automated machinery, and integrated cold storage distribution.\n\nEngineered a comprehensive **digital SKU catalog across 4 core manufacturing divisions** (Bakso Sapi Super & Urat Raja Raoz, Otak-Otak Ikan Tenggiri Segar, Kwetiau Segar, and Traditional Savory Snacks/Basreng) with certified **100% Halal (MUI & BPJPH)** and lab-tested chemical preservative-free compliance documentation.\n\nDeveloped an automated **3-Tier B2B Wholesale Partnership Architecture**:\n- **Tier 1 (Reseller Resmi)**: Min. 50 packs/month, 15% wholesale discount, digital marketing kit, and guaranteed regular shipping schedule.\n- **Tier 2 (Agen Wilayah)**: Min. 250 packs/month, 25% distributor discount, sub-district territorial exclusivity, cold-chain refrigerated fleet priority, and physical outlet branding.\n- **Tier 3 (Distributor Utama)**: Min. 1,000+ packs/month, direct factory pricing, city/regency territorial exclusivity, periodic payment terms, and dedicated account management.\n\nStreamlined customer communication with direct inquiry routing to plant telephone hotlines **(0265) 5401232** and WhatsApp dispatch **+62 813-1064-1534**, backed by **zero-downtime CI/CD deployment workflows shipped two weeks ahead of schedule**.",
+      "**Architected and shipped the official production web and B2B wholesale distribution platform** for **CV. Putra AR**, a food manufacturing enterprise established in 2017 in Ciamis, West Java operating with **309+ trained personnel**, Japanese-standard automated machinery, and integrated cold storage distribution.\n\nBuilt as a modern **Full-Stack architecture**: a high-performance **React 19 Single Page Application (SPA)** with **Vite** and **Framer Motion** cinematic film visual storytelling (24 FPS viewfinder HUD, Ken Burns motion transitions, and responsive single-line typing headline), backed by lightweight, modular **PHP REST API endpoints** (`/api/products.php`, `/api/inquiry.php`, `/api/partnership.php`) delivering dynamic JSON catalog queries and automated intake processing for cPanel/shared hosting.\n\nEngineered a comprehensive **digital SKU catalog across 4 core manufacturing divisions** (Bakso Sapi Super & Urat Raja Raoz, Otak-Otak Ikan Tenggiri Segar, Kwetiau Segar Siap Olah, and Traditional Savory Snacks/Basreng) with certified **100% Halal (MUI & BPJPH)** and lab-tested chemical preservative-free compliance documentation.\n\nDeveloped an automated **3-Tier B2B Wholesale Partnership Architecture**:\n- **Tier 1 (Reseller Resmi)**: Min. 50 packs/month, 15% wholesale discount, digital marketing kit, and guaranteed regular shipping schedule.\n- **Tier 2 (Agen Wilayah)**: Min. 250 packs/month, 25% distributor discount, sub-district territorial exclusivity, cold-chain refrigerated fleet priority, and physical outlet branding.\n- **Tier 3 (Distributor Utama)**: Min. 1,000+ packs/month, direct factory pricing, city/regency territorial exclusivity, periodic payment terms, and dedicated account management.\n\nStreamlined customer communication with direct inquiry routing to plant telephone hotlines **(0265) 5401232** and WhatsApp dispatch **+62 813-1064-1534**, backed by **zero-downtime CI/CD deployment workflows via GitHub Actions shipped two weeks ahead of schedule**.",
     highlights: [
-      "Engineered production **B2B Wholesale & Factory Supply Portal** for **CV. Putra AR** (309+ trained workforce, Japanese-standard automated machinery, 100+ partner network across Java).",
-      "Built an automated **3-Tier Wholesale Partnership Architecture** (Reseller 50+ packs/mo at 15% off, Regional Agent 250+ packs/mo at 25% off with sub-district exclusivity, and City Distributor 1,000+ packs/mo with factory pricing and credit terms).",
+      "Architected modern **React 19 SPA with Framer Motion** cinematic visual storytelling (24 FPS film viewfinder HUD, Ken Burns motion transitions, and responsive single-line typing headline).",
+      "Engineered production **PHP REST API endpoints** (`/api/products.php`, `/api/inquiry.php`, `/api/partnership.php`) powering dynamic JSON catalog filtering and automated wholesale inquiries.",
+      "Built an automated **3-Tier B2B Wholesale Partnership Architecture** (Reseller 50+ packs/mo at 15% off, Regional Agent 250+ packs/mo with sub-district exclusivity, and City Distributor 1,000+ packs/mo with direct factory pricing).",
       "Digitized complete multi-tier SKU catalog across **4 core manufacturing lines**: Bakso Sapi Super & Urat Raja Raoz, Otak-Otak Ikan Tenggiri Segar, Kwetiau Segar Siap Olah, and Traditional Savory Snacks (Basreng Daun Jeruk, Cimol Krispi, Stik Bawang).",
       "Implemented food safety & quality compliance showcase documenting **100% Halal certification (MUI/BPJPH)**, lab-tested chemical preservative-free status, and integrated cold-chain distribution logistics.",
       "Streamlined customer communication via integrated order inquiries routing directly to plant hotlines **((0265) 5401232)** and dedicated WhatsApp dispatch **(+62 813-1064-1534)**.",
-      "Configured automated **zero-downtime CI/CD deployment workflows**, shipping the complete client platform **two weeks ahead of deadline**.",
+      "Configured automated **zero-downtime CI/CD deployment workflows via GitHub Actions**, shipping the complete client platform **two weeks ahead of deadline**.",
     ],
     result: "Delivered production B2B platform supporting **309+ workforce factory operations**, **100+ partner network across Java**, automated **3-tier distributor supply workflows**, and **zero-downtime deployment delivered 2 weeks ahead of schedule**.",
-    technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "Bootstrap", "HTML5", "CSS3", "CI/CD", "REST API"],
+    technologies: ["React", "JavaScript", "PHP", "REST API", "Framer Motion", "Vite", "HTML5", "CSS3", "CI/CD"],
     category: "Client Work · Full-Stack",
     art: assetUrls.cvPutraAR,
-    links: {},
+    links: {
+      source: "https://github.com/fauzinoorsyabani/CV.Putra-AR",
+    },
   },
 ];
 
@@ -518,7 +521,7 @@ export const experience = [
     date: "Mar 2024 — Dec 2024",
     location: "Tasikmalaya",
     details: [
-      "Shipped production web applications solo for education and F&B clients using PHP/Laravel, MySQL, and React/JavaScript.",
+      "Shipped production web applications solo for education and F&B clients using React, JavaScript, PHP REST APIs, and MySQL.",
       "Set up automated CI/CD delivery workflows and helped reduce manual administrative processes by 50%.",
     ],
   },
