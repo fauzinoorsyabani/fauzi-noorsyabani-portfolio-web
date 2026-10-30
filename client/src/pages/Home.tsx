@@ -587,24 +587,24 @@ function DocumentationShowcase({
 
 const heroRoles = [
   {
-    title: "Full Stack AI Engineer",
+    title: "Data Analyst",
     sub: {
-      en: "Applied AI & LLM Systems",
-      id: "Sistem AI Terapan & Orkestrasi LLM",
+      en: "Analytics & Business Intelligence",
+      id: "Analitik Data & Kecerdasan Bisnis",
     },
   },
   {
-    title: "Data & Analytics Engineer",
+    title: "Analytics Engineer",
     sub: {
-      en: "Star Schema & Executive BI",
-      id: "Data Warehouse & Dasbor Eksekutif",
+      en: "Star Schema & ETL Pipelines",
+      id: "Data Warehouse & Pipeline ETL",
     },
   },
   {
     title: "Applied ML Engineer",
     sub: {
-      en: "Demand Forecasting & RecSys",
-      id: "Prediksi Runtun Waktu & Recommender",
+      en: "Forecasting & Predictive Modelling",
+      id: "Peramalan & Pemodelan Prediktif",
     },
   },
   {
