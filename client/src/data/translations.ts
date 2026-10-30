@@ -31,6 +31,11 @@ export const translations = {
         "Fauzi is a Full Stack AI Engineer and Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specializing in AI/LLM engineering and data systems. He led a 5-member engineering team through a 900+ hour AI product capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
       shortBio:
         "Connecting *machine learning*, *LLM orchestration*, and modern *full-stack* architecture into practical software that drives informed decisions.",
+      paragraphs: [
+        "I am a **Full Stack AI Engineer** specializing in bridging the gap between machine learning models, LLM orchestration, and production web architecture. Rather than treating AI as an isolated experiment, I engineer end-to-end, user-facing applications—integrating custom inference pipelines (*FastAPI*, *Flask*, *LangChain*, *Google Gemini*) with fast, responsive interfaces (*React*, *TypeScript*, *Tailwind CSS*) that deliver measurable utility under real-world constraints.",
+        "My engineering practice is grounded in strong data systems. Having architected Kimball *star-schema* data warehouses, automated fault-tolerant *ETL* pipelines, and institutional decision support dashboards (*PostgreSQL*, *Google Looker Studio*, *Power BI*), I ensure that both the underlying data layers and the applications built on top of them are reliable, idempotent, and architected for sound decision-making.",
+        "From leading a 5-member engineering team through a 900+ hour AI capstone with *Pijak × IBM SkillsBuild* (shipping *PolaStok*) to serving as *Google Student Ambassador Campus Lead*, I bring a product-first mindset: writing maintainable code, validating system latency and security, and translating technical complexity into clear business value.",
+      ],
       focus: {
         build: {
           label: "Full-Stack Web Engineering",
@@ -217,6 +222,11 @@ export const translations = {
         "Fauzi adalah seorang Full Stack AI Engineer dan lulusan Sistem Informasi Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan spesialisasi pada rekayasa AI/LLM dan arsitektur data. Berpengalaman memimpin tim pengembang beranggotakan 5 orang dalam program capstone produk AI intensif 900+ jam bersama Pijak × IBM SkillsBuild merilis PolaStok, serta terpilih sebagai Google Student Ambassador Campus Lead dari 12.000+ pendaftar nasional. Portofolio teknisnya mencakup pipeline RAG tingkat produksi (FastAPI, LangChain), pemodelan data warehouse skema bintang (star-schema) dengan visualisasi Looker Studio, serta aplikasi web modern yang terukur (React, TypeScript, Laravel).",
       shortBio:
         "Fokus menjembatani rekayasa *machine learning* dan ekosistem *AI* dengan arsitektur web modern yang efisien, aman, dan mudah digunakan.",
+      paragraphs: [
+        "Saya adalah seorang **Full Stack AI Engineer** yang berfokus menjembatani model *machine learning* dan orkestrasi *LLM* ke dalam arsitektur web produksi yang tangguh. Alih-alih membatasi AI sebatas eksperimen di atas kertas, saya merancang aplikasi *end-to-end* yang siap digunakan pengguna—mengintegrasikan pipeline inferensi (*FastAPI*, *Flask*, *LangChain*, *Google Gemini*) dengan antarmuka modern yang cepat dan responsif (*React*, *TypeScript*, *Tailwind CSS*).",
+        "Praktik rekayasa saya didukung fondasi sistem data yang kokoh. Berpengalaman merancang *data warehouse* berbasis *Kimball star-schema*, pipeline *ETL* otomatis yang idempoten, dan dashboard analitik eksekutif (*PostgreSQL*, *Google Looker Studio*, *Power BI*), saya memastikan setiap lapisan data terkelola secara presisi dan menghasilkan wawasan yang dapat ditindaklanjuti.",
+        "Mulai dari memimpin tim rekayasa beranggotakan 5 orang dalam capstone AI intensif 900+ jam bersama *Pijak × IBM SkillsBuild* (merilis *PolaStok*) hingga mengabdi sebagai Campus Lead *Google Student Ambassador*, saya memadukan eksekusi kode yang disiplin, optimasi latensi sistem, dan komunikasi yang solutif untuk menghadirkan dampak nyata bagi bisnis.",
+      ],
       focus: {
         build: {
           label: "Rekayasa Web Full-Stack",

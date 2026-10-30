@@ -8,7 +8,6 @@ import {
   ArrowUp,
   ArrowUpRight,
   Award,
-  BarChart3,
   BriefcaseBusiness,
   Check,
   ChevronLeft,
@@ -27,7 +26,6 @@ import {
   Sparkles,
   Sun,
   Moon,
-  UsersRound,
   X,
   Maximize2,
 } from "lucide-react";
@@ -697,7 +695,6 @@ export default function Home() {
   const [contactOpen, setContactOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [selectedTechCategory, setSelectedTechCategory] = useState<string>("all");
-  const [selectedProjectTab, setSelectedProjectTab] = useState<"all" | "data" | "web">("all");
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [announcement, setAnnouncement] = useState("");
@@ -1242,36 +1239,19 @@ export default function Home() {
                 <span className="portrait-dossier-rule absolute bottom-0 left-[17%] h-20 w-px bg-neutral-400" aria-hidden="true" />
               </div>
               <div className="flex flex-col justify-center">
-                <p className="max-w-xl text-base leading-8 text-neutral-700 sm:text-lg">
-                  <FormattedText text={t.about.shortBio} />
-                </p>
-                <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                  {[
-                    { ...t.about.focus.build, index: "01", icon: Code2 },
-                    { ...t.about.focus.analyze, index: "02", icon: BarChart3 },
-                    { ...t.about.focus.lead, index: "03", icon: UsersRound },
-                  ].map((focus) => {
-                    const Icon = focus.icon;
-                    return (
-                      <div
-                        key={focus.label}
-                        className="motion-card group rounded-xl border border-neutral-300 bg-white p-5 sm:p-6 shadow-xs transition duration-200 hover:-translate-y-1 hover:border-neutral-900 hover:shadow-lg"
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-950 transition group-hover:border-neutral-900 group-hover:bg-neutral-950 group-hover:text-white">
-                            <Icon className="h-5 w-5" />
-                          </span>
-                          <span className="mono-type rounded border border-neutral-200 bg-neutral-50 px-2 py-0.5 text-[0.62rem] font-bold text-neutral-600">{focus.index}</span>
-                        </div>
-                        <h3 className="display-type mt-6 text-xl font-bold tracking-[-0.04em] text-neutral-950">
-                          {focus.label}
-                        </h3>
-                        <p className="mt-2 text-sm leading-6 text-neutral-700">
-                          <FormattedText text={focus.detail} />
-                        </p>
-                      </div>
-                    );
-                  })}
+                <div className="space-y-5 text-base leading-relaxed text-neutral-700 dark:text-neutral-300 sm:text-[1.02rem]">
+                  {t.about.paragraphs.map((para, idx) => (
+                    <p
+                      key={idx}
+                      className={
+                        idx === 0
+                          ? "text-lg sm:text-xl font-medium leading-8 text-neutral-950 dark:text-white"
+                          : "leading-8 text-neutral-700 dark:text-neutral-300"
+                      }
+                    >
+                      <FormattedText text={para} />
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>
@@ -1402,88 +1382,9 @@ export default function Home() {
               copy={t.projects.copy}
             />
 
-            {/* Interactive Project Filter Tabs (All Projects, Data Science & AI, Web & Full-Stack) */}
-            <div className="mt-8 flex flex-wrap items-center gap-2 rounded-2xl border border-neutral-300/80 bg-neutral-100/70 p-1.5 shadow-2xs backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900/80">
-              {[
-                {
-                  id: "all",
-                  label: language === "en" ? "All Projects" : "Semua Proyek",
-                  count: featuredProjects.length,
-                },
-                {
-                  id: "data",
-                  label: language === "en" ? "📊 Data Science & AI" : "📊 Data Science & AI",
-                  count: featuredProjects.filter(
-                    (p) =>
-                      p.category.includes("Data") ||
-                      p.category.includes("Machine Learning") ||
-                      p.category.includes("Intelligence") ||
-                      p.category.includes("Applied AI") ||
-                      p.category.includes("Business Intelligence"),
-                  ).length,
-                },
-                {
-                  id: "web",
-                  label: language === "en" ? "🌐 Web & Full-Stack" : "🌐 Web & Full-Stack",
-                  count: featuredProjects.filter(
-                    (p) =>
-                      p.category.includes("Full-Stack") ||
-                      p.category.includes("Product Engineering") ||
-                      p.category.includes("Client Work"),
-                  ).length,
-                },
-              ].map((tab) => {
-                const isActive = selectedProjectTab === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setSelectedProjectTab(tab.id as "all" | "data" | "web")}
-                    className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 ${
-                      isActive
-                        ? "scale-[1.02] bg-neutral-950 text-white shadow-xs dark:bg-white dark:text-neutral-950"
-                        : "text-neutral-600 hover:bg-white/80 hover:text-neutral-950 dark:text-neutral-400 dark:hover:bg-neutral-800/70 dark:hover:text-white"
-                    }`}
-                  >
-                    <span>{tab.label}</span>
-                    <span
-                      className={`mono-type rounded-full px-2 py-0.5 text-[0.62rem] font-bold ${
-                        isActive
-                          ? "bg-white/20 text-white dark:bg-black/20 dark:text-neutral-950"
-                          : "bg-neutral-200 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
-                      }`}
-                    >
-                      {tab.count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
             {/* Unified 2-Column Projects Showcase — Compact Cards with Interactive Detail View */}
             <div className="mt-8 grid gap-6 md:grid-cols-2">
-              {featuredProjects
-                .filter((p) => {
-                  if (selectedProjectTab === "all") return true;
-                  if (selectedProjectTab === "data") {
-                    return (
-                      p.category.includes("Data") ||
-                      p.category.includes("Machine Learning") ||
-                      p.category.includes("Intelligence") ||
-                      p.category.includes("Applied AI") ||
-                      p.category.includes("Business Intelligence")
-                    );
-                  }
-                  if (selectedProjectTab === "web") {
-                    return (
-                      p.category.includes("Full-Stack") ||
-                      p.category.includes("Product Engineering") ||
-                      p.category.includes("Client Work")
-                    );
-                  }
-                  return true;
-                })
-                .map((project, index) => {
+              {featuredProjects.map((project, index) => {
                 const isAcademicDW = project.title.includes("Academic Capacity");
                 const currentArt = isAcademicDW ? dashboardViews[dashboardView].src : project.art;
                 const primaryCategory = project.category.split("·")[0]?.trim() || project.category;

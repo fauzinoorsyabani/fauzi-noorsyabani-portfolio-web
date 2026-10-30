@@ -226,7 +226,7 @@ export const featuredProjects: readonly Project[] = [
     result:
       "Delivered complete intelligence pipeline with **100% unit test coverage**, **K=3 K-Means clustering (Silhouette 0.6038)**, **2.07% forecasting MAPE**, interactive Streamlit dashboard, and **Google Colab-compatible executable notebooks**.",
     technologies: ["Python", "Pandas", "Scikit-Learn", "Streamlit", "Plotly", "Matplotlib", "Seaborn", "BeautifulSoup", "Jupyter"],
-    category: "Data Science · Food Price Intelligence",
+    category: "Data Analytics · Food Price Intelligence",
     art: assetUrls.foodPrice,
     featured: true,
     links: {
@@ -406,7 +406,7 @@ export const featuredProjects: readonly Project[] = [
     ],
     result: "Modeled **97 academic programs across 11 universities** with a **35% improvement in policy insight accuracy**.",
     technologies: ["Python", "Pandas", "Power BI", "Google Looker Studio", "Regression Models", "Data Analytics"],
-    category: "Data Science · MSIB Program",
+    category: "Data Analytics · Higher Education Policy",
     art: assetUrls.dashboardTrend,
     links: {},
   },
