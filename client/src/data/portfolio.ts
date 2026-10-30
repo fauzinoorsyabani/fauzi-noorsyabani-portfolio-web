@@ -215,12 +215,12 @@ export const featuredProjects: readonly Project[] = [
     shortDescription:
       "End-to-end food price intelligence platform and interactive Streamlit analytics cockpit tracking 11 staple commodities across 2023–2025 with K-Means clustering (Silhouette 0.6038) and 2026 regression price forecasts.",
     description:
-      "**Architected and deployed an end-to-end Indonesian food commodity price intelligence platform** analyzing national average retail prices across **11 core staple commodities** (Beras IR I/III, Cabai Rawit Merah, Cabai Merah Keriting, Bawang Merah/Putih, Daging Ayam/Sapi, Telur Ayam, Gula Pasir, Minyak Goreng) from BPS and Ministry of Trade monitoring data (2023–2025).\\n\\nEngineered automated HTML-table parsing, **Indonesian currency comma normalization**, and multi-dimensional feature formulation (**mean price, coefficient of variation, 2-year CAGR**). Mapped market structure via **K-Means Clustering** with **Silhouette Analysis (optimal K=3, score 0.6038)** and 2D PCA projection to isolate volatile horticultural items from stable livestock proteins.\\n\\nBuilt time series regression forecasting models achieving **average R² = 0.7744 and low MAPE = 2.07%** to project 2026 price trajectories, accompanied by an interactive **Streamlit + Plotly multi-filter analytics dashboard** and **8 publication-grade (300 DPI) visual diagnostic artifacts**.",
+      "**Architected and deployed an end-to-end Indonesian food commodity price intelligence platform** analyzing national average retail prices across **11 core staple commodities** (Beras IR I/III, Cabai Rawit Merah, Cabai Merah Keriting, Bawang Merah/Putih, Daging Ayam/Sapi, Telur Ayam, Gula Pasir, Minyak Goreng) from BPS and Ministry of Trade monitoring data (2023–2025).\n\nEngineered automated HTML-table parsing, **Indonesian currency comma normalization**, and multi-dimensional econometric feature formulation (**mean price, coefficient of variation CV %, 2-year CAGR**). Mapped market structure via **K-Means Clustering** with **Silhouette Analysis (optimal K=3, score 0.6038)** and 2D PCA projection to isolate volatile horticultural items from stable livestock proteins.\n\nBuilt per-commodity OLS time-series regression forecasting models achieving **average R² = 0.7744 and low MAPE = 2.07%** to project 2026 price trajectories, accompanied by an interactive **Streamlit + Plotly multi-filter analytics dashboard** and **8 publication-grade (300 DPI) visual diagnostic artifacts**.",
     highlights: [
       "Engineered automated **HTML table ingestion & cleaning** handling Indonesian comma currency formats and deterministic commodity entity normalization.",
-      "Computed **Year-over-Year (YoY) inflation** and **2-Year CAGR** identifying high-inflation pressure on Bawang Merah (+12.43% CAGR) and Minyak Goreng (+11.61% CAGR).",
+      "Computed **Year-over-Year (YoY) inflation** and **2-Year CAGR** identifying high-inflation pressure on Bawang Merah (+12.43% CAGR, 18.4% CV) and Minyak Goreng (+11.61% CAGR, 17.0% CV).",
       "Applied **K-Means clustering with Silhouette Score optimization (K=3, score 0.6038)** and **PCA 2D projection** segmenting commodities into Affordable Volatile, Stable Controlled, and Premium Livestock tiers.",
-      "Trained **time series predictive regression models** achieving **0.7744 mean R² and 2.07% MAPE**, projecting 2026 price levels across all 11 commodities.",
+      "Trained **time series predictive regression models** achieving **0.7744 mean R² and 2.07% MAPE**, projecting 2026 price trajectories across all 11 commodities.",
       "Delivered an interactive **Streamlit analytics dashboard** featuring dynamic filtering, Plotly charts, and KPI metric cards alongside **8 publication-grade (300 DPI) visual artifacts**.",
     ],
     result:
@@ -286,16 +286,17 @@ export const featuredProjects: readonly Project[] = [
     shortDescription:
       "Automated end-to-end ELT data pipeline and Kimball Star-Schema warehouse tracking 30 core IDX30 equities, USD/IDR rates, and IHSG benchmark across 27,150+ historical records.",
     description:
-      "**Architected and deployed an automated end-to-end ELT data pipeline** and **Kimball dimensional warehouse (Star Schema)** tracking **30 core IDX30 equities**, USD/IDR currency rates, and IHSG benchmark across **27,150+ historical records**.\n\nEngineered fault-tolerant ingestion with **idempotent upserts (INSERT ... ON CONFLICT DO UPDATE)** ensuring **0% duplicate records**, paired with a circuit-breaker **Data Quality Gate executing 8 automated deterministic integrity rules** (validating positive price bounds, foreign key constraints, and **35% ARA/ARB regulatory anomaly thresholds**).\n\nSynchronized daily at 17:00 WIB via **automated GitHub Actions CI/CD cron jobs with 0 server operational costs**, and delivered via an interactive **Streamlit & Plotly analytics dashboard** alongside decoupled CSV data marts for **Microsoft Power BI**.",
+      "**Architected and deployed an automated end-to-end ELT data pipeline** and **Kimball dimensional warehouse (Star Schema)** tracking **30 core IDX30 equities**, USD/IDR currency rates, and IHSG benchmark across **27,150+ historical records**.\n\nEngineered fault-tolerant ingestion with **idempotent upserts (INSERT ... ON CONFLICT DO UPDATE)** ensuring **0.00% duplicate records**, paired with a circuit-breaker **Data Quality Gate executing 8 automated deterministic integrity rules** (validating positive price bounds, foreign key constraints, and **35% ARA/ARB regulatory anomaly thresholds**).\n\nComputed financial metrics including **logarithmic returns**, **annualized volatility (√252 rule)**, **CAPM Beta (β)**, and **Sharpe ratios**. Synchronized daily at 17:00 WIB via **automated GitHub Actions CI/CD cron jobs with 0 server operational costs**, and delivered via an interactive **Streamlit & Plotly analytics dashboard** alongside decoupled CSV data marts for **Microsoft Power BI**.",
     highlights: [
       "Designed a **Kimball dimensional Star-Schema warehouse** in PostgreSQL tracking 30 IDX30 equities, USD/IDR exchange rates, and IHSG index across **27,150+ historical rows**.",
-      "Implemented **idempotent SQL upserts (INSERT ... ON CONFLICT DO UPDATE)** guaranteeing **0% duplicate records** across incremental daily runs.",
+      "Implemented **idempotent SQL upserts (INSERT ... ON CONFLICT DO UPDATE)** guaranteeing **0.00% duplicate records** across incremental daily runs.",
       "Built a circuit-breaker **Data Quality Gate enforcing 8 deterministic rules**, including positive price bounds, schema integrity, and **35% IDX ARA/ARB anomaly thresholds**.",
+      "Formulated quantitative risk metrics: **Log returns, Annualized Volatility (√252), CAPM Beta (β), and Sharpe ratio** relative to BI 7-Day Reverse Repo Rate.",
       "Automated daily ingestion at 17:00 WIB after market close using **GitHub Actions cron workflows** with **100% pytest suite coverage** and **zero server cost**.",
       "Delivered an interactive **Streamlit + Plotly market cockpit** and decoupled analytical CSV marts for **Power BI reporting**.",
     ],
     result:
-      "Processed **27,150+ historical records** across 30 IDX30 tickers with **0% duplication**, **8 automated data quality gates**, **100% pytest test suite pass rate**, and automated daily synchronization at 17:00 WIB.",
+      "Processed **27,150+ historical records** across 30 IDX30 tickers with **0.00% duplication**, **8 automated data quality gates**, **100% pytest test suite pass rate**, and automated daily synchronization at 17:00 WIB.",
     technologies: ["Python", "PostgreSQL", "Star Schema", "ETL", "Streamlit", "Plotly", "GitHub Actions", "Power BI"],
     category: "Data Engineering · Financial Intelligence",
     art: assetUrls.idxMarket,
@@ -304,25 +305,26 @@ export const featuredProjects: readonly Project[] = [
     },
   },
   {
-    title: "Geo Booster (ZiuLabs) — Digital Commerce & AI SaaS Platform",
+    title: "ZiuBooster (ZiuLabs) — High-Throughput Digital Goods SaaS Platform",
     date: "2026",
     shortDescription:
-      "Production-grade modular PHP digital commerce platform and AI SaaS storefront with OWASP-hardened architecture, automated catalog management, and Cloudflare Tunnel edge routing.",
+      "Enterprise digital goods and subscription SaaS engine featuring automated sub-10s fulfillment, zero-plaintext AES-256-GCM AEAD encryption, idempotent payment webhooks, and race-condition locking.",
     description:
-      "**Architected and deployed a production-grade modular PHP digital commerce platform** and AI SaaS foundation for curated digital products and AI tooling licenses. Built with a **modular monolith architecture** following **OWASP security standards**, featuring an interactive violet animated UI, automated catalog and inventory management, **WhatsApp order negotiation & checkout flows**, and self-hosted **Cloudflare Tunnel reverse-proxy routing** for the custom domain (**ziulabs.biz.id**).",
+      "**Architected and deployed an enterprise-grade digital commerce and subscription SaaS platform** for automated licensing and instant vending of premium digital accounts and AI tooling (Google AI Pro, ChatGPT Pro, Claude, streaming services).\n\nEngineered a lightweight **PHP 8.2+ Clean MVC core** (< 15 MB RAM per worker, sub-40ms response latency) featuring a **Zero-Trust Credential Vault** leveraging **AES-256-GCM AEAD authenticated encryption** (with unique 12-byte IVs and 16-byte authentication tags) to guarantee zero plaintext credential exposure.\n\nImplemented **atomic pessimistic database row locks (SELECT ... FOR UPDATE)** to eliminate double-allocation race conditions during high-volume flash sales, paired with **cryptographically verified HMAC-SHA256 idempotent webhook receivers**, automated warranty ticket replacement workflows, and automated multi-channel **WhatsApp and SMTP email dispatch**.",
     highlights: [
-      "Architected a **modular monolith commerce platform** in **PHP 8.3+ and MySQL 8** adhering to **OWASP security best practices**.",
-      "Built dynamic SKU catalog filtering, real-time stock status tracking, and automated **WhatsApp checkout & negotiation flows**.",
-      "Engineered a responsive, interactive UI with **Tailwind CSS** and custom micro-interactions achieving **sub-second page loads**.",
-      "Configured **zero-trust Cloudflare Tunnel reverse-proxy routing** and edge caching for production deployment on **ziulabs.biz.id**.",
+      "Built an automated vending engine achieving **sub-10-second instant fulfillment (~3.8s measured)**, slashing manual chat delivery from 2–6 hours to seconds.",
+      "Engineered a **Zero-Trust Credential Vault with AES-256-GCM AEAD encryption**, ensuring third-party passwords and tokens never exist in plaintext on disk or database.",
+      "Eliminated inventory race conditions and double-allocation risk to **0.00%** using **atomic transactions and SELECT ... FOR UPDATE database locking**.",
+      "Secured payment webhooks via **HMAC-SHA256 signature verification and idempotent state checks**, preventing replay attacks and balance tampering.",
+      "Built self-service warranty claim triaging and automated credential unmasking, driving an **85% reduction in customer support operational overhead**.",
     ],
-    result: "Live production commerce ecosystem with **sub-second page performance**, **zero frontend build overhead**, and automated **Cloudflare edge tunneling**.",
-    technologies: ["PHP 8.3+", "MySQL 8", "Cloudflare Tunnel", "Modular Monolith", "JavaScript", "Tailwind CSS"],
-    category: "Product Engineering · Full-Stack",
+    result: "High-throughput vending engine with **sub-10s fulfillment (~3.8s measured)**, **0% plaintext credential leaks**, **0% double-allocation incidents**, and **85% support cost reduction**.",
+    technologies: ["PHP 8.2+", "MySQL 8", "AES-256-GCM", "HMAC-SHA256", "Clean MVC", "JavaScript", "Tailwind CSS"],
+    category: "Product Engineering · Full-Stack & Cryptography",
     art: assetUrls.geoBooster,
     links: {
       demo: "https://www.ziulabs.biz.id",
-      source: "https://github.com/fauzinoorsyabani/geobooster",
+      source: "https://github.com/fauzinoorsyabani/ziubooster",
     },
   },
   {
@@ -351,22 +353,23 @@ export const featuredProjects: readonly Project[] = [
     title: "Wisata Jelajah Indonesia — Enterprise Travel E-Commerce & Ticketing Platform",
     date: "2026",
     shortDescription:
-      "Full-stack tourism e-commerce and digital ticketing platform integrated with Midtrans Snap payments (QRIS, GoPay, VA), automated QR e-tickets, and multi-role partner analytics.",
+      "Full-stack tourism e-commerce and digital ticketing platform integrated with Midtrans Snap payments (QRIS, GoPay, VA), HMAC-SHA512 webhook security, and automated vector SVG QR tickets.",
     description:
-      "**Architected and deployed a production-grade tourism and ticketing e-commerce platform** for Tasikmalaya and national tourist destinations.\n\nEngineered end-to-end booking workflows with **Midtrans Snap payment gateway integration (Virtual Accounts, GoPay, QRIS)**, automated digital booking code generation with **client-side SVG QR code rendering**, and **paperless print-isolated PDF ticket generation**.\n\nBuilt with a responsive **React frontend**, modular **Express.js backend**, **multi-role authorization (User, Partner/Vendor, Admin)**, real-time revenue analytics dashboard, and automated serverless deployment on **Vercel**.",
+      "**Architected and deployed a production-grade tourism discovery and ticketing e-commerce platform** for Indonesian travel destinations at **pesona-nusantara.vercel.app**.\n\nEngineered end-to-end booking workflows with **Midtrans Snap payment gateway integration (Virtual Accounts, GoPay, QRIS)**, cryptographic **HMAC-SHA512 webhook signature verification** to prevent balance tampering, automated digital booking token generation with **client-side vector SVG QR code rendering**, and **paperless print-isolated PDF ticket vouchers**.\n\nBuilt with a decoupled multi-service architecture featuring a **React 18 + TypeScript** frontend, modular **Express.js REST API**, **multi-role authorization (Customer, Vendor/Partner, Admin)**, real-time revenue telemetry dashboards, and 3NF relational persistence on **TiDB Cloud / MySQL**.",
     highlights: [
       "Engineered end-to-end travel booking and checkout flows integrated with **Midtrans Snap payment gateway (Virtual Accounts, GoPay, QRIS)**.",
-      "Built automated booking verification with **client-side SVG QR code generation** and **print-isolated paperless PDF e-tickets**.",
-      "Implemented **multi-role access control (Traveler, Venue Partner/Vendor, System Admin)** with real-time revenue and ticket telemetry dashboards.",
-      "Architected a modular **Express.js + TiDB Cloud backend** paired with a **React 18 + TypeScript frontend** deployed serverlessly on **Vercel**.",
+      "Secured asynchronous payment webhooks using **HMAC-SHA512 cryptographic signature verification**, guaranteeing zero balance tampering and **0.00% duplicate ticket issuance**.",
+      "Built automated booking verification with **zero-dependency client-side SVG QR code generation** and **print-isolated paperless PDF e-tickets**.",
+      "Implemented **multi-role access control (Traveler, Venue Partner/Vendor, System Admin)** with real-time GMV revenue and ticket velocity telemetry dashboards.",
+      "Achieved elite performance benchmarks: **58ms P95 API response latency**, **210ms Snap token creation**, and an ultra-lightweight **148 KB client bundle**.",
     ],
     result:
-      "Full-stack travel booking & ticketing platform with **multi-channel payment gateway (Midtrans Snap)**, **print-ready isolated e-tickets**, **vendor revenue telemetry**, and **100% serverless Vercel multi-service architecture**.",
-    technologies: ["React 18", "TypeScript", "Tailwind CSS", "Express.js", "Midtrans Snap", "TiDB Cloud", "Vercel"],
+      "Full-stack travel booking & ticketing platform with **multi-channel payment gateway (Midtrans Snap)**, **58ms P95 API latency**, **0% duplicate ticket issuance**, and **100% serverless Vercel edge deployment**.",
+    technologies: ["React 18", "TypeScript", "Tailwind CSS", "Express.js", "Midtrans Snap", "HMAC-SHA512", "MySQL / TiDB", "Vercel"],
     category: "Product Engineering · Full-Stack & Payment Systems",
     art: assetUrls.wisataJelajah,
     links: {
-      demo: "https://wisata-jelajah-indonesia.vercel.app",
+      demo: "https://pesona-nusantara.vercel.app",
       source: "https://github.com/fauzinoorsyabani/wisata-jelajah-indonesia",
     },
   },
@@ -411,16 +414,17 @@ export const featuredProjects: readonly Project[] = [
     title: "PolaStok — AI Inventory Forecasting Platform",
     date: "Feb 2026 — Jul 2026",
     shortDescription:
-      "AI-powered SME inventory forecasting platform combining Random Forest & LSTM time-series models (SMAPE ~18%) with Google Gemini AI reorder recommendations across 913,000+ transactions.",
+      "AI-powered SME inventory forecasting platform combining Random Forest & LSTM deep learning models (SMAPE ~17.6%) with Google Gemini AI reorder recommendations across 913,000+ transactions.",
     description:
-      "**Led a five-member cross-functional team (PJK-GM041) through a 900+ hour capstone** to design, build, and deploy an **AI-powered inventory forecasting platform for Indonesian SMEs**.\n\nOwned delivery end-to-end: data preparation, model integration, and MVP deployment; applied **LLM orchestration and prompt engineering** for stock prediction and reorder recommendations.",
+      "**Led a five-member cross-functional team (PJK-GM041) through a 900+ hour capstone** to design, build, and deploy an **AI-powered inventory forecasting platform for Indonesian SMEs**.\n\nOwned delivery end-to-end: data pipeline engineering, deep model training, and embedded MVP deployment; applied **LLM orchestration and prompt engineering** for stock prediction and reorder recommendations.",
     highlights: [
       "Led a 5-person engineering team across a **900+ hour Pijak × IBM SkillsBuild AI capstone** from problem framing to production MVP.",
-      "Processed **913,000+ historical retail transactions** across 50 SME products to train hybrid **Random Forest and TensorFlow LSTM forecasting models (achieving ~18% SMAPE)**.",
-      "Integrated **Google Gemini AI via structured prompt engineering** to synthesize actionable restock quantities and cash-flow-aware purchasing advice.",
+      "Processed **913,000+ historical retail transactions** across 50 SME products to train hybrid **Random Forest and Deep LSTM forecasting models (achieving ~17.6% SMAPE, outperforming naive baselines by > 10.8%)**.",
+      "Engineered embedded in-memory model inference achieving **~530 ms warm prediction latency** via `@st.cache_resource` and `@st.cache_data` memory mapping.",
+      "Integrated **Google Gemini AI via structured prompt engineering** to synthesize quantitative demand projections and lead times into actionable restocking plans and cash-flow advice.",
       "Shipped an interactive **Streamlit + Plotly analytics web application** tailored for non-technical SME owners.",
     ],
-    result: "**913.000+ data transaksi historis dari 50 produk UMKM teranalisis**, model **Random Forest & LSTM (SMAPE ~18%)**, terintegrasi **Google Gemini AI** untuk rekomendasi kulakan cerdas.",
+    result: "**913.000+ data transaksi historis dari 50 produk UMKM teranalisis**, model **Random Forest & Deep LSTM (SMAPE ~17.6%)**, latensi inferensi **~530 ms**, terintegrasi **Google Gemini AI** untuk rekomendasi kulakan cerdas.",
     technologies: ["Python 3.11", "Streamlit", "Scikit-Learn", "TensorFlow (LSTM)", "Google Gemini AI", "Plotly", "Pandas"],
     category: "Applied AI · Team Lead",
     art: assetUrls.polastok,
@@ -448,19 +452,20 @@ export const featuredProjects: readonly Project[] = [
     links: {},
   },
   {
-    title: "CV. Putra AR — CRM & Loyalty Platform",
+    title: "CV. Putra AR — CRM & Food Manufacturing Supply Platform",
     date: "Mar 2024 — Jun 2024",
     shortDescription:
-      "Customer Relationship Management (CRM) and loyalty web platform for an F&B and retail client featuring automated customer feedback, catalog management, and CI/CD delivery.",
+      "Enterprise customer relationship management and digital wholesale catalog platform for a 300+ workforce food manufacturing client featuring automated feedback loops and CI/CD delivery.",
     description:
-      "Developed and shipped a **CRM-focused web platform for an F&B and retail client**. Features customer loyalty tracking, automated feedback collection, service catalog management, and automated CI/CD deployment pipelines.",
+      "**Developed and shipped an enterprise CRM and B2B wholesale distribution platform** for **CV. Putra AR**, a prominent food manufacturing enterprise with **300+ skilled personnel** producing frozen fish snacks, beef meatballs, and noodles across West Java.\n\nBuilt customer loyalty tracking, automated client feedback collection, digital SKU catalog management across **4 major product divisions**, and automated CI/CD deployment pipelines delivered **two weeks ahead of schedule**.",
     highlights: [
-      "Built a custom CRM and customer loyalty tracking web application tailored for retail and F&B operations.",
-      "Implemented automated customer feedback collection, digital service catalog management, and admin analytics.",
-      "Configured **zero-downtime CI/CD deployment pipelines**, delivering the production system **two weeks ahead of schedule**.",
+      "Built a custom CRM and customer loyalty web application tailored for high-volume B2B food distribution and retail partners.",
+      "Digitized a multi-tier product catalog spanning **4 core divisions (Otak-Otak Ikan, Bakso Raja Raoz, Kwetiau, and Snacks)** with automated pricing inquiry workflows.",
+      "Engineered automated customer feedback collection, distributor contact routing, and an administrative management dashboard.",
+      "Configured **zero-downtime CI/CD deployment pipelines**, shipping the production system **two weeks ahead of deadline**.",
     ],
-    result: "Delivered production system **two weeks ahead of schedule with zero-downtime deployment**.",
-    technologies: ["HTML5", "CSS3", "JavaScript", "PHP", "MySQL", "CI/CD"],
+    result: "Delivered production B2B platform supporting **300+ workforce factory distribution**, **two weeks ahead of schedule with zero-downtime deployment**.",
+    technologies: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3", "CI/CD"],
     category: "Client Work · Full-Stack",
     links: {},
   },
