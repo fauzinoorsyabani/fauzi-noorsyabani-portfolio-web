@@ -15,10 +15,10 @@ export const translations = {
     hero: {
       availability: "OPEN TO WORK",
       greeting: "Hello, I’m",
-      role: "Data Analyst",
-      roleSub: "Analytics & Business Intelligence",
+      role: "Full Stack AI Engineer | Data Analyst",
+      roleSub: "Applied AI, Data Analytics & Business Intelligence",
       headline:
-        "Data Analyst & Analytics Engineer turning raw data into *decisions that move businesses*. Proven across **913,000+** modelled retail transactions, BI analytics spanning **97 university programs**, and predictive dashboards tracking **30 IDX30 tickers** — selected as Google Student Ambassador Campus Lead from **12,000+** applicants.",
+        "**Full Stack AI Engineer | Data Analyst** bridging *decision-driven analytics*, *data warehousing*, and *production AI systems*. Backed by **2+ years of project engineering experience** proven across **913,000+** modelled retail transactions, BI analytics spanning **97 university programs**, and predictive dashboards tracking **30 IDX30 tickers** — selected as Google Student Ambassador Campus Lead from **12,000+** applicants.",
       exploreBtn: "Explore Projects",
       contactBtn: "Direct Contact",
     },
@@ -26,14 +26,14 @@ export const translations = {
       kicker: "PROFILE & FOCUS",
       title: "Turning raw data into clear, reliable decisions.",
       fieldPortrait: "FIELD PORTRAIT / 01",
-      badge: "FN-26 / DATA ANALYST",
+      badge: "FN-26 / AI & DATA",
       aboutText:
-        "Fauzi is a fresh Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specialising in Data Analytics, Business Intelligence, and Applied AI. He led a 5-member team through a 900+ hour AI capstone with Pijak × IBM SkillsBuild, shipped PolaStok (913,000+ retail transactions modelled, SMAPE ~17.6%), and served as Google Student Ambassador Campus Lead (selected from 12,000+ nationwide). His analytics practice spans end-to-end pipelines — EDA, dimensional data warehousing, executive BI dashboards, and predictive modelling — built to turn raw data into decisions.",
+        "Fauzi is a fresh Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with 2+ years of project experience in Data Analytics, Business Intelligence, and Full Stack AI Engineering. He led a 5-member team through a 900+ hour AI capstone with Pijak × IBM SkillsBuild, shipped PolaStok (913,000+ retail transactions modelled, SMAPE ~17.6%), and served as Google Student Ambassador Campus Lead (selected from 12,000+ nationwide). His practice spans end-to-end data pipelines — EDA, dimensional data warehousing, executive BI dashboards, predictive forecasting, and production web deployment.",
       shortBio:
-        "Turning raw data into *clear decisions* — through analytics engineering, *BI dashboards*, and *applied ML* grounded in real business problems.",
+        "Turning raw data into *clear business decisions* — through analytics engineering, *BI dashboards*, and *production AI systems* grounded in real problems.",
       paragraphs: [
-        "Fresh graduate in Information Systems from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with 5+ months hands-on experience as **Junior Data Scientist** and a 6-month intensive AI engineering program. Proven across **913,000+** modelled retail transactions, analytics spanning **97 university programs**, and predictive dashboards covering **30 IDX30 tickers** — delivering insights that directly support business decisions.",
-        "My core focus is **Data Analytics & Business Intelligence**: designing Kimball *star-schema* data warehouses, building fault-tolerant *ETL* pipelines, and delivering executive dashboards in *Looker Studio* and *Power BI* that translate complex datasets into actionable strategy. I also apply *machine learning* — time-series forecasting, regression, and LLM pipelines — wherever a statistical model sharpens the insight.",
+        "Fresh graduate in Information Systems from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with **2+ years** of hands-on project engineering experience spanning **Data Analytics**, **Business Intelligence**, and **Applied AI** — built progressively across academic research, industry internships, and intensive engineering programs since 2023. Proven across **913,000+** modelled retail transactions, BI analytics spanning **97 university programs**, and predictive dashboards covering **30 IDX30 tickers** — delivering insights that directly support business decisions.",
+        "My core practice bridges **Data Analytics & Full Stack AI**: designing Kimball *star-schema* data warehouses, building fault-tolerant *ETL* pipelines, and delivering executive dashboards in *Looker Studio* and *Power BI* that translate complex datasets into actionable strategy. I also engineer production applications and *machine learning* pipelines — time-series forecasting, regression, and LLM orchestration — that deliver measurable utility under real-world constraints.",
         "Beyond individual contribution, I led a 5-engineer team shipping *PolaStok* through *Pijak × IBM SkillsBuild* and was selected as *Google Student Ambassador Campus Lead* from 12,000+ applicants. I bring structured analytical thinking, clear data storytelling, and a habit of connecting every metric back to the business question it answers.",
       ],
       focus: {
@@ -206,10 +206,10 @@ export const translations = {
     hero: {
       availability: "SIAP BERKOLABORASI",
       greeting: "Halo, saya",
-      role: "Data Analyst",
-      roleSub: "Analitik Data & Kecerdasan Bisnis",
+      role: "Full Stack AI Engineer | Data Analyst",
+      roleSub: "Rekayasa AI Terapan, Analitik Data & Business Intelligence",
       headline:
-        "Data Analyst & Analytics Engineer yang mengubah data mentah menjadi *keputusan bisnis yang berdampak*. Terbukti melalui pemodelan **913.000+** transaksi ritel, analitik BI di **97 program studi universitas**, dan dashboard prediktif **30 saham IDX30** — terpilih sebagai Google Student Ambassador Campus Lead dari **12.000+** pendaftar nasional.",
+        "**Full Stack AI Engineer | Data Analyst** yang menjembatani *analitik data berbasis keputusan*, *data warehousing*, dan *rekayasa sistem AI produksi*. Berpengalaman **2+ tahun** menangani pemodelan **913.000+** transaksi ritel, analitik BI di **97 program studi universitas**, dan dashboard prediktif **30 saham IDX30** — terpilih sebagai Google Student Ambassador Campus Lead dari **12.000+** pendaftar nasional.",
       exploreBtn: "Jelajahi Proyek",
       contactBtn: "Hubungi Langsung",
     },
@@ -217,14 +217,14 @@ export const translations = {
       kicker: "TENTANG & FOKUS REKAYASA",
       title: "Mengubah data mentah menjadi keputusan yang jelas dan berdampak.",
       fieldPortrait: "DOKUMENTASI REKAYASA / 01",
-      badge: "FN-26 / DATA ANALYST",
+      badge: "FN-26 / AI & DATA",
       aboutText:
-        "Fauzi adalah fresh graduate S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan spesialisasi di bidang Data Analytics, Business Intelligence, dan Applied AI. Memimpin tim 5 engineer dalam capstone AI intensif 900+ jam bersama Pijak × IBM SkillsBuild, merilis PolaStok (pemodelan 913.000+ transaksi ritel, SMAPE ~17.6%), serta terpilih sebagai Google Student Ambassador Campus Lead dari 12.000+ pendaftar nasional. Praktik analitiknya mencakup pipeline end-to-end dari EDA dan data warehousing hingga dashboard BI eksekutif dan pemodelan prediktif.",
+        "Fauzi adalah fresh graduate S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan 2+ tahun pengalaman proyek di bidang Data Analytics, Business Intelligence, dan Full Stack AI Engineering. Memimpin tim 5 engineer dalam capstone AI intensif 900+ jam bersama Pijak × IBM SkillsBuild, merilis PolaStok (pemodelan 913.000+ transaksi ritel, SMAPE ~17.6%), serta terpilih sebagai Google Student Ambassador Campus Lead dari 12.000+ pendaftar nasional. Praktik rekayasanya mencakup pipeline end-to-end dari data warehousing hingga dashboard BI eksekutif, pemodelan prediktif, dan deployment web produksi.",
       shortBio:
-        "Mengubah data mentah menjadi *keputusan yang jelas* — melalui rekayasa analitik, *dashboard BI*, dan *applied ML* yang berakar pada permasalahan bisnis nyata.",
+        "Mengubah data mentah menjadi *keputusan bisnis yang nyata* — melalui rekayasa analitik, *dashboard BI*, dan *sistem AI produksi* yang berakar pada permasalahan nyata.",
       paragraphs: [
-        "Fresh graduate S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89, Cum Laude) dengan pengalaman 5+ bulan sebagai **Junior Data Scientist** dan 6 bulan program AI Engineer intensif. Terbukti melalui pemodelan **913.000+** transaksi ritel, analitik kebijakan di **97 program studi universitas**, serta dashboard prediktif yang mencakup **30 saham IDX30** — menghasilkan insight yang langsung menopang pengambilan keputusan bisnis.",
-        "Fokus utama saya adalah **Data Analytics & Business Intelligence**: merancang *data warehouse* berbasis *Kimball star-schema*, membangun pipeline *ETL* yang andal, serta menghadirkan dashboard eksekutif di *Looker Studio* dan *Power BI* yang mengubah dataset kompleks menjadi strategi yang dapat ditindaklanjuti. Saya juga menerapkan *machine learning* — peramalan runtun waktu, regresi, dan pipeline LLM — di mana model statistik mempertajam insight.",
+        "Fresh graduate S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan **2+ tahun** pengalaman proyek nyata di bidang **Data Analytics**, **Business Intelligence**, dan **Applied AI** — dibangun secara progresif sejak 2023 melalui riset akademik, magang industri, dan program rekayasa intensif. Terbukti melalui pemodelan **913.000+** transaksi ritel, analitik kebijakan di **97 program studi universitas**, serta dashboard prediktif yang mencakup **30 saham IDX30** — menghasilkan insight yang langsung menopang pengambilan keputusan bisnis.",
+        "Fokus utama saya memadukan **Data Analytics & Full Stack AI**: merancang *data warehouse* berbasis *Kimball star-schema*, membangun pipeline *ETL* yang andal, serta menghadirkan dashboard eksekutif di *Looker Studio* dan *Power BI* yang mengubah dataset kompleks menjadi strategi yang dapat ditindaklanjuti. Saya juga mengembangkan aplikasi produksi dan pipeline *machine learning* — peramalan runtun waktu, regresi, dan orkestrasi LLM — untuk menghasilkan utilitas nyata di lingkungan produksi.",
         "Di luar kontribusi individu, saya memimpin tim 5 engineer merilis *PolaStok* melalui *Pijak × IBM SkillsBuild*, dan terpilih sebagai Campus Lead *Google Student Ambassador* dari 12.000+ mahasiswa nasional. Saya membawa pemikiran analitik terstruktur, kemampuan *data storytelling*, dan kebiasaan menghubungkan setiap metrik kembali ke pertanyaan bisnis yang relevan.",
       ],
       focus: {

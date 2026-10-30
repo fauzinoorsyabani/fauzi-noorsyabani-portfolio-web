@@ -594,17 +594,17 @@ const heroRoles = [
     },
   },
   {
+    title: "Full Stack AI Engineer",
+    sub: {
+      en: "Applied AI & Modern Web Architecture",
+      id: "Sistem AI Terapan & Arsitektur Web",
+    },
+  },
+  {
     title: "Analytics Engineer",
     sub: {
       en: "Star Schema & ETL Pipelines",
       id: "Data Warehouse & Pipeline ETL",
-    },
-  },
-  {
-    title: "Applied ML Engineer",
-    sub: {
-      en: "Forecasting & Predictive Modelling",
-      id: "Peramalan & Pemodelan Prediktif",
     },
   },
   {

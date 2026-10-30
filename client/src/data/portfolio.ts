@@ -40,28 +40,28 @@ export const links = {
 
 export const person = {
   name: "Fauzi Noorsyabani",
-  role: "Full Stack AI Engineer",
+  role: "Full Stack AI Engineer | Data Analyst",
   headline:
-    "Full Stack AI Engineer bridging production machine learning, LLM orchestration, and modern full-stack architecture. Proven across 913,000+ retail transactions, institutional analytics spanning 97 university programs, and technical outreach reaching 1,000+ developers as Google Student Ambassador Campus Lead.",
+    "Full Stack AI Engineer | Data Analyst with 2+ years of hands-on project engineering experience bridging advanced data analytics, dimensional data warehousing, and production AI web systems. Proven across 913,000+ retail transactions, institutional analytics spanning 97 university programs, and technical outreach reaching 1,000+ developers as Google Student Ambassador Campus Lead.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",
   availability: "Open to Work",
   about:
-    "Fauzi is a Full Stack AI Engineer and Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specializing in AI/LLM engineering and data systems. He led a 5-member engineering team through a 900+ hour AI product capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
+    "Fauzi is a fresh Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with 2+ years of project engineering experience in Data Analytics, Business Intelligence, and Full Stack AI Engineering. He led a 5-member team through a 900+ hour AI capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
   shortBio:
     "Connecting machine learning, LLM orchestration, and modern web architecture into practical software that drives informed decisions.",
 } as const;
 
 export const focusAreas = [
   {
-    label: "Full-Stack Web Engineering",
-    detail: "Building fast, modular, and responsive web applications with React, TypeScript, Laravel, and FastAPI that scale smoothly under load.",
+    label: "Data Analytics & BI",
+    detail: "Architecting dimensional star-schema warehouses, automated ETL pipelines, and executive dashboards for institutional decision-making.",
     index: "01",
   },
   {
-    label: "Data Warehousing & BI",
-    detail: "Architecting dimensional star-schema warehouses, automated ETL pipelines, and Looker Studio dashboards for institutional decision-making.",
+    label: "Full-Stack AI Engineering",
+    detail: "Building production web applications with React, TypeScript, Laravel, and FastAPI that scale smoothly with integrated ML & LLM capabilities.",
     index: "02",
   },
   {
