@@ -449,14 +449,16 @@ export const featuredProjects: readonly Project[] = [
       "Digitized complete multi-tier SKU catalog across **4 core manufacturing lines**: Bakso Sapi Super & Urat Raja Raoz, Otak-Otak Ikan Tenggiri Segar, Kwetiau Segar Siap Olah, and Traditional Savory Snacks (Basreng Daun Jeruk, Cimol Krispi, Stik Bawang).",
       "Implemented food safety & quality compliance showcase documenting **100% Halal certification (MUI/BPJPH)**, lab-tested chemical preservative-free status, and integrated cold-chain distribution logistics.",
       "Streamlined customer communication via integrated order inquiries routing directly to plant hotlines **((0265) 5401232)** and dedicated WhatsApp dispatch **(+62 813-1064-1534)**.",
-      "Configured automated **zero-downtime CI/CD deployment workflows via GitHub Actions**, shipping the complete client platform **two weeks ahead of deadline**.",
+      "Configured automated **zero-downtime CI/CD deployment workflows via GitHub Actions**, ensuring a stable launch on production hosting.",
     ],
-    result: "Delivered production B2B platform supporting **309+ workforce factory operations**, **100+ partner network across Java**, automated **3-tier distributor supply workflows**, and **zero-downtime deployment delivered 2 weeks ahead of schedule**.",
-    technologies: ["React", "JavaScript", "PHP", "REST API", "Framer Motion", "Vite", "HTML5", "CSS3", "CI/CD"],
+    result: "Delivered production B2B platform supporting **309+ workforce factory operations**, **100+ partner network across Java**, automated **3-tier distributor supply workflows**, and zero-downtime deployment on production hosting.",
+    technologies: ["React 19", "JavaScript", "Vite", "Framer Motion", "PHP", "REST API", "Tailwind CSS", "Vercel"],
     category: "Client Work · Full-Stack",
     art: assetUrls.cvPutraAR,
-    links: {},
-    isPrivate: true,
+    links: {
+      demo: "https://cv-putra-ar.vercel.app",
+      source: "https://github.com/fauzinoorsyabani/CV.Putra-AR",
+    },
   },
 ];
 
