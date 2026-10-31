@@ -527,6 +527,13 @@ export const experience = [
 
 export const awards = [
   [
+    "Selected (Top 1% Nationwide)",
+    "Google Student Ambassador (Class of 2025)",
+    "Google · Google for Education & Developer Relations",
+    "2024 – 2025",
+    "Selected from a competitive pool of 12,000 students nationwide to serve as an official Google Student Ambassador representing Universitas Siliwangi, leading campus technical enablement and AI adoption workshops.",
+  ],
+  [
     "1st Place",
     "Life After DDC Challenge",
     "Dicoding Developer Conference · AI for Cloud Infra & DevOps track",
