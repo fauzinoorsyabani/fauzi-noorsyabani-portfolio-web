@@ -51,6 +51,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/data/translations";
 import { TechIcon } from "@/components/TechIcon";
 import { CertificateCoverflow } from "@/components/CertificateCoverflow";
+import { AwardsGrid } from "@/components/AwardsGrid";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 
@@ -1901,17 +1902,60 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Section 04: Credentials & Certifications */}
+        <section id="credentials" className="scroll-mt-28 overflow-hidden bg-white dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50">
+          <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
+            <SectionHeading
+              index="04"
+              kicker={t.credentials.kicker}
+              title={t.credentials.title}
+              copy={t.credentials.copy}
+            />
+          </div>
+          <div className="mt-8 sm:mt-12 -mx-4 sm:mx-0 reveal">
+            <CertificateCoverflow items={certifications} viewLabel={t.credentials.viewBtn} />
+          </div>
+
+          {/* Credly Verified Badge Wallet Callout */}
+          <div className="mx-auto mt-10 max-w-2xl px-4 text-center reveal">
+            <div className="inline-flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/60 p-4 sm:px-6 sm:py-3.5 backdrop-blur-md shadow-xs w-full">
+              <div className="flex items-center gap-3 text-left">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-600 text-white font-bold text-sm shadow-xs">
+                  C
+                </span>
+                <div>
+                  <p className="text-xs sm:text-sm font-bold text-neutral-950 dark:text-white">
+                    {language === "en" ? "Credly Verified Badge Wallet" : "Dompet Lencana Terverifikasi Credly"}
+                  </p>
+                  <p className="mono-type text-[0.62rem] text-neutral-500 dark:text-neutral-400">
+                    {language === "en" ? "18 Verified Badges · Google Cloud, AWS, IBM & Microsoft" : "18 Lencana Terverifikasi · Google Cloud, AWS, IBM & Microsoft"}
+                  </p>
+                </div>
+              </div>
+              <a
+                href="https://www.credly.com/users/fauzi-noor-syabani"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-neutral-950 dark:bg-white px-4 py-2 text-xs font-bold text-white dark:text-neutral-950 shadow-xs transition hover:bg-neutral-800 dark:hover:bg-neutral-200"
+              >
+                {language === "en" ? "View All 18 Badges on Credly" : "Lihat Semua 18 Lencana di Credly"} <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </section>
+
+
         {/* Section 03.5: Field Evidence, Documentation & Collaboration Stream */}
         <DocumentationShowcase language={language} prefersReducedMotion={prefersReducedMotion} />
 
-        {/* Section 04: Experience & Leadership */}
+        {/* Section 05: Experience & Leadership */}
         <section
           id="experience"
           className="scroll-mt-28 bg-white dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50"
         >
           <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
             <SectionHeading
-              index="04"
+              index="05"
               kicker={t.experience.kicker}
               title={t.experience.title}
               copy={t.experience.copy}
@@ -1952,92 +1996,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Section 05: Awards & Recognition */}
+        {/* Section 06: Awards & Recognition (Cyberpunk Multi-Column Card Grid) */}
         <section id="awards" className="scroll-mt-28 bg-neutral-50/50 dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50">
-          <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
-            <SectionHeading
-              index="05"
-              kicker={t.awards.kicker}
-              title={t.awards.title}
-            />
-            <div className="mt-14 border-y border-neutral-300 lg:ml-[7.5rem]">
-              {awards.map(([placement, title, organization, date, description], index) => (
-                <article
-                  key={`${title}-${organization}`}
-                  className={`motion-award grid gap-5 py-7 sm:grid-cols-[5rem_minmax(0,1fr)_8rem] sm:items-start lg:grid-cols-[6.25rem_minmax(0,1fr)_8rem] ${
-                    index !== awards.length - 1 ? "border-b border-neutral-300" : ""
-                  }`}
-                >
-                  <div className="flex items-center gap-2 sm:block">
-                    <span
-                      className={`flex h-9 w-9 items-center justify-center rounded-lg border ${
-                        index === 0
-                          ? "border-neutral-950 bg-neutral-950 text-white shadow-xs"
-                          : "border-neutral-300 bg-white text-neutral-800 shadow-xs"
-                      }`}
-                    >
-                      <Award className="h-4 w-4" />
-                    </span>
-                    <p className="mono-type mt-0 text-[0.61rem] font-bold uppercase tracking-[0.13em] text-neutral-950 sm:mt-4">
-                      {placement}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="display-type text-2xl font-bold leading-tight tracking-[-0.05em] text-neutral-950">
-                      {title}
-                    </h3>
-                    <p className="mt-2 max-w-xl text-sm leading-6 text-neutral-700 font-medium">{organization}</p>
-                    {description ? (
-                      <p className="mt-3 max-w-xl text-sm leading-7 text-neutral-600">{description}</p>
-                    ) : null}
-                  </div>
-                  <p className="mono-type text-[0.62rem] font-semibold uppercase tracking-[0.1em] text-neutral-500 sm:pt-1">
-                    {date}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Section 06: Credentials */}
-        <section id="credentials" className="scroll-mt-28 overflow-hidden bg-white dark:bg-neutral-950 border-b border-neutral-300 dark:border-neutral-800 px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28 text-neutral-950 dark:text-neutral-50">
-          <div className="mx-auto max-w-4xl lg:max-w-[1000px] reveal">
+          <div className="mx-auto max-w-6xl reveal">
             <SectionHeading
               index="06"
-              kicker={t.credentials.kicker}
-              title={t.credentials.title}
-              copy={t.credentials.copy}
+              kicker={t.awards.kicker}
+              title={t.awards.title}
+              copy={language === "en" ? "National olympiad medals, hackathons, and technology challenge distinctions demonstrating quantitative problem-solving and applied software engineering." : "Medali olimpiade sains nasional, kejuaraan hackathon, dan kompetisi teknologi yang membuktikan logika analitik kuantitatif serta rekayasa perangkat lunak terapan."}
             />
-          </div>
-          <div className="mt-8 sm:mt-12 -mx-4 sm:mx-0 reveal">
-            <CertificateCoverflow items={certifications} viewLabel={t.credentials.viewBtn} />
-          </div>
-
-          {/* Credly Verified Badge Wallet Callout */}
-          <div className="mx-auto mt-10 max-w-2xl px-4 text-center reveal">
-            <div className="inline-flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/60 p-4 sm:px-6 sm:py-3.5 backdrop-blur-md shadow-xs w-full">
-              <div className="flex items-center gap-3 text-left">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-600 text-white font-bold text-sm shadow-xs">
-                  C
-                </span>
-                <div>
-                  <p className="text-xs sm:text-sm font-bold text-neutral-950 dark:text-white">
-                    {language === "en" ? "Credly Verified Badge Wallet" : "Dompet Lencana Terverifikasi Credly"}
-                  </p>
-                  <p className="mono-type text-[0.62rem] text-neutral-500 dark:text-neutral-400">
-                    {language === "en" ? "18 Verified Badges · Google Cloud, AWS, IBM & Microsoft" : "18 Lencana Terverifikasi · Google Cloud, AWS, IBM & Microsoft"}
-                  </p>
-                </div>
-              </div>
-              <a
-                href="https://www.credly.com/users/fauzi-noor-syabani"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-neutral-950 dark:bg-white px-4 py-2 text-xs font-bold text-white dark:text-neutral-950 shadow-xs transition hover:bg-neutral-800 dark:hover:bg-neutral-200"
-              >
-                {language === "en" ? "View All 18 Badges on Credly" : "Lihat Semua 18 Lencana di Credly"} <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+            <div className="mt-12">
+              <AwardsGrid language={language} />
             </div>
           </div>
         </section>
