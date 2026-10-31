@@ -549,25 +549,25 @@ export const awards = [
     "Recognized by Bank Indonesia for outstanding creative and informational content, competing among participants from multiple Indonesian universities and institutions.",
   ],
   [
-    "Gold Medal",
-    "Mathematics",
-    "Kompetisi Sains Mahasiswa Nasional Indonesia (KSPI)",
+    "Gold Medal (Predikat A+)",
+    "Mathematics (University Level)",
+    "Pusat Kejuaraan Sains Nasional (Puskanas) · KSPI 2024",
     "Jul 2024",
-    "Awarded gold in the national student science olympiad for Mathematics, competing against participants from universities across Indonesia.",
+    "Awarded Gold Medal with Predikat A+ in Mathematics (University Level) at the national-level Kompetisi Sains Pelajar Se-Indonesia (KSPI 2024) organized by Puskanas in Yogyakarta, representing Universitas Siliwangi.",
   ],
   [
-    "Gold Medal",
-    "Accounting",
-    "Indonesian Student Science Competition (ISSC)",
+    "Gold Medal (Predikat A+)",
+    "Accounting (University Level)",
+    "Prestasi Maju Indonesia (PRESMANESIA) · ISSC 2024",
     "Jul 2024",
-    "Achieved gold medal in the International Student Science Competition, excelling in quantitative and analytical disciplines among multi-university competitors.",
+    "Awarded Gold Medal with Predikat A+ in Accounting (University Level) at the Indonesian Student Science Competition (ISSC 2024) organized by PRESMANESIA in Yogyakarta, demonstrating strong financial and analytical competency.",
   ],
   [
-    "Gold Medal",
-    "Mathematics",
-    "Olimpiade Sains Nusantara (OLIMNUS)",
+    "Gold Medal (Predikat A+)",
+    "Mathematics (University Level)",
+    "Generasi Maju Indonesia (GEMANESIA) · OLIMNUS 2024",
     "Jul 2024",
-    "Gold medal in OLIMNUS Mathematics Olympiad, a national-level competition testing advanced mathematical reasoning and problem-solving skills.",
+    "Awarded Gold Medal with Predikat A+ in Mathematics (University Level) at the national-level Olimpiade Sains Nusantara (OLIMNUS 2024) organized by GEMANESIA in Yogyakarta, testing advanced logical reasoning.",
   ],
   [
     "Finalist",
@@ -622,6 +622,33 @@ export const certifications = [
     description:
       "Graduated with score 98/100 (Predikat Sangat Baik) for Magang SIB Mandiri VINIX7 Batch 2: analytical modeling across 113 International Undergraduate Programs (IUP) from 11 State Universities.",
     credential: "/certificates/Data_sains_Sertifikat_magang_Batch_2.webp",
+  },
+  {
+    name: "Medali Emas Matematika (Predikat A+) · KSPI 2024",
+    issuer: "Pusat Kejuaraan Sains Nasional (Puskanas)",
+    date: "Jul 2024",
+    tag: "National Olympiad / Gold Medal",
+    description:
+      "Awarded Gold Medal with Predikat A+ in Mathematics (University Level) at the national-level Kompetisi Sains Pelajar Se-Indonesia (KSPI 2024) organized by Puskanas in Yogyakarta.",
+    credential: "/certificates/cert-kspi-matematika.webp",
+  },
+  {
+    name: "Medali Emas Akuntansi (Predikat A+) · ISSC 2024",
+    issuer: "Prestasi Maju Indonesia (PRESMANESIA)",
+    date: "Jul 2024",
+    tag: "National Olympiad / Gold Medal",
+    description:
+      "Awarded Gold Medal with Predikat A+ in Accounting (University Level) at the Indonesian Student Science Competition (ISSC 2024) organized by PRESMANESIA in Yogyakarta.",
+    credential: "/certificates/cert-issc-akuntansi.webp",
+  },
+  {
+    name: "Medali Emas Matematika (Predikat A+) · OLIMNUS 2024",
+    issuer: "Generasi Maju Indonesia (GEMANESIA)",
+    date: "Jul 2024",
+    tag: "National Olympiad / Gold Medal",
+    description:
+      "Awarded Gold Medal with Predikat A+ in Mathematics (University Level) at the Olimpiade Sains Nusantara (OLIMNUS 2024) organized by GEMANESIA in Yogyakarta.",
+    credential: "/certificates/cert-olimnus-matematika.webp",
   },
   {
     name: "Claude on Google Cloud",
