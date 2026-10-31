@@ -367,7 +367,7 @@ export function getTechSvg(name: string): SvgDef | null {
 
 export function TechIcon({
   name,
-  className = "h-[60%] w-[60%] shrink-0",
+  className = "h-[50%] w-[50%] shrink-0",
   style,
 }: TechIconProps) {
   const icon = getTechSvg(name);

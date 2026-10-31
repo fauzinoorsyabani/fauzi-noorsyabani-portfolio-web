@@ -1325,24 +1325,24 @@ export default function Home() {
                         {catMeta.description}
                       </p>
 
-                      {/* Prominent Square Logo Cards with Enlarged Icons */}
-                      <div className="mt-5 grid grid-cols-3 gap-3 min-[480px]:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 sm:gap-4">
+                      {/* Compact Square Logo Cards with Polished Proportions */}
+                      <div className="mt-5 grid grid-cols-4 gap-2 min-[480px]:grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 sm:gap-2.5">
                         {cat.skills.map((skill) => (
                           <div
                             key={skill}
                             tabIndex={0}
                             role="button"
                             aria-label={skill}
-                            className="group relative flex flex-col aspect-square items-center justify-center rounded-xl sm:rounded-2xl border border-neutral-200 bg-neutral-100/90 p-2 sm:p-2.5 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:border-neutral-950 hover:bg-white hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/90 dark:hover:border-neutral-400 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 active:scale-95 cursor-pointer"
+                            className="group relative flex flex-col aspect-square items-center justify-center rounded-xl border border-neutral-200 bg-neutral-100/90 p-1.5 sm:p-2 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:scale-105 hover:border-neutral-950 hover:bg-white hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/90 dark:hover:border-neutral-400 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 active:scale-95 cursor-pointer"
                           >
-                            {/* Standardized SVG filling 52% on mobile, 60% on desktop */}
+                            {/* Standardized SVG filling 46% on mobile, 50% on desktop */}
                             <TechIcon
                               name={skill}
-                              className="h-[52%] w-[52%] sm:h-[60%] sm:w-[60%] shrink-0 transition-transform duration-200 group-hover:scale-110 text-neutral-950 dark:text-white"
+                              className="h-[46%] w-[46%] sm:h-[50%] sm:w-[50%] shrink-0 transition-transform duration-200 group-hover:scale-110 text-neutral-950 dark:text-white"
                             />
 
                             {/* Mobile-only legible micro-label directly under icon */}
-                            <span className="mt-1 block max-w-full truncate mono-type text-[0.52rem] sm:hidden font-bold text-neutral-700 dark:text-neutral-300">
+                            <span className="mt-0.5 block max-w-full truncate mono-type text-[0.48rem] sm:hidden font-bold text-neutral-700 dark:text-neutral-300">
                               {skill}
                             </span>
 
