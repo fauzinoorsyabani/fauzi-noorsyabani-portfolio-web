@@ -610,10 +610,10 @@ const heroRoles = [
     },
   },
   {
-    title: "Google Student Ambassador Lead",
+    title: "Google Student Ambassador",
     sub: {
-      en: "AI Adoption & Tech Outreach",
-      id: "Edukasi AI & Kepemimpinan Komunitas",
+      en: "AI Adoption & Campus Outreach",
+      id: "Edukasi AI & Komunitas Kampus",
     },
   },
 ] as const;
@@ -661,29 +661,28 @@ function HeroRoleTicker({
   }, [displayedText, isDeleting, fullTitle, prefersReducedMotion]);
 
   return (
-    <div className="hero-sequence hero-sequence--4 mt-6 sm:mt-8 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2.5 text-neutral-900 dark:text-neutral-100 max-w-full overflow-hidden">
-      {/* Line 1 (mobile) / Main part: Rule line + Typing title */}
-      <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 max-w-full overflow-hidden">
-        <span className="h-px w-5 sm:w-8 bg-neutral-900 dark:bg-white shrink-0" aria-hidden="true" />
-        <span className="mono-type text-[0.62rem] sm:text-[0.72rem] md:text-[0.78rem] font-bold uppercase tracking-[0.08em] sm:tracking-[0.14em] text-neutral-950 dark:text-white shrink-0 inline-flex items-center truncate">
-          {displayedText}
-          <span
-            className="inline-block w-0.5 h-3 sm:h-3.5 ml-1 bg-neutral-900 dark:bg-white animate-pulse shrink-0"
-            aria-hidden="true"
-          />
-        </span>
-        {/* Separator slash only shown on desktop/tablet */}
-        <span className="hidden sm:inline text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-xs" aria-hidden="true">
-          /
-        </span>
-      </div>
+    <div className="hero-sequence hero-sequence--4 mt-4 sm:mt-5 flex items-center flex-nowrap whitespace-nowrap text-neutral-900 dark:text-neutral-100 max-w-full overflow-hidden gap-1.5 sm:gap-2">
+      {/* Decorative accent rule line */}
+      <span className="h-px w-3 sm:w-5 md:w-6 bg-neutral-900 dark:bg-white shrink-0" aria-hidden="true" />
 
-      {/* Line 2 (mobile): Subtitle moved below on mobile with neat indentation; inline on sm+ */}
-      <div className="pl-7 sm:pl-0 min-w-0 max-w-full overflow-hidden">
-        <span className="mono-type text-[0.55rem] sm:text-[0.66rem] md:text-[0.72rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-[0.01em] sm:tracking-[0.03em] block sm:inline truncate transition-opacity duration-300">
-          {currentRole.sub[language]}
-        </span>
-      </div>
+      {/* Typing animated title - scaled down and strictly on one line */}
+      <span className="mono-type text-[0.52rem] xs:text-[0.58rem] sm:text-[0.65rem] md:text-[0.70rem] font-bold uppercase tracking-[0.04em] sm:tracking-[0.08em] text-neutral-950 dark:text-white shrink-0 inline-flex items-center">
+        {displayedText}
+        <span
+          className="inline-block w-0.5 h-2.5 sm:h-3 ml-0.5 sm:ml-1 bg-neutral-900 dark:bg-white animate-pulse shrink-0"
+          aria-hidden="true"
+        />
+      </span>
+
+      {/* Separator slash */}
+      <span className="text-neutral-400 dark:text-neutral-600 font-normal select-none shrink-0 text-[0.52rem] sm:text-[0.65rem] px-0.5" aria-hidden="true">
+        /
+      </span>
+
+      {/* Subtitle staying strictly on the SAME line */}
+      <span className="mono-type text-[0.48rem] xs:text-[0.54rem] sm:text-[0.60rem] md:text-[0.66rem] font-medium italic text-neutral-600 dark:text-neutral-400 tracking-tight sm:tracking-normal truncate transition-opacity duration-300 shrink min-w-0">
+        {currentRole.sub[language]}
+      </span>
     </div>
   );
 }
