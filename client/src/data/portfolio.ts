@@ -42,13 +42,13 @@ export const person = {
   name: "Fauzi Noorsyabani",
   role: "Full Stack AI Engineer | Data Analyst",
   headline:
-    "Full Stack AI Engineer | Data Analyst with 2+ years of hands-on project engineering experience bridging advanced data analytics, dimensional data warehousing, and production AI web systems. Proven across 913,000+ retail transactions, institutional analytics across 113 International Undergraduate Programs (IUP) at 11 State Universities, and technical outreach reaching 1,000+ developers as Google Student Ambassador Campus Lead.",
+    "Full Stack AI Engineer | Data Analyst bridging advanced data analytics, dimensional data warehousing, and production AI web systems through proven project engineering. Proven across 913,000+ retail transactions, institutional analytics across 113 International Undergraduate Programs (IUP) at 11 State Universities, and technical outreach reaching 1,000+ developers as Google Student Ambassador Campus Lead.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",
   availability: "Open to Work",
   about:
-    "Fauzi is a fresh Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with 2+ years of project engineering experience in Data Analytics, Business Intelligence, and Full Stack AI Engineering. He led a 5-member team through a 900+ hour AI capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
+    "Fauzi is a fresh Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with extensive project engineering experience across Data Analytics, Business Intelligence, and Full Stack AI Engineering. He led a 5-member team through a 900+ hour AI capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
   shortBio:
     "Connecting machine learning, LLM orchestration, and modern web architecture into practical software that drives informed decisions.",
 } as const;
