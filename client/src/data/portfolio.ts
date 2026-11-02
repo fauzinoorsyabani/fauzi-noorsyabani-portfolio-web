@@ -657,6 +657,15 @@ export const certifications = [
     credential: "/certificates/cert-olimnus-matematika.webp",
   },
   {
+    name: "Juara 2 Bookstagram Review Challenge",
+    issuer: "Kantor Perwakilan Bank Indonesia Tasikmalaya",
+    date: "May 2025",
+    tag: "National / 2nd Place",
+    description:
+      "Awarded 2nd Place by Bank Indonesia in the World Book Day literacy review challenge, recognizing structured analytical evaluation and digital media communication.",
+    credential: "/certificates/cert-bi-bookstagram.webp",
+  },
+  {
     name: "Claude on Google Cloud",
     issuer: "Anthropic Claude Academy",
     date: "Oct 2026",
