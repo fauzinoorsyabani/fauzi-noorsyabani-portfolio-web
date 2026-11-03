@@ -502,17 +502,6 @@ export const experience = [
     ],
   },
   {
-    type: "Work",
-    organization: "Konter Pulsa",
-    role: "Business Owner",
-    date: "May 2022 — Present",
-    location: "Tasikmalaya",
-    details: [
-      "Operate digital services with more than 30 daily transactions and consistent average daily revenue of IDR 300,000.",
-      "Implemented data tracking for inventory and transaction flows.",
-    ],
-  },
-  {
     type: "Volunteer",
     organization: "Global Game Jam Tasikmalaya",
     role: "Event Organizer Committee",
