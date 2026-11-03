@@ -40,9 +40,9 @@ export const links = {
 
 export const person = {
   name: "Fauzi Noorsyabani",
-  role: "Data Engineer | Full Stack AI Engineer | Data Analyst",
+  role: "Data Analyst | Data Engineer | Full-Stack AI Engineer",
   headline:
-    "Data Engineer & AI Specialist bridging high-performance data pipelines, dimensional warehousing, and production AI systems. Dedicated to transforming complex data into reliable executive dashboards, predictive models, and scalable architectures — certified BNSP ICT Project Manager and Google Student Ambassador Campus Lead.",
+    "Data Analyst, Data Engineer & Full-Stack AI Engineer bridging decision-driven analytics, dimensional data warehousing, and production web & AI systems. Dedicated to transforming complex datasets into executive BI dashboards, reliable data pipelines, and scalable applications — certified BNSP ICT Project Manager and Google Student Ambassador Campus Lead.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",

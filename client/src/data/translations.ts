@@ -16,10 +16,10 @@ export const translations = {
     hero: {
       availability: "OPEN TO WORK",
       greeting: "Hello, I’m",
-      role: "Data Engineer | Full Stack AI Engineer | Data Analyst",
-      roleSub: "Data Pipelines, Dimensional Warehousing & Applied AI",
+      role: "Data Analyst | Data Engineer | Full-Stack AI Engineer",
+      roleSub: "Data Analytics, Dimensional Warehousing & Full-Stack AI Systems",
       headline:
-        "**Data Engineer & AI Specialist** bridging *high-performance data pipelines*, *dimensional warehousing*, and *production AI systems*. Dedicated to transforming complex data into reliable executive dashboards, predictive models, and scalable architectures — certified **BNSP ICT Project Manager** and **Google Student Ambassador Campus Lead**.",
+        "**Data Analyst, Data Engineer & Full-Stack AI Engineer** bridging *decision-driven analytics*, *dimensional data warehousing*, and *production web & AI systems*. Dedicated to transforming complex datasets into executive BI dashboards, reliable data pipelines, and scalable applications — certified **BNSP ICT Project Manager** and **Google Student Ambassador Campus Lead**.",
       exploreBtn: "Explore Projects",
       contactBtn: "Direct Contact",
     },
@@ -208,10 +208,10 @@ export const translations = {
     hero: {
       availability: "SIAP BERKOLABORASI",
       greeting: "Halo, saya",
-      role: "Data Engineer | Full Stack AI Engineer | Data Analyst",
-      roleSub: "Pipeline Data, Data Warehousing & Rekayasa AI Terapan",
+      role: "Data Analyst | Data Engineer | Full-Stack AI Engineer",
+      roleSub: "Analitik Data, Data Warehousing & Rekayasa Sistem Web-AI",
       headline:
-        "**Data Engineer & AI Specialist** yang menjembatani *pipeline data performa tinggi*, *data warehousing dimensional*, dan *rekayasa sistem AI produksi*. Berdedikasi mengubah data kompleks menjadi dasbor eksekutif yang andal, model prediktif, serta arsitektur terukur — tersertifikasi **BNSP ICT Project Manager** dan **Google Student Ambassador Campus Lead**.",
+        "**Data Analyst, Data Engineer & Full-Stack AI Engineer** yang menjembatani *analitik data berbasis keputusan*, *data warehousing dimensional*, dan *rekayasa sistem web & AI produksi*. Berdedikasi mengubah data kompleks menjadi dasbor eksekutif BI, pipeline data andal, serta aplikasi web terukur — tersertifikasi **BNSP ICT Project Manager** dan **Google Student Ambassador Campus Lead**.",
       exploreBtn: "Jelajahi Proyek",
       contactBtn: "Hubungi Langsung",
     },
