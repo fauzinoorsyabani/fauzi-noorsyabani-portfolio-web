@@ -589,6 +589,13 @@ function DocumentationShowcase({
 
 const heroRoles = [
   {
+    title: "Data Engineer",
+    sub: {
+      en: "Data Pipelines, Warehousing & Modeling",
+      id: "Pipeline Data, Warehouse & Pemodelan Data",
+    },
+  },
+  {
     title: "Data Analyst",
     sub: {
       en: "Analytics & Business Intelligence",
@@ -600,13 +607,6 @@ const heroRoles = [
     sub: {
       en: "Applied AI & Modern Web Architecture",
       id: "Sistem AI Terapan & Arsitektur Web",
-    },
-  },
-  {
-    title: "Analytics Engineer",
-    sub: {
-      en: "Star Schema & ETL Pipelines",
-      id: "Data Warehouse & Pipeline ETL",
     },
   },
   {

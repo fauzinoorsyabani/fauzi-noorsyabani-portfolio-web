@@ -16,10 +16,10 @@ export const translations = {
     hero: {
       availability: "OPEN TO WORK",
       greeting: "Hello, I’m",
-      role: "Full Stack AI Engineer | Data Analyst",
-      roleSub: "Applied AI, Data Analytics & Business Intelligence",
+      role: "Data Engineer | Full Stack AI Engineer | Data Analyst",
+      roleSub: "Data Pipelines, Dimensional Warehousing & Applied AI",
       headline:
-        "**Full Stack AI Engineer | Data Analyst** bridging *decision-driven analytics*, *data warehousing*, and *production AI systems*. Proven across **913,000+** modelled retail transactions, BI analytics spanning **113 International Undergraduate Programs (IUP)** across 11 State Universities, and predictive dashboards tracking **30 IDX30 tickers** — selected as Google Student Ambassador Campus Lead from **12,000+** applicants.",
+        "**Data Engineer & AI Specialist** bridging *high-performance data pipelines*, *dimensional warehousing*, and *production AI systems*. Dedicated to transforming complex data into reliable executive dashboards, predictive models, and scalable architectures — certified **BNSP ICT Project Manager** and **Google Student Ambassador Campus Lead**.",
       exploreBtn: "Explore Projects",
       contactBtn: "Direct Contact",
     },
@@ -208,10 +208,10 @@ export const translations = {
     hero: {
       availability: "SIAP BERKOLABORASI",
       greeting: "Halo, saya",
-      role: "Full Stack AI Engineer | Data Analyst",
-      roleSub: "Rekayasa AI Terapan, Analitik Data & Business Intelligence",
+      role: "Data Engineer | Full Stack AI Engineer | Data Analyst",
+      roleSub: "Pipeline Data, Data Warehousing & Rekayasa AI Terapan",
       headline:
-        "**Full Stack AI Engineer | Data Analyst** yang menjembatani *analitik data berbasis keputusan*, *data warehousing*, dan *rekayasa sistem AI produksi*. Terbukti melalui pemodelan **913.000+** transaksi ritel, analitik BI di **113 program studi IUP** di 11 perguruan tinggi negeri, dan dashboard prediktif **30 saham IDX30** — terpilih sebagai Google Student Ambassador Campus Lead dari **12.000+** pendaftar nasional.",
+        "**Data Engineer & AI Specialist** yang menjembatani *pipeline data performa tinggi*, *data warehousing dimensional*, dan *rekayasa sistem AI produksi*. Berdedikasi mengubah data kompleks menjadi dasbor eksekutif yang andal, model prediktif, serta arsitektur terukur — tersertifikasi **BNSP ICT Project Manager** dan **Google Student Ambassador Campus Lead**.",
       exploreBtn: "Jelajahi Proyek",
       contactBtn: "Hubungi Langsung",
     },
