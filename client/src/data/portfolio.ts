@@ -453,8 +453,9 @@ export const experience = [
     date: "Feb 2026 — Jul 2026",
     location: "Hybrid / Program-based",
     details: [
-      "Led five cross-functional teammates to design, build, and deploy PolaStok across 900+ hours of structured product development.",
-      "Owned data preparation, model integration, prompt engineering, and MVP delivery for inventory prediction and recommendation features.",
+      "Led a 5-member engineering cohort across 900+ hours of structured development to architect and deploy PolaStok, winning 1st Place at Life After DDC Challenge 2026.",
+      "Trained hybrid Random Forest and Deep LSTM neural networks on 913,000+ transactional records across 50 SKU lines, achieving ~17.6% SMAPE and outperforming naive baselines by 10.8%.",
+      "Integrated Google Gemini API via structured prompt engineering with in-memory caching in Streamlit, cutting end-to-end inference latency to ~530 ms for real-time inventory and cash flow advisory.",
     ],
   },
   {
@@ -464,8 +465,9 @@ export const experience = [
     date: "Feb 2025 — Jun 2025",
     location: "Jakarta Selatan (Hybrid)",
     details: [
-      "Led an end-to-end data analytics project across 113 International Undergraduate Programs (IUP) from 11 Indonesian State Universities.",
-      "Built interactive Looker Studio executive dashboards and Python statistical models, earning a 98/100 final evaluation.",
+      "Acquired, wrangled, and cleaned datasets across 113 International Undergraduate Programs (IUP) from 11 top Indonesian State Universities (UI, ITB, UGM, Unair, etc.) using Python (Pandas, NumPy).",
+      "Conducted exploratory data analysis and Pearson correlation testing (r = 0.079) evaluating tuition fee distributions from an average of IDR 21.77M up to IDR 70M across institutional faculties.",
+      "Engineered 3 multi-page interactive executive dashboards in Google Looker Studio, successfully completing all 11 data science curriculum modules with a 98/100 final capstone evaluation.",
     ],
   },
   {
@@ -475,19 +477,21 @@ export const experience = [
     date: "Sep 2025 — Feb 2026",
     location: "Indonesia",
     details: [
-      "Led outreach reaching 1,000+ students through workshops, digital campaigns, and hands-on technology demos.",
-      "Advanced responsible adoption of Google’s generative AI ecosystem, including Gemini, in academic productivity.",
+      "Selected as Campus Lead representing Universitas Siliwangi through a nationwide competitive screening from 12,000+ applicants (Top 1% national cohort).",
+      "Directed 8 technical enablement workshops and hands-on demos on Gemini AI, Vertex AI, and Google Cloud, upskilling 1,000+ students and academic faculty members.",
+      "Orchestrated a 10-member student leadership team across event ops, technical curriculum, and digital media, driving 100,000+ impressions across campus communities.",
     ],
   },
   {
     type: "Work",
-    organization: "CV. Putra AR & RA Al-Fathunnisa",
+    organization: "CV. Putra AR",
     role: "Frontend / Web Developer",
     date: "Mar 2024 — Dec 2024",
     location: "Tasikmalaya",
     details: [
-      "Shipped production web applications for F&B manufacturing (CV. Putra AR) and education clients using React 19, Vite, Framer Motion, and PHP REST APIs.",
-      "Built responsive company profiles, digital product catalogs, and direct inquiry flows, modernizing client outreach.",
+      "Engineered and shipped the official responsive Single Page Application (SPA) for an F&B manufacturing enterprise operating with 309+ workforce capacity using React 19, Vite, and TailwindCSS.",
+      "Developed an interactive digital SKU showcase for 4 core manufacturing product lines, integrating dynamic JSON filtering, Halal compliance verification, and responsive mobile-first navigation.",
+      "Constructed automated B2B wholesale inquiry routing via modular PHP REST API endpoints and WhatsApp integration, deployed with SSL encryption on custom domain cvputraar.my.id.",
     ],
   },
   {
@@ -497,8 +501,9 @@ export const experience = [
     date: "Jun 2023 — Dec 2024",
     location: "Tasikmalaya",
     details: [
-      "Initiated technology bootcamps and data competitions, and organized AI, Big Data, and Business Intelligence seminars with industry experts.",
-      "Coordinated cross-functional teams for events involving more than 150 participants.",
+      "Organized 5+ departmental tech bootcamps, coding competitions, and academic seminars on AI, Big Data, and Business Intelligence, engaging 150+ student participants.",
+      "Mentored and tutored 120+ first- and second-year students as Laboratory Teaching Assistant across Logic & Algorithms, Python/C++, and Relational Database Systems.",
+      "Led a research initiative under Kemdikbudristek BIMA 2024 on Geospatial Machine Learning for disaster logistics optimization while overseeing technical regeneration programs.",
     ],
   },
   {
@@ -508,8 +513,9 @@ export const experience = [
     date: "January 2025",
     location: "Creative Center Tasikmalaya",
     details: [
-      "Supported a 48-hour collaborative game-creation event for developers, artists, and storytellers.",
-      "Helped strengthen inclusive access to game development and the local technology ecosystem.",
+      "Co-organized a 48-hour continuous hackathon bringing together 50+ local software developers, digital artists, sound designers, and narrative writers.",
+      "Facilitated technical infrastructure, development onboarding, and version-control workflows across multidisciplinary game production teams.",
+      "Curated and showcased playable indie game prototypes during public playtest sessions, successfully archiving submissions to the international Global Game Jam repository.",
     ],
   },
 ] as const;
