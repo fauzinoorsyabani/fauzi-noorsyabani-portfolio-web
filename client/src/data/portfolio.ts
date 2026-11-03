@@ -42,7 +42,7 @@ export const person = {
   name: "Fauzi Noorsyabani",
   role: "Data Analyst | Data Engineer | AI Specialist",
   headline:
-    "Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specializing in Data & AI with 20+ projects and real-world case studies completed since 2023. Combining strong analytical and quantitative skills as a Data Analyst and Data Engineer — proficient in SQL (PostgreSQL, MySQL), Python, Microsoft Excel, and BI tools (Looker Studio, Power BI), and certified as a BNSP ICT Project Manager & Google Student Ambassador Campus Lead.",
+    "Data Analyst, Data Engineer & AI Specialist turning complex datasets into dimensional data warehouses, automated ETL pipelines, executive BI dashboards, and intelligent web applications — helping teams move from raw data to clear, reliable decisions.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",

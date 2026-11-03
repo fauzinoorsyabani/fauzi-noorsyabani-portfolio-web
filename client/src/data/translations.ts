@@ -19,7 +19,7 @@ export const translations = {
       role: "Data Analyst | Data Engineer | AI Specialist",
       roleSub: "Data Analytics, Data Engineering & Applied AI",
       headline:
-        "Information Systems graduate from **Universitas Siliwangi (GPA 3.89/4.00, Cum Laude)** specializing in **Data & AI** with **20+ projects and case studies** completed since 2023. Combining strong analytical and quantitative skills with hands-on experience as a **Data Analyst** and **Data Engineer** — proficient in **SQL (PostgreSQL, MySQL), Python, Microsoft Excel, and BI tools**, and certified as a **BNSP ICT Project Manager** & **Google Student Ambassador Campus Lead**.",
+        "**Data Analyst, Data Engineer & AI Specialist** turning complex datasets into *dimensional data warehouses*, *automated ETL pipelines*, *executive BI dashboards*, and *intelligent web applications* — helping teams move from raw data to clear, reliable decisions.",
       exploreBtn: "Explore Projects",
       contactBtn: "Direct Contact",
     },
@@ -211,7 +211,7 @@ export const translations = {
       role: "Data Analyst | Data Engineer | AI Specialist",
       roleSub: "Analitik Data, Data Engineering & AI Terapan",
       headline:
-        "Lulusan S1 Sistem Informasi **Universitas Siliwangi (IPK 3.89/4.00, Cum Laude)** dengan spesialisasi di bidang **Data & AI** melalui **20+ proyek dan studi kasus** sejak 2023. Memadukan kemampuan analitis dan kuantitatif yang kuat dengan pengalaman langsung sebagai **Data Analyst** dan **Data Engineer** — mahir dalam **SQL (PostgreSQL, MySQL), Python, Microsoft Excel, dan BI tools**, serta tersertifikasi **BNSP ICT Project Manager** & **Google Student Ambassador Campus Lead**.",
+        "**Data Analyst, Data Engineer & AI Specialist** yang mengubah dataset kompleks menjadi *data warehouse dimensional*, *pipeline ETL otomatis*, *dashboard BI eksekutif*, dan *aplikasi cerdas berbasis AI* — membantu organisasi mengambil keputusan secara jelas dan terukur.",
       exploreBtn: "Jelajahi Proyek",
       contactBtn: "Hubungi Langsung",
     },
