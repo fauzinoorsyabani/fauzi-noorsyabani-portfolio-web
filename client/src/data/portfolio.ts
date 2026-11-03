@@ -40,17 +40,17 @@ export const links = {
 
 export const person = {
   name: "Fauzi Noorsyabani",
-  role: "Data Analyst | Data Engineer | Full-Stack AI Engineer",
+  role: "Data Analyst | Data Engineer | AI Specialist",
   headline:
-    "Data Analyst, Data Engineer & Full-Stack AI Engineer bridging decision-driven analytics, dimensional data warehousing, and production web & AI systems. Dedicated to transforming complex datasets into executive BI dashboards, reliable data pipelines, and scalable applications — certified BNSP ICT Project Manager and Google Student Ambassador Campus Lead.",
+    "Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specializing in Data & AI with 20+ projects and real-world case studies completed since 2023. Combining strong analytical and quantitative skills as a Data Analyst and Data Engineer — proficient in SQL (PostgreSQL, MySQL), Python, Microsoft Excel, and BI tools (Looker Studio, Power BI), and certified as a BNSP ICT Project Manager & Google Student Ambassador Campus Lead.",
   education: "Information Systems @ Universitas Siliwangi",
   location: "Tasikmalaya, Indonesia",
   email: "fauzinoorsyabani05@gmail.com",
   availability: "Open to Work",
   about:
-    "Fauzi is a fresh Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with extensive project engineering experience across Data Analytics, Business Intelligence, and Full Stack AI Engineering. He led a 5-member team through a 900+ hour AI capstone with Pijak × IBM SkillsBuild shipping PolaStok, and was selected as Google Student Ambassador Campus Lead from 12,000+ applicants nationwide. His technical practice spans production RAG pipelines (FastAPI, LangChain), dimensional data warehousing with Looker Studio dashboards, and scalable full-stack web applications (React, TypeScript, Laravel).",
+    "Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with a core specialization in Data & AI, backed by 20+ completed projects and case studies since 2023. Strong analytical and quantitative foundation with hands-on experience as a Data Analyst and Data Engineer, proficient in SQL (PostgreSQL, MySQL), Python, Microsoft Excel, and Business Intelligence dashboards. Certified Microsoft Office Specialist (Excel), BNSP ICT Project Manager, and former Google Student Ambassador Campus Lead — detail-oriented, adaptable, and effective both independently and in collaborative teams.",
   shortBio:
-    "Connecting machine learning, LLM orchestration, and modern web architecture into practical software that drives informed decisions.",
+    "Turning complex data into clear decisions through SQL, Python, dimensional data warehousing, and executive BI dashboards.",
 } as const;
 
 export const focusAreas = [

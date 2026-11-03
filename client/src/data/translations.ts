@@ -16,10 +16,10 @@ export const translations = {
     hero: {
       availability: "OPEN TO WORK",
       greeting: "Hello, I’m",
-      role: "Data Analyst | Data Engineer | Full-Stack AI Engineer",
-      roleSub: "Data Analytics, Dimensional Warehousing & Full-Stack AI Systems",
+      role: "Data Analyst | Data Engineer | AI Specialist",
+      roleSub: "Data Analytics, Data Engineering & Applied AI",
       headline:
-        "**Data Analyst, Data Engineer & Full-Stack AI Engineer** bridging *decision-driven analytics*, *dimensional data warehousing*, and *production web & AI systems*. Dedicated to transforming complex datasets into executive BI dashboards, reliable data pipelines, and scalable applications — certified **BNSP ICT Project Manager** and **Google Student Ambassador Campus Lead**.",
+        "Information Systems graduate from **Universitas Siliwangi (GPA 3.89/4.00, Cum Laude)** specializing in **Data & AI** with **20+ projects and case studies** completed since 2023. Combining strong analytical and quantitative skills with hands-on experience as a **Data Analyst** and **Data Engineer** — proficient in **SQL (PostgreSQL, MySQL), Python, Microsoft Excel, and BI tools**, and certified as a **BNSP ICT Project Manager** & **Google Student Ambassador Campus Lead**.",
       exploreBtn: "Explore Projects",
       contactBtn: "Direct Contact",
     },
@@ -29,13 +29,13 @@ export const translations = {
       fieldPortrait: "FIELD PORTRAIT / 01",
       badge: "FN-26 / AI & DATA",
       aboutText:
-        "Fauzi is a fresh Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with proven project engineering experience in Data Analytics, Business Intelligence, and Full Stack AI Engineering. He led a 5-member team through a 900+ hour AI capstone with Pijak × IBM SkillsBuild, shipped PolaStok (913,000+ retail transactions modelled, SMAPE ~17.6%), and served as Google Student Ambassador Campus Lead (selected from 12,000+ nationwide). His practice spans end-to-end data pipelines — EDA, dimensional data warehousing, executive BI dashboards, predictive forecasting, and production web deployment.",
+        "Information Systems graduate from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) specializing in Data & AI with 20+ projects and real-world case studies completed since 2023. Strong analytical and quantitative skills with hands-on experience as a Data Analyst and Data Engineer, proficient in SQL (PostgreSQL, MySQL), Python, Microsoft Excel, and Business Intelligence dashboards (Looker Studio, Power BI). Certified Microsoft Office Specialist (Excel), BNSP ICT Project Manager, and former Google Student Ambassador Campus Lead.",
       shortBio:
-        "Turning raw data into *clear business decisions* — through analytics engineering, *BI dashboards*, and *production AI systems* grounded in real problems.",
+        "Turning raw data into *clear business decisions* — through analytics engineering, *BI dashboards*, and *data pipelines* grounded in real problems.",
       paragraphs: [
-        "Fresh graduate in Information Systems from Universitas Siliwangi (GPA 3.89/4.00, Cum Laude) with proven hands-on project engineering experience spanning **Data Analytics**, **Business Intelligence**, and **Applied AI** — built progressively across academic research, industry internships, and intensive engineering programs. Proven across **913,000+** modelled retail transactions, BI analytics spanning **113 International Undergraduate Programs (IUP)** across 11 State Universities, and predictive dashboards covering **30 IDX30 tickers** — delivering insights that directly support business decisions.",
-        "My core practice bridges **Data Analytics & Full Stack AI**: designing Kimball *star-schema* data warehouses, building fault-tolerant *ETL* pipelines, and delivering executive dashboards in *Looker Studio* and *Power BI* that translate complex datasets into actionable strategy. I also engineer production applications and *machine learning* pipelines — time-series forecasting, regression, and LLM orchestration — that deliver measurable utility under real-world constraints.",
-        "Beyond individual contribution, I led a 5-engineer team shipping *PolaStok* through *Pijak × IBM SkillsBuild* and was selected as *Google Student Ambassador Campus Lead* from 12,000+ applicants. I bring structured analytical thinking, clear data storytelling, and a habit of connecting every metric back to the business question it answers.",
+        "Information Systems graduate from **Universitas Siliwangi (GPA 3.89/4.00, Cum Laude)** with a core specialization in **Data & AI**, backed by **20+ projects and case studies** completed over the past two years since 2023. Combining strong analytical and quantitative capabilities with hands-on experience in data roles — specifically as a **Data Analyst** and **Data Engineer**.",
+        "Proficient in **SQL (PostgreSQL and MySQL), Python, Microsoft Excel, Looker Studio, and Power BI** — designing dimensional *star-schema* data warehouses, building automated *ETL* pipelines, and delivering interactive dashboards that translate complex datasets into actionable decisions.",
+        "Certified **Microsoft Office Specialist (Excel)**, **BNSP ICT Project Manager**, and former **Google Student Ambassador Campus Lead** — detail-oriented, adaptable, and able to work effectively both independently and within collaborative teams.",
       ],
       focus: {
         build: {
@@ -208,26 +208,26 @@ export const translations = {
     hero: {
       availability: "SIAP BERKOLABORASI",
       greeting: "Halo, saya",
-      role: "Data Analyst | Data Engineer | Full-Stack AI Engineer",
-      roleSub: "Analitik Data, Data Warehousing & Rekayasa Sistem Web-AI",
+      role: "Data Analyst | Data Engineer | AI Specialist",
+      roleSub: "Analitik Data, Data Engineering & AI Terapan",
       headline:
-        "**Data Analyst, Data Engineer & Full-Stack AI Engineer** yang menjembatani *analitik data berbasis keputusan*, *data warehousing dimensional*, dan *rekayasa sistem web & AI produksi*. Berdedikasi mengubah data kompleks menjadi dasbor eksekutif BI, pipeline data andal, serta aplikasi web terukur — tersertifikasi **BNSP ICT Project Manager** dan **Google Student Ambassador Campus Lead**.",
+        "Lulusan S1 Sistem Informasi **Universitas Siliwangi (IPK 3.89/4.00, Cum Laude)** dengan spesialisasi di bidang **Data & AI** melalui **20+ proyek dan studi kasus** sejak 2023. Memadukan kemampuan analitis dan kuantitatif yang kuat dengan pengalaman langsung sebagai **Data Analyst** dan **Data Engineer** — mahir dalam **SQL (PostgreSQL, MySQL), Python, Microsoft Excel, dan BI tools**, serta tersertifikasi **BNSP ICT Project Manager** & **Google Student Ambassador Campus Lead**.",
       exploreBtn: "Jelajahi Proyek",
       contactBtn: "Hubungi Langsung",
     },
     about: {
-      kicker: "TENTANG & FOKUS REKAYASA",
+      kicker: "PROFIL & FOKUS",
       title: "Mengubah data mentah menjadi keputusan yang jelas dan berdampak.",
       fieldPortrait: "DOKUMENTASI REKAYASA / 01",
       badge: "FN-26 / AI & DATA",
       aboutText:
-        "Fauzi adalah fresh graduate S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan rekam jejak rekayasa proyek nyata di bidang Data Analytics, Business Intelligence, dan Full Stack AI Engineering. Memimpin tim 5 engineer dalam capstone AI intensif 900+ jam bersama Pijak × IBM SkillsBuild, merilis PolaStok (pemodelan 913.000+ transaksi ritel, SMAPE ~17.6%), serta terpilih sebagai Google Student Ambassador Campus Lead dari 12.000+ pendaftar nasional. Praktik rekayasanya mencakup pipeline end-to-end dari data warehousing hingga dashboard BI eksekutif, pemodelan prediktif, dan deployment web produksi.",
+        "Lulusan S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan spesialisasi di bidang Data & AI melalui 20+ proyek dan studi kasus nyata sejak 2023. Memiliki kemampuan analitis dan kuantitatif yang kuat dengan pengalaman langsung sebagai Data Analyst dan Data Engineer, mahir menggunakan SQL (PostgreSQL, MySQL), Python, Microsoft Excel, dan dashboard Business Intelligence (Looker Studio, Power BI). Tersertifikasi Microsoft Office Specialist (Excel), BNSP ICT Project Manager, serta mantan Google Student Ambassador Campus Lead.",
       shortBio:
-        "Mengubah data mentah menjadi *keputusan bisnis yang nyata* — melalui rekayasa analitik, *dashboard BI*, dan *sistem AI produksi* yang berakar pada permasalahan nyata.",
+        "Mengubah data mentah menjadi *keputusan bisnis yang jelas* — melalui rekayasa analitik, *dashboard BI*, dan *pipeline data* yang berakar pada permasalahan nyata.",
       paragraphs: [
-        "Fresh graduate S1 Sistem Informasi dari Universitas Siliwangi (IPK 3.89/4.00, Cum Laude) dengan rekam jejak rekayasa proyek nyata di bidang **Data Analytics**, **Business Intelligence**, dan **Applied AI** — dibangun secara progresif melalui riset akademik, magang industri, dan program rekayasa intensif. Terbukti melalui pemodelan **913.000+** transaksi ritel, analitik kebijakan di **113 program studi IUP** di 11 perguruan tinggi negeri, serta dashboard prediktif yang mencakup **30 saham IDX30** — menghasilkan insight yang langsung menopang pengambilan keputusan bisnis.",
-        "Fokus utama saya memadukan **Data Analytics & Full Stack AI**: merancang *data warehouse* berbasis *Kimball star-schema*, membangun pipeline *ETL* yang andal, serta menghadirkan dashboard eksekutif di *Looker Studio* dan *Power BI* yang mengubah dataset kompleks menjadi strategi yang dapat ditindaklanjuti. Saya juga mengembangkan aplikasi produksi dan pipeline *machine learning* — peramalan runtun waktu, regresi, dan orkestrasi LLM — untuk menghasilkan utilitas nyata di lingkungan produksi.",
-        "Di luar kontribusi individu, saya memimpin tim 5 engineer merilis *PolaStok* melalui *Pijak × IBM SkillsBuild*, dan terpilih sebagai Campus Lead *Google Student Ambassador* dari 12.000+ mahasiswa nasional. Saya membawa pemikiran analitik terstruktur, kemampuan *data storytelling*, dan kebiasaan menghubungkan setiap metrik kembali ke pertanyaan bisnis yang relevan.",
+        "Lulusan S1 Sistem Informasi dari **Universitas Siliwangi (IPK 3.89/4.00, Cum Laude)** dengan fokus keahlian di bidang **Data & AI**, didukung oleh **20+ proyek dan studi kasus** yang diselesaikan selama dua tahun terakhir sejak 2023. Memadukan kemampuan analitis dan kuantitatif yang kuat dengan pengalaman langsung di peran data — khususnya sebagai **Data Analyst** dan **Data Engineer**.",
+        "Mahir menggunakan **SQL (PostgreSQL dan MySQL), Python, Microsoft Excel, Looker Studio, dan Power BI** — mulai dari merancang *data warehouse* dimensional (*star-schema*), membangun pipeline *ETL* otomatis, hingga menyusun dashboard interaktif yang menerjemahkan dataset kompleks menjadi keputusan yang dapat ditindaklanjuti.",
+        "Tersertifikasi **Microsoft Office Specialist (Excel)**, **BNSP ICT Project Manager**, dan pernah menjabat sebagai **Google Student Ambassador Campus Lead** — berorientasi pada detail, mudah beradaptasi, serta mampu bekerja secara efektif baik mandiri maupun di dalam tim.",
       ],
       focus: {
         build: {
