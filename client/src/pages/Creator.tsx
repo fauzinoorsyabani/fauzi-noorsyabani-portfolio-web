@@ -118,7 +118,7 @@ export default function Creator() {
   const [msgBody, setMsgBody] = useState("");
 
   useEffect(() => {
-    document.title = "Fauzi Noorsyabani — Tech Content Creator & KOL Portfolio (5.46M+ Views)";
+    document.title = "Fauzi Noorsyabani — Tech Content Creator & KOL Portfolio";
   }, []);
 
   const updateCarouselButtons = () => {
@@ -287,9 +287,6 @@ export default function Creator() {
                 <h1 className="text-[17px] font-medium tracking-[-0.01em] text-[#0A0A0A]">
                   {creatorProfile.name}
                 </h1>
-                <span className="rounded-full bg-[#ff6308]/12 px-2.5 py-0.5 text-[11px] font-semibold text-[#ff6308]">
-                  5.46M+ Verified Views
-                </span>
               </div>
               <p className="text-[14px] text-[#0A0A0A]/65">{creatorProfile.role}</p>
             </div>
@@ -299,9 +296,9 @@ export default function Creator() {
           <div
             ref={introRef}
             onMouseLeave={() => setHoveredIntroKey(null)}
-            className="relative mt-8 flex flex-col gap-5 text-[16px]/[1.65] text-[#0A0A0A]/65 sm:mt-10"
+            className="relative mt-8 flex flex-col gap-5 text-justify text-[16px]/[1.65] text-[#0A0A0A]/65 sm:mt-10"
           >
-            <p className="text-pretty">
+            <p className="text-justify">
               I’m a tech-savvy content creator, Key Opinion Leader (KOL), and AI &amp; Data Engineer
               who turns software products and technical case studies into high-retention content across{" "}
               <a
@@ -346,7 +343,7 @@ export default function Creator() {
               99% non-follower discovery).
             </p>
 
-            <p className="text-pretty">
+            <p className="text-justify">
               I’m also an officially contracted KOL for{" "}
               <Link
                 href="/creator/iil-2026"
@@ -391,7 +388,7 @@ export default function Creator() {
               .
             </p>
 
-            <p className="text-pretty">
+            <p className="text-justify">
               Click any{" "}
               <a
                 href="#work"
@@ -442,19 +439,19 @@ export default function Creator() {
             <div className="mt-2 grid grid-cols-2 gap-3 rounded-2xl bg-[#f9f8f6] p-4 ring-1 ring-[#0a0a0a]/8 sm:grid-cols-4">
               <div>
                 <p className="text-[18px] font-semibold tracking-tight text-[#0A0A0A] tabular-nums">
-                  5.46M+
+                  5,459,233
                 </p>
                 <p className="text-[12px] text-[#0A0A0A]/60">Videotto Campaign Views</p>
               </div>
               <div>
                 <p className="text-[18px] font-semibold tracking-tight text-[#0A0A0A] tabular-nums">
-                  796.8K
+                  796,846
                 </p>
                 <p className="text-[12px] text-[#0A0A0A]/60">Peak Single Reel Views</p>
               </div>
               <div>
                 <p className="text-[18px] font-semibold tracking-tight text-[#0A0A0A] tabular-nums">
-                  22.5K+
+                  22,500+
                 </p>
                 <p className="text-[12px] text-[#0A0A0A]/60">Organic Interactions</p>
               </div>
@@ -634,7 +631,7 @@ export default function Creator() {
               Campaign milestones, speaking &amp; awards
             </h2>
             <p className="text-[13px] text-[#0A0A0A]/65 tabular-nums">
-              5.46M+ video views · 1,000+ students
+              8+ workshops · 1,000+ students
             </p>
           </div>
 
@@ -978,14 +975,14 @@ export default function Creator() {
             <h3 className="mt-3 text-[18px] font-semibold tracking-tight text-[#0A0A0A]">
               How I’ll Turn Your Projects &amp; Case Studies Into Viral Content
             </h3>
-            <ul className="mt-3.5 space-y-2.5 text-[14px] leading-relaxed text-[#0A0A0A]/75">
+            <ul className="mt-3.5 space-y-2.5 text-justify text-[14px] leading-relaxed text-[#0A0A0A]/75">
               <li className="flex items-start gap-2.5">
                 <span className="mt-1 size-1.5 shrink-0 rounded-full bg-[#ff6308]" />
                 <span>
                   <strong className="font-medium text-[#0A0A0A]">
                     Proven Short-Form &amp; Case Study Engine:
                   </strong>{" "}
-                  5.46M+ views across 10 AI product Reels for Singapore’s Videotto.com + Official
+                  5,459,233 verified views across 10 AI product Reels for Singapore’s Videotto.com + Official
                   KOL for Impact Innovator’s League (IIL 2026) + 1st Place Winner at Indosat ×
                   Dicoding DDC.
                 </span>
@@ -1024,7 +1021,7 @@ export default function Creator() {
                 href="/creator/videotto"
                 className="inline-flex h-10 items-center gap-1.5 rounded-full bg-white px-4 text-[13.5px] font-medium text-[#0A0A0A] ring-1 ring-black/12 transition-colors hover:bg-[#f2f1ef]"
               >
-                View 10 Videotto Reels (5.46M+ Views)
+                View 10 Videotto Reels
                 <ArrowUpRight className="size-3.5 opacity-60" />
               </Link>
               <a
@@ -1095,7 +1092,7 @@ export default function Creator() {
                         {creatorProfile.name}
                       </span>
                       <span className="text-[12.5px] text-[#0A0A0A]/65">
-                        @fauzi.noorsyabani · 5.46M+ Views
+                        Tech Content Creator · Indonesia
                       </span>
                     </div>
                   </div>

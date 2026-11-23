@@ -85,7 +85,7 @@ export default function CreatorDetail() {
           <h1 className="mt-2 text-[24px]/[1.2] font-semibold tracking-[-0.02em] text-balance text-[#0A0A0A] sm:text-[28px]/[1.18]">
             {brand.name}
           </h1>
-          <p className="mt-4 text-[16px]/[1.65] text-pretty text-[#0A0A0A]/70">
+          <p className="mt-4 text-justify text-[16px]/[1.65] text-[#0A0A0A]/70">
             {brand.summary}
           </p>
 
@@ -133,20 +133,20 @@ export default function CreatorDetail() {
         </div>
 
         {/* 3. CASE STUDY NARRATIVE: OVERVIEW, CHALLENGE, EXECUTION & DELIVERABLES (600px Column) */}
-        <div className="mx-auto mt-10 max-w-[600px] space-y-6 px-5 text-[15.5px]/[1.65] text-[#0A0A0A]/70 sm:px-0">
+        <div className="mx-auto mt-10 max-w-[600px] space-y-6 px-5 text-justify text-[15.5px]/[1.65] text-[#0A0A0A]/70 sm:px-0">
           <div>
             <h2 className="text-[14px] font-medium text-[#0A0A0A]/60">
               Campaign overview
             </h2>
-            <p className="mt-2 text-pretty">{brand.overview}</p>
+            <p className="mt-2 text-justify">{brand.overview}</p>
           </div>
 
           <div>
             <h2 className="text-[14px] font-medium text-[#0A0A0A]/60">
               The challenge &amp; strategy
             </h2>
-            <p className="mt-2 text-pretty">{brand.challenge}</p>
-            <p className="mt-3 text-pretty">{brand.execution}</p>
+            <p className="mt-2 text-justify">{brand.challenge}</p>
+            <p className="mt-3 text-justify">{brand.execution}</p>
           </div>
 
           <div className="rounded-2xl bg-[#f9f8f6] p-5 ring-1 ring-[#0a0a0a]/8">

@@ -359,7 +359,7 @@ export const creatorBrands: readonly CreatorBrand[] = [
     name: "Videotto.com — Singapore AI Video SaaS Campaign",
     shortName: "Videotto.com (Singapore)",
     clientLocation: "Singapore · Remote UGC Campaign",
-    badge: "5.46M+ Verified Views · 10 Reels",
+    badge: "Singapore AI Startup · 10 Reels Campaign",
     role: "UGC Tech Creator & AI Product Storyteller",
     period: "May — Jul 2026",
     metric: "5,459,233 Total Views (IG · TikTok · FB)",
@@ -676,8 +676,8 @@ export const creatorSpeakingPrints: readonly CreatorSpeakingPrint[] = [
     title: "Videotto.com Singapore UGC Creator Campaign (10 Reels)",
     organizer: "Videotto AI · Reported to Sujay",
     date: "May — Jul 2026",
-    audience: "5.46M+ views",
-    caption: "Videotto 5.46M+ Views",
+    audience: "10 Reels · 30 Uploads",
+    caption: "Videotto AI Singapore",
     image: "/creator/image10.webp",
     brandSlug: "videotto",
     desktopPos: { left: "10px", top: "26px", width: "325px", rotate: "-6deg", zIndex: 1 },
@@ -741,7 +741,7 @@ export const creatorSpeakingPrints: readonly CreatorSpeakingPrint[] = [
 export const creatorTestimonials: readonly CreatorTestimonial[] = [
   {
     quote:
-      "Across 10 consecutive AI product Reels for Singapore-based Videotto.com, Fauzi generated over 5.46 million verified views across Instagram, TikTok, and Facebook—with up to 99% non-follower discovery and 9,600+ interactions on a single video.",
+      "Across 10 consecutive AI product Reels for Singapore-based Videotto.com, Fauzi generated 5,459,233 verified views across Instagram, TikTok, and Facebook—with up to 99% non-follower discovery and 9,600+ interactions on a single video.",
     author: "Videotto.com Campaign Report",
     role: "10-Video Multi-Platform UGC Campaign (Singapore)",
     avatar: "/creator/image10.webp",
