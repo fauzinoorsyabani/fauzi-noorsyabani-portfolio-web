@@ -2,34 +2,29 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import {
   ArrowLeft,
   ArrowUpRight,
-  BarChart3,
   Check,
   ChevronLeft,
   ChevronRight,
   Copy,
   ExternalLink,
-  Eye,
-  FileCheck2,
+  FolderOpen,
   Github,
   Instagram,
   Linkedin,
   Mail,
   MessageCircle,
-  Play,
   Send,
   Sparkles,
   X,
 } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import {
   creatorBrands,
   creatorProfile,
   creatorSpeakingPrints,
-  creatorTenContents,
   creatorTestimonials,
   creatorTools,
   type CreatorBrand,
-  type CreatorReelItem,
 } from "@/data/creator";
 
 /**
@@ -78,6 +73,8 @@ function useActivityHeatmap() {
 }
 
 export default function Creator() {
+  const [, navigate] = useLocation();
+
   // Inline hover preview card for intro links
   const [hoveredIntroKey, setHoveredIntroKey] = useState<string | null>(null);
   const [introMousePos, setIntroMousePos] = useState<{ x: number; y: number }>({ x: 140, y: 0 });
@@ -92,21 +89,11 @@ export default function Creator() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Lightbox modal for Brand Detail
-  const [activeBrandModal, setActiveBrandModal] = useState<CreatorBrand | null>(null);
-
-  // Lightbox modal for Reel Detail (with IG / TikTok / Facebook proof switcher)
-  const [activeReelModal, setActiveReelModal] = useState<CreatorReelItem | null>(null);
-  const [activeProofTab, setActiveProofTab] = useState<"ig" | "tiktok" | "fb">("ig");
-
   // Speaking polaroid active highlight
   const [hoveredPrintId, setHoveredPrintId] = useState<number | null>(null);
 
   // Kind words quote slider
   const [quoteIndex, setQuoteIndex] = useState(0);
-
-  // 10 Contents filter
-  const [contentFilter, setContentFilter] = useState<string>("All (10 Reels)");
 
   // Heatmap tooltip
   const heatmapCols = useActivityHeatmap();
@@ -195,11 +182,6 @@ export default function Creator() {
     setToolPos({ x, y });
     setHoveredTool(name);
   };
-
-  const filteredContents = useMemo(() => {
-    if (contentFilter === "All (10 Reels)") return creatorTenContents;
-    return creatorTenContents.filter((item) => item.category === contentFilter);
-  }, [contentFilter]);
 
   const handleDockSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -352,13 +334,13 @@ export default function Creator() {
                 LinkedIn
               </a>
               . In my recent UGC Creator Campaign with Singapore AI video startup{" "}
-              <a
-                href="#contents"
+              <Link
+                href="/creator/videotto"
                 onMouseEnter={(e) => handleIntroHover("videotto", e)}
                 className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-[4px] transition-colors hover:decoration-[#0A0A0A]"
               >
                 Videotto.com
-              </a>
+              </Link>
               , my 10 short-form Reels generated{" "}
               <span className="font-medium text-[#0A0A0A]">5,459,233 verified views</span> (up to
               99% non-follower discovery).
@@ -366,65 +348,59 @@ export default function Creator() {
 
             <p className="text-pretty">
               I’m also an officially contracted KOL for{" "}
-              <a
-                href="#work"
+              <Link
+                href="/creator/iil-2026"
                 onMouseEnter={(e) => handleIntroHover("iil", e)}
                 className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-[4px] transition-colors hover:decoration-[#0A0A0A]"
               >
                 Impact Innovator’s League (IIL 2026)
-              </a>{" "}
+              </Link>{" "}
               under Indonesia Organizations Chamber &amp; Magna Partners, a 1st Place National
               Winner at{" "}
-              <a
-                href="#work"
+              <Link
+                href="/creator/indosat-ddc"
                 onMouseEnter={(e) => handleIntroHover("indosat", e)}
                 className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-[4px] transition-colors hover:decoration-[#0A0A0A]"
               >
                 Dicoding DDC × Indosat Ooredoo Hutchison
-              </a>{" "}
+              </Link>{" "}
               (20K+ reach), a{" "}
-              <a
-                href="#work"
+              <Link
+                href="/creator/google-gsa"
                 onMouseEnter={(e) => handleIntroHover("google", e)}
                 className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-[4px] transition-colors hover:decoration-[#0A0A0A]"
               >
                 Google Student Ambassador Campus Lead
-              </a>{" "}
+              </Link>{" "}
               (100K+ reach), 1st Place Winner at{" "}
-              <a
-                href="#work"
+              <Link
+                href="/creator/ekraf-bdd"
                 onMouseEnter={(e) => handleIntroHover("ekraf", e)}
                 className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-[4px] transition-colors hover:decoration-[#0A0A0A]"
               >
                 Kemenparekraf #MyBDDInsight
-              </a>{" "}
+              </Link>{" "}
               (44.7K+ reach), and 2nd Place Winner in{" "}
-              <a
-                href="#work"
+              <Link
+                href="/creator/bank-indonesia"
                 onMouseEnter={(e) => handleIntroHover("bi", e)}
                 className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-[4px] transition-colors hover:decoration-[#0A0A0A]"
               >
                 Bank Indonesia’s Bookstagram Challenge
-              </a>
+              </Link>
               .
             </p>
 
             <p className="text-pretty">
-              Browse all{" "}
+              Click any{" "}
               <a
-                href="#contents"
+                href="#work"
                 className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-[4px] transition-colors hover:decoration-[#0A0A0A]"
               >
-                10 published videos &amp; platform analytics
+                brand collaboration below
               </a>{" "}
-              below, inspect the{" "}
-              <a
-                href="#summary-table"
-                className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-[4px] transition-colors hover:decoration-[#0A0A0A]"
-              >
-                campaign performance table
-              </a>
-              , or reach me directly by{" "}
+              to open its dedicated campaign page with all published videos &amp; analytics, or
+              reach me directly by{" "}
               <span
                 className="relative inline-block"
                 onMouseEnter={() => setEmailHovered(true)}
@@ -516,11 +492,11 @@ export default function Creator() {
           </div>
         </div>
 
-        {/* 2. BRAND COLLABORATIONS & OFFICIAL KOL AGREEMENTS (Faiz "Selected work" full-bleed horizontal carousel) */}
+        {/* 2. SELECTED WORK / BRAND COLLABORATIONS CAROUSEL (Each card routes to /creator/:slug) */}
         <section id="work" className="mt-16 scroll-mt-6 sm:mt-24">
           <div className="mx-auto flex max-w-[600px] items-center justify-between px-5 sm:px-0">
             <h2 className="text-[14px] text-[#0A0A0A]/65">
-              Brand collaborations &amp; KOL partnerships
+              Selected brand collaborations (click to view videos)
             </h2>
             <div className="flex items-center gap-2">
               <button
@@ -550,10 +526,9 @@ export default function Creator() {
           >
             {creatorBrands.map((brand: CreatorBrand) => (
               <li key={brand.id} className="shrink-0 snap-start">
-                <button
-                  type="button"
-                  onClick={() => setActiveBrandModal(brand)}
-                  className="group relative block aspect-[1120/746] w-[min(520px,84vw)] cursor-pointer overflow-hidden rounded-[24px] bg-[#f2f1ef] text-left shadow-sm ring-1 ring-black/10 transition-all"
+                <Link
+                  href={`/creator/${brand.slug}`}
+                  className="group relative block aspect-[1120/746] w-[min(520px,84vw)] overflow-hidden rounded-[24px] bg-[#f2f1ef] text-left shadow-sm ring-1 ring-black/10 transition-all"
                 >
                   <img
                     src={brand.image}
@@ -572,317 +547,87 @@ export default function Creator() {
                       />
                       {brand.badge}
                     </span>
-                    <span className="flex size-8 items-center justify-center rounded-full bg-black/55 text-white backdrop-blur-xs transition-transform group-hover:scale-105">
-                      <ArrowUpRight className="size-4" />
+                    <span className="inline-flex items-center gap-1 rounded-full bg-black/60 px-3 py-1 text-[11.5px] font-medium text-white backdrop-blur-xs transition-transform group-hover:scale-105">
+                      Open Page
+                      <ArrowUpRight className="size-3.5" />
                     </span>
                   </div>
 
                   {/* Bottom Details */}
                   <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
                     <p className="text-[12px] font-medium tracking-wide text-white/75 uppercase">
-                      {brand.role} · {brand.period}
+                      {brand.role} · {brand.contentCountLabel}
                     </p>
                     <h3 className="mt-1 text-[20px] font-semibold tracking-tight text-white sm:text-[22px]">
-                      {brand.name}
+                      {brand.shortName}
                     </h3>
                     <p className="mt-1.5 line-clamp-2 text-[13.5px] leading-relaxed text-white/85">
                       {brand.summary}
                     </p>
                   </div>
-                </button>
+                </Link>
               </li>
             ))}
           </ul>
         </section>
 
-        {/* 3. 10 PUBLISHED CAMPAIGN VIDEOS & MULTI-PLATFORM ANALYTICS (Faiz "Latest videos" 960px breakout 3-column grid) */}
-        <section id="contents" className="mt-16 scroll-mt-6 sm:mt-24">
-          <div className="mx-auto max-w-[600px] px-5 sm:px-0">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div>
-                <h2 className="text-[14px] text-[#0A0A0A]/65">
-                  10 Published campaign videos (Videotto.com Singapore)
-                </h2>
-              </div>
-              <a
-                href={creatorProfile.instagram}
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center gap-1 text-[14px] text-[#0A0A0A]/65 transition-colors hover:text-[#0A0A0A]"
-              >
-                @fauzi.noorsyabani
-                <ArrowUpRight className="size-3.5" />
-              </a>
-            </div>
-
-            <p className="mt-2 text-[14px] leading-relaxed text-[#0A0A0A]/65">
-              Every video below was scripted, produced, and cross-posted across{" "}
-              <strong className="font-medium text-[#0A0A0A]">Instagram Reels, TikTok, and Facebook</strong>{" "}
-              for Singapore AI startup{" "}
-              <strong className="font-medium text-[#0A0A0A]">Videotto.com</strong>. Click any card
-              to inspect the raw Meta Insights &amp; TikTok Studio screenshots or open the live
-              video directly.
-            </p>
-
-            {/* Category Filter Pills */}
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {[
-                "All (10 Reels)",
-                "High-Retention (>500K)",
-                "Multi-Platform Viral",
-                "Videotto AI Campaign",
-              ].map((tab) => {
-                const active = contentFilter === tab;
-                return (
-                  <button
-                    key={tab}
-                    type="button"
-                    onClick={() => setContentFilter(tab)}
-                    className={`cursor-pointer rounded-full px-3 py-1 text-[13px] font-medium transition-colors ${
-                      active
-                        ? "bg-[#0A0A0A] text-white"
-                        : "bg-[#f2f1ef] text-[#0A0A0A]/70 hover:bg-[#e5e4e0] hover:text-[#0A0A0A]"
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* 960px Breakout Grid (3 columns on desktop, 2 on tablet, 1 on mobile — exact Faiz Latest Videos layout) */}
-          <div className="mx-auto mt-5 max-w-[960px] px-5 sm:px-6">
-            <ul className="grid grid-cols-1 gap-y-9 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-11 lg:grid-cols-3">
-              {filteredContents.map((item: CreatorReelItem) => (
-                <li key={item.id} className="flex flex-col">
-                  <div className="group flex flex-col gap-3">
-                    {/* Thumbnail Card with Actual IG Insights Screenshot */}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setActiveProofTab("ig");
-                        setActiveReelModal(item);
-                      }}
-                      className="relative block aspect-video w-full cursor-pointer overflow-hidden rounded-xl bg-[#f2f1ef] text-left"
-                    >
-                      <img
-                        src={item.igProofImage}
-                        alt={item.title}
-                        loading="lazy"
-                        className="size-full object-cover object-center transition-transform duration-300 ease-out group-hover:scale-[1.03]"
-                      />
-                      <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/10 ring-inset" />
-
-                      {/* Top-left Reel Number + Verified Views Pill */}
-                      <span className="absolute top-2 left-2 inline-flex items-center gap-1.5 rounded-md bg-white/95 px-2 py-0.5 text-[11px] font-semibold text-[#0A0A0A] shadow-xs backdrop-blur-xs">
-                        <span className="font-mono text-[#ff6308]">Reel #{item.number}</span>
-                        <span>·</span>
-                        <span className="text-[#1a7f2b]">{item.igViews} IG Views</span>
-                      </span>
-
-                      {/* Bottom-right Total Views badge (Exact Faiz YouTube duration badge style) */}
-                      <span className="absolute right-2 bottom-2 inline-flex items-center gap-1 rounded-md bg-black/80 px-2 py-0.5 text-[12px] font-medium text-white tabular-nums backdrop-blur-xs">
-                        <Eye className="size-3 text-[#28c840]" />
-                        {item.totalViews}
-                      </span>
-                    </button>
-
-                    {/* Content Meta Row (Avatar + Title + Direct Platform Links) */}
-                    <div className="flex items-start gap-3">
-                      <img
-                        src={creatorProfile.avatar}
-                        alt=""
-                        className="size-9 shrink-0 rounded-full bg-[#f2f1ef] object-cover ring-1 ring-black/10"
-                      />
-                      <div className="flex min-w-0 flex-1 flex-col gap-1">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setActiveProofTab("ig");
-                            setActiveReelModal(item);
-                          }}
-                          className="cursor-pointer text-left line-clamp-2 text-[14.5px] leading-[1.38] font-medium text-[#0A0A0A] decoration-[#0A0A0A]/30 decoration-1 underline-offset-[3px] group-hover:underline"
-                        >
-                          {item.title}
-                        </button>
-                        <p className="line-clamp-2 text-[12.5px] leading-snug text-[#0A0A0A]/60">
-                          {item.igInteractions} · {item.nonFollowerReach}
-                        </p>
-
-                        {/* Direct Watch Links for IG, TikTok, FB + Analytics Proof button */}
-                        <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-                          <a
-                            href={item.igUrl}
-                            target="_blank"
-                            rel="noopener"
-                            className="inline-flex items-center gap-1 rounded-md bg-[#f2f1ef] px-2 py-0.5 text-[11.5px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#0A0A0A] hover:text-white"
-                          >
-                            <Play className="size-2.5 fill-current" />
-                            IG Reel
-                          </a>
-                          <a
-                            href={item.tiktokUrl}
-                            target="_blank"
-                            rel="noopener"
-                            className="inline-flex items-center gap-1 rounded-md bg-[#f2f1ef] px-2 py-0.5 text-[11.5px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#0A0A0A] hover:text-white"
-                          >
-                            <Play className="size-2.5 fill-current" />
-                            TikTok
-                          </a>
-                          {item.fbUrl ? (
-                            <a
-                              href={item.fbUrl}
-                              target="_blank"
-                              rel="noopener"
-                              className="inline-flex items-center gap-1 rounded-md bg-[#f2f1ef] px-2 py-0.5 text-[11.5px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#0A0A0A] hover:text-white"
-                            >
-                              <Play className="size-2.5 fill-current" />
-                              FB Reel
-                            </a>
-                          ) : null}
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setActiveProofTab("ig");
-                              setActiveReelModal(item);
-                            }}
-                            className="inline-flex cursor-pointer items-center gap-1 rounded-md bg-[#ff6308]/10 px-2 py-0.5 text-[11.5px] font-medium text-[#ff6308] transition-colors hover:bg-[#ff6308] hover:text-white"
-                          >
-                            <BarChart3 className="size-2.5" />
-                            Insights
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* 4. CAMPAIGN PERFORMANCE SUMMARY TABLE (Exact Bonus Calculation Breakdown for Videotto + IIL LoA Proof) */}
-        <section id="summary-table" className="mx-auto mt-16 max-w-[600px] scroll-mt-6 px-5 sm:mt-24 sm:px-0">
+        {/* 3. COLLABORATION DIRECTORY (Clean Per-Partnership Index — Click to open dedicated page with all videos) */}
+        <section id="directory" className="mx-auto mt-16 max-w-[600px] scroll-mt-6 px-5 sm:mt-24 sm:px-0">
           <div className="flex items-center justify-between">
             <h2 className="text-[14px] text-[#0A0A0A]/65">
-              Videotto campaign summary — verified performance
+              Campaign archive by brand partnership
             </h2>
-            <span className="text-[12.5px] font-medium text-[#1a7f2b] tabular-nums">
-              5,459,233 Total Views
+            <span className="text-[13px] text-[#0A0A0A]/65 tabular-nums">
+              6 partnerships · 15+ case studies &amp; reels
             </span>
           </div>
 
-          <div className="mt-3 overflow-hidden rounded-2xl border border-[#0a0a0a]/10 bg-[#f9f8f6]">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-[13px] tabular-nums">
-                <thead>
-                  <tr className="border-b border-[#0a0a0a]/8 bg-[#f2f1ef]/70 text-[12px] text-[#0A0A0A]/65">
-                    <th className="py-2.5 pr-2 pl-4 font-medium">Video</th>
-                    <th className="px-2 py-2.5 font-medium">Instagram</th>
-                    <th className="px-2 py-2.5 font-medium">TikTok</th>
-                    <th className="px-2 py-2.5 font-medium">Facebook</th>
-                    <th className="py-2.5 pr-4 pl-2 text-right font-medium">Watch Links</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[#0a0a0a]/6">
-                  {creatorTenContents.map((reel) => (
-                    <tr
-                      key={reel.id}
-                      onClick={() => {
-                        setActiveProofTab("ig");
-                        setActiveReelModal(reel);
-                      }}
-                      className="cursor-pointer transition-colors hover:bg-black/[0.03]"
-                    >
-                      <td className="py-2.5 pr-2 pl-4 font-medium text-[#0A0A0A]">
-                        Reel #{reel.number}
-                      </td>
-                      <td className="px-2 py-2.5 font-medium text-[#1a7f2b]">{reel.igViews}</td>
-                      <td className="px-2 py-2.5 text-[#0A0A0A]/75">{reel.tiktokViews}</td>
-                      <td className="px-2 py-2.5 text-[#0A0A0A]/75">{reel.fbViews}</td>
-                      <td
-                        className="py-2.5 pr-4 pl-2 text-right"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <div className="inline-flex items-center gap-2 text-[12px]">
-                          <a
-                            href={reel.igUrl}
-                            target="_blank"
-                            rel="noopener"
-                            className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-2 hover:decoration-[#0A0A0A]"
-                          >
-                            IG
-                          </a>
-                          <a
-                            href={reel.tiktokUrl}
-                            target="_blank"
-                            rel="noopener"
-                            className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-2 hover:decoration-[#0A0A0A]"
-                          >
-                            TT
-                          </a>
-                          {reel.fbUrl ? (
-                            <a
-                              href={reel.fbUrl}
-                              target="_blank"
-                              rel="noopener"
-                              className="font-medium text-[#0A0A0A] underline decoration-[#0A0A0A]/30 underline-offset-2 hover:decoration-[#0A0A0A]"
-                            >
-                              FB
-                            </a>
-                          ) : null}
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-                <tfoot>
-                  <tr className="border-t border-[#0a0a0a]/12 bg-[#f2f1ef] font-semibold text-[#0A0A0A]">
-                    <td className="py-3 pr-2 pl-4">Total (10 Reels)</td>
-                    <td className="px-2 py-3 text-[#1a7f2b]">5,443,039</td>
-                    <td className="px-2 py-3">6,419</td>
-                    <td className="px-2 py-3">9,775</td>
-                    <td className="py-3 pr-4 pl-2 text-right text-[#ff6308]">5,459,233</td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-          </div>
+          <ul className="mt-3 divide-y divide-[#0a0a0a]/6 border-t border-[#0a0a0a]/6">
+            {creatorBrands.map((brand) => (
+              <li key={brand.id}>
+                <Link
+                  href={`/creator/${brand.slug}`}
+                  className="group flex flex-col justify-between gap-2 py-4 transition-colors sm:flex-row sm:items-center"
+                >
+                  <div className="flex items-start gap-3.5">
+                    <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#f2f1ef] ring-1 ring-black/10">
+                      <img
+                        src={brand.image}
+                        alt=""
+                        className="size-full object-cover"
+                      />
+                    </span>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-medium text-[#0A0A0A] transition-colors group-hover:text-[#ff6308]">
+                          {brand.shortName}
+                        </span>
+                        <span className="rounded-full bg-[#f2f1ef] px-2 py-0.5 text-[11px] font-medium text-[#0A0A0A]/75">
+                          {brand.contentCountLabel}
+                        </span>
+                      </div>
+                      <p className="mt-0.5 text-[13.5px] text-[#0A0A0A]/65">
+                        {brand.role} · {brand.period}
+                      </p>
+                    </div>
+                  </div>
 
-          {/* Official KOL Agreement Highlight Card (IIL 2026) */}
-          <div className="mt-4 flex flex-col gap-3 rounded-2xl border border-[#0a0a0a]/10 bg-white p-4 shadow-2xs sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-start gap-3">
-              <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#B91C1C]/10 text-[#B91C1C]">
-                <FileCheck2 className="size-5" />
-              </span>
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="text-[14.5px] font-semibold text-[#0A0A0A]">
-                    Impact Innovator’s League (IIL 2026) — Official KOL Contract
-                  </h3>
-                  <span className="rounded-full bg-[#B91C1C]/10 px-2 py-0.5 text-[11px] font-medium text-[#B91C1C]">
-                    LoA No. 116/IOC/LOA/NTW/VI/2026
-                  </span>
-                </div>
-                <p className="mt-0.5 text-[13px] text-[#0A0A0A]/65">
-                  Signed between Indonesia Organizations Chamber (Magna Partners) &amp; Fauzi
-                  Noorsyabani (@fauzi.noorsyabani) for Instagram Reels, Story amplification, and
-                  referral conversion tracking.
-                </p>
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => setActiveBrandModal(creatorBrands[1])}
-              className="shrink-0 cursor-pointer rounded-full bg-[#f2f1ef] px-3.5 py-1.5 text-[12.5px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#0A0A0A] hover:text-white"
-            >
-              View LoA Details
-            </button>
-          </div>
+                  <div className="flex items-center justify-between gap-3 pl-13.5 sm:justify-end sm:pl-0">
+                    <span className="text-[13px] font-medium text-[#1a7f2b] tabular-nums">
+                      {brand.totalViewsSummary}
+                    </span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-[#f2f1ef] px-2.5 py-1 text-[12px] font-medium text-[#0A0A0A] transition-colors group-hover:bg-[#0A0A0A] group-hover:text-white">
+                      <FolderOpen className="size-3" />
+                      View contents
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
-        {/* 5. SPEAKING, WORKSHOPS & CAMPAIGN MILESTONES (Faiz Polaroid Stack + Synchronized Hover List) */}
+        {/* 4. SPEAKING, WORKSHOPS & CAMPAIGN MILESTONES (Faiz Polaroid Stack + Synchronized Hover List) */}
         <section id="speaking" className="mt-20 scroll-mt-6 sm:mt-28">
           <div className="mx-auto flex max-w-[600px] items-center justify-between px-5 sm:px-0">
             <h2 className="text-[14px] text-[#0A0A0A]/65">
@@ -900,6 +645,7 @@ export default function Creator() {
               return (
                 <div
                   key={item.id}
+                  onClick={() => navigate(`/creator/${item.brandSlug}`)}
                   onMouseEnter={() => setHoveredPrintId(item.id)}
                   onMouseLeave={() => setHoveredPrintId(null)}
                   style={{
@@ -946,9 +692,10 @@ export default function Creator() {
           <ul className="no-scrollbar -mt-1 flex snap-x snap-mandatory items-center gap-5 overflow-x-auto overscroll-x-contain px-5 py-8 lg:hidden">
             {creatorSpeakingPrints.map((item) => (
               <li key={item.id} className="shrink-0 snap-start">
-                <div
+                <Link
+                  href={`/creator/${item.brandSlug}`}
                   style={{ transform: `rotate(${item.mobileRotate})` }}
-                  className="w-[min(260px,72vw)] rounded-[2px] bg-[#f7f3ea] p-3 pb-0 shadow-[0_0_0_1px_#0000000d,0_2px_4px_#0000000f,0_14px_28px_-8px_#00000038]"
+                  className="block w-[min(260px,72vw)] rounded-[2px] bg-[#f7f3ea] p-3 pb-0 shadow-[0_0_0_1px_#0000000d,0_2px_4px_#0000000f,0_14px_28px_-8px_#00000038]"
                 >
                   <span className="relative block aspect-[3/2] overflow-hidden bg-[#f2f1ef]">
                     <img
@@ -966,7 +713,7 @@ export default function Creator() {
                     <span className="truncate text-[21px] font-semibold">{item.caption}</span>
                     <span className="shrink-0 text-[16px] text-[#1f2a44]/75">{item.date}</span>
                   </span>
-                </div>
+                </Link>
               </li>
             ))}
           </ul>
@@ -979,6 +726,7 @@ export default function Creator() {
                 return (
                   <li
                     key={item.id}
+                    onClick={() => navigate(`/creator/${item.brandSlug}`)}
                     onMouseEnter={() => setHoveredPrintId(item.id)}
                     onMouseLeave={() => setHoveredPrintId(null)}
                     className={`grid cursor-pointer grid-cols-1 items-baseline gap-0.5 py-3 transition-colors sm:grid-cols-[1fr_auto] sm:gap-6 ${
@@ -999,7 +747,7 @@ export default function Creator() {
           </div>
         </section>
 
-        {/* 6. WHY TEHC HOUSE / KIND WORDS (Faiz "Kind words" blur-transition quote slider) */}
+        {/* 5. WHY TEHC HOUSE / KIND WORDS (Faiz "Kind words" blur-transition quote slider) */}
         <section className="mx-auto mt-16 max-w-[600px] px-5 sm:mt-24 sm:px-0">
           <div className="flex items-center justify-between">
             <h2 className="text-[14px] text-[#0A0A0A]/65">
@@ -1063,7 +811,7 @@ export default function Creator() {
           </div>
         </section>
 
-        {/* 7. SHIPPING & CREATING IN PUBLIC (Faiz orange GitHub / Content activity heatmap) */}
+        {/* 6. SHIPPING & CREATING IN PUBLIC (Faiz orange GitHub / Content activity heatmap) */}
         <section className="mx-auto mt-16 max-w-[600px] px-5 sm:mt-24 sm:px-0">
           <div className="flex items-center justify-between">
             <h2 className="text-[14px] text-[#0A0A0A]/65">
@@ -1149,7 +897,7 @@ export default function Creator() {
           </div>
         </section>
 
-        {/* 8. TOOLS I USE FOR CONTENT & ANALYTICS (Faiz "Tools I use" inline squircle list with floating preview) */}
+        {/* 7. TOOLS I USE FOR CONTENT & ANALYTICS (Faiz "Tools I use" inline squircle list with floating preview) */}
         <section className="mx-auto mt-16 max-w-[600px] px-5 sm:mt-24 sm:px-0">
           <div className="flex items-center justify-between">
             <h2 className="text-[14px] text-[#0A0A0A]/65">
@@ -1215,7 +963,7 @@ export default function Creator() {
           </div>
         </section>
 
-        {/* 9. MONTHLY CONTENT WORKFLOW FOR TEHC HOUSE (Tailored Value Prop Card) */}
+        {/* 8. MONTHLY CONTENT WORKFLOW FOR TEHC HOUSE (Tailored Value Prop Card) */}
         <section className="mx-auto mt-16 max-w-[600px] px-5 sm:mt-24 sm:px-0">
           <div className="rounded-[22px] bg-[#f9f8f6] p-6 ring-1 ring-[#0a0a0a]/8">
             <div className="flex items-center justify-between gap-2">
@@ -1272,15 +1020,13 @@ export default function Creator() {
                 <Mail className="size-4" />
                 Email Fauzi
               </a>
-              <a
-                href={creatorProfile.instagram}
-                target="_blank"
-                rel="noopener"
+              <Link
+                href="/creator/videotto"
                 className="inline-flex h-10 items-center gap-1.5 rounded-full bg-white px-4 text-[13.5px] font-medium text-[#0A0A0A] ring-1 ring-black/12 transition-colors hover:bg-[#f2f1ef]"
               >
-                Instagram (@fauzi.noorsyabani)
-                <ExternalLink className="size-3.5 opacity-60" />
-              </a>
+                View 10 Videotto Reels (5.46M+ Views)
+                <ArrowUpRight className="size-3.5 opacity-60" />
+              </Link>
               <a
                 href="/Fauzi_Noorsyabani_CV.pdf"
                 target="_blank"
@@ -1294,7 +1040,7 @@ export default function Creator() {
           </div>
         </section>
 
-        {/* 10. MINIMAL FOOTER (Faiz exact footer) */}
+        {/* 9. MINIMAL FOOTER (Faiz exact footer) */}
         <footer className="mx-auto mt-20 max-w-[600px] border-t border-[#0a0a0a]/6 px-5 pt-6 text-[13px] text-[#0A0A0A]/65 tabular-nums sm:mt-[120px] sm:px-0">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span>© 2026 Fauzi Noorsyabani · @fauzi.noorsyabani</span>
@@ -1307,226 +1053,6 @@ export default function Creator() {
           </div>
         </footer>
       </main>
-
-      {/* MODAL 1: MULTI-PLATFORM REEL INSIGHTS & DIRECT VIDEO LINKS */}
-      {activeReelModal ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setActiveReelModal(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0A0A0A]/80 p-4 backdrop-blur-xs sm:p-6"
-        >
-          <button
-            type="button"
-            onClick={() => setActiveReelModal(null)}
-            className="absolute top-4 right-4 z-10 inline-flex cursor-pointer items-center gap-2 rounded-full bg-white/15 px-3.5 py-2 text-[14px] font-medium text-white transition-colors hover:bg-white/25"
-          >
-            Close
-            <X className="size-4" />
-          </button>
-
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[90dvh] w-full max-w-[760px] overflow-y-auto rounded-[24px] bg-white shadow-2xl ring-1 ring-black/10"
-          >
-            {/* Platform Screenshot Switcher Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/8 bg-[#f9f8f6] px-5 py-3">
-              <div className="flex items-center gap-2">
-                <span className="rounded-md bg-[#ff6308] px-2 py-0.5 font-mono text-[12px] font-semibold text-white">
-                  Reel #{activeReelModal.number}
-                </span>
-                <span className="text-[13px] font-medium text-[#0A0A0A]/70">
-                  {activeReelModal.partner} · {activeReelModal.date}
-                </span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => setActiveProofTab("ig")}
-                  className={`cursor-pointer rounded-full px-3 py-1 text-[12px] font-medium transition-colors ${
-                    activeProofTab === "ig"
-                      ? "bg-[#0A0A0A] text-white"
-                      : "bg-white text-[#0A0A0A]/70 ring-1 ring-black/10 hover:text-[#0A0A0A]"
-                  }`}
-                >
-                  Instagram ({activeReelModal.igViews})
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveProofTab("tiktok")}
-                  className={`cursor-pointer rounded-full px-3 py-1 text-[12px] font-medium transition-colors ${
-                    activeProofTab === "tiktok"
-                      ? "bg-[#0A0A0A] text-white"
-                      : "bg-white text-[#0A0A0A]/70 ring-1 ring-black/10 hover:text-[#0A0A0A]"
-                  }`}
-                >
-                  TikTok Studio ({activeReelModal.tiktokViews})
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveProofTab("fb")}
-                  className={`cursor-pointer rounded-full px-3 py-1 text-[12px] font-medium transition-colors ${
-                    activeProofTab === "fb"
-                      ? "bg-[#0A0A0A] text-white"
-                      : "bg-white text-[#0A0A0A]/70 ring-1 ring-black/10 hover:text-[#0A0A0A]"
-                  }`}
-                >
-                  Facebook ({activeReelModal.fbViews})
-                </button>
-              </div>
-            </div>
-
-            {/* Active Platform Analytics Screenshot */}
-            <div className="relative aspect-[16/9] w-full bg-[#18181b]">
-              <img
-                src={
-                  activeProofTab === "ig"
-                    ? activeReelModal.igProofImage
-                    : activeProofTab === "tiktok"
-                      ? activeReelModal.tiktokProofImage
-                      : activeReelModal.fbProofImage
-                }
-                alt={activeReelModal.title}
-                className="size-full object-contain"
-              />
-            </div>
-
-            {/* Reel Details & Direct Watch Links */}
-            <div className="p-6">
-              <div className="flex flex-wrap items-center gap-2 text-[12.5px] font-medium text-[#1a7f2b]">
-                <span>{activeReelModal.totalViews} Total Cross-Platform</span>
-                <span>·</span>
-                <span>{activeReelModal.igInteractions}</span>
-                <span>·</span>
-                <span>{activeReelModal.nonFollowerReach}</span>
-              </div>
-              <h3 className="mt-1.5 text-[20px] font-semibold tracking-tight text-[#0A0A0A]">
-                {activeReelModal.title}
-              </h3>
-              <p className="mt-2 text-[14.5px] leading-relaxed text-[#0A0A0A]/75">
-                {activeReelModal.hook}
-              </p>
-
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-black/8 pt-4">
-                <div className="flex flex-wrap items-center gap-2">
-                  <a
-                    href={activeReelModal.igUrl}
-                    target="_blank"
-                    rel="noopener"
-                    className="inline-flex h-10 items-center gap-2 rounded-full bg-[#0A0A0A] px-4 text-[13px] font-medium text-white transition-transform active:scale-[0.97]"
-                  >
-                    Watch on Instagram
-                    <ArrowUpRight className="size-4" />
-                  </a>
-                  <a
-                    href={activeReelModal.tiktokUrl}
-                    target="_blank"
-                    rel="noopener"
-                    className="inline-flex h-10 items-center gap-2 rounded-full bg-[#f2f1ef] px-4 text-[13px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#e5e4e0]"
-                  >
-                    Watch on TikTok
-                    <ArrowUpRight className="size-4" />
-                  </a>
-                  {activeReelModal.fbUrl ? (
-                    <a
-                      href={activeReelModal.fbUrl}
-                      target="_blank"
-                      rel="noopener"
-                      className="inline-flex h-10 items-center gap-2 rounded-full bg-[#f2f1ef] px-4 text-[13px] font-medium text-[#0A0A0A] transition-colors hover:bg-[#e5e4e0]"
-                    >
-                      Watch on Facebook
-                      <ArrowUpRight className="size-4" />
-                    </a>
-                  ) : null}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setActiveReelModal(null)}
-                  className="cursor-pointer text-[13.5px] font-medium text-[#0A0A0A]/60 hover:text-[#0A0A0A]"
-                >
-                  Done
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
-
-      {/* MODAL 2: BRAND COLLABORATION / KOL AGREEMENT LIGHTBOX */}
-      {activeBrandModal ? (
-        <div
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setActiveBrandModal(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0A0A0A]/80 p-4 backdrop-blur-xs sm:p-8"
-        >
-          <button
-            type="button"
-            onClick={() => setActiveBrandModal(null)}
-            className="absolute top-4 right-4 z-10 inline-flex cursor-pointer items-center gap-2 rounded-full bg-white/15 px-3.5 py-2 text-[14px] font-medium text-white transition-colors hover:bg-white/25"
-          >
-            Close
-            <X className="size-4" />
-          </button>
-
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-h-[90dvh] w-full max-w-[680px] overflow-y-auto rounded-[24px] bg-white shadow-2xl ring-1 ring-black/10"
-          >
-            <div className="relative aspect-[16/9] w-full bg-[#f2f1ef]">
-              <img
-                src={activeBrandModal.image}
-                alt={activeBrandModal.name}
-                className="size-full object-cover object-top"
-              />
-              <span className="absolute top-4 left-4 rounded-full bg-black/75 px-3 py-1 text-[12px] font-medium text-white backdrop-blur-xs">
-                {activeBrandModal.metric}
-              </span>
-            </div>
-            <div className="p-6">
-              <p className="text-[13px] font-medium text-[#0A0A0A]/60">
-                {activeBrandModal.role} · {activeBrandModal.period}
-              </p>
-              <h3 className="mt-1 text-[20px] font-semibold tracking-tight text-[#0A0A0A]">
-                {activeBrandModal.name}
-              </h3>
-              <p className="mt-2.5 text-[14.5px] leading-relaxed text-[#0A0A0A]/75">
-                {activeBrandModal.summary}
-              </p>
-
-              {activeBrandModal.deliverables && activeBrandModal.deliverables.length > 0 ? (
-                <ul className="mt-4 space-y-2 rounded-xl bg-[#f9f8f6] p-4 text-[13.5px] text-[#0A0A0A]/80 ring-1 ring-black/6">
-                  {activeBrandModal.deliverables.map((d, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[#ff6308]" />
-                      <span>{d}</span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-black/8 pt-4">
-                <a
-                  href={activeBrandModal.url}
-                  target="_blank"
-                  rel="noopener"
-                  className="inline-flex h-10 items-center gap-2 rounded-full bg-[#0A0A0A] px-4 text-[13.5px] font-medium text-white transition-transform active:scale-[0.97]"
-                >
-                  Open Live Link / Proof
-                  <ArrowUpRight className="size-4" />
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setActiveBrandModal(null)}
-                  className="cursor-pointer text-[13.5px] font-medium text-[#0A0A0A]/60 hover:text-[#0A0A0A]"
-                >
-                  Done
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
 
       {/* FLOATING BOTTOM-LEFT CONTACT DOCK (Exact Faiz Intifada Contact Card Dock) */}
       <div className="fixed bottom-6 left-6 z-40">

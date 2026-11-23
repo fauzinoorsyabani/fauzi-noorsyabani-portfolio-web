@@ -7,6 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
 import Creator from "./pages/Creator";
+import CreatorDetail from "./pages/CreatorDetail";
 
 
 function Router() {
@@ -14,7 +15,9 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/creator"} component={Creator} />
+      <Route path={"/creator/:slug"} component={CreatorDetail} />
       <Route path={"/content"} component={Creator} />
+      <Route path={"/content/:slug"} component={CreatorDetail} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
