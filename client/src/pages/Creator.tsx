@@ -84,10 +84,9 @@ export default function Creator() {
   const [emailCopied, setEmailCopied] = useState(false);
   const [emailHovered, setEmailHovered] = useState(false);
 
-  // Selected work / brand carousel ref
-  const carouselRef = useRef<HTMLUListElement | null>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+  // Selected work / brand carousel ref & continuous marquee state
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [carouselPaused, setCarouselPaused] = useState(false);
 
   // Speaking polaroid active highlight
   const [hoveredPrintId, setHoveredPrintId] = useState<number | null>(null);
@@ -121,29 +120,35 @@ export default function Creator() {
     document.title = "Fauzi Noorsyabani — Tech Content Creator & KOL Portfolio";
   }, []);
 
-  const updateCarouselButtons = () => {
-    const el = carouselRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 12);
-    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 12);
-  };
-
+  // Continuous smooth right-to-left animation that pauses on hover / touch
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
-    updateCarouselButtons();
-    el.addEventListener("scroll", updateCarouselButtons, { passive: true });
-    window.addEventListener("resize", updateCarouselButtons);
-    return () => {
-      el.removeEventListener("scroll", updateCarouselButtons);
-      window.removeEventListener("resize", updateCarouselButtons);
+    let rafId = 0;
+    let lastTime = performance.now();
+    const speedPxPerSec = 58; // smooth continuous motion from right to left
+
+    const step = (now: number) => {
+      const dt = Math.min((now - lastTime) / 1000, 0.1);
+      lastTime = now;
+      if (!carouselPaused && el) {
+        el.scrollLeft += speedPxPerSec * dt;
+        const halfWidth = el.scrollWidth / 2;
+        if (halfWidth > 0 && el.scrollLeft >= halfWidth) {
+          el.scrollLeft -= halfWidth;
+        }
+      }
+      rafId = requestAnimationFrame(step);
     };
-  }, []);
+
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, [carouselPaused]);
 
   const scrollCarousel = (dir: -1 | 1) => {
     const el = carouselRef.current;
     if (!el) return;
-    const step = Math.min(540, el.clientWidth * 0.82);
+    const step = Math.min(520, el.clientWidth * 0.8);
     el.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
@@ -489,7 +494,7 @@ export default function Creator() {
           </div>
         </div>
 
-        {/* 2. SELECTED WORK / BRAND COLLABORATIONS CAROUSEL (Each card routes to /creator/:slug) */}
+        {/* 2. SELECTED WORK / BRAND COLLABORATIONS CAROUSEL (Auto-sliding right-to-left, pauses on hover) */}
         <section id="work" className="mt-16 scroll-mt-6 sm:mt-24">
           <div className="mx-auto flex max-w-[600px] items-center justify-between px-5 sm:px-0">
             <h2 className="text-[14px] text-[#0A0A0A]/65">
@@ -499,73 +504,77 @@ export default function Creator() {
               <button
                 type="button"
                 onClick={() => scrollCarousel(-1)}
-                disabled={!canScrollLeft}
                 aria-label="Previous brand collaboration"
-                className="flex size-8 items-center justify-center rounded-full text-[#0A0A0A]/65 transition-colors hover:bg-[#0a0a0a]/5 hover:text-[#0A0A0A] disabled:pointer-events-none disabled:opacity-30"
+                className="flex size-8 cursor-pointer items-center justify-center rounded-full text-[#0A0A0A]/65 transition-colors hover:bg-[#0a0a0a]/5 hover:text-[#0A0A0A]"
               >
                 <ChevronLeft className="size-4" />
               </button>
               <button
                 type="button"
                 onClick={() => scrollCarousel(1)}
-                disabled={!canScrollRight}
                 aria-label="Next brand collaboration"
-                className="flex size-8 items-center justify-center rounded-full text-[#0A0A0A]/65 transition-colors hover:bg-[#0a0a0a]/5 hover:text-[#0A0A0A] disabled:pointer-events-none disabled:opacity-30"
+                className="flex size-8 cursor-pointer items-center justify-center rounded-full text-[#0A0A0A]/65 transition-colors hover:bg-[#0a0a0a]/5 hover:text-[#0A0A0A]"
               >
                 <ChevronRight className="size-4" />
               </button>
             </div>
           </div>
 
-          <ul
+          <div
             ref={carouselRef}
-            className="no-scrollbar mt-3 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-5 py-2 sm:gap-6 sm:px-[max(24px,calc((100vw-600px)/2))]"
+            onMouseEnter={() => setCarouselPaused(true)}
+            onMouseLeave={() => setCarouselPaused(false)}
+            onTouchStart={() => setCarouselPaused(true)}
+            onTouchEnd={() => setCarouselPaused(false)}
+            className="no-scrollbar mt-3 overflow-x-auto overscroll-x-contain py-2"
           >
-            {creatorBrands.map((brand: CreatorBrand) => (
-              <li key={brand.id} className="shrink-0 snap-start">
-                <Link
-                  href={`/creator/${brand.slug}`}
-                  className="group relative block aspect-[1120/746] w-[min(520px,84vw)] overflow-hidden rounded-[24px] bg-[#f2f1ef] text-left shadow-sm ring-1 ring-black/10 transition-all"
-                >
-                  <img
-                    src={brand.image}
-                    alt={brand.name}
-                    loading="lazy"
-                    className="size-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.03]"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+            <ul className="flex w-max gap-4 px-5 sm:gap-6">
+              {[...creatorBrands, ...creatorBrands].map((brand: CreatorBrand, idx) => (
+                <li key={`${brand.id}-${idx}`} className="shrink-0">
+                  <Link
+                    href={`/creator/${brand.slug}`}
+                    className="group relative block aspect-[1120/746] w-[min(520px,84vw)] overflow-hidden rounded-[24px] bg-[#f2f1ef] text-left shadow-sm ring-1 ring-black/10 transition-all"
+                  >
+                    <img
+                      src={brand.image}
+                      alt={brand.name}
+                      loading="lazy"
+                      className="size-full object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
 
-                  {/* Top Badge */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-[12px] font-medium text-[#0A0A0A] shadow-sm backdrop-blur-xs">
-                      <span
-                        className="size-2 rounded-full"
-                        style={{ backgroundColor: brand.accent }}
-                      />
-                      {brand.badge}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-black/60 px-3 py-1 text-[11.5px] font-medium text-white backdrop-blur-xs transition-transform group-hover:scale-105">
-                      Open Page
-                      <ArrowUpRight className="size-3.5" />
-                    </span>
-                  </div>
+                    {/* Top Badge */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-[12px] font-medium text-[#0A0A0A] shadow-sm backdrop-blur-xs">
+                        <span
+                          className="size-2 rounded-full"
+                          style={{ backgroundColor: brand.accent }}
+                        />
+                        {brand.badge}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-full bg-black/60 px-3 py-1 text-[11.5px] font-medium text-white backdrop-blur-xs transition-transform group-hover:scale-105">
+                        Open Page
+                        <ArrowUpRight className="size-3.5" />
+                      </span>
+                    </div>
 
-                  {/* Bottom Details */}
-                  <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
-                    <p className="text-[12px] font-medium tracking-wide text-white/75 uppercase">
-                      {brand.role} · {brand.contentCountLabel}
-                    </p>
-                    <h3 className="mt-1 text-[20px] font-semibold tracking-tight text-white sm:text-[22px]">
-                      {brand.shortName}
-                    </h3>
-                    <p className="mt-1.5 line-clamp-2 text-[13.5px] leading-relaxed text-white/85">
-                      {brand.summary}
-                    </p>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                    {/* Bottom Details */}
+                    <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
+                      <p className="text-[12px] font-medium tracking-wide text-white/75 uppercase">
+                        {brand.role} · {brand.contentCountLabel}
+                      </p>
+                      <h3 className="mt-1 text-[20px] font-semibold tracking-tight text-white sm:text-[22px]">
+                        {brand.shortName}
+                      </h3>
+                      <p className="mt-1.5 line-clamp-2 text-[13.5px] leading-relaxed text-white/85">
+                        {brand.summary}
+                      </p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         {/* 3. COLLABORATION DIRECTORY (Clean Per-Partnership Index — Click to open dedicated page with all videos) */}
